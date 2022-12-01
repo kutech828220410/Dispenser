@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "調劑台管理系統", "調劑台管理系統\調劑台管理系統.csproj", "{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "調劑台管理系統(VM)", "調劑台管理系統(VM)\調劑台管理系統(VM).csproj", "{EA34D27D-0F4B-41EF-8204-6690A532D4DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "智慧調劑台管理系統_WebApi", "智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi.csproj", "{DEFAEACC-0276-4920-A68C-9D7684F6955D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFAEACC-0276-4920-A68C-9D7684F6955D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFAEACC-0276-4920-A68C-9D7684F6955D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFAEACC-0276-4920-A68C-9D7684F6955D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFAEACC-0276-4920-A68C-9D7684F6955D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
