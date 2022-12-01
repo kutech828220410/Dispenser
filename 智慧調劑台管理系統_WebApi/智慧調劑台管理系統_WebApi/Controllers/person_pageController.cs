@@ -18,7 +18,7 @@ namespace 智慧調劑台管理系統_WebApi
     [ApiController]
     public class person_pageController : ControllerBase
     {
-        static private string DataBaseName = ConfigurationManager.AppSettings["database"];
+        static private string DataBaseName = ConfigurationManager.AppSettings["person_page_database"];
         static private string UserName = ConfigurationManager.AppSettings["user"];
         static private string Password = ConfigurationManager.AppSettings["password"];
         static private string IP = ConfigurationManager.AppSettings["person_page_IP"];
