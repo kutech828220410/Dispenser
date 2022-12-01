@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "智慧調劑台管理系統_WebApi", "智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi.csproj", "{229FE8F4-66B5-413E-9886-F1EE82C844FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{229FE8F4-66B5-413E-9886-F1EE82C844FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229FE8F4-66B5-413E-9886-F1EE82C844FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229FE8F4-66B5-413E-9886-F1EE82C844FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229FE8F4-66B5-413E-9886-F1EE82C844FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3467F1BA-D341-42E4-A5A8-A18F49ED7CF7}
+	EndGlobalSection
+EndGlobal

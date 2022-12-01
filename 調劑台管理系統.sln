@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "調劑台管理系統", "調劑台管理系統\調劑台管理系統.csproj", "{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "調劑台管理系統(VM)", "調劑台管理系統(VM)\調劑台管理系統(VM).csproj", "{EA34D27D-0F4B-41EF-8204-6690A532D4DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC46DF5-2F3E-499E-A5A2-91FC44A5FF4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA34D27D-0F4B-41EF-8204-6690A532D4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94A6AB46-3F94-453F-84BF-2E800CFD5610}
+	EndGlobalSection
+EndGlobal

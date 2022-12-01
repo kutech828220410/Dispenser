@@ -1,0 +1,13 @@
+1.)medicine_page/storage_list : 內容更動
+2.)medicine_page : 新增藥品群組欄位
+3.)medicine_page / medicine_group : 新增API
+     >>新增藥品群組頁面
+     >>GET Function : sn , name
+     >>POST Function : [FromBody][GUID,sn,name]
+
+
+4.)login_session : 新增API
+     >>GET Function : login_session
+     >>POST Function : [FromBody][login_session]
+     >>DELETE Function : [FromBody][login_session]
+        
