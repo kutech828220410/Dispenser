@@ -223,23 +223,6 @@ namespace 調劑台管理系統
         {
             if (this.DesignMode == false)
             {
-                LoadDBConfig();
-                LoadMyConfig();
-                LoadFtpConfig();
-                this.stopwatch.Start();            
-                this.Text += "Ver" + this.ProductVersion;
-                this.FormText = this.Text;
-                this.WindowState = FormWindowState.Maximized;
-
-                
-
-                this.plC_UI_Init.Run(this.FindForm(), this.lowerMachine_Panel);
-                this.plC_UI_Init.音效 = false;
-                this.plC_UI_Init.全螢幕顯示 = false;
-
-
-
-
                 MyMessageBox.form = this.FindForm();
                 Dialog_NumPannel.form = this.FindForm();
                 Dialog_輸入批號.form = this.FindForm();
@@ -248,6 +231,20 @@ namespace 調劑台管理系統
                 Dialog_手輸醫囑.form = this.FindForm();
                 Dialog_醫囑退藥.form = this.FindForm();
                 Dialog_設定產出時間.form = this.FindForm();
+
+                LoadDBConfig();
+                LoadMyConfig();
+                LoadFtpConfig();
+                this.stopwatch.Start();            
+                this.Text += "Ver" + this.ProductVersion;
+                this.FormText = this.Text;
+                this.WindowState = FormWindowState.Maximized;
+               
+                this.plC_UI_Init.Run(this.FindForm(), this.lowerMachine_Panel);
+                this.plC_UI_Init.音效 = false;
+                this.plC_UI_Init.全螢幕顯示 = false;
+
+                
 
                 Basic.MyMessageBox.音效 = false;
                 string ProcessName = "WINWORD";//換成想要結束的進程名字
