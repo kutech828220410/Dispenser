@@ -1786,16 +1786,16 @@ namespace 調劑台管理系統
             List<object[]> list_交易紀錄新增資料_AddValue = new List<object[]>();
             List<object[]> list_醫囑資料_ReplaceValue = new List<object[]>();
 
-            if (list_可入賬母資料.Count > 0)
-            {
-                var Code_LINQ = (from value in list_可入賬母資料
-                                 select value[(int)enum_取藥堆疊母資料.藥品碼]).ToList().Distinct();
-                List<object> list_code = Code_LINQ.ToList();
-                for (int i = 0; i < list_code.Count; i++)
-                {
-                    this.Function_從SQL取得儲位到雲端資料(list_code[i].ObjectToString());
-                }
-            }
+            //if (list_可入賬母資料.Count > 0)
+            //{
+            //    var Code_LINQ = (from value in list_可入賬母資料
+            //                     select value[(int)enum_取藥堆疊母資料.藥品碼]).ToList().Distinct();
+            //    List<object> list_code = Code_LINQ.ToList();
+            //    for (int i = 0; i < list_code.Count; i++)
+            //    {
+            //        this.Function_從SQL取得儲位到雲端資料(list_code[i].ObjectToString());
+            //    }
+            //}
             string Master_GUID = "";
             int 庫存量 = 0;
             int 結存量 = 0;
@@ -1816,6 +1816,7 @@ namespace 調劑台管理系統
             list_可入賬母資料.Sort(new Icp_取藥堆疊母資料_index排序());
             for (int i = 0; i < list_可入賬母資料.Count; i++)
             {
+                this.Function_從SQL取得儲位到雲端資料(藥品碼);
                 Master_GUID = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.GUID].ObjectToString();
                 動作 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.動作].ObjectToString();
                 藥品碼 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品碼].ObjectToString();
