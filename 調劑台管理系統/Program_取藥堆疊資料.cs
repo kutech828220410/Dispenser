@@ -1816,10 +1816,11 @@ namespace 調劑台管理系統
             list_可入賬母資料.Sort(new Icp_取藥堆疊母資料_index排序());
             for (int i = 0; i < list_可入賬母資料.Count; i++)
             {
-                this.Function_從SQL取得儲位到雲端資料(藥品碼);
+ 
                 Master_GUID = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.GUID].ObjectToString();
                 動作 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.動作].ObjectToString();
                 藥品碼 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品碼].ObjectToString();
+                this.Function_從SQL取得儲位到雲端資料(藥品碼);
                 藥品名稱 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品名稱].ObjectToString();
                 藥袋序號 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥袋序號].ObjectToString();
                 操作人 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.操作人].ObjectToString();
