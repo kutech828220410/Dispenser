@@ -518,17 +518,12 @@ namespace 調劑台管理系統
         }
         private void SqL_DataGridView_人員資料_DataGridRefreshEvent()
         {
-            int index = (int)enum_人員資料.顏色;
-            if (this.sqL_DataGridView_人員資料.顯示CheckBox)
-            {
-                index++;
-            }
             for (int i = 0; i < this.sqL_DataGridView_人員資料.dataGridView.Rows.Count; i++)
             {
 
-                Color color = this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Value.ObjectToString().ToColor();
-                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Style.BackColor = color;
-                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Style.ForeColor = color;
+                Color color = this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Value.ObjectToString().ToColor();
+                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Style.BackColor = color;
+                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Style.ForeColor = color;
             }
         }
         private void SqL_DataGridView_人員資料_RowEnterEvent(object[] RowValue)
