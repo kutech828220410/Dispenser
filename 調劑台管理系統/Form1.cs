@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.9.0")]
-[assembly: AssemblyFileVersion("1.0.9.0")]
+[assembly: AssemblyVersion("1.0.10.0")]
+[assembly: AssemblyFileVersion("1.0.10.0")]
 namespace 調劑台管理系統
 {
 
@@ -86,15 +86,15 @@ namespace 調劑台管理系統
 
             }
 
-            dBConfigClass.DB_Basic.DataBaseName = "test01";
-            dBConfigClass.DB_Basic.IP = "localhost";
-            dBConfigClass.DB_Basic.UserName = "root";
-            dBConfigClass.DB_Basic.Password = "user82822040";
-            dBConfigClass.DB_Basic.Port = 3306;
+            //dBConfigClass.DB_Basic.DataBaseName = "test01";
+            //dBConfigClass.DB_Basic.IP = "localhost";
+            //dBConfigClass.DB_Basic.UserName = "root";
+            //dBConfigClass.DB_Basic.Password = "user82822040";
+            //dBConfigClass.DB_Basic.Port = 3306;
 
-            dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
-            dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
-            dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
+            //dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
+            //dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
+            //dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
         }
         #endregion
         #region MyConfigClass
