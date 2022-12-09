@@ -976,6 +976,7 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過 = new MyUI.PLC_CheckBox();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -2685,17 +2686,17 @@
             this.ftp_DounloadUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ftp_DounloadUI.DownloadType = MyFtpUI.Ftp_DounloadUI.E_DownloadType.URL;
             this.ftp_DounloadUI.FileName = "Setup.msi";
-            this.ftp_DounloadUI.FTP_Groupbox_要顯示 = true;
+            this.ftp_DounloadUI.FTP_Groupbox_要顯示 = false;
             this.ftp_DounloadUI.FTP_Server = "ftp://kutech.myds.me/FTP";
-            this.ftp_DounloadUI.FTP_Server_要顯示 = true;
+            this.ftp_DounloadUI.FTP_Server_要顯示 = false;
             this.ftp_DounloadUI.Location = new System.Drawing.Point(6, 26);
             this.ftp_DounloadUI.Name = "ftp_DounloadUI";
             this.ftp_DounloadUI.Password = "test";
-            this.ftp_DounloadUI.Password_要顯示 = true;
+            this.ftp_DounloadUI.Password_要顯示 = false;
             this.ftp_DounloadUI.Size = new System.Drawing.Size(431, 246);
             this.ftp_DounloadUI.TabIndex = 12;
             this.ftp_DounloadUI.Username = "test";
-            this.ftp_DounloadUI.Username_要顯示 = true;
+            this.ftp_DounloadUI.Username_要顯示 = false;
             // 
             // rJ_GroupBox7
             // 
@@ -19157,7 +19158,6 @@
             this.tabPage1.Controls.Add(this.plC_CheckBox_自動過帳);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.groupBox8);
-            this.tabPage1.Controls.Add(this.groupBox7);
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.plC_CheckBox3);
             this.tabPage1.Controls.Add(this.plC_CheckBox2);
@@ -19218,7 +19218,7 @@
             this.groupBox9.Controls.Add(this.groupBox1);
             this.groupBox9.Controls.Add(this.groupBox2);
             this.groupBox9.Controls.Add(this.plC_Button1);
-            this.groupBox9.Location = new System.Drawing.Point(446, 654);
+            this.groupBox9.Location = new System.Drawing.Point(812, 654);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(200, 202);
             this.groupBox9.TabIndex = 123;
@@ -19341,10 +19341,11 @@
             this.groupBox8.Controls.Add(this.groupBox6);
             this.groupBox8.Controls.Add(this.groupBox19);
             this.groupBox8.Controls.Add(this.plC_Button_合併同藥品);
+            this.groupBox8.Controls.Add(this.groupBox7);
             this.groupBox8.Controls.Add(this.plC_Button_層架同藥碼全亮);
             this.groupBox8.Location = new System.Drawing.Point(119, 654);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(319, 205);
+            this.groupBox8.Size = new System.Drawing.Size(687, 205);
             this.groupBox8.TabIndex = 122;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "使用者設定";
@@ -19531,11 +19532,12 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.plC_CheckBox_退藥檢查是否掃碼領藥過);
             this.groupBox7.Controls.Add(this.plC_CheckBox_已過帳取藥);
             this.groupBox7.Controls.Add(this.plC_ComboBox_醫囑檢查範圍);
-            this.groupBox7.Location = new System.Drawing.Point(652, 654);
+            this.groupBox7.Location = new System.Drawing.Point(317, 21);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(231, 70);
+            this.groupBox7.Size = new System.Drawing.Size(231, 164);
             this.groupBox7.TabIndex = 120;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "刷藥袋設定";
@@ -23854,6 +23856,26 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
+            // plC_CheckBox_退藥檢查是否掃碼領藥過
+            // 
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.AutoSize = true;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Bool = false;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Font = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Location = new System.Drawing.Point(13, 67);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Name = "plC_CheckBox_退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Size = new System.Drawing.Size(156, 16);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.TabIndex = 123;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Text = "退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.寫入元件位置 = "S5012";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字內容 = "退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字字體 = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀取元件位置 = "S5012";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀寫鎖住 = false;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.音效 = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -25097,6 +25119,7 @@
         private MyUI.PLC_RJ_Button plC_RJ_Button_藥品資料_更新所有線上藥品;
         private MyUI.PLC_Button plC_Button_多醫囑模式;
         private MyUI.PLC_RJ_Button plC_RJ_Button_交易記錄查詢_選取資料刪除;
+        private MyUI.PLC_CheckBox plC_CheckBox_退藥檢查是否掃碼領藥過;
     }
 }
 

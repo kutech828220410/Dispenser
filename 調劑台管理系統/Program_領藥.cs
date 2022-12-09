@@ -1161,11 +1161,15 @@ namespace 調劑台管理系統
             List<object[]> list_交易記錄 = this.sqL_DataGridView_交易記錄查詢.SQL_GetRows(serchnames, serchvalues, false);
             // list_交易記錄 = list_交易記錄.GetRowsInDate((int)enum_交易記錄查詢資料.開方時間, dateTime_start, dateTime_end);
             Console.Write($"取得交易記錄資料 , 耗時{myTimer.ToString()}\n");
-            if (list_交易記錄.Count == 0)
+            if(plC_CheckBox_退藥檢查是否掃碼領藥過.Checked)
             {
-                this.voice.SpeakOnTask("查無領藥紀錄");
-                return;
+                if (list_交易記錄.Count == 0)
+                {
+                    this.voice.SpeakOnTask("查無領藥紀錄");
+                    return;
+                }
             }
+          
             if (sqL_DataGridView_領藥台_01_領藥內容.GetRows(serchnames, serchvalues, false).Count > 0)
             {
                 this.voice.SpeakOnTask("此藥單正在領取中");
@@ -2271,10 +2275,13 @@ namespace 調劑台管理系統
             List<object[]> list_交易記錄 = this.sqL_DataGridView_交易記錄查詢.SQL_GetRows(serchnames, serchvalues, false);
             // list_交易記錄 = list_交易記錄.GetRowsInDate((int)enum_交易記錄查詢資料.開方時間, dateTime_start, dateTime_end);
             Console.Write($"取得交易記錄資料 , 耗時{myTimer.ToString()}\n");
-            if (list_交易記錄.Count == 0)
+            if (plC_CheckBox_退藥檢查是否掃碼領藥過.Checked)
             {
-                this.voice.SpeakOnTask("查無領藥紀錄");
-                return;
+                if (list_交易記錄.Count == 0)
+                {
+                    this.voice.SpeakOnTask("查無領藥紀錄");
+                    return;
+                }
             }
             if (sqL_DataGridView_領藥台_02_領藥內容.GetRows(serchnames, serchvalues, false).Count > 0)
             {
