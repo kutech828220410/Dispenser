@@ -765,10 +765,11 @@
             this.label118 = new System.Windows.Forms.Label();
             this.plC_NumBox6 = new MyUI.PLC_NumBox();
             this.plC_Button_合併同藥品 = new MyUI.PLC_Button();
-            this.plC_Button_層架同藥碼全亮 = new MyUI.PLC_Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過 = new MyUI.PLC_CheckBox();
             this.plC_CheckBox_已過帳取藥 = new MyUI.PLC_CheckBox();
             this.plC_ComboBox_醫囑檢查範圍 = new MyUI.PLC_ComboBox();
+            this.plC_Button_層架同藥碼全亮 = new MyUI.PLC_Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pannel_Locker_Y00 = new 調劑台管理系統.Pannel_Locker();
@@ -976,7 +977,6 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過 = new MyUI.PLC_CheckBox();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -19496,40 +19496,6 @@
             this.plC_Button_合併同藥品.顯示 = false;
             this.plC_Button_合併同藥品.顯示狀態 = false;
             // 
-            // plC_Button_層架同藥碼全亮
-            // 
-            this.plC_Button_層架同藥碼全亮.Bool = false;
-            this.plC_Button_層架同藥碼全亮.but_press = false;
-            this.plC_Button_層架同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_Button_層架同藥碼全亮.Location = new System.Drawing.Point(164, 22);
-            this.plC_Button_層架同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
-            this.plC_Button_層架同藥碼全亮.Name = "plC_Button_層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.OFF_文字內容 = "層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_層架同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
-            this.plC_Button_層架同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_層架同藥碼全亮.ON_文字內容 = "層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_層架同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
-            this.plC_Button_層架同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_層架同藥碼全亮.Size = new System.Drawing.Size(146, 49);
-            this.plC_Button_層架同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
-            this.plC_Button_層架同藥碼全亮.TabIndex = 119;
-            this.plC_Button_層架同藥碼全亮.事件驅動 = false;
-            this.plC_Button_層架同藥碼全亮.字型鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.寫入元件位置 = "S4061";
-            this.plC_Button_層架同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
-            this.plC_Button_層架同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
-            this.plC_Button_層架同藥碼全亮.文字鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態OFF圖片")));
-            this.plC_Button_層架同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態ON圖片")));
-            this.plC_Button_層架同藥碼全亮.讀取位元反向 = false;
-            this.plC_Button_層架同藥碼全亮.讀取元件位置 = "S4061";
-            this.plC_Button_層架同藥碼全亮.讀寫鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.音效 = true;
-            this.plC_Button_層架同藥碼全亮.顯示 = false;
-            this.plC_Button_層架同藥碼全亮.顯示狀態 = false;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.plC_CheckBox_退藥檢查是否掃碼領藥過);
@@ -19541,6 +19507,26 @@
             this.groupBox7.TabIndex = 120;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "刷藥袋設定";
+            // 
+            // plC_CheckBox_退藥檢查是否掃碼領藥過
+            // 
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.AutoSize = true;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Bool = false;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Font = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Location = new System.Drawing.Point(13, 67);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Name = "plC_CheckBox_退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Size = new System.Drawing.Size(156, 16);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.TabIndex = 123;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Text = "退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.寫入元件位置 = "S5020";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字內容 = "退藥檢查是否掃碼領藥過";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字字體 = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀取元件位置 = "S5020";
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀寫鎖住 = false;
+            this.plC_CheckBox_退藥檢查是否掃碼領藥過.音效 = false;
             // 
             // plC_CheckBox_已過帳取藥
             // 
@@ -19588,6 +19574,40 @@
             this.plC_ComboBox_醫囑檢查範圍.致能讀取位置 = "S4077";
             this.plC_ComboBox_醫囑檢查範圍.讀取元件位置 = "D4020";
             this.plC_ComboBox_醫囑檢查範圍.音效 = true;
+            // 
+            // plC_Button_層架同藥碼全亮
+            // 
+            this.plC_Button_層架同藥碼全亮.Bool = false;
+            this.plC_Button_層架同藥碼全亮.but_press = false;
+            this.plC_Button_層架同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_層架同藥碼全亮.Location = new System.Drawing.Point(164, 22);
+            this.plC_Button_層架同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_層架同藥碼全亮.Name = "plC_Button_層架同藥碼全亮";
+            this.plC_Button_層架同藥碼全亮.OFF_文字內容 = "層架同藥碼全亮";
+            this.plC_Button_層架同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_層架同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_層架同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_層架同藥碼全亮.ON_文字內容 = "層架同藥碼全亮";
+            this.plC_Button_層架同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_層架同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_層架同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_層架同藥碼全亮.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_層架同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_層架同藥碼全亮.TabIndex = 119;
+            this.plC_Button_層架同藥碼全亮.事件驅動 = false;
+            this.plC_Button_層架同藥碼全亮.字型鎖住 = false;
+            this.plC_Button_層架同藥碼全亮.寫入元件位置 = "S4061";
+            this.plC_Button_層架同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_層架同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_層架同藥碼全亮.文字鎖住 = false;
+            this.plC_Button_層架同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態OFF圖片")));
+            this.plC_Button_層架同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態ON圖片")));
+            this.plC_Button_層架同藥碼全亮.讀取位元反向 = false;
+            this.plC_Button_層架同藥碼全亮.讀取元件位置 = "S4061";
+            this.plC_Button_層架同藥碼全亮.讀寫鎖住 = false;
+            this.plC_Button_層架同藥碼全亮.音效 = true;
+            this.plC_Button_層架同藥碼全亮.顯示 = false;
+            this.plC_Button_層架同藥碼全亮.顯示狀態 = false;
             // 
             // tabControl2
             // 
@@ -23855,26 +23875,6 @@
             this.ContentsPanel.Padding = new System.Windows.Forms.Padding(5);
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
-            // 
-            // plC_CheckBox_退藥檢查是否掃碼領藥過
-            // 
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.AutoSize = true;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Bool = false;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Font = new System.Drawing.Font("新細明體", 9F);
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.ForeColor = System.Drawing.Color.Black;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Location = new System.Drawing.Point(13, 67);
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Name = "plC_CheckBox_退藥檢查是否掃碼領藥過";
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Size = new System.Drawing.Size(156, 16);
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.TabIndex = 123;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.Text = "退藥檢查是否掃碼領藥過";
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.UseVisualStyleBackColor = true;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.寫入元件位置 = "S5012";
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字內容 = "退藥檢查是否掃碼領藥過";
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字字體 = new System.Drawing.Font("新細明體", 9F);
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.文字顏色 = System.Drawing.Color.Black;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀取元件位置 = "S5012";
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.讀寫鎖住 = false;
-            this.plC_CheckBox_退藥檢查是否掃碼領藥過.音效 = false;
             // 
             // Form1
             // 
