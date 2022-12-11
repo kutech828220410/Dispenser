@@ -28,6 +28,104 @@ namespace 調劑台管理系統
     }
     public partial class Form1 : Form
     {
+        public void Function_從SQL取得儲位到入賬資料(string 藥品碼)
+        {
+            List<object> list_value = new List<object>();
+            List<Box> boxes = this.List_EPD583_雲端資料.SortByCode(藥品碼);
+            List<Storage> storages = this.List_EPD266_雲端資料.SortByCode(藥品碼);
+            List<Storage> pannels = this.List_Pannel35_雲端資料.SortByCode(藥品碼);
+            List<RowsDevice> rowsDevices = this.List_RowsLED_雲端資料.SortByCode(藥品碼);
+            List<RFIDDevice> rFIDDevices = this.List_RFID_雲端資料.SortByCode(藥品碼);
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(boxes[i]);              
+                this.List_EPD583_入賬資料.Add_NewDrawer(drawer);
+            }
+            for (int i = 0; i < storages.Count; i++)
+            {
+                Storage storage = this.storageUI_EPD_266.SQL_GetStorage(storages[i]);
+                this.List_EPD266_入賬資料.Add_NewStorage(storage);
+            }
+            for (int i = 0; i < pannels.Count; i++)
+            {
+                Storage pannel = this.storageUI_WT32.SQL_GetStorage(pannels[i]);
+                this.List_Pannel35_入賬資料.Add_NewStorage(pannel);
+            }
+            for (int i = 0; i < rowsDevices.Count; i++)
+            {
+                RowsDevice rowsDevice = this.rowsLEDUI.SQL_GetRowsDevice(rowsDevices[i]);
+                this.List_RowsLED_入賬資料.Add_NewRowsLED(rowsDevice);
+            }
+            for (int i = 0; i < rFIDDevices.Count; i++)
+            {
+                RFIDDevice rFIDDevice = this.rfiD_UI.SQL_GetDevice(rFIDDevices[i]);
+                this.List_RFID_入賬資料.Add_NewRFIDClass(rFIDDevice);
+            }
+        }
+        public int Function_從入賬資料取得庫存(string 藥品碼)
+        {
+            int 庫存 = 0;
+            List<object> list_value = new List<object>();
+            List<string> 儲位_TYPE = new List<string>();
+            this.Function_從入賬資料取得儲位(this.Function_藥品碼檢查(藥品碼), ref 儲位_TYPE, ref list_value);
+
+            for (int i = 0; i < list_value.Count; i++)
+            {
+                if (list_value[i] is Device)
+                {
+                    庫存 += ((Device)list_value[i]).Inventory.StringToInt32();
+                }
+            }
+            if (list_value.Count == 0) return -999;
+            return 庫存;
+        }
+        public void Function_從入賬資料取得儲位(string 藥品碼, ref List<string> TYPE, ref List<object> values)
+        {
+            List<object> list_value = this.Function_從入賬資料取得儲位(藥品碼);
+            TYPE.Clear();
+            values.Clear();
+            for (int i = 0; i < list_value.Count; i++)
+            {
+                if (list_value[i] is Device)
+                {
+                    Device device = (Device)list_value[i];
+                    values.Add(list_value[i]);
+                    TYPE.Add(device.DeviceType.GetEnumName());
+                }
+
+            }
+        }
+        public List<object> Function_從入賬資料取得儲位(string 藥品碼)
+        {
+            List<object> list_value = new List<object>();
+            List<Box> boxes = this.List_EPD583_入賬資料.SortByCode(藥品碼);
+            List<Storage> storages = this.List_EPD266_入賬資料.SortByCode(藥品碼);
+            List<Storage> pannels = this.List_Pannel35_入賬資料.SortByCode(藥品碼);
+            List<RowsDevice> rowsDevices = this.List_RowsLED_入賬資料.SortByCode(藥品碼);
+            List<RFIDDevice> rFIDDevices = this.List_RFID_入賬資料.SortByCode(藥品碼);
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                list_value.Add(boxes[i]);
+            }
+            for (int i = 0; i < storages.Count; i++)
+            {
+                list_value.Add(storages[i]);
+            }
+            for (int i = 0; i < pannels.Count; i++)
+            {
+                list_value.Add(pannels[i]);
+            }
+            for (int i = 0; i < rowsDevices.Count; i++)
+            {
+                list_value.Add(rowsDevices[i]);
+            }
+            for (int i = 0; i < rFIDDevices.Count; i++)
+            {
+                list_value.Add(rFIDDevices[i]);
+            }
+            return list_value;
+        }
+
         public void Function_設定雲端資料更新()
         {
             this.Function_取藥堆疊資料_新增母資料(Guid.NewGuid().ToString(), "更新資料", enum_交易記錄查詢動作.None, "", "", "", "", "", "", "", "", "", "", 0, "");

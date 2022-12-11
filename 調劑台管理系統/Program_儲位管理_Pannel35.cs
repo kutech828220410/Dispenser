@@ -21,6 +21,7 @@ namespace 調劑台管理系統
         private Storage WT32_Storage_Copy;
         private List<Storage> List_Pannel35_本地資料 = new List<Storage>();
         private List<Storage> List_Pannel35_雲端資料 = new List<Storage>();
+        private List<Storage> List_Pannel35_入賬資料 = new List<Storage>();
         private Storage Pannel35_Storage_Copy;
         private enum enum_儲位管理_Pannel35_效期及庫存
         {

@@ -20,6 +20,7 @@ namespace 調劑台管理系統
     {
         private List<Drawer> List_EPD583_本地資料 = new List<Drawer>();
         private List<Drawer> List_EPD583_雲端資料 = new List<Drawer>();
+        private List<Drawer> List_EPD583_入賬資料 = new List<Drawer>();
         private Drawer EPD583_Drawer_Copy;
 
         private enum enum_儲位管理_EPD583_效期及庫存

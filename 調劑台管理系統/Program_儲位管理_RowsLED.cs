@@ -40,6 +40,7 @@ namespace 調劑台管理系統
         }
         private List<RowsLED> List_RowsLED_本地資料 = new List<RowsLED>();
         private List<RowsLED> List_RowsLED_雲端資料 = new List<RowsLED>();
+        private List<RowsLED> List_RowsLED_入賬資料 = new List<RowsLED>();
         private RowsLED RowsLED_Copy;
 
         private void Program_儲位管理_RowsLED_Init()

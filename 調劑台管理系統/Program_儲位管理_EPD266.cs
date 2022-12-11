@@ -20,6 +20,7 @@ namespace 調劑台管理系統
     {
         private List<Storage> List_EPD266_本地資料 = new List<Storage>();
         private List<Storage> List_EPD266_雲端資料 = new List<Storage>();
+        private List<Storage> List_EPD266_入賬資料 = new List<Storage>();
         private Storage EPD266_Storage_Copy;
         private enum enum_儲位管理_EPD266_效期及庫存
         {

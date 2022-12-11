@@ -578,8 +578,7 @@ namespace 調劑台管理系統
                     {
                         boxes[i].效期庫存異動(效期, 異動量);
                         批號 = boxes[i].取得批號(效期);
-                        this.List_EPD583_雲端資料.ReplaceBox(boxes[i]);
-                        Drawer drawer = this.List_EPD583_雲端資料.SortByIP(boxes[i].IP);
+                        Drawer drawer = this.List_EPD583_雲端資料.ReplaceBox(boxes[i]);
                         this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
                         break;
                     }
@@ -1820,7 +1819,7 @@ namespace 調劑台管理系統
                 Master_GUID = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.GUID].ObjectToString();
                 動作 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.動作].ObjectToString();
                 藥品碼 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品碼].ObjectToString();
-                this.Function_從SQL取得儲位到雲端資料(藥品碼);
+                this.Function_從SQL取得儲位到入賬資料(藥品碼);
                 藥品名稱 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品名稱].ObjectToString();
                 藥袋序號 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥袋序號].ObjectToString();
                 操作人 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.操作人].ObjectToString();
@@ -1831,7 +1830,7 @@ namespace 調劑台管理系統
                 操作時間 = DateTime.Now.ToDateTimeString_6();
                 開方時間 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.開方時間].ObjectToString();
                 備註 = "";
-                庫存量 = this.Function_從雲端資料取得庫存(藥品碼);
+                庫存量 = this.Function_從入賬資料取得庫存(藥品碼);
                 結存量 = (庫存量 + 總異動量);
                 List_效期.Clear();
                 List_批號.Clear();

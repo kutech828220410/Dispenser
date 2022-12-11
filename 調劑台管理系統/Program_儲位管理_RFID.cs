@@ -18,6 +18,7 @@ namespace 調劑台管理系統
     {
         private List<RFIDClass> List_RFID_本地資料 = new List<RFIDClass>();
         private List<RFIDClass> List_RFID_雲端資料 = new List<RFIDClass>();
+        private List<RFIDClass> List_RFID_入賬資料 = new List<RFIDClass>();
         private RFIDClass CurrentRFIDClass;
         private RFIDClass.DeviceClass CurrentDeviceClass;
         private enum enum_儲位管理_RFID_儲位列表
