@@ -568,7 +568,7 @@ namespace 調劑台管理系統
             string 批號 = "";
             if (str_TYPE == DeviceType.EPD583.GetEnumName() || str_TYPE == DeviceType.EPD583_lock.GetEnumName())
             {
-                List<Box> boxes = this.List_EPD583_雲端資料.SortByCode(藥品碼);
+                List<Box> boxes = this.List_EPD583_入賬資料.SortByCode(藥品碼);
                 for (int i = 0; i < boxes.Count; i++)
                 {
                     if (boxes[i].IP != IP) continue;
@@ -578,7 +578,7 @@ namespace 調劑台管理系統
                     {
                         boxes[i].效期庫存異動(效期, 異動量);
                         批號 = boxes[i].取得批號(效期);
-                        Drawer drawer = this.List_EPD583_雲端資料.ReplaceBox(boxes[i]);
+                        Drawer drawer = this.List_EPD583_入賬資料.ReplaceBox(boxes[i]);
                         this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
                         break;
                     }
@@ -586,14 +586,14 @@ namespace 調劑台管理系統
             }
             else if (str_TYPE == DeviceType.EPD266.GetEnumName() || str_TYPE == DeviceType.EPD266_lock.GetEnumName())
             {
-                Storage storage = this.List_EPD266_雲端資料.SortByIP(IP);
+                Storage storage = this.List_EPD266_入賬資料.SortByIP(IP);
                 storage = this.storageUI_EPD_266.SQL_GetStorage(storage);
                 儲位庫存 = storage.取得庫存(效期);
                 if ((儲位庫存) >= 0)
                 {
                     storage.效期庫存異動(效期, 異動量);
                     批號 = storage.取得批號(效期);
-                    this.List_EPD266_雲端資料.Add_NewStorage(storage);
+                    this.List_EPD266_入賬資料.Add_NewStorage(storage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
                     Task.Run(() =>
                     {
@@ -603,14 +603,14 @@ namespace 調劑台管理系統
             }
             else if (str_TYPE == DeviceType.Pannel35_lock.GetEnumName() || str_TYPE == DeviceType.Pannel35.GetEnumName())
             {
-                Storage storage = this.List_Pannel35_雲端資料.SortByIP(IP);
+                Storage storage = this.List_Pannel35_入賬資料.SortByIP(IP);
                 storage = this.storageUI_WT32.SQL_GetStorage(storage);
                 儲位庫存 = storage.取得庫存(效期);
                 if ((儲位庫存) >= 0)
                 {
                     storage.效期庫存異動(效期, 異動量);
                     批號 = storage.取得批號(效期);
-                    this.List_Pannel35_雲端資料.Add_NewStorage(storage);
+                    this.List_Pannel35_入賬資料.Add_NewStorage(storage);
                     this.storageUI_WT32.SQL_ReplaceStorage(storage);
                     Task.Run(() =>
                     {
@@ -620,7 +620,7 @@ namespace 調劑台管理系統
             }
             else if (str_TYPE == DeviceType.RowsLED.GetEnumName())
             {
-                List<RowsDevice> rowsDevices = this.List_RowsLED_雲端資料.SortByCode(藥品碼);
+                List<RowsDevice> rowsDevices = this.List_RowsLED_入賬資料.SortByCode(藥品碼);
                 for (int i = 0; i < rowsDevices.Count; i++)
                 {
                     if (rowsDevices[i].IP != IP) continue;
@@ -630,8 +630,8 @@ namespace 調劑台管理系統
                     {
                         rowsDevices[i].效期庫存異動(效期, 異動量);
                         批號 = rowsDevices[i].取得批號(效期);
-                        this.List_RowsLED_雲端資料.Add_NewRowsLED(rowsDevices[i]);
-                        RowsLED rowsLED = this.List_RowsLED_雲端資料.SortByIP(rowsDevices[i].IP);
+                        this.List_RowsLED_入賬資料.Add_NewRowsLED(rowsDevices[i]);
+                        RowsLED rowsLED = this.List_RowsLED_入賬資料.SortByIP(rowsDevices[i].IP);
                         this.rowsLEDUI.SQL_ReplaceRowsLED(rowsLED);
                         break;
                     }
@@ -639,7 +639,7 @@ namespace 調劑台管理系統
             }
             else if (str_TYPE == DeviceType.RFID_Device.GetEnumName())
             {
-                List<RFIDDevice> rFIDDevices = this.List_RFID_雲端資料.SortByCode(藥品碼);
+                List<RFIDDevice> rFIDDevices = this.List_RFID_入賬資料.SortByCode(藥品碼);
                 for (int i = 0; i < rFIDDevices.Count; i++)
                 {
                     if (rFIDDevices[i].IP != IP) continue;
@@ -649,8 +649,8 @@ namespace 調劑台管理系統
                     {
                         rFIDDevices[i].效期庫存異動(效期, 異動量);
                         批號 = rFIDDevices[i].取得批號(效期);
-                        this.List_RFID_雲端資料.Add_NewRFIDClass(rFIDDevices[i]);
-                        RFIDClass rFIDClass = this.List_RFID_雲端資料.SortByIP(rFIDDevices[i].IP);
+                        this.List_RFID_入賬資料.Add_NewRFIDClass(rFIDDevices[i]);
+                        RFIDClass rFIDClass = this.List_RFID_入賬資料.SortByIP(rFIDDevices[i].IP);
                         this.rfiD_UI.SQL_ReplaceRFIDClass(rFIDClass);
                         break;
                     }

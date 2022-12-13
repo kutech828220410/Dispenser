@@ -1,5 +1,5 @@
 {
-  "FTP_Server": "ftp://103.1.221.188/屏東榮總/調劑台管理系統",
+  "FTP_Server": "https://raw.githubusercontent.com/kutech828220410/Dispenser/master/Advanced%20Installe/",
   "FTP_username": "user",
   "FTP_password": "66437068"
 }
