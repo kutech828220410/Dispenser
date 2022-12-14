@@ -1028,7 +1028,7 @@ namespace 調劑台管理系統
             List<object[]> list_藥品資料_buf = new List<object[]>();
             Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
             if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_01_名稱.Text);
-            Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
+            Console.Write($"刪除調劑台資料 , 耗時{myTimer.ToString()}\n");
 
             string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
             string 調劑台名稱 = this.textBox_工程模式_領藥台_01_名稱.Text;
@@ -2578,7 +2578,7 @@ namespace 調劑台管理系統
             {
                 for (int k = 0; k < List_RFID_本地資料[i].DeviceClasses.Length; k++)
                 {
-                    if (List_RFID_本地資料[i].DeviceClasses[k].Enable)
+                    if (List_RFID_本地資料[i].DeviceClasses[k].Enable && !List_RFID_本地資料[i].DeviceClasses[k].IsLocker)
                     {
                         string RFID = this.rfiD_UI.GetRFID(List_RFID_本地資料[i].IP, k);
                         if (RFID.StringToInt32() != 0 && !RFID.StringIsEmpty() || PLC_Device_領藥_RFID_檢查刷卡_TEST.Bool)

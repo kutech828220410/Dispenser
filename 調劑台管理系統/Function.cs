@@ -510,12 +510,7 @@ namespace 調劑台管理系統
         }
 
 
-        public string Function_取得藥品網址(string 藥品碼)
-        {
-            string URL = @"https://wwwhf.vghks.gov.tw/DIIdentify/KH/drugimages/{0}.jpg";
-            if (藥品碼.Length < 5) 藥品碼 = "0" + 藥品碼;
-            return string.Format(URL, 藥品碼);
-        }
+  
 
         public void Function_從SQL取得儲位到本地資料()
         {
@@ -710,12 +705,22 @@ namespace 調劑台管理系統
             return 庫存;
         }
 
+        public string Function_取得藥品網址(string 藥品碼)
+        {
+            if (藥品碼.Length < 5) 藥品碼 = "0" + 藥品碼;
+            string URL = $@"{myConfigClass.藥物辨識網址}{藥品碼}.jpg";
+            return string.Format(URL, 藥品碼);
+        }
         public void Function_顯示藥物辨識圖片(string 藥品碼, PictureBox pictureBox)
         {
-            if (PLC_Device_藥物辨識圖片顯示.Bool)
+            if (myConfigClass.藥物辨識網址.StringIsEmpty() == false)
             {
-                string URL = this.Function_取得藥品網址(藥品碼);
-                Basic.Net.DowloadToPictureBox(URL, this.pictureBox_領藥台_01_藥品圖片);
+                this.Invoke(new Action(delegate
+                {
+                    string URL = this.Function_取得藥品網址(藥品碼);
+                    Basic.Net.DowloadToPictureBox(URL, pictureBox);
+                }));
+
             }
         }
         public string Function_藥品碼檢查(string Code)

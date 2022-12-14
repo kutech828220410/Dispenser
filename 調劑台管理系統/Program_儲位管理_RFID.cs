@@ -78,9 +78,7 @@ namespace 調劑台管理系統
 
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_RFID);
         }
-
-  
-
+ 
         private bool flag_Program_儲位管理_RFID_Init = false;
         private void Program_儲位管理_RFID()
         {
@@ -286,6 +284,7 @@ namespace 調劑台管理系統
                     this.timePannel_儲位管理_RFID_解鎖起始時段.mDateTime = this.CurrentDeviceClass.Unlock_start_dateTime;
                     this.timePannel_儲位管理_RFID_解鎖結束時段.mDateTime = this.CurrentDeviceClass.Unlock_end_dateTime;
                     this.rJ_CheckBox_儲位管理_RFID_解鎖時段檢查.Checked = this.CurrentDeviceClass.UnlockTimeEnable;
+                    this.rJ_CheckBox_儲位管理_RFID_刷卡直接開鎖.Checked = this.CurrentDeviceClass.IsLocker;
                     List<object[]> list_value = new List<object[]>();
                     for (int i = 0; i < CurrentDeviceClass.RFIDDevices.Count; i++)
                     {
@@ -419,6 +418,7 @@ namespace 調劑台管理系統
             deviceClass.Unlock_start_dateTime = this.timePannel_儲位管理_RFID_解鎖起始時段.mDateTime;
             deviceClass.Unlock_end_dateTime = this.timePannel_儲位管理_RFID_解鎖結束時段.mDateTime;
             deviceClass.UnlockTimeEnable = this.rJ_CheckBox_儲位管理_RFID_解鎖時段檢查.Checked;
+            deviceClass.IsLocker = rJ_CheckBox_儲位管理_RFID_刷卡直接開鎖.Checked;
             this.rfiD_UI.SQL_ReplaceRFIDClass(rFIDClass);
             List_RFID_本地資料.Add_NewRFIDClass(rFIDClass);
             List<object[]> list_value = new List<object[]>();

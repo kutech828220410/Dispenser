@@ -129,7 +129,7 @@ namespace 調劑台管理系統
             this.sqL_DataGridView_特殊輸出表.MouseDown += SqL_DataGridView_特殊輸出表_MouseDown;
 
             this.plC_RJ_Button_雲端藥檔_取得資料.MouseDownEvent += PlC_RJ_Button_雲端藥檔_取得資料_MouseDownEvent;
-
+            this.plC_RJ_Button_檢查頁面不顯示.MouseDownEvent += PlC_RJ_Button_檢查頁面不顯示_MouseDownEvent;
             this.plC_UI_Init.Add_Method(this.sub_Program_系統);
         }
 
@@ -166,8 +166,9 @@ namespace 調劑台管理系統
             {
                 flag_sub_Program_系統_設定06 = false;
             }
-
             sub_Program_醫囑資料_掃碼();
+            sub_Program_檢查頁面不顯示();
+
         }
 
         #region PLC_醫囑資料_掃碼
@@ -278,18 +279,86 @@ namespace 調劑台管理系統
 
 
         #endregion
-
-        #region Event
-        private void PlC_RJ_Button_雲端藥檔_取得資料_MouseDownEvent(MouseEventArgs mevent)
+        #region PLC_檢查頁面不顯示
+        PLC_Device PLC_Device_檢查頁面不顯示 = new PLC_Device("");
+        PLC_Device PLC_Device_檢查頁面不顯示_OK = new PLC_Device("");
+        MyTimer MyTimer_檢查頁面不顯示_結束延遲 = new MyTimer();
+        int cnt_Program_檢查頁面不顯示 = 65534;
+        void sub_Program_檢查頁面不顯示()
         {
-            MyTimer myTimer = new MyTimer();
-            myTimer.StartTickTime(50000);
+            PLC_Device_檢查頁面不顯示.Bool = true;
+            if (cnt_Program_檢查頁面不顯示 == 65534)
+            {
+                this.MyTimer_檢查頁面不顯示_結束延遲.StartTickTime(1000);
+                PLC_Device_檢查頁面不顯示.SetComment("PLC_檢查頁面不顯示");
+                PLC_Device_檢查頁面不顯示_OK.SetComment("PLC_檢查頁面不顯示_OK");
+                PLC_Device_檢查頁面不顯示.Bool = false;
+                cnt_Program_檢查頁面不顯示 = 65535;
+            }
+            if (cnt_Program_檢查頁面不顯示 == 65535) cnt_Program_檢查頁面不顯示 = 1;
+            if (cnt_Program_檢查頁面不顯示 == 1) cnt_Program_檢查頁面不顯示_檢查按下(ref cnt_Program_檢查頁面不顯示);
+            if (cnt_Program_檢查頁面不顯示 == 2) cnt_Program_檢查頁面不顯示_初始化(ref cnt_Program_檢查頁面不顯示);
+            if (cnt_Program_檢查頁面不顯示 == 3) cnt_Program_檢查頁面不顯示 = 65500;
+            if (cnt_Program_檢查頁面不顯示 > 1) cnt_Program_檢查頁面不顯示_檢查放開(ref cnt_Program_檢查頁面不顯示);
 
-            List<object[]> list_value = this.sqL_DataGridView_雲端藥檔.SQL_GetAllRows(false);
-            Console.WriteLine($"取得雲端藥檔資料,耗時{myTimer.ToString()}ms");
-            this.sqL_DataGridView_雲端藥檔.RefreshGrid(list_value);
-            Console.WriteLine($"更新雲端藥檔至Datagridview,耗時{myTimer.ToString()}ms");
+            if (cnt_Program_檢查頁面不顯示 == 65500)
+            {
+                this.MyTimer_檢查頁面不顯示_結束延遲.TickStop();
+                this.MyTimer_檢查頁面不顯示_結束延遲.StartTickTime(1000);
+                PLC_Device_檢查頁面不顯示.Bool = false;
+                PLC_Device_檢查頁面不顯示_OK.Bool = false;
+                cnt_Program_檢查頁面不顯示 = 65535;
+            }
         }
+        void cnt_Program_檢查頁面不顯示_檢查按下(ref int cnt)
+        {
+            if (PLC_Device_檢查頁面不顯示.Bool) cnt++;
+        }
+        void cnt_Program_檢查頁面不顯示_檢查放開(ref int cnt)
+        {
+            if (!PLC_Device_檢查頁面不顯示.Bool) cnt = 65500;
+        }
+        void cnt_Program_檢查頁面不顯示_初始化(ref int cnt)
+        {
+            if (this.MyTimer_檢查頁面不顯示_結束延遲.IsTimeOut())
+            {
+                if (Task_Method == null)
+                {
+                    Task_Method = new Task(new Action(delegate { PlC_RJ_Button_檢查頁面不顯示_MouseDownEvent(null); }));
+                }
+                if (Task_Method.Status == TaskStatus.RanToCompletion)
+                {
+                    Task_Method = new Task(new Action(delegate { PlC_RJ_Button_檢查頁面不顯示_MouseDownEvent(null); }));
+                }
+                if (Task_Method.Status == TaskStatus.Created)
+                {
+                    Task_Method.Start();
+                }
+                cnt++;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #endregion
+        #region Event
+      
         private void SqL_DataGridView_特殊輸出表_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) return;
@@ -472,7 +541,75 @@ namespace 調劑台管理系統
                 this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(true);
             }
         }
-     
+        private void PlC_RJ_Button_雲端藥檔_取得資料_MouseDownEvent(MouseEventArgs mevent)
+        {
+            MyTimer myTimer = new MyTimer();
+            myTimer.StartTickTime(50000);
+
+            List<object[]> list_value = this.sqL_DataGridView_雲端藥檔.SQL_GetAllRows(false);
+            Console.WriteLine($"取得雲端藥檔資料,耗時{myTimer.ToString()}ms");
+            this.sqL_DataGridView_雲端藥檔.RefreshGrid(list_value);
+            Console.WriteLine($"更新雲端藥檔至Datagridview,耗時{myTimer.ToString()}ms");
+        }
+        private void PlC_RJ_Button_檢查頁面不顯示_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (plC_CheckBox_不顯示設定_領_退藥作業.Checked)
+            {
+                plC_RJ_ScreenButton_領退藥作業.SetVisible(false);
+            }
+            else
+            {
+                plC_RJ_ScreenButton_領退藥作業.SetVisible(true);
+            }
+            if (plC_CheckBox_不顯示設定_管制抽屜.Checked)
+            {
+                plC_RJ_ScreenButton_管制抽屜.SetVisible(false);
+            }
+            else
+            {
+                plC_RJ_ScreenButton_管制抽屜.SetVisible(true);
+            }
+            if (plC_CheckBox_不顯示設定_入庫作業.Checked)
+            {
+                plC_RJ_ScreenButton_入庫作業.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_交易紀錄查詢.Checked)
+            {
+                plC_RJ_ScreenButton_交易紀錄查詢.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_醫囑資料.Checked)
+            {
+                plC_RJ_ScreenButton_醫囑資料.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_藥品資料.Checked)
+            {
+                plC_RJ_ScreenButton_藥品資料.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_效期管理.Checked)
+            {
+                plC_RJ_ScreenButton_效期管理.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_人員資料.Checked)
+            {
+                plC_RJ_ScreenButton_人員資料.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_儲位管理.Checked)
+            {
+                plC_RJ_ScreenButton_儲位管理.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_儲位管理.Checked)
+            {
+                plC_RJ_ScreenButton_儲位管理.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_盤點作業.Checked)
+            {
+                plC_RJ_ScreenButton_盤點作業.SetVisible(false);
+            }
+            if (plC_CheckBox_不顯示設定_工程模式.Checked)
+            {
+                plC_RJ_ScreenButton_工程模式.SetVisible(false);
+            }
+        }
         #endregion
 
         private class ICP_Locker_Index_Table : IComparer<object[]>

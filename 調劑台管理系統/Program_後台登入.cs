@@ -411,7 +411,11 @@ namespace 調劑台管理系統
                 this.PLC_Device_最高權限.Bool = false;
                 this.Text = $"{this.FormText}";
             }));
-            this.PLC_Device_主頁面頁碼.Value = 0;
+            if (plC_RJ_ScreenButton_領退藥作業.Visible) this.plC_ScreenPage_Main.SelecteTabText("領藥");
+            else if (plC_RJ_ScreenButton_管制抽屜.Visible) this.plC_ScreenPage_Main.SelecteTabText("管制抽屜");
+            else this.plC_ScreenPage_Main.SelecteTabText("後台登入");
+
+            //this.PLC_Device_主頁面頁碼.Value = 0;
         }
         #endregion
         #region Event

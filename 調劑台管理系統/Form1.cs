@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.12.0")]
-[assembly: AssemblyFileVersion("1.0.12.0")]
+[assembly: AssemblyVersion("1.0.13.0")]
+[assembly: AssemblyFileVersion("1.0.13.0")]
 namespace 調劑台管理系統
 {
 
@@ -86,15 +86,7 @@ namespace 調劑台管理系統
 
             }
 
-            //dBConfigClass.DB_Basic.DataBaseName = "test01";
-            //dBConfigClass.DB_Basic.IP = "localhost";
-            //dBConfigClass.DB_Basic.UserName = "root";
-            //dBConfigClass.DB_Basic.Password = "user82822040";
-            //dBConfigClass.DB_Basic.Port = 3306;
 
-            //dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
-            //dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
-            //dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
         }
         #endregion
         #region MyConfigClass
@@ -118,7 +110,7 @@ namespace 調劑台管理系統
             private string rFID_COMPort = "COM1";
             private string scanner01_COMPort = "COM2";
             private string scanner02_COMPort = "COM3";
-
+            private string _藥物辨識網址 = "";
 
 
             public bool 主機扣帳模式 { get => _主機扣帳模式; set => _主機扣帳模式 = value; }
@@ -135,7 +127,7 @@ namespace 調劑台管理系統
             public bool RFID_Enable { get => rFID_Enable; set => rFID_Enable = value; }
             public bool Pannel35_Enable { get => pannel35_Enable; set => pannel35_Enable = value; }
             public bool 帳密登入_Enable { get => _帳密登入_Enable; set => _帳密登入_Enable = value; }
-
+            public string 藥物辨識網址 { get => _藥物辨識網址; set => _藥物辨識網址 = value; }
         }
         private void LoadMyConfig()
         {
@@ -233,6 +225,8 @@ namespace 調劑台管理系統
         {
             if (this.DesignMode == false)
             {
+             
+
                 MyMessageBox.form = this.FindForm();
                 Dialog_NumPannel.form = this.FindForm();
                 Dialog_輸入批號.form = this.FindForm();
@@ -245,6 +239,17 @@ namespace 調劑台管理系統
                 LoadDBConfig();
                 LoadMyConfig();
                 LoadFtpConfig();
+
+                dBConfigClass.DB_Basic.DataBaseName = "test01";
+                dBConfigClass.DB_Basic.IP = "localhost";
+                dBConfigClass.DB_Basic.UserName = "root";
+                dBConfigClass.DB_Basic.Password = "user82822040";
+                dBConfigClass.DB_Basic.Port = 3306;
+
+                dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
+                dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
+                dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
+
                 this.stopwatch.Start();            
                 this.Text += "Ver" + this.ProductVersion;
                 this.FormText = this.Text;
@@ -277,7 +282,7 @@ namespace 調劑台管理系統
         private void PlC_UI_Init_UI_Finished_Event()
         {
             this.PLC = this.lowerMachine_Panel.GetlowerMachine();
-      
+
             PLC_Device_主機輸出模式.Bool = myConfigClass.主機輸出模式;
             PLC_Device_主機扣賬模式.Bool = myConfigClass.主機扣帳模式;
             PLC_Device_掃碼槍COM通訊.Bool = myConfigClass.掃碼槍COM通訊;
@@ -355,15 +360,18 @@ namespace 調劑台管理系統
           
             //this.Font = new System.Drawing.Font("新細明體", 9F / 1.5F);
         }
-        
+
         #region PLC_Method
         PLC_Device PLC_Device_Method = new PLC_Device("");
         PLC_Device PLC_Device_Method_OK = new PLC_Device("");
+        Task Task_Method;
+        MyTimer MyTimer_Method_結束延遲 = new MyTimer();
         int cnt_Program_Method = 65534;
         void sub_Program_Method()
         {
             if (cnt_Program_Method == 65534)
             {
+                this.MyTimer_Method_結束延遲.StartTickTime(10000);
                 PLC_Device_Method.SetComment("PLC_Method");
                 PLC_Device_Method_OK.SetComment("PLC_Method_OK");
                 PLC_Device_Method.Bool = false;
@@ -377,6 +385,8 @@ namespace 調劑台管理系統
 
             if (cnt_Program_Method == 65500)
             {
+                this.MyTimer_Method_結束延遲.TickStop();
+                this.MyTimer_Method_結束延遲.StartTickTime(10000);
                 PLC_Device_Method.Bool = false;
                 PLC_Device_Method_OK.Bool = false;
                 cnt_Program_Method = 65535;
@@ -392,61 +402,23 @@ namespace 調劑台管理系統
         }
         void cnt_Program_Method_初始化(ref int cnt)
         {
-
-            cnt++;
+            if (this.MyTimer_Method_結束延遲.IsTimeOut())
+            {
+                if (Task_Method == null)
+                {
+                    Task_Method = new Task(new Action(delegate { }));
+                }
+                if (Task_Method.Status == TaskStatus.RanToCompletion)
+                {
+                    Task_Method = new Task(new Action(delegate { }));
+                }
+                if (Task_Method.Status == TaskStatus.Created)
+                {
+                    Task_Method.Start();
+                }
+                cnt++;
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -483,6 +455,7 @@ namespace 調劑台管理系統
             this.Update();
         }
 
+      
     }
 
 

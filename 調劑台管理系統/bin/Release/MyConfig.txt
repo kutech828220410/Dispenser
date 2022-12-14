@@ -10,7 +10,7 @@
   "EPD583_Enable": true,
   "EPD266_Enable": true,
   "RowsLED_Enable": false,
-  "RFID_Enable": false,
+  "RFID_Enable": true,
   "Pannel35_Enable": false,
   "±b±Kµn¤J_Enable": true
 }
