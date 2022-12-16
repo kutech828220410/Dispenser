@@ -23,7 +23,6 @@ namespace 調劑台管理系統
             }
             else
             {
-                MessageBox.Show("程式已經在執行！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
         }

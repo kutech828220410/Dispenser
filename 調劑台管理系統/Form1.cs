@@ -224,9 +224,7 @@ namespace 調劑台管理系統
         private void Form1_Load(object sender, EventArgs e)
         {
             if (this.DesignMode == false)
-            {
-             
-
+            {          
                 MyMessageBox.form = this.FindForm();
                 Dialog_NumPannel.form = this.FindForm();
                 Dialog_輸入批號.form = this.FindForm();
@@ -235,20 +233,22 @@ namespace 調劑台管理系統
                 Dialog_手輸醫囑.form = this.FindForm();
                 Dialog_醫囑退藥.form = this.FindForm();
                 Dialog_設定產出時間.form = this.FindForm();
+                Dialog_RFID領退藥頁面.form = this.FindForm();
+                Dialog_輸入輸出設定.form = this.FindForm();
 
                 LoadDBConfig();
                 LoadMyConfig();
                 LoadFtpConfig();
 
-                //dBConfigClass.DB_Basic.DataBaseName = "test01";
-                //dBConfigClass.DB_Basic.IP = "localhost";
-                //dBConfigClass.DB_Basic.UserName = "root";
-                //dBConfigClass.DB_Basic.Password = "user82822040";
-                //dBConfigClass.DB_Basic.Port = 3306;
+                dBConfigClass.DB_Basic.DataBaseName = "test01";
+                dBConfigClass.DB_Basic.IP = "localhost";
+                dBConfigClass.DB_Basic.UserName = "root";
+                dBConfigClass.DB_Basic.Password = "user82822040";
+                dBConfigClass.DB_Basic.Port = 3306;
 
-                //dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
-                //dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
-                //dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
+                dBConfigClass.DB_person_page = dBConfigClass.DB_Basic;
+                dBConfigClass.DB_Medicine_Cloud = dBConfigClass.DB_Basic;
+                dBConfigClass.DB_order_list = dBConfigClass.DB_Basic;
 
                 this.stopwatch.Start();            
                 this.Text += "Ver" + this.ProductVersion;
@@ -308,6 +308,8 @@ namespace 調劑台管理系統
             PLC_UI_Init.Set_PLC_ScreenPage(panel_系統_Pannel設定, this.plC_ScreenPage_系統_Pannel設定);
             PLC_UI_Init.Set_PLC_ScreenPage(panel_儲位管理, this.plC_ScreenPage_儲位管理);
             PLC_UI_Init.Set_PLC_ScreenPage(panel_人員資料, this.plC_ScreenPage_人員資料);
+
+            this.pannel_Locker_Design1.Init(dBConfigClass.DB_Basic);
 
             this.plC_RJ_ScreenButton_EPD583.Visible = myConfigClass.EPD583_Enable;
             this.plC_RJ_ScreenButton_EPD266.Visible = myConfigClass.EPD266_Enable;

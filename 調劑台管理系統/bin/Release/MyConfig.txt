@@ -12,5 +12,6 @@
   "RowsLED_Enable": false,
   "RFID_Enable": true,
   "Pannel35_Enable": false,
-  "±b±Kµn¤J_Enable": true
+  "±b±Kµn¤J_Enable": true,
+  "ÃÄª«¿ëÃÑºô§}": ""
 }

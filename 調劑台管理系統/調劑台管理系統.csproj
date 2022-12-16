@@ -97,6 +97,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\0.DLL\MyFtpUI.dll</HintPath>
     </Reference>
+    <Reference Include="MyOffice, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\0.DLL\MyOffice.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\0.DLL\MySql.Data.dll</HintPath>
@@ -107,6 +111,18 @@
     <Reference Include="MyUI, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\0.DLL\MyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\0.DLL\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\0.DLL\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\0.DLL\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\0.DLL\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="RFID_FX600lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -216,6 +232,12 @@
     <Compile Include="Dialog\Dialog_設定產出時間.Designer.cs">
       <DependentUpon>Dialog_設定產出時間.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\Dialog_輸入輸出設定.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\Dialog_輸入輸出設定.Designer.cs">
+      <DependentUpon>Dialog_輸入輸出設定.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +254,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LockerClass.cs" />
+    <Compile Include="UserControl\Pannel_Locker_Design.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Pannel_Locker_Design.Designer.cs">
+      <DependentUpon>Pannel_Locker_Design.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program_儲位管理_Pannel35.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +364,9 @@
     <EmbeddedResource Include="Dialog\Dialog_醫囑退藥.resx">
       <DependentUpon>Dialog_醫囑退藥.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\Dialog_輸入輸出設定.resx">
+      <DependentUpon>Dialog_輸入輸出設定.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -359,6 +390,9 @@
     </Compile>
     <EmbeddedResource Include="TimePannel.resx">
       <DependentUpon>TimePannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Pannel_Locker_Design.resx">
+      <DependentUpon>Pannel_Locker_Design.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

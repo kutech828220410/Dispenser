@@ -21,6 +21,31 @@ namespace 調劑台管理系統
 
         public static int OutputTime = 500;
         public static int AlarmTimeOut = 30000;
+
+        public bool IsBusy
+        {
+            get
+            {
+                return this.PLC_Device_Output.Bool;
+            }
+        }
+        public bool Input
+        {
+            get
+            {
+                return this.PLC_Device_Input.Bool;
+            }
+        }
+        private bool alarm = false;
+        public bool Alarm
+        {
+            get
+            {
+                if (!AlarmEnable) return false;
+                if (PLC_Device_Input.Bool) return false;
+                return alarm;
+            }
+        }
         public bool Unlock = false;
         public bool AlarmEnable = false;
         public delegate void LockClosingEventHandler(PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID);
@@ -110,30 +135,7 @@ namespace 調劑台管理系統
             this.MyTimer_Init.StartTickTime(2000);
         }
 
-        public bool IsBusy
-        {
-            get
-            {
-                return this.PLC_Device_Output.Bool;
-            }
-        }
-        public bool Input
-        {
-            get
-            {
-                return this.PLC_Device_Input.Bool;
-            }
-        }
-        private bool alarm = false;
-        public bool Alarm
-        {
-            get
-            {
-                if (!AlarmEnable) return false;
-                if (PLC_Device_Input.Bool) return false;
-                return alarm;
-            }
-        }
+    
 
 
         public void Open()

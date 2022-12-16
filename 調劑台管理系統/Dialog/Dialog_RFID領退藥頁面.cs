@@ -79,6 +79,24 @@ namespace 調劑台管理系統
             總異動量,
             效期,
         }
+        public static Form form;
+        public DialogResult ShowDialog()
+        {
+            if (form == null)
+            {
+                base.ShowDialog();
+            }
+            else
+            {
+                form.Invoke(new Action(delegate
+                {
+                    base.ShowDialog();
+                }));
+            }
+
+            return this.DialogResult;
+        }
+
         public Dialog_RFID領退藥頁面(string userID, string userName, string deviceName, List<Device> devices , string dependsingName, List<object[]> List_入出庫資料檢查)
         {
             InitializeComponent();
