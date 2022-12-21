@@ -67,7 +67,11 @@ namespace 調劑台管理系統
                 this.RJ_Button_確認_MouseDownEvent(null);
                 return true;
             }
-   
+            if (keyData == System.Windows.Forms.Keys.Escape)
+            {
+                this.RJ_Button_退出_MouseDownEvent(null);
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         public Dialog_輸入輸出設定()

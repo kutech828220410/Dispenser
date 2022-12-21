@@ -1582,3 +1582,5 @@ C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\NP
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\Microsoft.Office.Interop.Excel.dll
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Pannel_Locker_Design.resources
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_輸入輸出設定.resources
+C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_新增容器設定.resources
+C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_設定開鎖權限.resources

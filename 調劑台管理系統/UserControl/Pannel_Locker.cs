@@ -17,11 +17,20 @@ namespace 調劑台管理系統
 {
     public partial class Pannel_Locker : UserControl
     {
+        public delegate void MouseDownEventHandler(PLC_Device pLC_Device_Input, PLC_Device pLC_Device_Output);
+        public event MouseDownEventHandler MouseDownEvent;
+        public delegate void LockClosingEventHandler(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID);
+        public event LockClosingEventHandler LockClosingEvent;
+        public delegate void LockOpeningEventHandler(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID);
+        public event LockOpeningEventHandler LockOpeningEvent;
+        public delegate void MouseUpEventHandler(MouseEventArgs mevent);
+        public event MouseUpEventHandler MouseUpEvent;
+
         [Serializable]
         public class JaonstringClass
         {
           
-            private string name = "Pannel_Locker";
+            private string storageName = "";
             private string outputAdress = "";
             private string inputAdress = "";
             private bool buttonEnable;
@@ -33,7 +42,7 @@ namespace 調劑台管理系統
             public bool ButtonEnable { get => buttonEnable; set => buttonEnable = value; }
             public Point Location { get => location; set => location = value; }
             public Size Size { get => size; set => size = value; }
-            public string Name { get => name; set => name = value; }
+            public string StorageName { get => storageName; set => storageName = value; }
 
             public static string GetJaonstring(Pannel_Locker pannel_Locker)
             {
@@ -43,6 +52,7 @@ namespace 調劑台管理系統
                 jaonstringClass.ButtonEnable = pannel_Locker.ButtonEnable;
                 jaonstringClass.Location = pannel_Locker.Location;
                 jaonstringClass.Size = pannel_Locker.Size;
+                jaonstringClass.StorageName = pannel_Locker.StorageName;
 
                 return jaonstringClass.JsonSerializationt();
             }
@@ -51,14 +61,80 @@ namespace 調劑台管理系統
                 return jsonstring.JsonDeserializet<Pannel_Locker>();
             }
         }
+        public static int OutputTime = 500;
+        public static int AlarmTimeOut = 30000;
         public string GUID = "";
+        public string Master_GUID = "";
+        [Browsable(false)]
+        public bool IsBusy
+        {
+            get
+            {
+                return this.PLC_Device_Output.Bool;
+            }
+        }
+        [Browsable(false)]
+        public bool Input
+        {
+            get
+            {
+                return this.PLC_Device_Input.Bool;
+            }
+        }
+        private bool alarm = false;
+        [Browsable(false)]
+        public bool Alarm
+        {
+            get
+            {
+                if (!AlarmEnable) return false;
+                if (PLC_Device_Input.Bool) return false;
+                return alarm;
+            }
+        }
+        [Browsable(false)]
+        public bool Unlock = false;
+        [Browsable(false)]
+        public bool AlarmEnable = false;
+        private string ip;
+        [Browsable(false)]
+        public string IP
+        {
+            set
+            {
+                this.ip = value;
+            }
+            get
+            {
+                return this.ip;
+            }
+        }
 
-        public delegate void MouseDownEventHandler(MouseEventArgs mevent);
-        public delegate void MouseUpEventHandler(MouseEventArgs mevent);
-        public delegate void Panel_LOCK_MouseUpEventHandler(object sender, MouseEventArgs mevent);
+        public string ShortIP
+        {
+            get
+            {
+                System.Net.IPAddress iPAddress = ip.StrinToIPAddress();
+                if (iPAddress == null) return "";
+                byte[] ip_bytes = iPAddress.GetAddressBytes();
+                return $"{ip_bytes[2]}.{ip_bytes[3]}";
+            }
+        }
 
-        public event MouseDownEventHandler MouseDownEvent;
-        public event MouseUpEventHandler MouseUpEvent;
+        private int num = -1;
+        [Browsable(false)]
+        public int Num
+        {
+            get
+            {
+                return num;
+            }
+            set
+            {
+                num = value;
+            }
+        }
+        public bool OuputReverse = false;
 
         [ReadOnly(false), Browsable(true), Category("自訂屬性"), Description(""), DefaultValue("")]
         public string StorageName
@@ -85,32 +161,30 @@ namespace 調劑台管理系統
               
             }
         }
-        [Browsable(false)]
+        private string outputAdress = "";
+        [ReadOnly(false), Browsable(true), Category("自訂屬性"), Description(""), DefaultValue("")]
         public string OutputAdress
         {
             get
             {
-                if (PLC_Device_Output == null) return "";
-                return PLC_Device_Output.GetAdress();
+                return this.outputAdress;
             }
             set
             {
-                if (PLC_Device_Output == null) return;
-                PLC_Device_Output.SetAdress(value);
+                this.outputAdress = value;
             }
         }
-        [Browsable(false)]
+        private string inputAdress = "";
+        [ReadOnly(false), Browsable(true), Category("自訂屬性"), Description(""), DefaultValue("")]
         public string InputAdress
         {
             get
             {
-                if (PLC_Device_Input == null) return "";
-                return PLC_Device_Input.GetAdress();
+                return this.inputAdress;
             }
             set
             {
-                if (PLC_Device_Input == null) return;
-                PLC_Device_Input.SetAdress(value);
+                this.inputAdress = value;
             }
         }
 
@@ -129,6 +203,28 @@ namespace 調劑台管理系統
             }
         }
 
+        private bool showAdress = true;
+        [ReadOnly(false), Browsable(true), Category("自訂屬性"), Description(""), DefaultValue("")]
+        public bool ShowAdress
+        {
+            get
+            {
+                return this.showAdress;
+            }
+            set
+            {
+                this.showAdress = value;
+                if (this.IsHandleCreated)
+                {
+                    this.Invoke(new Action(delegate
+                    {
+                        this.panel_PLC_Adress.Visible = value;
+                    }));
+                }
+
+            }
+        }
+
         public override bool AllowDrop 
         {
             get => base.AllowDrop;
@@ -137,12 +233,17 @@ namespace 調劑台管理系統
                 base.AllowDrop = value;
                 if(value ==false)
                 {
-                    IsSelected = false;
+                    this.IsSelected = false;
+      
+                }
+                else
+                {
+
                 }
             }
         }
-
         private bool isSelected = false;
+        [Browsable(false)]
         public bool IsSelected
         {
             get
@@ -156,20 +257,58 @@ namespace 調劑台管理系統
                 {
                     this.rJ_Pannel.BorderRadius = 1;
                     this.rJ_Pannel.BorderSize = 2;
-                    this.transparentPanel.Visible = true;
                 }
                 else
                 {
                     this.rJ_Pannel.BorderRadius = 0;
                     this.rJ_Pannel.BorderSize = 0;
-                    this.transparentPanel.Visible = false;
                 }
             }
         }
 
+        public new string Name
+        {
+            get
+            {
+                return this.StorageName;
+            }
+            set
+            {
+                this.StorageName = value;
+            }
+        }
+        private bool visible = true;
+        public new bool Visible
+        {
+            get
+            {
+                return base.Visible;
+            }
+            set
+            {
+                visible = value;
+                if (this.IsHandleCreated)
+                {
+                    this.Invoke(new Action(delegate
+                    {
+                        base.Visible = value;                     
+                    }));
+                }           
+            }
+        }
+
+        public string OpenUserName = "";
+        public string OpenUserID = "";
+
+
         private PLC_Device PLC_Device_Output = new PLC_Device();
         private PLC_Device PLC_Device_Input= new PLC_Device();
         private bool statu_buf = false;
+        private MyTimer MyTimer_Init = new MyTimer();
+        private MyTimer MyTimer_開鎖延遲 = new MyTimer();
+        private MyTimer MyTimer_輸入ON延遲 = new MyTimer();
+        private MyTimer MyTimer_Alarm = new MyTimer();
+
         public Pannel_Locker()
         {
             InitializeComponent();
@@ -177,11 +316,18 @@ namespace 調劑台管理系統
             this.rJ_Button_Open.MouseUpEvent += RJ_Button_Open_MouseUpEvent;
             panel_LOCK.BackColor = Color.Red;
             panel_LOCK.BackgroundImage = global::調劑台管理系統.Properties.Resources.UNLOCK;
-          
+            this.GUID = Guid.NewGuid().ToString();
         }
-
-     
-
+        public void Init()
+        {
+            this.Init(this.inputAdress, this.outputAdress);
+        }
+        public void Init(string inputAdress , string outputAdress)
+        {
+            PLC_Device pLC_Device_input = new PLC_Device(this.inputAdress);
+            PLC_Device pLC_Device_output = new PLC_Device(this.outputAdress);
+            this.Init(pLC_Device_input, pLC_Device_output);
+        }
         public void Init(PLC_Device pLC_Device_Input , PLC_Device pLC_Device_Output)
         {
             this.PLC_Device_Input = pLC_Device_Input;
@@ -192,7 +338,39 @@ namespace 調劑台管理系統
             {
                 this.rJ_Button_Open.Text = this.PLC_Device_Output.GetAdress();
             }
-           
+            this.MyTimer_Init.TickStop();
+            this.MyTimer_Init.StartTickTime(2000);
+        }
+        public void Open(string openUserName , string openUserID)
+        {
+            this.OpenUserName = openUserName;
+            this.OpenUserID = openUserID;
+            this.Open();
+        }
+        public void Open()
+        {
+            if (!OuputReverse)
+            {
+                if (!PLC_Device_Output.Bool) PLC_Device_Output.Bool = true;
+            }
+            else
+            {
+                if (PLC_Device_Output.Bool) PLC_Device_Output.Bool = false;
+            }
+        }
+        public string Get_OutputAdress()
+        {
+            return this.PLC_Device_Output.GetAdress();
+        }
+        public string Get_InputAdress()
+        {
+            return this.PLC_Device_Input.GetAdress();
+        }
+        public void sub_Program()
+        {
+            if (!MyTimer_Init.IsTimeOut()) return;
+            sub_Program_輸出入檢查_Locker_輸出();
+            sub_Program_輸出入檢查_Locker_輸入();
         }
 
         private void SetLockPannelState(bool statu)
@@ -216,7 +394,139 @@ namespace 調劑台管理系統
             }
    
         }
+        int cnt_Program_輸出入檢查_Locker_輸出 = 65534;
+        void sub_Program_輸出入檢查_Locker_輸出()
+        {
+            if (Unlock)
+            {
+                if (!OuputReverse)
+                {
+                    this.PLC_Device_Output.Bool = true;
+                }
+                else
+                {
+                    this.PLC_Device_Output.Bool = false;
+                }
+            }
+            else
+            {
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 65534)
+                {
+                    cnt_Program_輸出入檢查_Locker_輸出 = 65535;
+                }
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 65535) cnt_Program_輸出入檢查_Locker_輸出 = 1;
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 1) cnt_Program_輸出入檢查_Locker_輸出_檢查按下(ref cnt_Program_輸出入檢查_Locker_輸出);
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 2) cnt_Program_輸出入檢查_Locker_輸出_初始化(ref cnt_Program_輸出入檢查_Locker_輸出);
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 3) cnt_Program_輸出入檢查_Locker_輸出_等待時間到達(ref cnt_Program_輸出入檢查_Locker_輸出);
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 4) cnt_Program_輸出入檢查_Locker_輸出 = 65500;
 
+                if (cnt_Program_輸出入檢查_Locker_輸出 == 65500)
+                {
+                    cnt_Program_輸出入檢查_Locker_輸出 = 65535;
+                }
+            }
+
+        }
+        void cnt_Program_輸出入檢查_Locker_輸出_檢查按下(ref int cnt)
+        {
+            if (!OuputReverse)
+            {
+                if (this.PLC_Device_Output.Bool) cnt++;
+            }
+            else
+            {
+                if (!this.PLC_Device_Output.Bool) cnt++;
+            }
+        }
+        void cnt_Program_輸出入檢查_Locker_輸出_初始化(ref int cnt)
+        {
+            if (this.LockOpeningEvent != null) this.LockOpeningEvent(this ,PLC_Device_Input, PLC_Device_Output, Master_GUID);
+            this.MyTimer_開鎖延遲.TickStop();
+            this.MyTimer_開鎖延遲.StartTickTime(OutputTime);
+            cnt++;
+        }
+        void cnt_Program_輸出入檢查_Locker_輸出_等待時間到達(ref int cnt)
+        {
+            if (this.MyTimer_開鎖延遲.IsTimeOut())
+            {
+                if (!OuputReverse)
+                {
+                    this.PLC_Device_Output.Bool = false;
+                }
+                else
+                {
+                    this.PLC_Device_Output.Bool = true;
+                }
+                cnt++;
+            }
+        }
+
+        int cnt_Program_輸出入檢查_Locker_輸入 = 65534;
+        void sub_Program_輸出入檢查_Locker_輸入()
+        {
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 65534)
+            {
+                MyTimer_Alarm.TickStop();
+                cnt_Program_輸出入檢查_Locker_輸入 = 65535;
+            }
+            if (!this.PLC_Device_Input.Bool)
+            {
+                cnt_Program_輸出入檢查_Locker_輸入 = 1;
+            }
+            if (!this.PLC_Device_Input.Bool && this.AlarmEnable)
+            {
+                MyTimer_Alarm.StartTickTime(AlarmTimeOut);
+            }
+            else
+            {
+                alarm = false;
+                MyTimer_Alarm.TickStop();
+                MyTimer_Alarm.StartTickTime(AlarmTimeOut);
+            }
+            if (!alarm)
+            {
+                if (MyTimer_Alarm.IsTimeOut())
+                {
+                    alarm = true;
+                }
+            }
+
+
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 65535) cnt_Program_輸出入檢查_Locker_輸入 = 1;
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 1) cnt_Program_輸出入檢查_Locker_輸入_檢查第一次OFF(ref cnt_Program_輸出入檢查_Locker_輸入);
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 2) cnt_Program_輸出入檢查_Locker_輸入_檢查第一次ON(ref cnt_Program_輸出入檢查_Locker_輸入);
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 3) cnt_Program_輸出入檢查_Locker_輸入_檢查第一次ON延遲(ref cnt_Program_輸出入檢查_Locker_輸入);
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 4) cnt_Program_輸出入檢查_Locker_輸入 = 65500;
+
+            if (cnt_Program_輸出入檢查_Locker_輸入 == 65500)
+            {
+                cnt_Program_輸出入檢查_Locker_輸入 = 65535;
+            }
+        }
+        void cnt_Program_輸出入檢查_Locker_輸入_檢查第一次OFF(ref int cnt)
+        {
+            if (!this.PLC_Device_Input.Bool)
+            {
+                cnt++;
+            }
+        }
+        void cnt_Program_輸出入檢查_Locker_輸入_檢查第一次ON(ref int cnt)
+        {
+            if (this.PLC_Device_Input.Bool)
+            {
+                this.MyTimer_輸入ON延遲.TickStop();
+                this.MyTimer_輸入ON延遲.StartTickTime(500);
+                cnt++;
+            }
+        }
+        void cnt_Program_輸出入檢查_Locker_輸入_檢查第一次ON延遲(ref int cnt)
+        {
+            if (this.MyTimer_輸入ON延遲.IsTimeOut())
+            {
+                if (this.LockClosingEvent != null) this.LockClosingEvent(this, this.PLC_Device_Input, this.PLC_Device_Output, this.Master_GUID);
+                cnt++;
+            }
+        }
 
         #region Event
 
@@ -225,7 +535,7 @@ namespace 調劑台管理系統
 
             this.Paint += Pannel_Locker_Paint;
             this.Resize += Pannel_Locker_Resize;
-            this.GUID = Guid.NewGuid().ToString();
+      
             Basic.Reflection.MakeDoubleBuffered(this, true);
             if (this.IsHandleCreated)
             {
@@ -235,6 +545,8 @@ namespace 調劑台管理系統
 
                 }));
             }
+            this.Visible = this.visible;
+            this.ShowAdress = this.showAdress;
         }
 
         private void Pannel_Locker_Resize(object sender, EventArgs e)
@@ -252,8 +564,8 @@ namespace 調劑台管理系統
             MouseUpEvent?.Invoke(mevent);
         }
         private void RJ_Button_Open_MouseDownEvent(MouseEventArgs mevent)
-        {  
-            MouseDownEvent?.Invoke(mevent);
+        {
+            MouseDownEvent?.Invoke(PLC_Device_Input, PLC_Device_Output);
         }
         private void PLC_Device_Input_ValueChangeEvent(object Value)
         {

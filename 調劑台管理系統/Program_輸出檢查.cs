@@ -20,146 +20,27 @@ namespace 調劑台管理系統
         Basic.MyThread 輸出入檢查_蜂鳴器輸出;
         private void Program_輸出入檢查_Init()
         {
-            this.List_Locker.Add(new Locker("X0", "Y0", pannel_Locker_Y00));
-            this.List_Locker.Add(new Locker("X1", "Y1", pannel_Locker_Y01));
-            this.List_Locker.Add(new Locker("X2", "Y2", pannel_Locker_Y02));
-            this.List_Locker.Add(new Locker("X3", "Y3", pannel_Locker_Y03));
-            this.List_Locker.Add(new Locker("X4", "Y4", pannel_Locker_Y04));
-            this.List_Locker.Add(new Locker("X5", "Y5", pannel_Locker_Y05));
-            this.List_Locker.Add(new Locker("X6", "Y6", pannel_Locker_Y06));
-            this.List_Locker.Add(new Locker("X7", "Y7", pannel_Locker_Y07));
-
-            this.List_Locker.Add(new Locker("X10", "Y10", pannel_Locker_Y10));
-            this.List_Locker.Add(new Locker("X11", "Y11", pannel_Locker_Y11));
-            this.List_Locker.Add(new Locker("X12", "Y12", pannel_Locker_Y12));
-            this.List_Locker.Add(new Locker("X13", "Y13", pannel_Locker_Y13));
-            this.List_Locker.Add(new Locker("X14", "Y14", pannel_Locker_Y14));
-            this.List_Locker.Add(new Locker("X15", "Y15", pannel_Locker_Y15));
-            this.List_Locker.Add(new Locker("X16", "Y16", pannel_Locker_Y16));
-            this.List_Locker.Add(new Locker("X17", "Y17", pannel_Locker_Y17));
-
-            this.List_Locker.Add(new Locker("X20", "Y20", pannel_Locker_Y20));
-            this.List_Locker.Add(new Locker("X21", "Y21", pannel_Locker_Y21));
-            this.List_Locker.Add(new Locker("X22", "Y22", pannel_Locker_Y22));
-            this.List_Locker.Add(new Locker("X23", "Y23", pannel_Locker_Y23));
-            this.List_Locker.Add(new Locker("X24", "Y24", pannel_Locker_Y24));
-            this.List_Locker.Add(new Locker("X25", "Y25", pannel_Locker_Y25));
-            this.List_Locker.Add(new Locker("X26", "Y26", pannel_Locker_Y26));
-            this.List_Locker.Add(new Locker("X27", "Y27", pannel_Locker_Y27));
-
-            this.List_Locker.Add(new Locker("X30", "Y30", pannel_Locker_Y30));
-            this.List_Locker.Add(new Locker("X31", "Y31", pannel_Locker_Y31));
-            this.List_Locker.Add(new Locker("X32", "Y32", pannel_Locker_Y32));
-            this.List_Locker.Add(new Locker("X33", "Y33", pannel_Locker_Y33));
-            this.List_Locker.Add(new Locker("X34", "Y34", pannel_Locker_Y34));
-            this.List_Locker.Add(new Locker("X35", "Y35", pannel_Locker_Y35));
-            this.List_Locker.Add(new Locker("X36", "Y36", pannel_Locker_Y36));
-            this.List_Locker.Add(new Locker("X37", "Y37", pannel_Locker_Y37));
-
-            this.List_Locker.Add(new Locker("X40", "Y40", pannel_Locker_Y40));
-            this.List_Locker.Add(new Locker("X41", "Y41", pannel_Locker_Y41));
-            this.List_Locker.Add(new Locker("X42", "Y42", pannel_Locker_Y42));
-            this.List_Locker.Add(new Locker("X43", "Y43", pannel_Locker_Y43));
-            this.List_Locker.Add(new Locker("X44", "Y44", pannel_Locker_Y44));
-            this.List_Locker.Add(new Locker("X45", "Y45", pannel_Locker_Y45));
-            this.List_Locker.Add(new Locker("X46", "Y46", pannel_Locker_Y46));
-            this.List_Locker.Add(new Locker("X47", "Y47", pannel_Locker_Y47));
-
-            this.List_Locker.Add(new Locker("X50", "Y50", pannel_Locker_Y50));
-            this.List_Locker.Add(new Locker("X51", "Y51", pannel_Locker_Y51));
-            this.List_Locker.Add(new Locker("X52", "Y52", pannel_Locker_Y52));
-            this.List_Locker.Add(new Locker("X53", "Y53", pannel_Locker_Y53));
-            this.List_Locker.Add(new Locker("X54", "Y54", pannel_Locker_Y54));
-            this.List_Locker.Add(new Locker("X55", "Y55", pannel_Locker_Y55));
-            this.List_Locker.Add(new Locker("X56", "Y56", pannel_Locker_Y56));
-            this.List_Locker.Add(new Locker("X57", "Y57", pannel_Locker_Y57));
-
-            this.List_Locker.Add(new Locker("X60", "Y60", pannel_Locker_Y60));
-            this.List_Locker.Add(new Locker("X61", "Y61", pannel_Locker_Y61));
-            this.List_Locker.Add(new Locker("X62", "Y62", pannel_Locker_Y62));
-            this.List_Locker.Add(new Locker("X63", "Y63", pannel_Locker_Y63));
-            this.List_Locker.Add(new Locker("X64", "Y64", pannel_Locker_Y64));
-            this.List_Locker.Add(new Locker("X65", "Y65", pannel_Locker_Y65));
-            this.List_Locker.Add(new Locker("X66", "Y66", pannel_Locker_Y66));
-            this.List_Locker.Add(new Locker("X67", "Y67", pannel_Locker_Y67));
-
-            //this.List_Locker.Add(new Locker("X70", "Y70", pannel_Locker_Y70));
-            //this.List_Locker.Add(new Locker("X71", "Y71", pannel_Locker_Y71));
-            //this.List_Locker.Add(new Locker("X72", "Y72", pannel_Locker_Y72));
-            //this.List_Locker.Add(new Locker("X73", "Y73", pannel_Locker_Y73));
-            //this.List_Locker.Add(new Locker("X74", "Y74", pannel_Locker_Y74));
-            //this.List_Locker.Add(new Locker("X75", "Y75", pannel_Locker_Y75));
-            //this.List_Locker.Add(new Locker("X76", "Y76", pannel_Locker_Y76));
-            //this.List_Locker.Add(new Locker("X77", "Y77", pannel_Locker_Y77));
-
-            this.List_Locker.Add(new Locker("X100", "Y100", pannel_Locker_Y100));
-            this.List_Locker.Add(new Locker("X101", "Y101", pannel_Locker_Y101));
-            this.List_Locker.Add(new Locker("X102", "Y102", pannel_Locker_Y102));
-            this.List_Locker.Add(new Locker("X103", "Y103", pannel_Locker_Y103));
-            this.List_Locker.Add(new Locker("X104", "Y104", pannel_Locker_Y104));
-            this.List_Locker.Add(new Locker("X105", "Y105", pannel_Locker_Y105));
-            this.List_Locker.Add(new Locker("X106", "Y106", pannel_Locker_Y106));
-            this.List_Locker.Add(new Locker("X107", "Y107", pannel_Locker_Y107));
-
-            this.List_Locker.Add(new Locker("X110", "Y110", pannel_Locker_Y110));
-            this.List_Locker.Add(new Locker("X111", "Y111", pannel_Locker_Y111));
-            this.List_Locker.Add(new Locker("X112", "Y112", pannel_Locker_Y112));
-            this.List_Locker.Add(new Locker("X113", "Y113", pannel_Locker_Y113));
-            this.List_Locker.Add(new Locker("X114", "Y114", pannel_Locker_Y114));
-            this.List_Locker.Add(new Locker("X115", "Y115", pannel_Locker_Y115));
-            this.List_Locker.Add(new Locker("X116", "Y116", pannel_Locker_Y116));
-            this.List_Locker.Add(new Locker("X117", "Y117", pannel_Locker_Y117));
-
-            this.List_Locker.Add(new Locker("X120", "Y120", pannel_Locker_Y120));
-            this.List_Locker.Add(new Locker("X121", "Y121", pannel_Locker_Y121));
-            this.List_Locker.Add(new Locker("X122", "Y122", pannel_Locker_Y122));
-            this.List_Locker.Add(new Locker("X123", "Y123", pannel_Locker_Y123));
-            this.List_Locker.Add(new Locker("X124", "Y124", pannel_Locker_Y124));
-            this.List_Locker.Add(new Locker("X125", "Y125", pannel_Locker_Y125));
-            this.List_Locker.Add(new Locker("X126", "Y126", pannel_Locker_Y126));
-            this.List_Locker.Add(new Locker("X127", "Y127", pannel_Locker_Y127));
-
-            this.List_Locker.Add(new Locker("X130", "Y130", pannel_Locker_Y130));
-            this.List_Locker.Add(new Locker("X131", "Y131", pannel_Locker_Y131));
-            this.List_Locker.Add(new Locker("X132", "Y132", pannel_Locker_Y132));
-            this.List_Locker.Add(new Locker("X133", "Y133", pannel_Locker_Y133));
-            this.List_Locker.Add(new Locker("X134", "Y134", pannel_Locker_Y134));
-            this.List_Locker.Add(new Locker("X135", "Y135", pannel_Locker_Y135));
-            this.List_Locker.Add(new Locker("X136", "Y136", pannel_Locker_Y136));
-            this.List_Locker.Add(new Locker("X137", "Y137", pannel_Locker_Y137));
-
-            this.List_Locker.Add(new Locker("X140", "Y140", pannel_Locker_Y140));
-            this.List_Locker.Add(new Locker("X141", "Y141", pannel_Locker_Y141));
-            this.List_Locker.Add(new Locker("X142", "Y142", pannel_Locker_Y142));
-            this.List_Locker.Add(new Locker("X143", "Y143", pannel_Locker_Y143));
-            this.List_Locker.Add(new Locker("X144", "Y144", pannel_Locker_Y144));
-            this.List_Locker.Add(new Locker("X145", "Y145", pannel_Locker_Y145));
-            this.List_Locker.Add(new Locker("X146", "Y146", pannel_Locker_Y146));
-            this.List_Locker.Add(new Locker("X147", "Y147", pannel_Locker_Y147));
-
-            this.List_Locker.Add(new Locker("X150", "Y150", pannel_Locker_Y150));
-            this.List_Locker.Add(new Locker("X151", "Y151", pannel_Locker_Y151));
-            this.List_Locker.Add(new Locker("X152", "Y152", pannel_Locker_Y152));
-            this.List_Locker.Add(new Locker("X153", "Y153", pannel_Locker_Y153));
-            this.List_Locker.Add(new Locker("X154", "Y154", pannel_Locker_Y154));
-            this.List_Locker.Add(new Locker("X155", "Y155", pannel_Locker_Y155));
-            this.List_Locker.Add(new Locker("X156", "Y156", pannel_Locker_Y156));
-            this.List_Locker.Add(new Locker("X157", "Y157", pannel_Locker_Y157));
-
-            this.List_Locker.Add(new Locker("X160", "Y160", pannel_Locker_Y160));
-            this.List_Locker.Add(new Locker("X161", "Y161", pannel_Locker_Y161));
-            this.List_Locker.Add(new Locker("X162", "Y162", pannel_Locker_Y162));
-            this.List_Locker.Add(new Locker("X163", "Y163", pannel_Locker_Y163));
-            this.List_Locker.Add(new Locker("X164", "Y164", pannel_Locker_Y164));
-            this.List_Locker.Add(new Locker("X165", "Y165", pannel_Locker_Y165));
-            this.List_Locker.Add(new Locker("X166", "Y166", pannel_Locker_Y166));
-            this.List_Locker.Add(new Locker("X167", "Y167", pannel_Locker_Y167));
+            for (int i = 0; i < 鎖控列表01.Controls.Count; i++)
+            {
+                if (鎖控列表01.Controls[i] is Pannel_Locker)
+                {
+                    this.List_Locker.Add((Pannel_Locker)鎖控列表01.Controls[i]);
+                }
+            }
+            for (int i = 0; i < 鎖控列表02.Controls.Count; i++)
+            {
+                if (鎖控列表02.Controls[i] is Pannel_Locker)
+                {
+                    this.List_Locker.Add((Pannel_Locker)鎖控列表02.Controls[i]);
+                }
+            }
 
             this.MyThread_輸出入檢查 = new Basic.MyThread(this.FindForm());
 
-
-            foreach (Locker loker in this.List_Locker)
+            foreach (Pannel_Locker loker in this.List_Locker)
             {
+                loker.Init();
+                loker.ShowAdress = false;
                 this.MyThread_輸出入檢查.Add_Method(loker.sub_Program);
                 loker.LockClosingEvent += Loker_LockClosingEvent;
                 loker.MouseDownEvent += Loker_MouseDownEvent;
@@ -180,7 +61,7 @@ namespace 調劑台管理系統
             this.輸出入檢查_蜂鳴器輸出.Trigger();
         }
 
-        private void Loker_MouseDownEvent(PLC_Device pLC_Device_Input, PLC_Device pLC_Device_Output)
+        private void Loker_MouseDownEvent( PLC_Device pLC_Device_Input, PLC_Device pLC_Device_Output)
         {
             string OutputAdress = pLC_Device_Output.GetAdress();
             if (OutputAdress.StringIsEmpty()) return;
@@ -192,7 +73,7 @@ namespace 調劑台管理系統
             this.sqL_DataGridView_Locker_Index_Table.SQL_Replace(list_locker_table_value[0], false);
 
         }
-        private void Loker_LockClosingEvent(PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string Master_GUID)
+        private void Loker_LockClosingEvent(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string Master_GUID)
         {
             List<object[]> list_locker_table_value = this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(false);
             list_locker_table_value = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.輸出位置, PLC_Device_Output.GetAdress());
@@ -229,7 +110,7 @@ namespace 調劑台管理系統
                 this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
             }
         }
-        private void Loker_LockOpeningEvent(PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID)
+        private void Loker_LockOpeningEvent(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID)
         {
 
         }
@@ -238,7 +119,7 @@ namespace 調劑台管理系統
         private void Function_輸出入檢查_搜尋輸出(string IP, int Num, string InputAdress, string OutputAdress, string Master_GUID)
         {
          
-            foreach (Locker loker in this.List_Locker)
+            foreach (Pannel_Locker loker in this.List_Locker)
             {
                 if (loker.Get_OutputAdress() == OutputAdress)
                 {
@@ -285,7 +166,7 @@ namespace 調劑台管理系統
         }
         private bool Function_輸出入檢查_檢查抽屜忙碌()
         {
-            foreach (Locker loker in this.List_Locker)
+            foreach (Pannel_Locker loker in this.List_Locker)
             {
                 if (loker.IsBusy) return true;
             }
@@ -377,7 +258,7 @@ namespace 調劑台管理系統
         void cnt_Program_輸出入檢查_輸出刷新_100_檢查輸入(ref int cnt)
         {
             List<object[]> list_locker_table_value_buf = new List<object[]>();
-            List<Locker> lockers_buf = new List<Locker>();
+            List<Pannel_Locker> lockers_buf = new List<Pannel_Locker>();
             list_locker_table_value_buf = list_locker_table_value;
             for (int i = 0; i < list_locker_table_value_buf.Count; i++)
             {
@@ -444,7 +325,7 @@ namespace 調劑台管理系統
                             if (list_locker_table_value_buf.Count > 0)
                             {
                                 string Input = list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.輸入位置].ObjectToString();
-                                foreach (Locker loker in this.List_Locker)
+                                foreach (Pannel_Locker loker in this.List_Locker)
                                 {
                                     if (loker.Get_InputAdress() == Input)
                                     {
@@ -465,7 +346,7 @@ namespace 調劑台管理系統
                         if (list_locker_table_value_buf.Count > 0)
                         {
                             string Input = list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.輸入位置].ObjectToString();
-                            foreach (Locker loker in this.List_Locker)
+                            foreach (Pannel_Locker loker in this.List_Locker)
                             {
                                 if (loker.Get_InputAdress() == Input)
                                 {
@@ -603,7 +484,7 @@ namespace 調劑台管理系統
         void cnt_Program_輸出入檢查_蜂鳴器輸出_初始化(ref int cnt)
         {
             List<object[]> list_value = this.list_輸出入檢查_蜂鳴器輸出_特殊輸出表;
-            Locker.AlarmTimeOut = PLC_Device_輸出入檢查_蜂鳴器輸出_蜂鳴開始時間.Value;
+            Pannel_Locker.AlarmTimeOut = PLC_Device_輸出入檢查_蜂鳴器輸出_蜂鳴開始時間.Value;
             if (list_value.Count == 0)
             {
                 cnt = 65500;

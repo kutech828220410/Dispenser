@@ -238,6 +238,18 @@
     <Compile Include="Dialog\Dialog_輸入輸出設定.Designer.cs">
       <DependentUpon>Dialog_輸入輸出設定.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\Dialog_新增容器設定.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\Dialog_新增容器設定.Designer.cs">
+      <DependentUpon>Dialog_新增容器設定.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\Dialog_設定開鎖權限.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\Dialog_設定開鎖權限.Designer.cs">
+      <DependentUpon>Dialog_設定開鎖權限.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,7 +265,9 @@
     <Compile Include="Function.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LockerClass.cs" />
+    <Compile Include="Program_管制抽屜.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserControl\Pannel_Locker_Design.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -343,6 +357,9 @@
     <EmbeddedResource Include="Dialog\Dialog_設定產出時間.resx">
       <DependentUpon>Dialog_設定產出時間.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\Dialog_設定開鎖權限.resx">
+      <DependentUpon>Dialog_設定開鎖權限.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\Dialog_輸入批號.resx">
       <DependentUpon>Dialog_輸入批號.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\Dialog_輸入輸出設定.resx">
       <DependentUpon>Dialog_輸入輸出設定.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\Dialog_新增容器設定.resx">
+      <DependentUpon>Dialog_新增容器設定.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

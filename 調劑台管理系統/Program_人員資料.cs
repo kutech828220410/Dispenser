@@ -103,8 +103,7 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_人員資料_清除內容.MouseDownEvent += PlC_RJ_Button_人員資料_清除內容_MouseDownEvent;
             this.plC_UI_Init.Add_Method(this.sub_Program_人員資料);
         }
-
-
+     
 
         bool flag_人員資料_資料維護_頁面更新 = false;
         bool flag_人員資料_權限管理_頁面更新 = false;
@@ -114,8 +113,8 @@ namespace 調劑台管理系統
             {
                 if (!this.flag_人員資料_資料維護_頁面更新)
                 {
-
-
+                    this.Function_管制抽屜_鎖控按鈕更新();
+                    this.Function_人員資料_管制抽屜開鎖權限_UI更新();
                     this.plC_RJ_ComboBox_權限管理_權限等級.SetValue(0);
                     this.sqL_DataGridView_人員資料.SQL_GetAllRows(true);
 
@@ -331,6 +330,7 @@ namespace 調劑台管理系統
                     MyMessageBox.ShowDialog(str_error);
                     return;
                 }
+                this.Function_人員資料_管制抽屜開鎖權限_從UI取得資料寫入SQL(value[(int)enum_人員資料.GUID].ObjectToString());
                 this.sqL_DataGridView_人員資料.SQL_AddRow(value, false);
                 this.sqL_DataGridView_人員資料.AddRow(value, true);
             }
@@ -355,6 +355,7 @@ namespace 調劑台管理系統
                         MyMessageBox.ShowDialog(str_error);
                         return;
                     }
+                    this.Function_人員資料_管制抽屜開鎖權限_從UI取得資料寫入SQL(value[(int)enum_人員資料.GUID].ObjectToString());
                     this.sqL_DataGridView_人員資料.SQL_ReplaceExtra(value, false);
                     this.sqL_DataGridView_人員資料.ReplaceExtra(value, true);
                 }
@@ -435,6 +436,133 @@ namespace 調劑台管理系統
             this.Cursor = Cursors.Default;
             MyMessageBox.ShowDialog("匯入完成!");
         }
+        private void Function_人員資料_管制抽屜開鎖權限_UI更新()
+        {
+            Point basic_location = new Point(10, 10);
+            int pLC_CheckBox_width = 150;
+            int pLC_CheckBox_height = 25;
+            Font pLC_CheckBox_font = new Font("微軟正黑體", 12);
+            Point current_location = new Point(basic_location.X, basic_location.Y);
+            this.Invoke(new Action(delegate 
+            {
+                List<Pannel_Locker> pannel_Lockers = this.pannel_Locker_Design.GetAllPannel_Locker();
+                pannel_Lockers = pannel_Lockers.Distinct(new Pannel_Locker_Design.Distinct_Pannel_Locker()).ToList();
+                this.panel_人員資料_管制抽屜開鎖權限.SuspendLayout();
+                this.panel_人員資料_管制抽屜開鎖權限.Controls.Clear();
+                for(int i = 0; i < pannel_Lockers.Count; i++)
+                {
+                    string title = "";
+                    PLC_CheckBox pLC_CheckBox = new PLC_CheckBox();
+                    pLC_CheckBox.音效 = false;
+                    title = $"[{pannel_Lockers[i].ShortIP}:{pannel_Lockers[i].Num}] {pannel_Lockers[i].StorageName}";
+
+                    pLC_CheckBox.Text = $"[{pannel_Lockers[i].ShortIP}:{pannel_Lockers[i].Num}] {pannel_Lockers[i].StorageName}";
+                    pLC_CheckBox.Width = pLC_CheckBox_width;
+                    pLC_CheckBox.Height = pLC_CheckBox_height;
+                    pLC_CheckBox.Location = new Point(current_location.X, current_location.Y);
+                    current_location.Y += pLC_CheckBox_height;
+                    if (current_location.Y >= this.panel_人員資料_管制抽屜開鎖權限.Height)
+                    {
+                        current_location.X += pLC_CheckBox_width;
+                        current_location.Y = basic_location.Y;
+                    }
+                    this.panel_人員資料_管制抽屜開鎖權限.Controls.Add(pLC_CheckBox);
+                }
+                this.panel_人員資料_管制抽屜開鎖權限.ResumeLayout(false);
+            }));
+        }
+        private void Function_人員資料_管制抽屜開鎖權限_從SQL取得資料更新UI(string MasterGUID)
+        {
+            List<object[]> list_value = this.sqL_DataGridView_管制抽屜權限資料.SQL_GetAllRows(false);
+            List<object[]> list_value_buf = new List<object[]>();
+            list_value = list_value.GetRows((int)enum_管制抽屜權限.Master_GUID, MasterGUID);
+            this.Invoke(new Action(delegate
+            {
+
+                for (int i = 0; i < this.panel_人員資料_管制抽屜開鎖權限.Controls.Count; i++)
+                {
+                    PLC_CheckBox pLC_CheckBox = this.panel_人員資料_管制抽屜開鎖權限.Controls[i] as PLC_CheckBox;
+                    pLC_CheckBox.Checked = false;
+                    if (pLC_CheckBox == null) continue;
+                    string temp = pLC_CheckBox.Text.Split(' ')[0];
+                    temp = temp.Replace("[", "");
+                    temp = temp.Replace("]", "");
+                    string IP = temp.Split(':')[0];
+                    IP = $"192.168.{IP}";
+                    string Num = temp.Split(':')[1];
+                    list_value_buf = list_value.GetRows((int)enum_管制抽屜權限.IP, IP);
+                    list_value_buf = list_value_buf.GetRows((int)enum_管制抽屜權限.Num, Num);
+                    if (list_value_buf.Count > 0)
+                    {
+                        if(list_value_buf[0][(int)enum_管制抽屜權限.開鎖權限].ObjectToString().ToUpper() == true.ToString().ToUpper())
+                        {
+                            pLC_CheckBox.Checked = true;
+                        }
+                    }
+
+                }
+            }));
+
+        }
+        private void Function_人員資料_管制抽屜開鎖權限_從UI取得資料寫入SQL(string MasterGUID)
+        {
+            List<object[]> list_value = this.sqL_DataGridView_管制抽屜權限資料.SQL_GetAllRows(false);
+            List<object[]> list_value_buf = new List<object[]>();
+            List<object[]> list_value_add = new List<object[]>();
+            List<object[]> list_value_replace = new List<object[]>();
+            list_value = list_value.GetRows((int)enum_管制抽屜權限.Master_GUID, MasterGUID);
+            this.Invoke(new Action(delegate
+            {
+                for (int i = 0; i < this.panel_人員資料_管制抽屜開鎖權限.Controls.Count; i++)
+                {
+                    PLC_CheckBox pLC_CheckBox = this.panel_人員資料_管制抽屜開鎖權限.Controls[i] as PLC_CheckBox;
+                    if (pLC_CheckBox == null) continue;
+                    string temp = pLC_CheckBox.Text.Split(' ')[0];
+                    temp = temp.Replace("[", "");
+                    temp = temp.Replace("]", "");
+                    string IP = temp.Split(':')[0];
+                    IP = $"192.168.{IP}";
+                    string Num = temp.Split(':')[1];
+                    list_value_buf = list_value.GetRows((int)enum_管制抽屜權限.IP, IP);
+                    list_value_buf = list_value_buf.GetRows((int)enum_管制抽屜權限.Num, Num);
+                    if (list_value_buf.Count == 0)
+                    {
+                        object[] value = new object[new enum_管制抽屜權限().GetLength()];
+                        value[(int)enum_管制抽屜權限.GUID] = Guid.NewGuid().ToString();
+                        value[(int)enum_管制抽屜權限.Master_GUID] = MasterGUID;
+                        value[(int)enum_管制抽屜權限.IP] = IP;
+                        value[(int)enum_管制抽屜權限.Num] = Num;
+                        value[(int)enum_管制抽屜權限.開鎖權限] = pLC_CheckBox.Checked.ToString();
+                        list_value_add.Add(value);
+                    }
+                    else
+                    {
+                        object[] value = list_value_buf[0];
+                        value[(int)enum_管制抽屜權限.Master_GUID] = MasterGUID;
+                        value[(int)enum_管制抽屜權限.IP] = IP;
+                        value[(int)enum_管制抽屜權限.Num] = Num;
+                        value[(int)enum_管制抽屜權限.開鎖權限] = pLC_CheckBox.Checked.ToString();
+                        list_value_replace.Add(value);
+                    }
+                }
+            }));
+
+            this.sqL_DataGridView_管制抽屜權限資料.SQL_AddRows(list_value_add, false);
+            this.sqL_DataGridView_管制抽屜權限資料.SQL_ReplaceExtra(list_value_replace, false);
+        }
+        private bool Function_人員資料_管制抽屜開鎖權限_從SQL取得權限(string MasterGUID, string IP, int num)
+        {
+            List<object[]> list_value = this.sqL_DataGridView_管制抽屜權限資料.SQL_GetAllRows(false);
+            List<object[]> list_value_buf = new List<object[]>();
+            list_value = list_value.GetRows((int)enum_管制抽屜權限.Master_GUID, MasterGUID);
+            list_value = list_value.GetRows((int)enum_管制抽屜權限.IP, IP);
+            list_value = list_value.GetRows((int)enum_管制抽屜權限.Num, num.ToString());
+            if (list_value.Count > 0)
+            {
+                if (list_value[0][(int)enum_管制抽屜權限.開鎖權限].ObjectToString().ToUpper() == true.ToString().ToUpper()) return true;
+            }
+            return false;
+        }
 
         private void Function_登入權限資料_取得權限(int level)
         {
@@ -454,6 +582,8 @@ namespace 調劑台管理系統
                 this.List_PLC_Device_權限管理[i].Bool = true;
             }
             PLC_Device_最高權限.Bool = true;
+            this.PLC_Device_最高權限 = this.PLC_Device_最高權限;
+
         }
         private void Function_登入權限資料_清除權限()
         {
@@ -462,7 +592,10 @@ namespace 調劑台管理系統
                 this.List_PLC_Device_權限管理[i].Bool = false;
             }
             PLC_Device_最高權限.Bool = false;
+            this.PLC_Device_最高權限 = this.PLC_Device_最高權限;
+
         }
+      
         #endregion
         #region Event
         private void SqL_DataGridView_人員資料_MouseDown(object sender, MouseEventArgs e)
@@ -561,6 +694,8 @@ namespace 調劑台管理系統
             string 性別 = RowValue[(int)enum_人員資料.性別].ObjectToString();
             if (性別 == "男") rJ_RatioButton_人員資料_男.Checked = true;
             else rJ_RatioButton_人員資料_女.Checked = true;
+
+            this.Function_人員資料_管制抽屜開鎖權限_從SQL取得資料更新UI(RowValue[(int)enum_人員資料.GUID].ObjectToString());
         }
 
         private void PlC_RJ_ComboBox_權限管理_權限等級_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -626,6 +761,7 @@ namespace 調劑台管理系統
         {
             this.Function_人員資料_清除內容();
         }
+     
         #endregion
     }
 }

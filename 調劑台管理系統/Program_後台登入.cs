@@ -21,7 +21,29 @@ namespace 調劑台管理系統
         private bool flag_後台登入_頁面更新 = false;
 
         private PLC_Device PLC_Device_已登入 = new PLC_Device("S4000");
-        private PLC_Device PLC_Device_最高權限 = new PLC_Device("S4077");
+
+        private PLC_Device pLC_Device_最高權限 = new PLC_Device("S4077");
+        private PLC_Device PLC_Device_最高權限
+        {
+            get
+            {
+                return this.pLC_Device_最高權限;
+            }
+            set
+            {
+                if (value.Bool)
+                {
+                    this.pannel_Locker_Design.ShowControlPannel = true;
+                }
+                else
+                {
+                    this.pannel_Locker_Design.ShowControlPannel = false;
+                }
+                this.pLC_Device_最高權限 = value;
+            }
+        }
+
+        
         private string 登入者名稱
         {
             get
@@ -408,9 +430,13 @@ namespace 調劑台管理系統
                 this.textBox_後台登入_密碼.Text = "";
                 this.PLC_Device_已登入.Bool = false;
                 this.Function_登入權限資料_清除權限();
-                this.PLC_Device_最高權限.Bool = false;
+
                 this.Text = $"{this.FormText}";
+                this.pannel_Locker_Design.ShowControlPannel = false;
             }));
+            if (this.plC_ScreenPage_Main.PageText == "領藥") return;
+            if (this.plC_ScreenPage_Main.PageText == "管制抽屜") return;
+
             if (plC_RJ_ScreenButton_領退藥作業.Visible) this.plC_ScreenPage_Main.SelecteTabText("領藥");
             else if (plC_RJ_ScreenButton_管制抽屜.Visible) this.plC_ScreenPage_Main.SelecteTabText("管制抽屜");
             else this.plC_ScreenPage_Main.SelecteTabText("後台登入");

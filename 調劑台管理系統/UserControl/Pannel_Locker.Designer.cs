@@ -32,11 +32,10 @@ namespace 調劑台管理系統
             this.rJ_Pannel = new MyUI.RJ_Pannel();
             this.rJ_Button_Open = new MyUI.RJ_Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_LOCK = new System.Windows.Forms.Panel();
             this.panel_PLC_Adress = new System.Windows.Forms.Panel();
             this.label_Output = new System.Windows.Forms.Label();
             this.label_Input = new System.Windows.Forms.Label();
-            this.transparentPanel = new MyUI.TransparentPanel();
-            this.panel_LOCK = new System.Windows.Forms.Panel();
             this.rJ_Pannel.SuspendLayout();
             this.panel_PLC_Adress.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +74,7 @@ namespace 調劑台管理系統
             this.rJ_Button_Open.ForeColor = System.Drawing.Color.White;
             this.rJ_Button_Open.Location = new System.Drawing.Point(78, 2);
             this.rJ_Button_Open.Name = "rJ_Button_Open";
-            this.rJ_Button_Open.Size = new System.Drawing.Size(150, 61);
+            this.rJ_Button_Open.Size = new System.Drawing.Size(138, 61);
             this.rJ_Button_Open.State = false;
             this.rJ_Button_Open.TabIndex = 6;
             this.rJ_Button_Open.Text = "StorageName";
@@ -90,46 +89,6 @@ namespace 調劑台管理系統
             this.panel1.Size = new System.Drawing.Size(10, 61);
             this.panel1.TabIndex = 5;
             // 
-            // panel_PLC_Adress
-            // 
-            this.panel_PLC_Adress.BackColor = System.Drawing.Color.Transparent;
-            this.panel_PLC_Adress.Controls.Add(this.label_Output);
-            this.panel_PLC_Adress.Controls.Add(this.label_Input);
-            this.panel_PLC_Adress.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_PLC_Adress.Location = new System.Drawing.Point(228, 2);
-            this.panel_PLC_Adress.Name = "panel_PLC_Adress";
-            this.panel_PLC_Adress.Size = new System.Drawing.Size(28, 61);
-            this.panel_PLC_Adress.TabIndex = 7;
-            // 
-            // label_Output
-            // 
-            this.label_Output.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_Output.Location = new System.Drawing.Point(0, 44);
-            this.label_Output.Name = "label_Output";
-            this.label_Output.Size = new System.Drawing.Size(28, 17);
-            this.label_Output.TabIndex = 1;
-            this.label_Output.Text = "Y00";
-            this.label_Output.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_Input
-            // 
-            this.label_Input.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_Input.Location = new System.Drawing.Point(0, 0);
-            this.label_Input.Name = "label_Input";
-            this.label_Input.Size = new System.Drawing.Size(28, 17);
-            this.label_Input.TabIndex = 0;
-            this.label_Input.Text = "X00";
-            this.label_Input.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // transparentPanel
-            // 
-            this.transparentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transparentPanel.Location = new System.Drawing.Point(0, 0);
-            this.transparentPanel.Name = "transparentPanel";
-            this.transparentPanel.Size = new System.Drawing.Size(258, 65);
-            this.transparentPanel.TabIndex = 10;
-            this.transparentPanel.Visible = false;
-            // 
             // panel_LOCK
             // 
             this.panel_LOCK.BackgroundImage = global::調劑台管理系統.Properties.Resources.LOCK;
@@ -140,11 +99,41 @@ namespace 調劑台管理系統
             this.panel_LOCK.Size = new System.Drawing.Size(66, 61);
             this.panel_LOCK.TabIndex = 4;
             // 
+            // panel_PLC_Adress
+            // 
+            this.panel_PLC_Adress.BackColor = System.Drawing.Color.Transparent;
+            this.panel_PLC_Adress.Controls.Add(this.label_Output);
+            this.panel_PLC_Adress.Controls.Add(this.label_Input);
+            this.panel_PLC_Adress.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel_PLC_Adress.Location = new System.Drawing.Point(216, 2);
+            this.panel_PLC_Adress.Name = "panel_PLC_Adress";
+            this.panel_PLC_Adress.Size = new System.Drawing.Size(40, 61);
+            this.panel_PLC_Adress.TabIndex = 7;
+            // 
+            // label_Output
+            // 
+            this.label_Output.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Output.Location = new System.Drawing.Point(0, 44);
+            this.label_Output.Name = "label_Output";
+            this.label_Output.Size = new System.Drawing.Size(40, 17);
+            this.label_Output.TabIndex = 1;
+            this.label_Output.Text = "Y00";
+            this.label_Output.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Input
+            // 
+            this.label_Input.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_Input.Location = new System.Drawing.Point(0, 0);
+            this.label_Input.Name = "label_Input";
+            this.label_Input.Size = new System.Drawing.Size(40, 17);
+            this.label_Input.TabIndex = 0;
+            this.label_Input.Text = "X00";
+            this.label_Input.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Pannel_Locker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.transparentPanel);
             this.Controls.Add(this.rJ_Pannel);
             this.DoubleBuffered = true;
             this.Name = "Pannel_Locker";
@@ -164,7 +153,6 @@ namespace 調劑台管理系統
         private System.Windows.Forms.Panel panel_LOCK;
         private System.Windows.Forms.Label label_Output;
         private System.Windows.Forms.Label label_Input;
-        private MyUI.TransparentPanel transparentPanel;
         public System.Windows.Forms.Panel panel_PLC_Adress;
     }
 }

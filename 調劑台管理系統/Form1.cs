@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.14.0")]
-[assembly: AssemblyFileVersion("1.0.14.0")]
+[assembly: AssemblyVersion("1.0.15.0")]
+[assembly: AssemblyFileVersion("1.0.15.0")]
 namespace 調劑台管理系統
 {
 
@@ -29,7 +29,7 @@ namespace 調劑台管理系統
         private LadderConnection.LowerMachine PLC;
         MyTimer MyTimer_TickTime = new MyTimer();
         private Stopwatch stopwatch = new Stopwatch();
-        List<Locker> List_Locker = new List<Locker>();
+        List<Pannel_Locker> List_Locker = new List<Pannel_Locker>();
         Basic.MyConvert myConvert = new Basic.MyConvert();
 
         PLC_Device PLC_Device_主頁面頁碼 = new PLC_Device("D0");
@@ -235,6 +235,7 @@ namespace 調劑台管理系統
                 Dialog_設定產出時間.form = this.FindForm();
                 Dialog_RFID領退藥頁面.form = this.FindForm();
                 Dialog_輸入輸出設定.form = this.FindForm();
+                Dialog_新增容器設定.form = this.FindForm();
 
                 LoadDBConfig();
                 LoadMyConfig();
@@ -309,7 +310,7 @@ namespace 調劑台管理系統
             PLC_UI_Init.Set_PLC_ScreenPage(panel_儲位管理, this.plC_ScreenPage_儲位管理);
             PLC_UI_Init.Set_PLC_ScreenPage(panel_人員資料, this.plC_ScreenPage_人員資料);
 
-            this.pannel_Locker_Design1.Init(dBConfigClass.DB_Basic);
+            this.pannel_Locker_Design.Init(dBConfigClass.DB_Basic);
 
             this.plC_RJ_ScreenButton_EPD583.Visible = myConfigClass.EPD583_Enable;
             this.plC_RJ_ScreenButton_EPD266.Visible = myConfigClass.EPD266_Enable;
@@ -344,7 +345,8 @@ namespace 調劑台管理系統
             this.Program_批次領藥_Init();
             this.Program_取藥堆疊資料_Init();
             this.Program_輸出入檢查_Init();
-            
+            this.Program_管制抽屜_Init();
+
             this.plC_UI_Init.Add_Method(this.sub_Program_Scanner_RS232);
 
             this.LoadConfig工程模式();

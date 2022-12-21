@@ -2534,7 +2534,7 @@ namespace 調劑台管理系統
         int cnt_Program_領藥_RFID_檢查刷卡 = 65534;
         void sub_Program_領藥_RFID_檢查刷卡()
         {
-            if (this.plC_ScreenPage_Main.PageText != "領藥") PLC_Device_領藥_RFID_檢查刷卡.Bool = false;
+            if (this.plC_ScreenPage_Main.PageText != "管制抽屜" && this.plC_ScreenPage_Main.PageText != "領藥") PLC_Device_領藥_RFID_檢查刷卡.Bool = false;
             else PLC_Device_領藥_RFID_檢查刷卡.Bool = true;
             if (cnt_Program_領藥_RFID_檢查刷卡 == 65534)
             {
@@ -2584,15 +2584,17 @@ namespace 調劑台管理系統
                         if (RFID.StringToInt32() != 0 && !RFID.StringIsEmpty() || PLC_Device_領藥_RFID_檢查刷卡_TEST.Bool)
                         {
                             PLC_Device_領藥_RFID_檢查刷卡_TEST.Bool = false;
-                            this.class_領藥_RFID_檢查刷卡.IP = List_RFID_本地資料[i].IP;
-                            this.class_領藥_RFID_檢查刷卡.Num = k;
-                            this.class_領藥_RFID_檢查刷卡.RFID = RFID;
-                            this.class_領藥_RFID_檢查刷卡.Name = List_RFID_本地資料[i].DeviceClasses[k].Name;
                             this.class_領藥_RFID_檢查刷卡.devices.Clear();
                             for (int d = 0; d < List_RFID_本地資料[i].DeviceClasses[k].RFIDDevices.Count; d++)
                             {
                                 this.class_領藥_RFID_檢查刷卡.devices.Add(List_RFID_本地資料[i].DeviceClasses[k].RFIDDevices[d]);
                             }
+                            this.class_領藥_RFID_檢查刷卡.IP = List_RFID_本地資料[i].IP;
+                            this.class_領藥_RFID_檢查刷卡.Num = k;
+                            this.class_領藥_RFID_檢查刷卡.RFID = RFID;
+                            this.class_領藥_RFID_檢查刷卡.Name = List_RFID_本地資料[i].DeviceClasses[k].Name;
+                         
+                         
                             cnt++;
                             return;
                         }
