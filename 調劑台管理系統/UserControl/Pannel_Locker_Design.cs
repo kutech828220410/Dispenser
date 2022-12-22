@@ -242,6 +242,80 @@ namespace 調劑台管理系統
             }
             return rJ_Pannels;
         }
+        public void LoadLocker()
+        {
+            List<object[]> list_value = this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_GetAllRows(false);
+            myThread_program.Clear_Method();
+            this.Invoke(new Action(delegate
+            {
+                this.SuspendLayout();
+                this.panel_UI.Controls.Clear();
+                for (int i = 0; i < list_value.Count; i++)
+                {
+                    string Type = list_value[i][(int)enum_panel_lock_ui_jsonstring.Type].ObjectToString();
+                    if (Type == enum_panel_lock_ui_Type.RJ_Pannel.GetEnumName())
+                    {
+                        RJ_Pannel rJ_Pannel = RJ_Pannel.JaonstringClass.SetJaonstring(list_value[i][(int)enum_panel_lock_ui_jsonstring.Value].ObjectToString());
+                        rJ_Pannel.SendToBack();
+                        rJ_Pannel.AllowDrop = this.checkBox_設計模式.Checked;
+                        this.panel_UI.Controls.Add(rJ_Pannel);
+                    }
+                    if (Type == enum_panel_lock_ui_Type.Pannel_Locker.GetEnumName())
+                    {
+                        Pannel_Locker pannel_Locker = Pannel_Locker.JaonstringClass.SetJaonstring(list_value[i][(int)enum_panel_lock_ui_jsonstring.Value].ObjectToString());
+                        pannel_Locker.ButtonEnable = false;
+                        pannel_Locker.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        pannel_Locker.Padding = new System.Windows.Forms.Padding(2);
+                        pannel_Locker.AllowDrop = this.checkBox_設計模式.Checked;
+                        pannel_Locker.ShowAdress = this.checkBox_設計模式.Checked;
+                        pannel_Locker.panel_PLC_Adress.ForeColor = Color.Black;
+                        pannel_Locker.Init();
+                        pannel_Locker.MouseDownEvent += Pannel_Locker_MouseDownEvent;
+                        pannel_Locker.LockOpeningEvent += Pannel_Locker_LockOpeningEvent;
+                        pannel_Locker.LockClosingEvent += Pannel_Locker_LockClosingEvent;
+
+                        myThread_program.Add_Method(pannel_Locker.sub_Program);
+                        this.panel_UI.Controls.Add(pannel_Locker);
+                    }
+
+
+                }
+                this.ResumeLayout(false);
+            }));
+        }
+        public void SaveLocker()
+        {
+            this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_CreateTable();
+            List<object[]> list_value = new List<object[]>();
+            this.Invoke(new Action(delegate
+            {
+
+                list_jsonstring.Clear();
+                for (int i = 0; i < this.panel_UI.Controls.Count; i++)
+                {
+                    if (this.panel_UI.Controls[i] is Pannel_Locker)
+                    {
+                        object[] value = new object[new enum_panel_lock_ui_jsonstring().GetLength()];
+                        value[(int)enum_panel_lock_ui_jsonstring.GUID] = Guid.NewGuid().ToString();
+                        value[(int)enum_panel_lock_ui_jsonstring.Type] = enum_panel_lock_ui_Type.Pannel_Locker.GetEnumName();
+                        string jsonstring = Pannel_Locker.JaonstringClass.GetJaonstring((Pannel_Locker)this.panel_UI.Controls[i]);
+                        value[(int)enum_panel_lock_ui_jsonstring.Value] = jsonstring;
+                        list_value.Add(value);
+                    }
+                    if (this.panel_UI.Controls[i] is RJ_Pannel)
+                    {
+                        object[] value = new object[new enum_panel_lock_ui_jsonstring().GetLength()];
+                        value[(int)enum_panel_lock_ui_jsonstring.GUID] = Guid.NewGuid().ToString();
+                        value[(int)enum_panel_lock_ui_jsonstring.Type] = enum_panel_lock_ui_Type.RJ_Pannel.GetEnumName();
+                        string jsonstring = RJ_Pannel.JaonstringClass.GetJaonstring((RJ_Pannel)this.panel_UI.Controls[i]);
+                        value[(int)enum_panel_lock_ui_jsonstring.Value] = jsonstring;
+                        list_value.Add(value);
+                    }
+                }
+            }));
+            this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_AddRows(list_value, false);
+        }
+
         private TxMouseDownType GetMouseDownType(int mouse_X, int mouse_Y, Control control)
         {
             return this.GetMouseDownType(mouse_X, mouse_Y, 0, 0, control.Width, control.Height);
@@ -411,45 +485,7 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_讀檔_MouseDownEvent(MouseEventArgs mevent)
         {
-            List<object[]> list_value = this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_GetAllRows(false);
-            myThread_program.Clear_Method();
-            this.Invoke(new Action(delegate
-            {
-                this.SuspendLayout();
-                this.panel_UI.Controls.Clear();
-                for (int i = 0; i < list_value.Count; i++)
-                {
-                    string Type = list_value[i][(int)enum_panel_lock_ui_jsonstring.Type].ObjectToString();
-                    if (Type == enum_panel_lock_ui_Type.RJ_Pannel.GetEnumName())
-                    {
-                        RJ_Pannel rJ_Pannel = RJ_Pannel.JaonstringClass.SetJaonstring(list_value[i][(int)enum_panel_lock_ui_jsonstring.Value].ObjectToString());
-                        rJ_Pannel.SendToBack();
-                        rJ_Pannel.AllowDrop = this.checkBox_設計模式.Checked;
-                        this.panel_UI.Controls.Add(rJ_Pannel);
-                    }
-                    if (Type == enum_panel_lock_ui_Type.Pannel_Locker.GetEnumName())
-                    {
-                        Pannel_Locker pannel_Locker = Pannel_Locker.JaonstringClass.SetJaonstring(list_value[i][(int)enum_panel_lock_ui_jsonstring.Value].ObjectToString());
-                        pannel_Locker.ButtonEnable = false;
-                        pannel_Locker.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                        pannel_Locker.Padding = new System.Windows.Forms.Padding(2);
-                        pannel_Locker.AllowDrop = this.checkBox_設計模式.Checked;
-                        pannel_Locker.ShowAdress = this.checkBox_設計模式.Checked;
-                        pannel_Locker.panel_PLC_Adress.ForeColor = Color.Black;
-                        pannel_Locker.Init();
-                        pannel_Locker.MouseDownEvent += Pannel_Locker_MouseDownEvent;
-                        pannel_Locker.LockOpeningEvent += Pannel_Locker_LockOpeningEvent;
-                        pannel_Locker.LockClosingEvent += Pannel_Locker_LockClosingEvent;
-
-                        myThread_program.Add_Method(pannel_Locker.sub_Program);
-                        this.panel_UI.Controls.Add(pannel_Locker);
-                    }
-                   
-
-                }
-                this.ResumeLayout(false);
-            }));
-
+            this.LoadLocker();
         }
 
         private void Pannel_Locker_LockClosingEvent(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID)
@@ -468,35 +504,7 @@ namespace 調劑台管理系統
 
         private void PlC_RJ_Button_存檔_MouseDownEvent(MouseEventArgs mevent)
         {
-            this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_CreateTable();
-            List<object[]> list_value = new List<object[]>();
-            this.Invoke(new Action(delegate
-            {
-               
-                list_jsonstring.Clear();
-                for (int i = 0; i < this.panel_UI.Controls.Count; i++)
-                {
-                    if(this.panel_UI.Controls[i] is Pannel_Locker)
-                    {
-                        object[] value = new object[new enum_panel_lock_ui_jsonstring().GetLength()];
-                        value[(int)enum_panel_lock_ui_jsonstring.GUID] = Guid.NewGuid().ToString();
-                        value[(int)enum_panel_lock_ui_jsonstring.Type] = enum_panel_lock_ui_Type.Pannel_Locker.GetEnumName();                    
-                        string jsonstring = Pannel_Locker.JaonstringClass.GetJaonstring((Pannel_Locker)this.panel_UI.Controls[i]);
-                        value[(int)enum_panel_lock_ui_jsonstring.Value] = jsonstring;
-                        list_value.Add(value);
-                    }
-                    if (this.panel_UI.Controls[i] is RJ_Pannel)
-                    {
-                        object[] value = new object[new enum_panel_lock_ui_jsonstring().GetLength()];
-                        value[(int)enum_panel_lock_ui_jsonstring.GUID] = Guid.NewGuid().ToString();
-                        value[(int)enum_panel_lock_ui_jsonstring.Type] = enum_panel_lock_ui_Type.RJ_Pannel.GetEnumName();
-                        string jsonstring = RJ_Pannel.JaonstringClass.GetJaonstring((RJ_Pannel)this.panel_UI.Controls[i]);
-                        value[(int)enum_panel_lock_ui_jsonstring.Value] = jsonstring;
-                        list_value.Add(value);
-                    }
-                }
-            }));
-            this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_AddRows(list_value, false);
+            this.SaveLocker();
         }
 
         private void PlC_RJ_Button_panel_lock_ui_jsonstring_顯示全部_MouseDownEvent(MouseEventArgs mevent)

@@ -71,8 +71,7 @@ namespace 調劑台管理系統
         PLC_Device PLC_Device_管制抽屜_RFID_檢查刷卡_OK = new PLC_Device("");
         PLC_Device PLC_Device_管制抽屜_RFID_檢查刷卡_TEST = new PLC_Device("");
         MyTimer myTimer_管制抽屜_RFID_檢查刷卡_延遲時間 = new MyTimer();
-        string 管制抽屜_RFID_檢查刷卡_登入者ID;
-        string 管制抽屜_RFID_檢查刷卡_登入者姓名;
+
         Class_管制抽屜_RFID_檢查刷卡 class_管制抽屜_RFID_檢查刷卡 = new Class_管制抽屜_RFID_檢查刷卡();
         private class Class_管制抽屜_RFID_檢查刷卡
         {
@@ -216,6 +215,7 @@ namespace 調劑台管理系統
         #region Function
         private void Function_管制抽屜_鎖控按鈕更新()
         {
+            pannel_Locker_Design.LoadLocker();
             this.Function_從SQL取得儲位到本地資料();
             List<Pannel_Locker> pannel_Lockers = pannel_Locker_Design.GetAllPannel_Locker();
             List<object[]> list_locker_table_value = this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(false);
