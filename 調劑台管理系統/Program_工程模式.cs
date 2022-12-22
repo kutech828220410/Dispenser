@@ -21,12 +21,11 @@ namespace 調劑台管理系統
         private void Program_工程模式_Init()
         {
             this.button_工程模式_門未關閉警報語音內容_下載.Click += Button_工程模式_門未關閉警報語音內容_下載_Click;
-            this.plC_Button_工程模式_全部開鎖.MouseDown += PlC_Button_工程模式_全部開鎖_MouseDown;
-
+            this.plC_Button_工程模式_全部開鎖.btnClick += PlC_Button_工程模式_全部開鎖_btnClick;
             this.plC_UI_Init.Add_Method(this.sub_Program_工程模式);
         }
 
-    
+
 
         bool flag_工程模式_頁面更新 = false;
         private void sub_Program_工程模式()
@@ -222,7 +221,7 @@ namespace 調劑台管理系統
                 this.panel_工程模式_領藥台_02_顏色.BackColor = colorDialog.Color;
             }
         }
-        private void PlC_Button_工程模式_全部開鎖_MouseDown(object sender, MouseEventArgs e)
+        private void PlC_Button_工程模式_全部開鎖_btnClick(object sender, EventArgs e)
         {
             if (MyMessageBox.ShowDialog("是否全部抽屜解鎖?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
             for (int i = 0; i < this.List_Locker.Count; i++)
