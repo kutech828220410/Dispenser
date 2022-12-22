@@ -50,7 +50,11 @@ namespace 調劑台管理系統
             {
                 if (!this.flag_管制抽屜_頁面更新)
                 {
-                    this.Function_登出();
+                    if(this.PLC_Device_最高權限.Bool == false)
+                    {
+                        this.Function_登出();
+                    }
+                     
                     this.Function_管制抽屜_鎖控按鈕更新();
                     this.flag_管制抽屜_頁面更新 = true;
                 }
