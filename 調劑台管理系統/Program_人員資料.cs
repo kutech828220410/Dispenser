@@ -439,7 +439,7 @@ namespace 調劑台管理系統
         private void Function_人員資料_管制抽屜開鎖權限_UI更新()
         {
             Point basic_location = new Point(10, 10);
-            int pLC_CheckBox_width = 150;
+            int pLC_CheckBox_width = 250;
             int pLC_CheckBox_height = 25;
             Font pLC_CheckBox_font = new Font("微軟正黑體", 12);
             Point current_location = new Point(basic_location.X, basic_location.Y);

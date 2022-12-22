@@ -1003,6 +1003,7 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
+            this.plC_Button_工程模式_全部開鎖 = new MyUI.PLC_Button();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -19383,6 +19384,7 @@
             // 
             this.tabPage1.AutoScroll = true;
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.plC_Button_工程模式_全部開鎖);
             this.tabPage1.Controls.Add(this.plC_CheckBox_QRcode_Mode);
             this.tabPage1.Controls.Add(this.plC_CheckBox_自動過帳);
             this.tabPage1.Controls.Add(this.groupBox9);
@@ -25130,6 +25132,39 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
+            // plC_Button_工程模式_全部開鎖
+            // 
+            this.plC_Button_工程模式_全部開鎖.Bool = false;
+            this.plC_Button_工程模式_全部開鎖.but_press = false;
+            this.plC_Button_工程模式_全部開鎖.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_工程模式_全部開鎖.Location = new System.Drawing.Point(1456, 665);
+            this.plC_Button_工程模式_全部開鎖.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_工程模式_全部開鎖.Name = "plC_Button_工程模式_全部開鎖";
+            this.plC_Button_工程模式_全部開鎖.OFF_文字內容 = "全部開鎖";
+            this.plC_Button_工程模式_全部開鎖.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_工程模式_全部開鎖.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_工程模式_全部開鎖.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_工程模式_全部開鎖.ON_文字內容 = "全部開鎖";
+            this.plC_Button_工程模式_全部開鎖.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_工程模式_全部開鎖.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_工程模式_全部開鎖.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_工程模式_全部開鎖.Size = new System.Drawing.Size(147, 71);
+            this.plC_Button_工程模式_全部開鎖.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_工程模式_全部開鎖.TabIndex = 126;
+            this.plC_Button_工程模式_全部開鎖.事件驅動 = false;
+            this.plC_Button_工程模式_全部開鎖.字型鎖住 = false;
+            this.plC_Button_工程模式_全部開鎖.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_工程模式_全部開鎖.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_工程模式_全部開鎖.文字鎖住 = false;
+            this.plC_Button_工程模式_全部開鎖.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_工程模式_全部開鎖.狀態OFF圖片")));
+            this.plC_Button_工程模式_全部開鎖.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_工程模式_全部開鎖.狀態ON圖片")));
+            this.plC_Button_工程模式_全部開鎖.讀取位元反向 = false;
+            this.plC_Button_工程模式_全部開鎖.讀寫鎖住 = false;
+            this.plC_Button_工程模式_全部開鎖.起始狀態 = false;
+            this.plC_Button_工程模式_全部開鎖.音效 = true;
+            this.plC_Button_工程模式_全部開鎖.顯示 = false;
+            this.plC_Button_工程模式_全部開鎖.顯示狀態 = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -26408,6 +26443,7 @@
         private MyUI.RJ_Pannel ContentsPanel;
         private System.Windows.Forms.Label label4;
         private MyUI.PLC_RJ_ChechBox plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_管制抽屜;
+        private MyUI.PLC_Button plC_Button_工程模式_全部開鎖;
     }
 }
 

@@ -164,10 +164,25 @@ namespace 調劑台管理系統
         {
             List<object[]> list_value = this.sqL_DataGridView_人員資料.SQL_GetAllRows(false);
             list_value = list_value.GetRows((int)enum_人員資料.卡號, class_管制抽屜_RFID_檢查刷卡.RFID);
+            Pannel_Locker pannel_Locker = pannel_Locker_Design.GetPannel_Locker(class_管制抽屜_RFID_檢查刷卡.IP, class_管制抽屜_RFID_檢查刷卡.Num);
+            if (pannel_Locker == null)
+            {
+                Basic.Voice voice = new Voice();
+                voice.Speak("查無此抽屜");
+
+                cnt = 65500;
+                return;
+            }
+            if (!pannel_Locker.OutputEnable)
+            {
+                cnt = 65500;
+                return;
+            }
+
             if (list_value.Count == 0)
             {
                 Basic.Voice voice = new Voice();
-                voice.SpeakOnTask("查無此卡");
+                voice.Speak("查無此卡");
                
                 cnt = 65500;
                 return;
@@ -179,20 +194,13 @@ namespace 調劑台管理系統
             if(flag_open == false)
             {
                 Basic.Voice voice = new Voice();
-                voice.SpeakOnTask("無開鎖權限");
+                voice.Speak("無開鎖權限");
 
                 cnt = 65500;
                 return;
             }
-            Pannel_Locker pannel_Locker = pannel_Locker_Design.GetPannel_Locker(class_管制抽屜_RFID_檢查刷卡.IP, class_管制抽屜_RFID_檢查刷卡.Num);
-            if(pannel_Locker == null)
-            {
-                Basic.Voice voice = new Voice();
-                voice.SpeakOnTask("查無此抽屜");
-
-                cnt = 65500;
-                return;
-            }
+           
+           
             Console.WriteLine($"管制抽屜,開鎖!");
             pannel_Locker.Open(UserName, UserID);
 

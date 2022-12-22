@@ -63,6 +63,7 @@ namespace 調劑台管理系統
         }
         public static int OutputTime = 500;
         public static int AlarmTimeOut = 30000;
+        public static int 輸出間隔 = 1500;
         public string GUID = "";
         public string Master_GUID = "";
         [Browsable(false)]
@@ -299,7 +300,13 @@ namespace 調劑台管理系統
 
         public string OpenUserName = "";
         public string OpenUserID = "";
-
+        public bool OutputEnable
+        {
+            get
+            {
+                return this.MyTimer_輸出間隔.IsTimeOut();
+            }
+        }
 
         private PLC_Device PLC_Device_Output = new PLC_Device();
         private PLC_Device PLC_Device_Input= new PLC_Device();
@@ -308,7 +315,7 @@ namespace 調劑台管理系統
         private MyTimer MyTimer_開鎖延遲 = new MyTimer();
         private MyTimer MyTimer_輸入ON延遲 = new MyTimer();
         private MyTimer MyTimer_Alarm = new MyTimer();
-
+        private MyTimer MyTimer_輸出間隔 = new MyTimer();
         public Pannel_Locker()
         {
             InitializeComponent();
@@ -340,6 +347,9 @@ namespace 調劑台管理系統
             }
             this.MyTimer_Init.TickStop();
             this.MyTimer_Init.StartTickTime(2000);
+
+            this.MyTimer_輸出間隔.TickStop();
+            this.MyTimer_輸出間隔.StartTickTime(0);
         }
         public void Open(string openUserName , string openUserID)
         {
@@ -440,6 +450,8 @@ namespace 調劑台管理系統
         }
         void cnt_Program_輸出入檢查_Locker_輸出_初始化(ref int cnt)
         {
+            this.MyTimer_開鎖延遲.TickStop();
+            this.MyTimer_輸出間隔.StartTickTime(輸出間隔);
             if (this.LockOpeningEvent != null) this.LockOpeningEvent(this ,PLC_Device_Input, PLC_Device_Output, Master_GUID);
             this.MyTimer_開鎖延遲.TickStop();
             this.MyTimer_開鎖延遲.StartTickTime(OutputTime);
