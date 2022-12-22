@@ -7,17 +7,21 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="[|ProductName]   Ver[|ProductVersion] " ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="Ver[|ProductVersion]"/>
+    <ROW Property="ARPHELPLINK" Value="Ver[|ProductVersion]"/>
+    <ROW Property="ARPHELPTELEPHONE" Value="Ver[|ProductVersion]"/>
     <ROW Property="ARPNOMODIFY" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPNOREPAIR" Value="1"/>
     <ROW Property="ARPPRODUCTICON" Value="_.exe" Type="8"/>
-    <ROW Property="ARPURLUPDATEINFO" Value="[|ProductVersion] "/>
+    <ROW Property="ARPURLINFOABOUT" Value="Ver[|ProductVersion]"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="Ver[|ProductVersion]"/>
     <ROW Property="AiSkipExitDlg" Value="1"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="力翔精密機械有限公司"/>
-    <ROW Property="ProductCode" Value="1028:{7BCD8CE5-13F4-471F-B30F-92D1DBA54086} " Type="16"/>
+    <ROW Property="ProductCode" Value="1028:{023FDD8F-A6B6-436A-B611-D5A2A586E021} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1028"/>
-    <ROW Property="ProductName" Value="智慧調劑台管理系統 Ver[|ProductVersion]"/>
-    <ROW Property="ProductVersion" Value="1.0.18.0" Type="32" TargetFile="_.exe"/>
+    <ROW Property="ProductName" Value="智慧調劑台管理系統"/>
+    <ROW Property="ProductVersion" Value="1.0.19.0" Type="32" TargetFile="_.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{9E8E570F-0E09-4BCD-A3D4-0EE2FFDFC180}"/>

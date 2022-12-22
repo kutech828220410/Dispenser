@@ -280,6 +280,7 @@ namespace 調劑台管理系統
 
 
                 }
+                this.SetDesignMode(false);
                 this.ResumeLayout(false);
             }));
         }
@@ -315,7 +316,32 @@ namespace 調劑台管理系統
             }));
             this.sqL_DataGridView_panel_lock_ui_jsonstring.SQL_AddRows(list_value, false);
         }
+        public void SetDesignMode(bool value)
+        {
+            this.Invoke(new Action(delegate 
+            {
+                if (value == false) this.SetSelected(null);
 
+
+                List<Pannel_Locker> pannel_Lockers = this.GetAllPannel_Locker();
+                for (int i = 0; i < pannel_Lockers.Count; i++)
+                {
+                    pannel_Lockers[i].ButtonEnable = value;
+                    pannel_Lockers[i].AllowDrop = value;
+                    pannel_Lockers[i].ShowAdress = value;
+                }
+                List<RJ_Pannel> rJ_Pannels = this.GetAllRJ_Pannel();
+                for (int i = 0; i < rJ_Pannels.Count; i++)
+                {
+                    rJ_Pannels[i].AllowDrop = value;
+                    rJ_Pannels[i].SendToBack();
+                }
+
+
+                this.transparentPanel.Visible = value;
+            }));
+           
+        }
         private TxMouseDownType GetMouseDownType(int mouse_X, int mouse_Y, Control control)
         {
             return this.GetMouseDownType(mouse_X, mouse_Y, 0, 0, control.Width, control.Height);
@@ -387,25 +413,7 @@ namespace 調劑台管理系統
   
         private void CheckBox_設計模式_CheckedChanged(object sender, EventArgs e)
         {
-            if(this.checkBox_設計模式.Checked == false) this.SetSelected(null);
-
-
-            List<Pannel_Locker> pannel_Lockers = this.GetAllPannel_Locker();
-            for (int i = 0; i < pannel_Lockers.Count; i++)
-            {
-                pannel_Lockers[i].ButtonEnable = this.checkBox_設計模式.Checked;
-                pannel_Lockers[i].AllowDrop = this.checkBox_設計模式.Checked;
-                pannel_Lockers[i].ShowAdress = this.checkBox_設計模式.Checked;
-            }
-            List<RJ_Pannel> rJ_Pannels = this.GetAllRJ_Pannel();
-            for (int i = 0; i < rJ_Pannels.Count; i++)
-            {
-                rJ_Pannels[i].AllowDrop = this.checkBox_設計模式.Checked;
-                rJ_Pannels[i].SendToBack();
-            }
-
-
-            this.transparentPanel.Visible = this.checkBox_設計模式.Checked;
+            this.SetDesignMode(this.checkBox_設計模式.Checked);
         }
         private void PlC_RJ_Button_新增鎖控_MouseDownEvent(MouseEventArgs mevent)
         {
