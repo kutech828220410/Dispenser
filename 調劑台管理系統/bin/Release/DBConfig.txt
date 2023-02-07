@@ -10,7 +10,7 @@
   },
   "DB_person_page": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -19,7 +19,7 @@
   },
   "DB_order_list": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -28,7 +28,7 @@
   },
   "DB_Medicine_Cloud": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
