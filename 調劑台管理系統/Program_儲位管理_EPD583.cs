@@ -565,11 +565,13 @@ namespace 調劑台管理系統
         private void PlC_RJ_Button_儲位管理_EPD583_分割儲位_MouseDownEvent(MouseEventArgs mevent)
         {
             this.epD_583_Pannel.SeparateBoxes();
+            this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
         }
         private void PlC_RJ_Button_儲位管理_EPD583_合併儲位_MouseDownEvent(MouseEventArgs mevent)
         {
             this.epD_583_Pannel.CombineBoxes();
+            this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
         }
         private void PlC_RJ_Button_儲位管理_EPD583_初始化儲位_MouseDownEvent(MouseEventArgs mevent)
@@ -577,6 +579,7 @@ namespace 調劑台管理系統
             if (MyMessageBox.ShowDialog("確認初始化所有儲位?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes)
             {
                 this.epD_583_Pannel.InitBoxes();
+                this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 this.Function_設定雲端資料更新();
             }
         }
