@@ -882,6 +882,7 @@ namespace 調劑台管理系統
                 {
                     if (storage != null)
                     {
+                      
                         if (!this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black))
                         {
                             MyMessageBox.ShowDialog($"{storage.IP}:{storage.Port} : EPD266 面板滅燈失敗!");

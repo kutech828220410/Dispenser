@@ -475,7 +475,7 @@ namespace 調劑台管理系統
             else if (MySerialPort_Scanner01.ReadByte() != null)
             {
                 string text = this.MySerialPort_Scanner01.ReadString();
-
+                if (text == null) return;
                 if (text.Length <= 2 || text.Length > 30) return;
                 if (text.Substring(text.Length - 2, 2) != "\r\n") return;
                 this.MySerialPort_Scanner01.ClearReadByte();
@@ -575,14 +575,9 @@ namespace 調劑台管理系統
             }
             else
             {
-                if (MySerialPort_Scanner01.ReadByte() != null)
+                if (!PLC_Device_Scanner01_讀取藥單資料.Bool)
                 {
-                    string text = this.MySerialPort_Scanner01.ReadString();
-                    this.MySerialPort_Scanner01.ClearReadByte();
-                    if (text.Length <= 2 || text.Length > 30) return;
-                    if (text.Substring(text.Length - 2, 2) != "\r\n") return;
-                    text = text.Replace("\r\n", "");
-                    this.領藥台_01_醫囑條碼 = text;
+                    PLC_Device_Scanner01_讀取藥單資料.Bool = true;
                     cnt++;
                     return;
                 }
@@ -609,7 +604,11 @@ namespace 調劑台管理系統
             }
             else
             {
-                cnt++;
+                if (!PLC_Device_Scanner01_讀取藥單資料.Bool)
+                {
+                    cnt++;
+                    return;
+                }
             }
         }
         void cnt_Program_領藥台_01_檢查輸入資料_檢查醫囑資料及寫入(ref int cnt)
@@ -858,6 +857,7 @@ namespace 調劑台管理系統
             list_取藥堆疊資料_buf = (from value in list_取藥堆疊資料
                                where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName()
                                where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName()
+                               where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.無儲位.GetEnumName()
                                select value
                                 ).ToList();
 
@@ -910,7 +910,10 @@ namespace 調劑台管理系統
 
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.藥袋條碼, BarCode, false);
+
+
+
+            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -925,14 +928,14 @@ namespace 調劑台管理系統
                 this.voice.SpeakOnTask("此藥單無未過帳資料");
                 return;
             }
-            for (int i = 0; i < list_醫囑資料.Count; i++)
-            {
-                string 藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
-                if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
-                {
-                    list_醫囑資料_remove.Add(list_醫囑資料[i]);
-                }
-            }
+            //for (int i = 0; i < list_醫囑資料.Count; i++)
+            //{
+            //    string 藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
+            //    if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
+            //    {
+            //        list_醫囑資料_remove.Add(list_醫囑資料[i]);
+            //    }
+            //}
             for (int i = 0; i < list_醫囑資料_remove.Count; i++)
             {
                 list_醫囑資料.RemoveByGUID(list_醫囑資料_remove[i]);
@@ -987,7 +990,7 @@ namespace 調劑台管理系統
             string 藥品碼 = "";
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.藥袋條碼, BarCode, false);
+            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -1382,6 +1385,11 @@ namespace 調劑台管理系統
                     this.sqL_DataGridView_領藥台_01_領藥內容.dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                     this.sqL_DataGridView_領藥台_01_領藥內容.dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
                 }
+                else if (狀態 == enum_取藥堆疊母資料_狀態.無儲位.GetEnumName())
+                {
+                    this.sqL_DataGridView_領藥台_01_領藥內容.dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Pink;
+                    this.sqL_DataGridView_領藥台_01_領藥內容.dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
+                }
             }
         }
         private void TextBox_領藥台_01_帳號_KeyPress(object sender, KeyPressEventArgs e)
@@ -1588,7 +1596,7 @@ namespace 調劑台管理系統
             else if (MySerialPort_Scanner02.ReadByte() != null)
             {
                 string text = this.MySerialPort_Scanner02.ReadString();
-
+                if (text == null) return;
                 if (text.Length <= 2 || text.Length > 30) return;
                 if (text.Substring(text.Length - 2, 2) != "\r\n") return;
                 this.MySerialPort_Scanner02.ClearReadByte();
@@ -1688,14 +1696,9 @@ namespace 調劑台管理系統
             }
             else
             {
-                if (MySerialPort_Scanner02.ReadByte() != null)
+                if (!PLC_Device_Scanner02_讀取藥單資料.Bool)
                 {
-                    string text = this.MySerialPort_Scanner02.ReadString();
-                    this.MySerialPort_Scanner02.ClearReadByte();
-                    if (text.Length <= 2 || text.Length > 30) return;
-                    if (text.Substring(text.Length - 2, 2) != "\r\n") return;
-                    text = text.Replace("\r\n", "");
-                    this.領藥台_02_醫囑條碼 = text;
+                    PLC_Device_Scanner02_讀取藥單資料.Bool = true;
                     cnt++;
                     return;
                 }
@@ -1722,7 +1725,11 @@ namespace 調劑台管理系統
             }
             else
             {
-                cnt++;
+                if (!PLC_Device_Scanner02_讀取藥單資料.Bool)
+                {
+                    cnt++;
+                    return;
+                }
             }
         }
         void cnt_Program_領藥台_02_檢查輸入資料_檢查醫囑資料及寫入(ref int cnt)
@@ -1971,6 +1978,7 @@ namespace 調劑台管理系統
             list_取藥堆疊資料_buf = (from value in list_取藥堆疊資料
                                where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName()
                                where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName()
+                               where value[(int)enum_取藥堆疊母資料.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.無儲位.GetEnumName()
                                select value
                                 ).ToList();
 
@@ -2024,7 +2032,7 @@ namespace 調劑台管理系統
 
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.藥袋條碼, BarCode, false);
+            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -2101,7 +2109,7 @@ namespace 調劑台管理系統
             string 藥品碼 = "";
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.藥袋條碼, BarCode, false);
+            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -2493,6 +2501,11 @@ namespace 調劑台管理系統
                 else if (狀態 == enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName())
                 {
                     this.sqL_DataGridView_領藥台_02_領藥內容.dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                    this.sqL_DataGridView_領藥台_02_領藥內容.dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else if (狀態 == enum_取藥堆疊母資料_狀態.無儲位.GetEnumName())
+                {
+                    this.sqL_DataGridView_領藥台_02_領藥內容.dataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Pink;
                     this.sqL_DataGridView_領藥台_02_領藥內容.dataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
                 }
             }

@@ -1,6 +1,6 @@
 {
   "DB_Basic": {
-    "DataBaseName": "DPS01",
+    "DataBaseName": "test01",
     "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
@@ -34,5 +34,6 @@
     "Port": 3306,
     "MySqlSslMode": 0,
     "TableName": ""
-  }
+  },
+  "OrderApiURL": ""
 }

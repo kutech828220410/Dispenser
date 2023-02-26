@@ -14,6 +14,42 @@ using System.Reflection;//記得取用 Assembly繼承
 
 namespace 調劑台管理系統
 {
+    [Serializable]
+    public class OrderClass
+    {
+        private string _藥局代碼 = "";
+        private string _藥品碼 = "";
+        private string _藥品名稱 = "";
+        private string _包裝單位 = "";
+        private string _交易量 = "";
+        private string _病歷號 = "";
+        private string _開方時間 = "";
+        private string pRI_KEY = "";
+        private string _藥袋條碼 = "";
+        private string _劑量 = "";
+        private string _頻次 = "";
+        private string _途徑 = "";
+        private string _天數 = "";
+        private string _處方序號 = "";
+        private string _病人姓名 = "";
+
+        public string 藥局代碼 { get => _藥局代碼; set => _藥局代碼 = value; }
+        public string 藥品碼 { get => _藥品碼; set => _藥品碼 = value; }
+        public string 藥品名稱 { get => _藥品名稱; set => _藥品名稱 = value; }
+        public string 包裝單位 { get => _包裝單位; set => _包裝單位 = value; }
+        public string 交易量 { get => _交易量; set => _交易量 = value; }
+        public string 病歷號 { get => _病歷號; set => _病歷號 = value; }
+        public string 開方時間 { get => _開方時間; set => _開方時間 = value; }
+        public string PRI_KEY { get => pRI_KEY; set => pRI_KEY = value; }
+        public string 藥袋條碼 { get => _藥袋條碼; set => _藥袋條碼 = value; }
+        public string 劑量 { get => _劑量; set => _劑量 = value; }
+        public string 頻次 { get => _頻次; set => _頻次 = value; }
+        public string 途徑 { get => _途徑; set => _途徑 = value; }
+        public string 天數 { get => _天數; set => _天數 = value; }
+        public string 處方序號 { get => _處方序號; set => _處方序號 = value; }
+        public string 病人姓名 { get => _病人姓名; set => _病人姓名 = value; }
+    }
+
     public enum enum_醫囑資料_狀態
     {
         未過帳,
@@ -71,6 +107,9 @@ namespace 調劑台管理系統
         PLC_Device PLC_Device_醫囑資料_檢查刷條碼 = new PLC_Device("");
         PLC_Device PLC_Device_醫囑資料_檢查刷條碼_OK = new PLC_Device("");
         MyTimer MyTimer_醫囑資料_檢查刷條碼_結束延遲 = new MyTimer();
+        MyTimer MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲 = new MyTimer();
+        bool flag_醫囑資料_檢查刷條碼_01 = false;
+        bool flag_醫囑資料_檢查刷條碼_02 = false;
         int cnt_Program_醫囑資料_檢查刷條碼 = 65534;
         void sub_Program_醫囑資料_檢查刷條碼()
         {
@@ -87,7 +126,9 @@ namespace 調劑台管理系統
             if (cnt_Program_醫囑資料_檢查刷條碼 == 65535) cnt_Program_醫囑資料_檢查刷條碼 = 1;
             if (cnt_Program_醫囑資料_檢查刷條碼 == 1) cnt_Program_醫囑資料_檢查刷條碼_檢查按下(ref cnt_Program_醫囑資料_檢查刷條碼);
             if (cnt_Program_醫囑資料_檢查刷條碼 == 2) cnt_Program_醫囑資料_檢查刷條碼_初始化(ref cnt_Program_醫囑資料_檢查刷條碼);
-            if (cnt_Program_醫囑資料_檢查刷條碼 == 3) cnt_Program_醫囑資料_檢查刷條碼 = 65500;
+            if (cnt_Program_醫囑資料_檢查刷條碼 == 3) cnt_Program_醫囑資料_檢查刷條碼_等待延遲(ref cnt_Program_醫囑資料_檢查刷條碼);
+            if (cnt_Program_醫囑資料_檢查刷條碼 == 4) cnt_Program_醫囑資料_檢查刷條碼_搜尋醫囑(ref cnt_Program_醫囑資料_檢查刷條碼);
+            if (cnt_Program_醫囑資料_檢查刷條碼 == 5) cnt_Program_醫囑資料_檢查刷條碼 = 65500;
             if (cnt_Program_醫囑資料_檢查刷條碼 > 1) cnt_Program_醫囑資料_檢查刷條碼_檢查放開(ref cnt_Program_醫囑資料_檢查刷條碼);
 
             if (cnt_Program_醫囑資料_檢查刷條碼 == 65500)
@@ -110,37 +151,67 @@ namespace 調劑台管理系統
         void cnt_Program_醫囑資料_檢查刷條碼_初始化(ref int cnt)
         {
             string 一維碼 = "";
+            flag_醫囑資料_檢查刷條碼_01 = false;
+            flag_醫囑資料_檢查刷條碼_02 = false;
+
             if (MySerialPort_Scanner01.ReadByte() != null)
             {
+                flag_醫囑資料_檢查刷條碼_01 = true;
+                MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.TickStop();
+                MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.StartTickTime(200);
+                cnt++;
+                return;
+            }
+            if (MySerialPort_Scanner02.ReadByte() != null)
+            {
+                flag_醫囑資料_檢查刷條碼_02 = true;
+                MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.TickStop();
+                MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.StartTickTime(200);
+                cnt++;
+                return;
+            }
+
+
+        }
+        void cnt_Program_醫囑資料_檢查刷條碼_等待延遲(ref int cnt)
+        {
+            if(MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.IsTimeOut())
+            {
+                cnt++;
+            }
+        
+        }
+        void cnt_Program_醫囑資料_檢查刷條碼_搜尋醫囑(ref int cnt)
+        {
+            string 一維碼 = "";
+  
+
+            if (flag_醫囑資料_檢查刷條碼_01)
+            {
                 string text = this.MySerialPort_Scanner01.ReadString();
+                if (text.StringIsEmpty()) return;
                 this.MySerialPort_Scanner01.ClearReadByte();
-                if (text.Length <= 2 || text.Length > 30) return;
+                if (text.Length <= 2 || text.Length > 200) return;
                 if (text.Substring(text.Length - 2, 2) != "\r\n") return;
                 text = text.Replace("\r\n", "");
                 一維碼 = text;
             }
-            if (MySerialPort_Scanner02.ReadByte() != null)
+            if (flag_醫囑資料_檢查刷條碼_02)
             {
+                
                 string text = this.MySerialPort_Scanner02.ReadString();
+                if (text.StringIsEmpty()) return;
                 this.MySerialPort_Scanner02.ClearReadByte();
-                if (text.Length <= 2 || text.Length > 30) return;
+                if (text.Length <= 2 || text.Length > 200) return;
                 if (text.Substring(text.Length - 2, 2) != "\r\n") return;
                 text = text.Replace("\r\n", "");
                 一維碼 = text;
             }
             if (一維碼.StringIsEmpty()) return;
-            List<object[]> list_value = this.sqL_DataGridView_醫囑資料.SQL_GetRowsByBetween((int)enum_醫囑資料.開方日期, dateTimePicke_醫囑資料_開方日期_起始, dateTimePicke_醫囑資料_開方日期_結束, false);
-            list_value = list_value.GetRows((int)enum_醫囑資料.藥袋條碼, 一維碼);
-            if(list_value.Count == 0)
-            {
-                MyMessageBox.ShowDialog($"未搜尋到'{一維碼}'此條碼資料!,請確定開方日期範圍是否設定正確‧");
-            }
+            List<object[]> list_value = this.Function_醫囑資料_API呼叫(一維碼);
             this.sqL_DataGridView_醫囑資料.RefreshGrid(list_value);
             cnt++;
-
         }
-
-
 
 
 
@@ -149,7 +220,50 @@ namespace 調劑台管理系統
         #endregion
 
         #region Function
+        private List<object[]> Function_醫囑資料_API呼叫(string barcode)
+        {
+            List<OrderClass> orderClasses = this.Function_醫囑資料_API呼叫(dBConfigClass.OrderApiURL, barcode);
+            List<object[]> list_value = new List<object[]>();
+            MyTimer myTimer = new MyTimer();
+            myTimer.StartTickTime(50000);
+            for (int i = 0; i < orderClasses.Count; i++)
+            {
+                string pri_key = orderClasses[i].PRI_KEY;
+                List<object[]> list_value_buf = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.PRI_KEY, pri_key, false);
+                list_value.LockAdd(list_value_buf);
+            }
+            Console.Write($"醫囑資料搜尋共<{list_value.Count}>筆,耗時{myTimer.ToString()}ms\n");
+            return list_value;
+        }
+        private List<OrderClass> Function_醫囑資料_API呼叫(string url , string barcode)
+        {
+            List<OrderClass> orderClasses = new List<OrderClass>();
+            MyTimer myTimer = new MyTimer();
+            myTimer.StartTickTime(50000);
+            string apitext = $"{url}{barcode}";
+            Console.Write($"Call api : {apitext}\n");
+            string jsonString = Basic.Net.WEBApiGet(apitext);
+            Console.Write($"{jsonString}\n");
+            Console.Write($"耗時 {myTimer.ToString()}ms\n");
+            if (jsonString.StringIsEmpty())
+            {
+                MyMessageBox.ShowDialog($"呼叫串接資料失敗!請檢查網路連線...");
+                return orderClasses;
+            }
+          
+            orderClasses = jsonString.JsonDeserializet<List<OrderClass>>();
+            if (orderClasses == null)
+            {
+                MyMessageBox.ShowDialog($"串接資料傳回格式錯誤!");
+                orderClasses = new List<OrderClass>();
+            }
+            if (orderClasses.Count == 0)
+            {
 
+            }
+
+            return orderClasses;
+        }
         #endregion
 
         #region Event
@@ -345,23 +459,9 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
-            MyTimer myTimer = new MyTimer();
-            myTimer.StartTickTime(50000);
-            string 藥袋條碼 = this.rJ_TextBox_醫囑資料_搜尋條件_藥袋條碼.Texts;
-            if (藥袋條碼.StringIsEmpty()) return;
-
-            Console.Write($"開始搜尋條碼資料...\n");
-            List<object[]> list_value = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.藥袋條碼, 藥袋條碼, false);
-            Console.Write($"搜尋條碼資料,耗時{myTimer.ToString()}ms\n");
-
-            list_value = list_value.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTimePicke_醫囑資料_開方日期_起始, dateTimePicke_醫囑資料_開方日期_結束);
-            if (list_value.Count == 0)
-            {
-                MyMessageBox.ShowDialog($"未搜尋到'{藥袋條碼}'此條碼資料!,請確定開方日期範圍是否設定正確‧");
-                return;
-            }
-            this.sqL_DataGridView_醫囑資料.RefreshGrid(list_value);
-            Console.Write($"更新條碼資料搜尋結果,耗時{myTimer.ToString()}ms\n");
+            List<object[]> list_value = this.Function_醫囑資料_API呼叫(this.rJ_TextBox_醫囑資料_搜尋條件_藥袋條碼.Texts);
+          
+  
         }
         #endregion
 

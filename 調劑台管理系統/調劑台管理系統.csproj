@@ -135,6 +135,7 @@
     <Reference Include="System">
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -277,9 +278,7 @@
     <Compile Include="Program_儲位管理_Pannel35.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Program_醫囑資料.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Program_醫囑資料.cs" />
     <Compile Include="UserControl\Pannel_Locker.cs">
       <SubType>UserControl</SubType>
     </Compile>

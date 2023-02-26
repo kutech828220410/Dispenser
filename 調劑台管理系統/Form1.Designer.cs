@@ -755,6 +755,7 @@
             this.plC_NumBox2 = new MyUI.PLC_NumBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.plC_Button_同藥碼全亮 = new MyUI.PLC_Button();
             this.plC_Button_工程模式_全部開鎖 = new MyUI.PLC_Button();
             this.plC_CheckBox_QRcode_Mode = new MyUI.PLC_CheckBox();
             this.plC_CheckBox_自動過帳 = new MyUI.PLC_CheckBox();
@@ -1273,7 +1274,7 @@
             // saveFileDialog_SaveExcel
             // 
             this.saveFileDialog_SaveExcel.DefaultExt = "txt";
-            this.saveFileDialog_SaveExcel.Filter = "txt File (*.txt)|*.txt;";
+            this.saveFileDialog_SaveExcel.Filter = "Excel File (*.xls)|*.xls|txt File (*.txt)|*.txt;";
             // 
             // openFileDialog_LoadExcel
             // 
@@ -13336,7 +13337,7 @@
             // 
             // sqL_DataGridView_儲位管理_EPD266_儲位資料
             // 
-            this.sqL_DataGridView_儲位管理_EPD266_儲位資料.AutoSelectToDeep = true;
+            this.sqL_DataGridView_儲位管理_EPD266_儲位資料.AutoSelectToDeep = false;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.backColor = System.Drawing.Color.LightBlue;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.BorderColor = System.Drawing.Color.LightBlue;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.BorderRadius = 0;
@@ -19384,6 +19385,7 @@
             // 
             this.tabPage1.AutoScroll = true;
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.plC_Button_同藥碼全亮);
             this.tabPage1.Controls.Add(this.plC_Button_工程模式_全部開鎖);
             this.tabPage1.Controls.Add(this.plC_CheckBox_QRcode_Mode);
             this.tabPage1.Controls.Add(this.plC_CheckBox_自動過帳);
@@ -19401,6 +19403,41 @@
             this.tabPage1.Size = new System.Drawing.Size(1648, 862);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "鎖控設定";
+            // 
+            // plC_Button_同藥碼全亮
+            // 
+            this.plC_Button_同藥碼全亮.Bool = false;
+            this.plC_Button_同藥碼全亮.but_press = false;
+            this.plC_Button_同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_同藥碼全亮.Location = new System.Drawing.Point(1019, 655);
+            this.plC_Button_同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_同藥碼全亮.Name = "plC_Button_同藥碼全亮";
+            this.plC_Button_同藥碼全亮.OFF_文字內容 = "同藥碼全亮";
+            this.plC_Button_同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_同藥碼全亮.ON_文字內容 = "同藥碼全亮";
+            this.plC_Button_同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_同藥碼全亮.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_同藥碼全亮.TabIndex = 123;
+            this.plC_Button_同藥碼全亮.事件驅動 = false;
+            this.plC_Button_同藥碼全亮.字型鎖住 = false;
+            this.plC_Button_同藥碼全亮.寫入元件位置 = "S4061";
+            this.plC_Button_同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_同藥碼全亮.文字鎖住 = false;
+            this.plC_Button_同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態OFF圖片")));
+            this.plC_Button_同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態ON圖片")));
+            this.plC_Button_同藥碼全亮.讀取位元反向 = false;
+            this.plC_Button_同藥碼全亮.讀取元件位置 = "S4061";
+            this.plC_Button_同藥碼全亮.讀寫鎖住 = false;
+            this.plC_Button_同藥碼全亮.起始狀態 = false;
+            this.plC_Button_同藥碼全亮.音效 = true;
+            this.plC_Button_同藥碼全亮.顯示 = false;
+            this.plC_Button_同藥碼全亮.顯示狀態 = false;
             // 
             // plC_Button_工程模式_全部開鎖
             // 
@@ -19468,12 +19505,12 @@
             this.plC_CheckBox_自動過帳.TabIndex = 124;
             this.plC_CheckBox_自動過帳.Text = "自動過帳";
             this.plC_CheckBox_自動過帳.UseVisualStyleBackColor = true;
-            this.plC_CheckBox_自動過帳.寫入元件位置 = "S1005";
+            this.plC_CheckBox_自動過帳.寫入元件位置 = "S5015";
             this.plC_CheckBox_自動過帳.文字內容 = "自動過帳";
             this.plC_CheckBox_自動過帳.文字字體 = new System.Drawing.Font("新細明體", 9F);
             this.plC_CheckBox_自動過帳.文字顏色 = System.Drawing.Color.Black;
             this.plC_CheckBox_自動過帳.致能讀取位置 = "S4077";
-            this.plC_CheckBox_自動過帳.讀取元件位置 = "S1005";
+            this.plC_CheckBox_自動過帳.讀取元件位置 = "S5015";
             this.plC_CheckBox_自動過帳.讀寫鎖住 = false;
             this.plC_CheckBox_自動過帳.音效 = true;
             // 
@@ -26444,6 +26481,7 @@
         private System.Windows.Forms.Label label4;
         private MyUI.PLC_RJ_ChechBox plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_管制抽屜;
         private MyUI.PLC_Button plC_Button_工程模式_全部開鎖;
+        private MyUI.PLC_Button plC_Button_同藥碼全亮;
     }
 }
 

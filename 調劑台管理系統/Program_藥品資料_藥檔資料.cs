@@ -61,7 +61,6 @@ namespace 調劑台管理系統
         包裝單位,
         庫存,
         安全庫存,
-        圖片網址,
         警訊藥品,
     }
     public enum enum_藥品資料_藥檔資料_匯出
@@ -76,7 +75,6 @@ namespace 調劑台管理系統
         包裝單位,
         庫存,
         安全庫存,
-        圖片網址,
         警訊藥品,
     }
     public enum enum_藥品群組
@@ -393,8 +391,18 @@ namespace 調劑台管理系統
                 DataTable datatable = new DataTable();
                 datatable = sqL_DataGridView_藥品資料_藥檔資料.GetDataTable();
                 datatable = datatable.ReorderTable(new enum_藥品資料_藥檔資料_匯出());
-                CSVHelper.SaveFile(datatable, saveFileDialog_SaveExcel.FileName);
-                MyMessageBox.ShowDialog("匯出完成!");
+                string Extension = System.IO.Path.GetExtension(this.saveFileDialog_SaveExcel.FileName);
+                if (Extension == ".txt")
+                {
+                    CSVHelper.SaveFile(datatable, this.saveFileDialog_SaveExcel.FileName);
+                    MyMessageBox.ShowDialog("匯出完成!");
+                }
+                else if (Extension == ".xls")
+                {
+                    MyOffice.ExcelClass.NPOI_SaveFile(datatable, this.saveFileDialog_SaveExcel.FileName);
+                    MyMessageBox.ShowDialog("匯出完成!");
+                }
+       
             }
         }
         private void Function_藥品資料_藥檔資料_匯入()

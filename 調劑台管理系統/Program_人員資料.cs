@@ -62,6 +62,8 @@ namespace 調劑台管理系統
             登錄資料,
             [Description("S39014")]
             刪除選取資料,
+            [Description("M8000")]
+            自動分配未配置顏色人員,
         }
 
         private List<PLC_Device> List_PLC_Device_權限管理 = new List<PLC_Device>();
@@ -415,6 +417,8 @@ namespace 調劑台管理系統
                     {
                         object[] value_SQL = list_SQL_Value_buf[0];
                         value_load[(int)enum_人員資料.GUID] = value_SQL[(int)enum_人員資料.GUID];
+                        value_load[(int)enum_人員資料.顏色] = value_SQL[(int)enum_人員資料.顏色];
+                        value_load[(int)enum_人員資料.權限等級] = value_SQL[(int)enum_人員資料.權限等級];
                         bool flag_Equal = value_load.IsEqual(value_SQL);
                         if (!flag_Equal)
                         {
@@ -637,6 +641,35 @@ namespace 調劑台管理系統
                     else if (dialog_ContextMenuStrip.Value == ContextMenuStrip_人員資料.登錄資料.GetEnumName())
                     {
                         Function_人員資料_登錄資料();
+                    }
+                    else if (dialog_ContextMenuStrip.Value == ContextMenuStrip_人員資料.自動分配未配置顏色人員.GetEnumName())
+                    {
+                        int index = 0;
+                        DialogResult Result = MyMessageBox.ShowDialog("是否自動分配未配置顏色人員?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel);
+                        if (Result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            List<object[]> list_value = this.sqL_DataGridView_人員資料.SQL_GetAllRows(false);
+
+                            for(int i = 0; i < list_value.Count; i++)
+                            {
+                                string color_str = list_value[i][(int)enum_人員資料.顏色].ObjectToString();
+                                if(color_str.ToColor() == Color.Black || color_str.StringIsEmpty())
+                                {
+                                    if (index > 6) index = 0;
+                                    if (index == 0) list_value[i][(int)enum_人員資料.顏色] = Color.Red.ToColorString();
+                                    if (index == 1) list_value[i][(int)enum_人員資料.顏色] = Color.Orange.ToColorString();
+                                    if (index == 2) list_value[i][(int)enum_人員資料.顏色] = Color.Yellow.ToColorString();
+                                    if (index == 3) list_value[i][(int)enum_人員資料.顏色] = Color.Linen.ToColorString();
+                                    if (index == 4) list_value[i][(int)enum_人員資料.顏色] = Color.Blue.ToColorString();
+                                    if (index == 5) list_value[i][(int)enum_人員資料.顏色] = Color.Pink.ToColorString();
+                                    if (index == 6) list_value[i][(int)enum_人員資料.顏色] = Color.PeachPuff.ToColorString();
+                                    index++;
+
+
+                                }
+                            }
+                            this.sqL_DataGridView_人員資料.SQL_ReplaceExtra(list_value, true);
+                        }
                     }
                 }
             }

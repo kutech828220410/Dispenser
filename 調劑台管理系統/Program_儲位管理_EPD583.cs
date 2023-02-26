@@ -436,7 +436,7 @@ namespace 調劑台管理系統
                 Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
                 taskList.Add(Task.Run(() =>
                 {
-               
+                  
                     if (drawer != null)
                     {
                         if (!this.drawerUI_EPD_583.Set_Pannel_LED_UDP(drawer, color))
@@ -759,6 +759,7 @@ namespace 調劑台管理系統
                 string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
                 boxes[0].效期庫存覆蓋(效期, 批號, 數量);
                 int 修正庫存 = boxes[0].取得庫存();
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
                 this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
 
@@ -831,6 +832,7 @@ namespace 調劑台管理系統
                 string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
                 boxes[0].效期庫存覆蓋(效期, 批號, 數量);
                 int 修正庫存 = boxes[0].取得庫存();
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
 
                 string GUID = Guid.NewGuid().ToString();
@@ -898,6 +900,7 @@ namespace 調劑台管理系統
                 }
 
                 boxes[0].修正批號(效期, 新批號);
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
 
@@ -958,7 +961,11 @@ namespace 調劑台管理系統
             List<int> rows = new List<int>();
             int index = this.epD_583_Pannel.GetSelectBoxes(ref cols, ref rows);
             if (index == 0) return;
-            this.drawerUI_EPD_583.Set_Drawer_LED_UDP(epD_583_Pannel.CurrentDrawer, cols.ToArray(), rows.ToArray(), color, true);
+            epD_583_Pannel.CurrentDrawer.LED_Bytes = DrawerUI_EPD_583.Get_Empty_LEDBytes();
+            epD_583_Pannel.CurrentDrawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(epD_583_Pannel.CurrentDrawer, this.epD_583_Pannel.GetSelectBoxes(), color);
+            epD_583_Pannel.CurrentDrawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(epD_583_Pannel.CurrentDrawer, color);
+            this.drawerUI_EPD_583.Set_LED_UDP(epD_583_Pannel.CurrentDrawer);
+
 
         }
         private void PlC_RJ_Button_儲位管理_EPD583_儲位內容_藥品碼_搜尋_MouseDownEvent(MouseEventArgs mevent)

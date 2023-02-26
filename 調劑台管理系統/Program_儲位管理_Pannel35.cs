@@ -72,12 +72,15 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_Pannel35_上傳至面板.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_上傳至面板_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_Pannel35_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_儲位初始化_MouseDownEvent1;
             this.plC_RJ_Button_儲位管理_Pannel35_開鎖.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_開鎖_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_新增效期.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_新增效期_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正庫存.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正庫存_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正批號.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正批號_MouseDownEvent;
 
             this.plC_RJ_Button_儲位管理_Pannel35_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_Pannel35_儲位初始化_MouseDownEvent;
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_Pannel35);
         }
 
-  
+    
 
         private void Program_儲位管理_Pannel35()
         {
@@ -644,6 +647,283 @@ namespace 調劑台管理系統
             {
 
             }
+        }
+        private void PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正批號_MouseDownEvent(MouseEventArgs mevent)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null)
+                {
+                    MyMessageBox.ShowDialog("未選擇儲位!");
+                    return;
+                }
+                object[] value = sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.GetRowValues();
+                if (value == null)
+                {
+                    MyMessageBox.ShowDialog("未選擇效期!");
+                    return;
+                }
+                string 效期 = value[(int)enum_儲位管理_Pannel35_效期及庫存.效期].ObjectToString();
+                string 舊批號 = value[(int)enum_儲位管理_Pannel35_效期及庫存.批號].ObjectToString();
+                string 新批號 = "";
+
+                Dialog_輸入批號 dialog_輸入批號 = new Dialog_輸入批號();
+                if (dialog_輸入批號.ShowDialog() == DialogResult.Yes)
+                {
+                    新批號 = dialog_輸入批號.Value;
+                }
+                else
+                {
+                    return;
+                }
+
+
+                storage.修正批號(效期, 新批號);
+                this.List_Pannel35_本地資料.Add_NewStorage(storage);
+                this.storageUI_WT32.SQL_ReplaceStorage(storage);
+
+
+                string GUID = Guid.NewGuid().ToString();
+                string 動作 = enum_交易記錄查詢動作.效期庫存異動.GetEnumName();
+                string 藥品名稱 = storage.Name;
+                string 藥袋序號 = "";
+                string 交易量 = (0).ToString();
+                string 結存量 = 0.ToString();
+                string 操作人 = this.登入者名稱;
+                string 病人姓名 = "";
+                string 病歷號 = "";
+                string 操作時間 = DateTime.Now.ToDateTimeString_6();
+                string 開方時間 = DateTime.Now.ToDateTimeString_6();
+                string 備註 = $"效期[{效期}]新批號[{新批號}]";
+
+                object[] value_trading = new object[new enum_交易記錄查詢資料().GetLength()];
+                value_trading[(int)enum_交易記錄查詢資料.GUID] = GUID;
+                value_trading[(int)enum_交易記錄查詢資料.動作] = 動作;
+                value_trading[(int)enum_交易記錄查詢資料.藥品碼] = "";
+                value_trading[(int)enum_交易記錄查詢資料.藥品名稱] = 藥品名稱;
+                value_trading[(int)enum_交易記錄查詢資料.藥袋序號] = 藥袋序號;
+                value_trading[(int)enum_交易記錄查詢資料.庫存量] = 0.ToString();
+                value_trading[(int)enum_交易記錄查詢資料.交易量] = 交易量;
+                value_trading[(int)enum_交易記錄查詢資料.結存量] = 結存量;
+                value_trading[(int)enum_交易記錄查詢資料.操作人] = 操作人;
+                value_trading[(int)enum_交易記錄查詢資料.病人姓名] = 病人姓名;
+                value_trading[(int)enum_交易記錄查詢資料.病歷號] = 病歷號;
+                value_trading[(int)enum_交易記錄查詢資料.操作時間] = 操作時間;
+                value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
+                value_trading[(int)enum_交易記錄查詢資料.備註] = 備註;
+
+                this.sqL_DataGridView_交易記錄查詢.SQL_AddRow(value_trading, false);
+
+                List<object[]> list_value = this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.GetRows((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, false);
+                if (list_value.Count == 0) return;
+                list_value[0][(int)enum_儲位管理_Pannel35_儲位資料.庫存] = storage.取得庫存();
+                this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.Replace((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, list_value[0], true);
+
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.ClearGrid();
+                list_value = new List<object[]>();
+                for (int i = 0; i < storage.List_Validity_period.Count; i++)
+                {
+                    value = new object[new enum_儲位管理_Pannel35_效期及庫存().GetLength()];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.效期] = storage.List_Validity_period[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.批號] = storage.List_Lot_number[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.庫存] = storage.List_Inventory[i];
+                    list_value.Add(value);
+                }
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.RefreshGrid(list_value);
+                this.Function_設定雲端資料更新();
+            }));
+        }
+
+        private void PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正庫存_MouseDownEvent(MouseEventArgs mevent)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null)
+                {
+                    MyMessageBox.ShowDialog("未選擇儲位!");
+                    return;
+                }
+                object[] value = sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.GetRowValues();
+                if (value == null)
+                {
+                    MyMessageBox.ShowDialog("未選擇效期!");
+                    return;
+                }
+                string 效期 = value[(int)enum_儲位管理_Pannel35_效期及庫存.效期].ObjectToString();
+                string 批號 = value[(int)enum_儲位管理_Pannel35_效期及庫存.批號].ObjectToString();
+                string 數量 = "";
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                if (dialog_NumPannel.ShowDialog() == DialogResult.Yes)
+                {
+                    數量 = dialog_NumPannel.Value.ToString();
+                }
+                else
+                {
+                    return;
+                }
+
+
+                int 原有庫存 = storage.取得庫存();
+                string 藥品碼 = storage.Code;
+                藥品碼 = Function_藥品碼檢查(藥品碼);
+                string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
+                storage.效期庫存覆蓋(效期, 數量);
+                int 修正庫存 = storage.取得庫存();
+                this.storageUI_WT32.SQL_ReplaceStorage(storage);
+                this.List_Pannel35_本地資料.Add_NewStorage(storage);
+
+
+                string GUID = Guid.NewGuid().ToString();
+                string 動作 = enum_交易記錄查詢動作.效期庫存異動.GetEnumName();
+                string 藥品名稱 = storage.Name;
+                string 藥袋序號 = "";
+                string 交易量 = (修正庫存 - 原有庫存).ToString();
+                string 結存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
+                string 操作人 = this.登入者名稱;
+                string 病人姓名 = "";
+                string 病歷號 = "";
+                string 操作時間 = DateTime.Now.ToDateTimeString_6();
+                string 開方時間 = DateTime.Now.ToDateTimeString_6();
+                string 備註 = $"效期[{效期}],批號[{批號}]";
+                object[] value_trading = new object[new enum_交易記錄查詢資料().GetLength()];
+                value_trading[(int)enum_交易記錄查詢資料.GUID] = GUID;
+                value_trading[(int)enum_交易記錄查詢資料.動作] = 動作;
+                value_trading[(int)enum_交易記錄查詢資料.藥品碼] = 藥品碼;
+                value_trading[(int)enum_交易記錄查詢資料.藥品名稱] = 藥品名稱;
+                value_trading[(int)enum_交易記錄查詢資料.藥袋序號] = 藥袋序號;
+                value_trading[(int)enum_交易記錄查詢資料.庫存量] = 庫存量;
+                value_trading[(int)enum_交易記錄查詢資料.交易量] = 交易量;
+                value_trading[(int)enum_交易記錄查詢資料.結存量] = 結存量;
+                value_trading[(int)enum_交易記錄查詢資料.操作人] = 操作人;
+                value_trading[(int)enum_交易記錄查詢資料.病人姓名] = 病人姓名;
+                value_trading[(int)enum_交易記錄查詢資料.病歷號] = 病歷號;
+                value_trading[(int)enum_交易記錄查詢資料.操作時間] = 操作時間;
+                value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
+                value_trading[(int)enum_交易記錄查詢資料.備註] = 備註;
+
+                this.sqL_DataGridView_交易記錄查詢.SQL_AddRow(value_trading, false);
+
+                List<object[]> list_value = this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.GetRows((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, false);
+                if (list_value.Count == 0) return;
+                list_value[0][(int)enum_儲位管理_Pannel35_儲位資料.庫存] = storage.取得庫存();
+                this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.Replace((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, list_value[0], true);
+
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.ClearGrid();
+                list_value = new List<object[]>();
+                for (int i = 0; i < storage.List_Validity_period.Count; i++)
+                {
+                    value = new object[new enum_儲位管理_Pannel35_效期及庫存().GetLength()];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.效期] = storage.List_Validity_period[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.批號] = storage.List_Lot_number[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.庫存] = storage.List_Inventory[i];
+                    list_value.Add(value);
+                }
+
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.RefreshGrid(list_value);
+                this.Function_設定雲端資料更新();
+            }));
+        }
+
+        private void PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_新增效期_MouseDownEvent(MouseEventArgs mevent)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null)
+                {
+                    MyMessageBox.ShowDialog("未選擇儲位!");
+                    return;
+                }
+                string 效期 = "";
+                string 批號 = "";
+                string 數量 = "";
+                Dialog_DateTime dialog_DateTime = new Dialog_DateTime();
+                if (dialog_DateTime.ShowDialog() == DialogResult.Yes)
+                {
+                    效期 = dialog_DateTime.Value.ToDateString();
+                }
+                else
+                {
+                    return;
+                }
+                Dialog_輸入批號 dialog_輸入批號 = new Dialog_輸入批號();
+                if (dialog_輸入批號.ShowDialog() == DialogResult.Yes)
+                {
+                    批號 = dialog_輸入批號.Value;
+                }
+                else
+                {
+                    return;
+                }
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                if (dialog_NumPannel.ShowDialog() == DialogResult.Yes)
+                {
+                    數量 = dialog_NumPannel.Value.ToString();
+                }
+                else
+                {
+                    return;
+                }
+
+                int 原有庫存 = storage.取得庫存();
+                string 藥品碼 = storage.Code;
+                藥品碼 = Function_藥品碼檢查(藥品碼);
+                string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
+                storage.效期庫存覆蓋(效期, 批號, 數量);
+                int 修正庫存 = storage.取得庫存();
+                this.storageUI_WT32.SQL_ReplaceStorage(storage);
+
+                string GUID = Guid.NewGuid().ToString();
+                string 動作 = enum_交易記錄查詢動作.效期庫存異動.GetEnumName();
+                string 藥品名稱 = storage.Name;
+                string 藥袋序號 = "";
+                string 交易量 = (修正庫存 - 原有庫存).ToString();
+                string 結存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
+                string 操作人 = this.登入者名稱;
+                string 病人姓名 = "";
+                string 病歷號 = "";
+                string 操作時間 = DateTime.Now.ToDateTimeString_6();
+                string 開方時間 = DateTime.Now.ToDateTimeString_6();
+                string 備註 = $"效期[{效期}],批號[{批號}]";
+
+                object[] value_trading = new object[new enum_交易記錄查詢資料().GetLength()];
+                value_trading[(int)enum_交易記錄查詢資料.GUID] = GUID;
+                value_trading[(int)enum_交易記錄查詢資料.動作] = 動作;
+                value_trading[(int)enum_交易記錄查詢資料.藥品碼] = 藥品碼;
+                value_trading[(int)enum_交易記錄查詢資料.藥品名稱] = 藥品名稱;
+                value_trading[(int)enum_交易記錄查詢資料.藥袋序號] = 藥袋序號;
+                value_trading[(int)enum_交易記錄查詢資料.庫存量] = 庫存量;
+                value_trading[(int)enum_交易記錄查詢資料.交易量] = 交易量;
+                value_trading[(int)enum_交易記錄查詢資料.結存量] = 結存量;
+                value_trading[(int)enum_交易記錄查詢資料.操作人] = 操作人;
+                value_trading[(int)enum_交易記錄查詢資料.病人姓名] = 病人姓名;
+                value_trading[(int)enum_交易記錄查詢資料.病歷號] = 病歷號;
+                value_trading[(int)enum_交易記錄查詢資料.操作時間] = 操作時間;
+                value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
+                value_trading[(int)enum_交易記錄查詢資料.備註] = 備註;
+
+                this.sqL_DataGridView_交易記錄查詢.SQL_AddRow(value_trading, false);
+
+                List<object[]> list_value = this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.GetRows((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, false);
+                if (list_value.Count == 0) return;
+                list_value[0][(int)enum_儲位管理_Pannel35_儲位資料.庫存] = storage.取得庫存();
+                this.sqL_DataGridView_儲位管理_Pannel35_儲位資料.Replace((int)enum_儲位管理_Pannel35_儲位資料.IP, storage.IP, list_value[0], true);
+
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.ClearGrid();
+                list_value = new List<object[]>();
+                for (int i = 0; i < storage.List_Validity_period.Count; i++)
+                {
+                    object[] value = new object[new enum_儲位管理_Pannel35_效期及庫存().GetLength()];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.效期] = storage.List_Validity_period[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.批號] = storage.List_Lot_number[i];
+                    value[(int)enum_儲位管理_Pannel35_效期及庫存.庫存] = storage.List_Inventory[i];
+                    list_value.Add(value);
+                }
+                sqL_DataGridView_儲位管理_Pannel35_儲位內容_效期及庫存.RefreshGrid(list_value);
+                this.Function_設定雲端資料更新();
+            }));
         }
         #endregion
 
