@@ -275,12 +275,17 @@ namespace 調劑台管理系統
                 {
                     this.rfiD_FX600_UI.Init(myConfigClass.RFID_COMPort);
                 }
-
                 this.plC_UI_Init.UI_Finished_Event += PlC_UI_Init_UI_Finished_Event;
           
             }
 
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Function_儲位亮燈("ITAP2", Color.Red);
+        }
+
         private void PlC_UI_Init_UI_Finished_Event()
         {
             this.PLC = this.lowerMachine_Panel.GetlowerMachine();

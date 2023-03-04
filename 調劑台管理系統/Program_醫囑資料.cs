@@ -75,7 +75,7 @@ namespace 調劑台管理系統
     }
     public partial class Form1 : Form
     {
-    
+
         private void Program_醫囑資料_Init()
         {
             SQLUI.SQL_DataGridView.SQL_Set_Properties(this.sqL_DataGridView_醫囑資料, dBConfigClass.DB_order_list);
@@ -91,17 +91,19 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_醫囑資料_自動過帳.MouseDownEvent += PlC_RJ_Button_醫囑資料_自動過帳_MouseDownEvent;
             this.plC_RJ_Button_醫囑資料_設定產出時間.MouseDownEvent += PlC_RJ_Button_醫囑資料_設定產出時間_MouseDownEvent;
             this.plC_RJ_Button_醫囑資料_設為未過帳.MouseDownEvent += PlC_RJ_Button_醫囑資料_設為未過帳_MouseDownEvent;
+            this.plC_RJ_Button_醫囑資料_定期API測試.MouseDownEvent += PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent;
 
             this.plC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋.MouseDownEvent += PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent;
 
             this.plC_UI_Init.Add_Method(Program_醫囑資料);
         }
 
-   
+
 
         private void Program_醫囑資料()
         {
             this.sub_Program_醫囑資料_檢查刷條碼();
+            this.sub_Program_醫囑資料_定期API測試();
         }
         #region PLC_醫囑資料_檢查刷條碼
         PLC_Device PLC_Device_醫囑資料_檢查刷條碼 = new PLC_Device("");
@@ -175,16 +177,16 @@ namespace 調劑台管理系統
         }
         void cnt_Program_醫囑資料_檢查刷條碼_等待延遲(ref int cnt)
         {
-            if(MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.IsTimeOut())
+            if (MyTimer_醫囑資料_檢查刷條碼_刷藥單延遲.IsTimeOut())
             {
                 cnt++;
             }
-        
+
         }
         void cnt_Program_醫囑資料_檢查刷條碼_搜尋醫囑(ref int cnt)
         {
             string 一維碼 = "";
-  
+
 
             if (flag_醫囑資料_檢查刷條碼_01)
             {
@@ -198,7 +200,7 @@ namespace 調劑台管理系統
             }
             if (flag_醫囑資料_檢查刷條碼_02)
             {
-                
+
                 string text = this.MySerialPort_Scanner02.ReadString();
                 if (text.StringIsEmpty()) return;
                 this.MySerialPort_Scanner02.ClearReadByte();
@@ -212,6 +214,73 @@ namespace 調劑台管理系統
             this.sqL_DataGridView_醫囑資料.RefreshGrid(list_value);
             cnt++;
         }
+
+
+
+
+
+        #endregion
+        #region PLC_醫囑資料_定期API測試
+        PLC_Device PLC_Device_醫囑資料_定期API測試 = new PLC_Device("");
+        PLC_Device PLC_Device_醫囑資料_定期API測試_OK = new PLC_Device("");
+        Task Task_醫囑資料_定期API測試;
+        MyTimer MyTimer_醫囑資料_定期API測試_結束延遲 = new MyTimer();
+        int cnt_Program_醫囑資料_定期API測試 = 65534;
+        void sub_Program_醫囑資料_定期API測試()
+        {
+            PLC_Device_醫囑資料_定期API測試.Bool = true;
+            if (cnt_Program_醫囑資料_定期API測試 == 65534)
+            {
+                this.MyTimer_醫囑資料_定期API測試_結束延遲.StartTickTime(10000);
+                PLC_Device_醫囑資料_定期API測試.SetComment("PLC_醫囑資料_定期API測試");
+                PLC_Device_醫囑資料_定期API測試_OK.SetComment("PLC_醫囑資料_定期API測試_OK");
+                PLC_Device_醫囑資料_定期API測試.Bool = false;
+                cnt_Program_醫囑資料_定期API測試 = 65535;
+            }
+            if (cnt_Program_醫囑資料_定期API測試 == 65535) cnt_Program_醫囑資料_定期API測試 = 1;
+            if (cnt_Program_醫囑資料_定期API測試 == 1) cnt_Program_醫囑資料_定期API測試_檢查按下(ref cnt_Program_醫囑資料_定期API測試);
+            if (cnt_Program_醫囑資料_定期API測試 == 2) cnt_Program_醫囑資料_定期API測試_初始化(ref cnt_Program_醫囑資料_定期API測試);
+            if (cnt_Program_醫囑資料_定期API測試 == 3) cnt_Program_醫囑資料_定期API測試 = 65500;
+            if (cnt_Program_醫囑資料_定期API測試 > 1) cnt_Program_醫囑資料_定期API測試_檢查放開(ref cnt_Program_醫囑資料_定期API測試);
+
+            if (cnt_Program_醫囑資料_定期API測試 == 65500)
+            {
+                this.MyTimer_醫囑資料_定期API測試_結束延遲.TickStop();
+                this.MyTimer_醫囑資料_定期API測試_結束延遲.StartTickTime(180000);
+                PLC_Device_醫囑資料_定期API測試.Bool = false;
+                PLC_Device_醫囑資料_定期API測試_OK.Bool = false;
+                cnt_Program_醫囑資料_定期API測試 = 65535;
+            }
+        }
+        void cnt_Program_醫囑資料_定期API測試_檢查按下(ref int cnt)
+        {
+            if (PLC_Device_醫囑資料_定期API測試.Bool) cnt++;
+        }
+        void cnt_Program_醫囑資料_定期API測試_檢查放開(ref int cnt)
+        {
+            if (!PLC_Device_醫囑資料_定期API測試.Bool) cnt = 65500;
+        }
+        void cnt_Program_醫囑資料_定期API測試_初始化(ref int cnt)
+        {
+            if (this.MyTimer_醫囑資料_定期API測試_結束延遲.IsTimeOut())
+            {
+                if (Task_醫囑資料_定期API測試 == null)
+                {
+                    Task_醫囑資料_定期API測試 = new Task(new Action(delegate { PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent(null); }));
+                }
+                if (Task_醫囑資料_定期API測試.Status == TaskStatus.RanToCompletion)
+                {
+                    Task_醫囑資料_定期API測試 = new Task(new Action(delegate { PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent(null); }));
+                }
+                if (Task_醫囑資料_定期API測試.Status == TaskStatus.Created)
+                {
+                    Task_醫囑資料_定期API測試.Start();
+                }
+                cnt++;
+            }
+        }
+
+
 
 
 
@@ -235,7 +304,7 @@ namespace 調劑台管理系統
             Console.Write($"醫囑資料搜尋共<{list_value.Count}>筆,耗時{myTimer.ToString()}ms\n");
             return list_value;
         }
-        private List<OrderClass> Function_醫囑資料_API呼叫(string url , string barcode)
+        private List<OrderClass> Function_醫囑資料_API呼叫(string url, string barcode)
         {
             List<OrderClass> orderClasses = new List<OrderClass>();
             MyTimer myTimer = new MyTimer();
@@ -250,12 +319,14 @@ namespace 調劑台管理系統
                 MyMessageBox.ShowDialog($"呼叫串接資料失敗!請檢查網路連線...");
                 return orderClasses;
             }
-          
+
             orderClasses = jsonString.JsonDeserializet<List<OrderClass>>();
             if (orderClasses == null)
             {
-                MyMessageBox.ShowDialog($"串接資料傳回格式錯誤!");
+                Console.WriteLine($"串接資料傳回格式錯誤!");
+                this.voice.SpeakOnTask("資料錯誤");
                 orderClasses = new List<OrderClass>();
+
             }
             if (orderClasses.Count == 0)
             {
@@ -296,20 +367,20 @@ namespace 調劑台管理系統
         }
         private void SqL_DataGridView_醫囑資料_DataGridRowsChangeEvent(List<object[]> RowsList)
         {
-           // RowsList.Sort(new ICP_醫囑資料());
+            // RowsList.Sort(new ICP_醫囑資料());
         }
         private void PlC_RJ_Button_醫囑資料_設定產出時間_MouseDownEvent(MouseEventArgs mevent)
         {
             List<object[]> list_value = this.sqL_DataGridView_醫囑資料.Get_All_Select_RowsValues();
-            if(list_value.Count == 0)
+            if (list_value.Count == 0)
             {
                 MyMessageBox.ShowDialog("請選取資料!");
                 return;
             }
-        
+
             Dialog_設定產出時間 dialog_設定產出時間 = new Dialog_設定產出時間();
             if (dialog_設定產出時間.ShowDialog() != DialogResult.Yes) return;
-            if(dialog_設定產出時間.Value.CompareTo(DateTime.Now) >= 0)
+            if (dialog_設定產出時間.Value.CompareTo(DateTime.Now) >= 0)
             {
                 MyMessageBox.ShowDialog("設定日期時間不得大於現在!");
                 return;
@@ -395,7 +466,7 @@ namespace 調劑台管理系統
                     備註 += $"效期[{List_效期[k]}]";
                     if (k != List_效期.Count - 1) 備註 += ",";
                 }
-         
+
                 object[] value_trading = new object[new enum_交易記錄查詢資料().GetLength()];
                 value_trading[(int)enum_交易記錄查詢資料.GUID] = Guid.NewGuid().ToString();
                 value_trading[(int)enum_交易記錄查詢資料.動作] = enum_交易記錄查詢動作.自動過帳.GetEnumName();
@@ -460,8 +531,14 @@ namespace 調劑台管理系統
         private void PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
             List<object[]> list_value = this.Function_醫囑資料_API呼叫(this.rJ_TextBox_醫囑資料_搜尋條件_藥袋條碼.Texts);
-          
-  
+
+
+        }
+        private void PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent(MouseEventArgs mevent)
+        {
+            string apitext = $"{dBConfigClass.OrderApiURL}{"test"}";
+
+            string jsonString = Basic.Net.WEBApiGet(apitext);
         }
         #endregion
 

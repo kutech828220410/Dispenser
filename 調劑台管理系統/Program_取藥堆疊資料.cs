@@ -245,10 +245,18 @@ namespace 調劑台管理系統
             List<object[]> list_value = this.sqL_DataGridView_取藥堆疊子資料.SQL_GetRows(enum_取藥堆疊子資料.GUID.GetEnumName(), GUID, false);
             if (list_value.Count > 0)
             {
+
                 string device_Type = list_value[0][(int)enum_取藥堆疊子資料.TYPE].ObjectToString();
                 string IP = list_value[0][(int)enum_取藥堆疊子資料.IP].ObjectToString();
                 string 藥品碼 = list_value[0][(int)enum_取藥堆疊子資料.藥品碼].ObjectToString();
                 string device_GUID = list_value[0][(int)enum_取藥堆疊子資料.Device_GUID].ObjectToString();
+                this.sqL_DataGridView_取藥堆疊子資料.SQL_Delete(enum_取藥堆疊子資料.GUID.GetEnumName(), GUID, false);
+                if (plC_Button_同藥碼全亮.Bool)
+                {
+                    this.Function_儲位亮燈(藥品碼, Color.Black);
+                    return;
+                }
+
                 if (device_Type == DeviceType.EPD266.GetEnumName() || device_Type == DeviceType.EPD266_lock.GetEnumName())
                 {
                     Storage storage = this.List_EPD266_雲端資料.SortByIP(IP);
@@ -283,7 +291,7 @@ namespace 調劑台管理系統
                 }
                 else if (device_Type == DeviceType.RowsLED.GetEnumName())
                 {
-                    if (plC_Button_層架同藥碼全亮.Bool)
+                    if (plC_Button_同藥碼全亮.Bool)
                     {
                         List<RowsDevice> rowsDevices = this.List_RowsLED_雲端資料.SortByCode(藥品碼);
                       
@@ -306,7 +314,7 @@ namespace 調劑台管理系統
                 }
             }
 
-            this.sqL_DataGridView_取藥堆疊子資料.SQL_Delete(enum_取藥堆疊子資料.GUID.GetEnumName(), GUID, false);
+
 
         }
         private void Function_取藥堆疊資料_刪除指定調劑台名稱母資料(string 調劑台名稱)
@@ -549,7 +557,7 @@ namespace 調劑台管理系統
                 this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(serch_values, false);
             }
         }
-        private void Function_取藥堆疊子資料_設定調劑結束(string 藥品碼, string 調劑台名稱)
+        private void Function_取藥堆疊子資料_設定調劑結束(string 調劑台名稱, string 藥品碼)
         {
             string GUID = "";
             List<object[]> list_values = this.Function_取藥堆疊資料_取得指定調劑台名稱母資料(調劑台名稱, 藥品碼);
@@ -558,7 +566,6 @@ namespace 調劑台管理系統
                 GUID = list_values[i][(int)enum_取藥堆疊母資料.GUID].ObjectToString();
                 this.Function_取藥堆疊子資料_設定調劑結束(GUID);
             }
-
         }
         private void Function_取藥堆疊子資料_設定調劑結束(string 調劑台名稱)
         {
@@ -1248,10 +1255,7 @@ namespace 調劑台管理系統
                 if (list_取藥堆疊母資料_DeleteValue.Count > 0) this.sqL_DataGridView_取藥堆疊母資料.SQL_DeleteExtra(list_取藥堆疊母資料_DeleteValue, false);
                 if (list_取藥堆疊母資料_ReplaceValue.Count > 0) this.sqL_DataGridView_取藥堆疊母資料.SQL_ReplaceExtra(list_取藥堆疊母資料_ReplaceValue, false);
                 if (list_取藥堆疊子資料_ReplaceValue.Count > 0) this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(list_取藥堆疊子資料_ReplaceValue, false);
-                //for (int i = 0; i < list_取藥堆疊子資料_DeleteValue.Count; i++)
-                //{
-                //    this.Function_取藥堆疊資料_刪除子資料(list_取藥堆疊子資料_DeleteValue[i][(int)enum_取藥堆疊子資料.GUID].ObjectToString());
-                //}
+         
             }
             cnt++;
         }
@@ -1280,6 +1284,8 @@ namespace 調劑台管理系統
                 Slave_GUID = 取藥堆疊資料[(int)enum_取藥堆疊子資料.GUID].ObjectToString();
                 Device_GUID = 取藥堆疊資料[(int)enum_取藥堆疊子資料.Device_GUID].ObjectToString();
                 藥品碼 = 取藥堆疊資料[(int)enum_取藥堆疊子資料.藥品碼].ObjectToString();
+           
+
 
                 list_取藥堆疊母資料_buf = list_取藥堆疊母資料.GetRows((int)enum_取藥堆疊母資料.GUID, Master_GUID);
                 if (list_取藥堆疊母資料_buf.Count > 0) color = list_取藥堆疊母資料_buf[0][(int)enum_取藥堆疊母資料.顏色].ObjectToString().ToColor();
@@ -1287,6 +1293,10 @@ namespace 調劑台管理系統
                 取藥堆疊資料[(int)enum_取藥堆疊子資料.致能] = true.ToString();
                 list_取藥堆疊資料_ReplaceValue.Add(取藥堆疊資料);
 
+                if (plC_Button_同藥碼全亮.Bool)
+                {
+                    this.Function_儲位亮燈(藥品碼, color);
+                }
 
                 if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.EPD266_lock.GetEnumName())
                 {
@@ -1730,7 +1740,7 @@ namespace 調劑台管理系統
                     {
                         list_需更新資料.Add(new string[] { 調劑台名稱, 藥品碼, IP });
 
-                        if (plC_Button_層架同藥碼全亮.Bool)
+                        if (plC_Button_同藥碼全亮.Bool)
                         {
 
                             List<RowsDevice> rowsDevices = this.List_RowsLED_雲端資料.SortByCode(藥品碼);

@@ -53,8 +53,8 @@ namespace 調劑台管理系統
             }
             for (int i = 0; i < rowsDevices.Count; i++)
             {
-                RowsDevice rowsDevice = this.rowsLEDUI.SQL_GetRowsDevice(rowsDevices[i]);
-                this.List_RowsLED_入賬資料.Add_NewRowsLED(rowsDevice);
+                RowsLED rowsLED = this.rowsLEDUI.SQL_GetRowsLED(rowsDevices[i].IP);
+                this.List_RowsLED_入賬資料.Add_NewRowsLED(rowsLED);
             }
             for (int i = 0; i < rFIDDevices.Count; i++)
             {
@@ -215,9 +215,10 @@ namespace 調劑台管理系統
             }
             for (int i = 0; i < rowsDevices.Count; i++)
             {
-                RowsDevice rowsDevice = this.rowsLEDUI.SQL_GetRowsDevice(rowsDevices[i]);
+                RowsLED rowsLED = this.rowsLEDUI.SQL_GetRowsLED(rowsDevices[i].IP);
+                RowsDevice rowsDevice = rowsLED.GetRowsDevice(rowsDevices[i].GUID);
+                if (rowsDevice != null) list_value.Add(rowsDevice);
                 this.List_RowsLED_雲端資料.Add_NewRowsLED(rowsDevice);
-                list_value.Add(rowsDevice);
             }
             for (int i = 0; i < rFIDDevices.Count; i++)
             {
@@ -703,6 +704,59 @@ namespace 調劑台管理系統
                 }
             }
             return 庫存;
+        }
+        public void Function_儲位亮燈(string 藥品碼 ,Color color)
+        {
+            List<object> list_Device = this.Function_從本地資料取得儲位(藥品碼);
+            List<Task> taskList = new List<Task>();
+            for (int i = 0; i < list_Device.Count; i++)
+            {
+                Device device = list_Device[i] as Device;
+                if (device != null)
+                {
+                    if (device.DeviceType == DeviceType.EPD266)
+                    {
+                        Storage storage = list_Device[i] as Storage;
+                        if (storage != null)
+                        {
+                            taskList.Add(Task.Run(() =>
+                            {
+                                this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, color);
+                            }));
+                        }
+                    }
+                    else if (device.DeviceType == DeviceType.Pannel35)
+                    {
+                        Storage storage = list_Device[i] as Storage;
+                        if (storage != null)
+                        {
+                            taskList.Add(Task.Run(() =>
+                            {
+                                this.storageUI_WT32.Set_Stroage_LED_UDP(storage, color);
+                            }));
+                        }
+                    }
+                    else if (device.DeviceType == DeviceType.RowsLED)
+                    {
+                        RowsDevice rowsDevice = list_Device[i] as RowsDevice;
+                        if (rowsDevice != null)
+                        {
+                            RowsLED rowsLED = List_RowsLED_雲端資料.SortByIP(rowsDevice.IP);
+                            rowsLED.LED_Bytes = RowsLEDUI.Get_Rows_LEDBytes(ref rowsLED.LED_Bytes, rowsDevice, color);                       
+                            taskList.Add(Task.Run(() =>
+                            {
+                                this.rowsLEDUI.Set_Rows_LED_UDP(rowsLED);
+                            }));
+                        }
+                    }
+                }
+            }
+
+
+
+
+            Task allTask = Task.WhenAll(taskList);
+            allTask.Wait();
         }
 
         public string Function_取得藥品網址(string 藥品碼)

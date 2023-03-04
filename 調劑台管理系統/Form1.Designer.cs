@@ -170,6 +170,7 @@
             this.sqL_DataGridView_交易記錄查詢 = new SQLUI.SQL_DataGridView();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.醫囑資料 = new System.Windows.Forms.TabPage();
+            this.plC_RJ_Button_醫囑資料_定期API測試 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_醫囑資料_設為未過帳 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_醫囑資料_設定產出時間 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_醫囑資料_自動過帳 = new MyUI.PLC_RJ_Button();
@@ -780,7 +781,6 @@
             this.plC_CheckBox_退藥檢查是否掃碼領藥過 = new MyUI.PLC_CheckBox();
             this.plC_CheckBox_已過帳取藥 = new MyUI.PLC_CheckBox();
             this.plC_ComboBox_醫囑檢查範圍 = new MyUI.PLC_ComboBox();
-            this.plC_Button_層架同藥碼全亮 = new MyUI.PLC_Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.鎖控列表01 = new System.Windows.Forms.TabPage();
             this.pannel_Locker_Y00 = new 調劑台管理系統.Pannel_Locker();
@@ -4586,6 +4586,7 @@
             // 醫囑資料
             // 
             this.醫囑資料.BackColor = System.Drawing.Color.White;
+            this.醫囑資料.Controls.Add(this.plC_RJ_Button_醫囑資料_定期API測試);
             this.醫囑資料.Controls.Add(this.plC_RJ_Button_醫囑資料_設為未過帳);
             this.醫囑資料.Controls.Add(this.plC_RJ_Button_醫囑資料_設定產出時間);
             this.醫囑資料.Controls.Add(this.plC_RJ_Button_醫囑資料_自動過帳);
@@ -4609,6 +4610,49 @@
             this.醫囑資料.Size = new System.Drawing.Size(1656, 1006);
             this.醫囑資料.TabIndex = 15;
             this.醫囑資料.Text = "醫囑資料";
+            // 
+            // plC_RJ_Button_醫囑資料_定期API測試
+            // 
+            this.plC_RJ_Button_醫囑資料_定期API測試.AutoResetState = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Bool = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.plC_RJ_Button_醫囑資料_定期API測試.BorderRadius = 5;
+            this.plC_RJ_Button_醫囑資料_定期API測試.BorderSize = 0;
+            this.plC_RJ_Button_醫囑資料_定期API測試.but_press = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.buttonType = MyUI.RJ_Button.ButtonType.Toggle;
+            this.plC_RJ_Button_醫囑資料_定期API測試.FlatAppearance.BorderSize = 0;
+            this.plC_RJ_Button_醫囑資料_定期API測試.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.plC_RJ_Button_醫囑資料_定期API測試.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Location = new System.Drawing.Point(988, 943);
+            this.plC_RJ_Button_醫囑資料_定期API測試.Name = "plC_RJ_Button_醫囑資料_定期API測試";
+            this.plC_RJ_Button_醫囑資料_定期API測試.OFF_文字內容 = "定期API測試";
+            this.plC_RJ_Button_醫囑資料_定期API測試.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.plC_RJ_Button_醫囑資料_定期API測試.OFF_文字顏色 = System.Drawing.Color.White;
+            this.plC_RJ_Button_醫囑資料_定期API測試.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_醫囑資料_定期API測試.ON_文字內容 = "定期API測試";
+            this.plC_RJ_Button_醫囑資料_定期API測試.ON_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
+            this.plC_RJ_Button_醫囑資料_定期API測試.ON_文字顏色 = System.Drawing.Color.Black;
+            this.plC_RJ_Button_醫囑資料_定期API測試.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Size = new System.Drawing.Size(145, 58);
+            this.plC_RJ_Button_醫囑資料_定期API測試.State = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.TabIndex = 174;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Text = "定期API測試";
+            this.plC_RJ_Button_醫囑資料_定期API測試.TextColor = System.Drawing.Color.White;
+            this.plC_RJ_Button_醫囑資料_定期API測試.Texts = "定期API測試";
+            this.plC_RJ_Button_醫囑資料_定期API測試.UseVisualStyleBackColor = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.字型鎖住 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.按鈕型態 = MyUI.PLC_RJ_Button.StatusEnum.保持型;
+            this.plC_RJ_Button_醫囑資料_定期API測試.按鍵方式 = MyUI.PLC_RJ_Button.PressEnum.Mouse_左鍵;
+            this.plC_RJ_Button_醫囑資料_定期API測試.文字鎖住 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.致能讀取位置 = "S4077";
+            this.plC_RJ_Button_醫囑資料_定期API測試.讀取位元反向 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.讀寫鎖住 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.音效 = true;
+            this.plC_RJ_Button_醫囑資料_定期API測試.顯示 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.顯示狀態 = false;
+            this.plC_RJ_Button_醫囑資料_定期API測試.顯示讀取位置 = "S4077";
             // 
             // plC_RJ_Button_醫囑資料_設為未過帳
             // 
@@ -19385,7 +19429,6 @@
             // 
             this.tabPage1.AutoScroll = true;
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.plC_Button_同藥碼全亮);
             this.tabPage1.Controls.Add(this.plC_Button_工程模式_全部開鎖);
             this.tabPage1.Controls.Add(this.plC_CheckBox_QRcode_Mode);
             this.tabPage1.Controls.Add(this.plC_CheckBox_自動過帳);
@@ -19409,7 +19452,7 @@
             this.plC_Button_同藥碼全亮.Bool = false;
             this.plC_Button_同藥碼全亮.but_press = false;
             this.plC_Button_同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_Button_同藥碼全亮.Location = new System.Drawing.Point(1019, 655);
+            this.plC_Button_同藥碼全亮.Location = new System.Drawing.Point(164, 22);
             this.plC_Button_同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
             this.plC_Button_同藥碼全亮.Name = "plC_Button_同藥碼全亮";
             this.plC_Button_同藥碼全亮.OFF_文字內容 = "同藥碼全亮";
@@ -19643,12 +19686,12 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.plC_Button_同藥碼全亮);
             this.groupBox8.Controls.Add(this.plC_Button_多醫囑模式);
             this.groupBox8.Controls.Add(this.groupBox6);
             this.groupBox8.Controls.Add(this.groupBox19);
             this.groupBox8.Controls.Add(this.plC_Button_合併同藥品);
             this.groupBox8.Controls.Add(this.groupBox7);
-            this.groupBox8.Controls.Add(this.plC_Button_層架同藥碼全亮);
             this.groupBox8.Location = new System.Drawing.Point(119, 654);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(687, 205);
@@ -19886,41 +19929,6 @@
             this.plC_ComboBox_醫囑檢查範圍.致能讀取位置 = "S4077";
             this.plC_ComboBox_醫囑檢查範圍.讀取元件位置 = "D4020";
             this.plC_ComboBox_醫囑檢查範圍.音效 = true;
-            // 
-            // plC_Button_層架同藥碼全亮
-            // 
-            this.plC_Button_層架同藥碼全亮.Bool = false;
-            this.plC_Button_層架同藥碼全亮.but_press = false;
-            this.plC_Button_層架同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_Button_層架同藥碼全亮.Location = new System.Drawing.Point(164, 22);
-            this.plC_Button_層架同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
-            this.plC_Button_層架同藥碼全亮.Name = "plC_Button_層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.OFF_文字內容 = "層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_層架同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
-            this.plC_Button_層架同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_層架同藥碼全亮.ON_文字內容 = "層架同藥碼全亮";
-            this.plC_Button_層架同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_層架同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
-            this.plC_Button_層架同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_層架同藥碼全亮.Size = new System.Drawing.Size(146, 49);
-            this.plC_Button_層架同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
-            this.plC_Button_層架同藥碼全亮.TabIndex = 119;
-            this.plC_Button_層架同藥碼全亮.事件驅動 = false;
-            this.plC_Button_層架同藥碼全亮.字型鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.寫入元件位置 = "S4061";
-            this.plC_Button_層架同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
-            this.plC_Button_層架同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
-            this.plC_Button_層架同藥碼全亮.文字鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態OFF圖片")));
-            this.plC_Button_層架同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_層架同藥碼全亮.狀態ON圖片")));
-            this.plC_Button_層架同藥碼全亮.讀取位元反向 = false;
-            this.plC_Button_層架同藥碼全亮.讀取元件位置 = "S4061";
-            this.plC_Button_層架同藥碼全亮.讀寫鎖住 = false;
-            this.plC_Button_層架同藥碼全亮.起始狀態 = false;
-            this.plC_Button_層架同藥碼全亮.音效 = true;
-            this.plC_Button_層架同藥碼全亮.顯示 = false;
-            this.plC_Button_層架同藥碼全亮.顯示狀態 = false;
             // 
             // tabControl2
             // 
@@ -26368,7 +26376,6 @@
         private MyUI.PLC_NumBox plC_NumBox8;
         private MyUI.RJ_ProgressBar rJ_ProgressBar_領藥台_02_入賬完成時間條;
         private MyUI.RJ_ProgressBar rJ_ProgressBar_領藥台_01_入賬完成時間條;
-        private MyUI.PLC_Button plC_Button_層架同藥碼全亮;
         private MyUI.PLC_RJ_Button plC_RJ_Button_領藥台_01_手動作業;
         private MyUI.PLC_RJ_Button plC_RJ_Button_領藥台_02_手動作業;
         private MyUI.PLC_RJ_Button plC_RJ_Button_藥品資料_儲位總庫存表_藥品碼搜尋;
@@ -26482,6 +26489,7 @@
         private MyUI.PLC_RJ_ChechBox plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_管制抽屜;
         private MyUI.PLC_Button plC_Button_工程模式_全部開鎖;
         private MyUI.PLC_Button plC_Button_同藥碼全亮;
+        private MyUI.PLC_RJ_Button plC_RJ_Button_醫囑資料_定期API測試;
     }
 }
 
