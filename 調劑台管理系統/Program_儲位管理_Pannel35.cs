@@ -652,7 +652,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                Storage storage = this.pannel35_Pannel.CurrentStorage;
                 if (storage == null)
                 {
                     MyMessageBox.ShowDialog("未選擇儲位!");
@@ -739,7 +739,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                Storage storage = this.pannel35_Pannel.CurrentStorage;
                 if (storage == null)
                 {
                     MyMessageBox.ShowDialog("未選擇儲位!");
@@ -830,7 +830,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                Storage storage = this.pannel35_Pannel.CurrentStorage;
                 if (storage == null)
                 {
                     MyMessageBox.ShowDialog("未選擇儲位!");
