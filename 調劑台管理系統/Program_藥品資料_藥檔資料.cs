@@ -796,9 +796,15 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_藥品資料_自動填入_MouseDownEvent(MouseEventArgs mevent)
         {
+            string 藥品碼 = this.textBox_藥品資料_藥檔資料_藥品碼.Text;
+            string url = dBConfigClass.MedApiURL;
+            if (!url.StringIsEmpty())
+            {
+                string response = Basic.Net.WEBApiGet($"{url}?Code={藥品碼}");
+            }
             List<object[]> list_雲端藥檔 = this.sqL_DataGridView_雲端藥檔.SQL_GetAllRows(false);
             List<object[]> list_雲端藥檔_buf = new List<object[]>();
-            string 藥品碼 = this.textBox_藥品資料_藥檔資料_藥品碼.Text;
+          
             list_雲端藥檔_buf = list_雲端藥檔.GetRows((int)enum_雲端藥檔.藥品碼, 藥品碼);
             if (list_雲端藥檔_buf.Count == 0)
             {
@@ -811,6 +817,7 @@ namespace 調劑台管理系統
             this.textBox_藥品資料_藥檔資料_藥品條碼.Text = list_雲端藥檔_buf[0][(int)enum_雲端藥檔.藥品條碼1].ObjectToString();
             this.textBox_藥品資料_藥檔資料_健保碼.Text = list_雲端藥檔_buf[0][(int)enum_雲端藥檔.健保碼].ObjectToString();
             this.textBox_藥品資料_藥檔資料_包裝單位.Text = list_雲端藥檔_buf[0][(int)enum_雲端藥檔.包裝單位].ObjectToString();
+            this.comboBox_藥品資料_藥檔資料_警訊藥品.Text = list_雲端藥檔_buf[0][(int)enum_雲端藥檔.警訊藥品].ObjectToString();
         }
         private void PlC_RJ_Button_藥品群組_登錄_MouseDownEvent(MouseEventArgs mevent)
         {

@@ -967,11 +967,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HS\\Desktop\\Dispenser20230223\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\HS\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
       "projectName": "智慧調劑台管理系統_WebApi",
-      "projectPath": "C:\\Users\\HS\\Desktop\\Dispenser20230223\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
+      "projectPath": "C:\\Users\\HS\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
       "packagesPath": "C:\\Users\\HS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HS\\Desktop\\Dispenser20230223\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\obj\\",
+      "outputPath": "C:\\Users\\HS\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1027,7 +1027,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.415\\RuntimeIdentifierGraph.json"
       }
     }
   }
