@@ -50,12 +50,14 @@ namespace 調劑台管理系統
             private SQL_DataGridView.ConnentionClass dB_order_list = new SQL_DataGridView.ConnentionClass();
             private SQL_DataGridView.ConnentionClass dB_Medicine_Cloud = new SQL_DataGridView.ConnentionClass();
             private string orderApiURL = "";
+            private string medApiURL = "";
 
             public SQL_DataGridView.ConnentionClass DB_Basic { get => dB_Basic; set => dB_Basic = value; }
             public SQL_DataGridView.ConnentionClass DB_person_page { get => dB_person_page; set => dB_person_page = value; }
             public SQL_DataGridView.ConnentionClass DB_order_list { get => dB_order_list; set => dB_order_list = value; }
             public SQL_DataGridView.ConnentionClass DB_Medicine_Cloud { get => dB_Medicine_Cloud; set => dB_Medicine_Cloud = value; }
             public string OrderApiURL { get => orderApiURL; set => orderApiURL = value; }
+            public string MedApiURL { get => medApiURL; set => medApiURL = value; }
         }
         private void LoadDBConfig()
         {

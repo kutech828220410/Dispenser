@@ -756,7 +756,6 @@
             this.plC_NumBox2 = new MyUI.PLC_NumBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.plC_Button_同藥碼全亮 = new MyUI.PLC_Button();
             this.plC_Button_工程模式_全部開鎖 = new MyUI.PLC_Button();
             this.plC_CheckBox_QRcode_Mode = new MyUI.PLC_CheckBox();
             this.plC_CheckBox_自動過帳 = new MyUI.PLC_CheckBox();
@@ -769,6 +768,7 @@
             this.plC_NumBox7 = new MyUI.PLC_NumBox();
             this.plC_Button1 = new MyUI.PLC_Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.plC_Button_同藥碼全亮 = new MyUI.PLC_Button();
             this.plC_Button_多醫囑模式 = new MyUI.PLC_Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -19447,41 +19447,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "鎖控設定";
             // 
-            // plC_Button_同藥碼全亮
-            // 
-            this.plC_Button_同藥碼全亮.Bool = false;
-            this.plC_Button_同藥碼全亮.but_press = false;
-            this.plC_Button_同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_Button_同藥碼全亮.Location = new System.Drawing.Point(164, 22);
-            this.plC_Button_同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
-            this.plC_Button_同藥碼全亮.Name = "plC_Button_同藥碼全亮";
-            this.plC_Button_同藥碼全亮.OFF_文字內容 = "同藥碼全亮";
-            this.plC_Button_同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
-            this.plC_Button_同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_同藥碼全亮.ON_文字內容 = "同藥碼全亮";
-            this.plC_Button_同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
-            this.plC_Button_同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_同藥碼全亮.Size = new System.Drawing.Size(146, 49);
-            this.plC_Button_同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
-            this.plC_Button_同藥碼全亮.TabIndex = 123;
-            this.plC_Button_同藥碼全亮.事件驅動 = false;
-            this.plC_Button_同藥碼全亮.字型鎖住 = false;
-            this.plC_Button_同藥碼全亮.寫入元件位置 = "S4061";
-            this.plC_Button_同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
-            this.plC_Button_同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
-            this.plC_Button_同藥碼全亮.文字鎖住 = false;
-            this.plC_Button_同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態OFF圖片")));
-            this.plC_Button_同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態ON圖片")));
-            this.plC_Button_同藥碼全亮.讀取位元反向 = false;
-            this.plC_Button_同藥碼全亮.讀取元件位置 = "S4061";
-            this.plC_Button_同藥碼全亮.讀寫鎖住 = false;
-            this.plC_Button_同藥碼全亮.起始狀態 = false;
-            this.plC_Button_同藥碼全亮.音效 = true;
-            this.plC_Button_同藥碼全亮.顯示 = false;
-            this.plC_Button_同藥碼全亮.顯示狀態 = false;
-            // 
             // plC_Button_工程模式_全部開鎖
             // 
             this.plC_Button_工程模式_全部開鎖.Bool = false;
@@ -19698,6 +19663,41 @@
             this.groupBox8.TabIndex = 122;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "使用者設定";
+            // 
+            // plC_Button_同藥碼全亮
+            // 
+            this.plC_Button_同藥碼全亮.Bool = false;
+            this.plC_Button_同藥碼全亮.but_press = false;
+            this.plC_Button_同藥碼全亮.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_同藥碼全亮.Location = new System.Drawing.Point(164, 22);
+            this.plC_Button_同藥碼全亮.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_同藥碼全亮.Name = "plC_Button_同藥碼全亮";
+            this.plC_Button_同藥碼全亮.OFF_文字內容 = "同藥碼全亮";
+            this.plC_Button_同藥碼全亮.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_同藥碼全亮.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_同藥碼全亮.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_同藥碼全亮.ON_文字內容 = "同藥碼全亮";
+            this.plC_Button_同藥碼全亮.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_同藥碼全亮.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_同藥碼全亮.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_同藥碼全亮.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_同藥碼全亮.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_同藥碼全亮.TabIndex = 123;
+            this.plC_Button_同藥碼全亮.事件驅動 = false;
+            this.plC_Button_同藥碼全亮.字型鎖住 = false;
+            this.plC_Button_同藥碼全亮.寫入元件位置 = "S4061";
+            this.plC_Button_同藥碼全亮.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_同藥碼全亮.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_同藥碼全亮.文字鎖住 = false;
+            this.plC_Button_同藥碼全亮.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態OFF圖片")));
+            this.plC_Button_同藥碼全亮.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_同藥碼全亮.狀態ON圖片")));
+            this.plC_Button_同藥碼全亮.讀取位元反向 = false;
+            this.plC_Button_同藥碼全亮.讀取元件位置 = "S4061";
+            this.plC_Button_同藥碼全亮.讀寫鎖住 = false;
+            this.plC_Button_同藥碼全亮.起始狀態 = false;
+            this.plC_Button_同藥碼全亮.音效 = true;
+            this.plC_Button_同藥碼全亮.顯示 = false;
+            this.plC_Button_同藥碼全亮.顯示狀態 = false;
             // 
             // plC_Button_多醫囑模式
             // 
@@ -23653,6 +23653,8 @@
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns9"))));
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns10"))));
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns11"))));
+            this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns12"))));
+            this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns13"))));
             this.sqL_DataGridView_雲端藥檔.DataBaseName = "storehouse_0";
             this.sqL_DataGridView_雲端藥檔.Dock = System.Windows.Forms.DockStyle.Top;
             this.sqL_DataGridView_雲端藥檔.Font = new System.Drawing.Font("新細明體", 12F);

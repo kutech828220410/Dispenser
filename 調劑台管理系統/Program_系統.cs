@@ -32,6 +32,8 @@ namespace 調劑台管理系統
         最小包裝數量,
         藥品條碼1,
         藥品條碼2,
+        警訊藥品,
+        管制級別,
     }
     public partial class Form1 : Form
     {
@@ -112,7 +114,10 @@ namespace 調劑台管理系統
 
             SQL_DataGridView.SQL_Set_Properties(this.sqL_DataGridView_雲端藥檔, dBConfigClass.DB_Medicine_Cloud);
             this.sqL_DataGridView_雲端藥檔.Init();
-
+            if(!sqL_DataGridView_雲端藥檔.SQL_IsTableCreat())
+            {
+                sqL_DataGridView_雲端藥檔.SQL_CreateTable();
+            }
 
             this.sqL_DataGridView_Locker_Index_Table.Init();
             if (!this.sqL_DataGridView_Locker_Index_Table.SQL_IsTableCreat())
