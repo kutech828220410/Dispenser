@@ -215,10 +215,14 @@ namespace 智慧調劑台管理系統_WebApi
                 string 顏色 = list_devicelist_buf[0][(int)enum_設備資料.顏色].ObjectToString();
                 int 總異動量 = data[0].交易量.StringToInt32();
                 this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, 顏色, 總異動量);
+                return $"OK";
+            }
+            else
+            {
+                return $"-3";
             }
 
-
-            return $"OK";
+        
         }
 
 
