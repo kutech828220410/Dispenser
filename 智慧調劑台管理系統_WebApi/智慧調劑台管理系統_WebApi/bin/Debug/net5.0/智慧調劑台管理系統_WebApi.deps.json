@@ -33,12 +33,12 @@
     ".NETCoreApp,Version=v5.0": {
       "智慧調劑台管理系統_WebApi/1.0.0": {
         "dependencies": {
-          "MySql.Data": "8.0.27",
-          "System.Text.Json": "6.0.1",
+          "MySql.Data": "8.0.29",
+          "System.Text.Json": "6.0.0",
           "Basic": "1.0.0.0",
-          "E_Paper_2_66": "1.0.0.0",
-          "E_Paper_5_83": "1.0.0.0",
-          "E_Paper_lib": "1.0.0.0",
+          "H_Pannel_lib": "1.0.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0.0",
+          "MySQL_Login": "1.0.0.0",
           "SQLUI": "1.0.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -339,19 +339,15 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
-        "dependencies": {
-          "System.Memory": "4.5.4",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
+      "Google.Protobuf/3.19.4": {
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.14.0.0",
-            "fileVersion": "3.14.0.0"
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.19.4.0",
+            "fileVersion": "3.19.4.0"
           }
         },
         "compile": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {}
+          "lib/net5.0/Google.Protobuf.dll": {}
         }
       },
       "K4os.Compression.LZ4/1.2.6": {
@@ -403,10 +399,10 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-      "MySql.Data/8.0.27": {
+      "MySql.Data/8.0.29": {
         "dependencies": {
           "BouncyCastle.NetCore": "1.8.5",
-          "Google.Protobuf": "3.14.0",
+          "Google.Protobuf": "3.19.4",
           "K4os.Compression.LZ4.Streams": "1.2.6",
           "System.Buffers": "4.5.1",
           "System.Configuration.ConfigurationManager": "4.4.1",
@@ -416,8 +412,8 @@
         },
         "runtime": {
           "lib/net5.0/MySql.Data.dll": {
-            "assemblyVersion": "8.0.27.0",
-            "fileVersion": "8.0.27.0"
+            "assemblyVersion": "8.0.29.0",
+            "fileVersion": "8.0.29.0"
           },
           "lib/net5.0/Ubiety.Dns.Core.dll": {
             "assemblyVersion": "2.2.1.0",
@@ -515,7 +511,7 @@
           "lib/netcoreapp3.1/System.Text.Encodings.Web.dll": {}
         }
       },
-      "System.Text.Json/6.0.1": {
+      "System.Text.Json/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "6.0.0"
@@ -523,7 +519,7 @@
         "runtime": {
           "lib/netcoreapp3.1/System.Text.Json.dll": {
             "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.121.56705"
+            "fileVersion": "6.0.21.52210"
           }
         },
         "compile": {
@@ -546,37 +542,37 @@
           "Basic.dll": {}
         }
       },
-      "E_Paper_2_66/1.0.0.0": {
+      "H_Pannel_lib/1.0.0.0": {
         "runtime": {
-          "E_Paper_2_66.dll": {
+          "H_Pannel_lib.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         },
         "compile": {
-          "E_Paper_2_66.dll": {}
+          "H_Pannel_lib.dll": {}
         }
       },
-      "E_Paper_5_83/1.0.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0.0": {
         "runtime": {
-          "E_Paper_5_83.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+          "Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
           }
         },
         "compile": {
-          "E_Paper_5_83.dll": {}
+          "Microsoft.Bcl.AsyncInterfaces.dll": {}
         }
       },
-      "E_Paper_lib/1.0.0.0": {
+      "MySQL_Login/1.0.0.0": {
         "runtime": {
-          "E_Paper_lib.dll": {
+          "MySQL_Login.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         },
         "compile": {
-          "E_Paper_lib.dll": {}
+          "MySQL_Login.dll": {}
         }
       },
       "SQLUI/1.0.0.0": {
@@ -588,174 +584,6 @@
         },
         "compile": {
           "SQLUI.dll": {}
-        }
-      },
-      "MyUI/1.0.0.1": {
-        "runtime": {
-          "MyUI.dll": {
-            "assemblyVersion": "1.0.0.1",
-            "fileVersion": "1.0.0.1"
-          }
-        }
-      },
-      "LadderUI/1.0.0.0": {
-        "runtime": {
-          "LadderUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "FontAwesome.Sharp/5.15.4.0": {
-        "runtime": {
-          "FontAwesome.Sharp.dll": {
-            "assemblyVersion": "5.15.4.0",
-            "fileVersion": "5.15.4.0"
-          }
-        }
-      },
-      "MeasureSystemUI/1.0.0.0": {
-        "runtime": {
-          "MeasureSystemUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "MVSDKUI/1.0.0.0": {
-        "runtime": {
-          "MVSDKUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "SLDUI/1.0.0.0": {
-        "runtime": {
-          "SLDUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "LeadShineUI/1.0.0.0": {
-        "runtime": {
-          "LeadShineUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "PortControlUI/1.0.0.0": {
-        "runtime": {
-          "PortControlUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "LightControlUI/1.0.0.0": {
-        "runtime": {
-          "LightControlUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "ZealTechUI/1.0.0.0": {
-        "runtime": {
-          "ZealTechUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "HCGUI/1.0.0.0": {
-        "runtime": {
-          "HCGUI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "TCP/1.0.0.0": {
-        "runtime": {
-          "TCP.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "CallBackUI/1.0.0.1": {
-        "runtime": {
-          "CallBackUI.dll": {
-            "assemblyVersion": "1.0.0.1",
-            "fileVersion": "1.0.0.1"
-          }
-        }
-      },
-      "DrawingClass/1.0.0.5": {
-        "runtime": {
-          "DrawingClass.dll": {
-            "assemblyVersion": "1.0.0.5",
-            "fileVersion": "1.0.0.5"
-          }
-        }
-      },
-      "AxOvkBase/1.0.0.0": {
-        "runtime": {
-          "AxOvkBase.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "AxAltairUDrvAsm4.5/1.0.0.0": {
-        "runtime": {
-          "AxAltairUDrvAsm4.5.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "AxOvkBaseAsm4.5/1.0.0.0": {
-        "runtime": {
-          "AxOvkBaseAsm4.5.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "AxOvkMsr/1.0.0.0": {
-        "runtime": {
-          "AxOvkMsr.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "MeasureSystemFunction/1.0.0.0": {
-        "runtime": {
-          "MeasureSystemFunction.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "AxAltairUDrv/1.0.0.0": {
-        "runtime": {
-          "AxAltairUDrv.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "MVSDK/1.0.0.0": {
-        "runtime": {
-          "MVSDK.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -2453,12 +2281,12 @@
       "path": "bouncycastle.netcore/1.8.5",
       "hashPath": "bouncycastle.netcore.1.8.5.nupkg.sha512"
     },
-    "Google.Protobuf/3.14.0": {
+    "Google.Protobuf/3.19.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9AkodyGNmLI+wJJPbwpWLmh4BMHoXDQ9+8qvDPhQQi/BNsleqKMBn3OlyLwC6CALwan2kc5+Cenb8fJSITX3nQ==",
-      "path": "google.protobuf/3.14.0",
-      "hashPath": "google.protobuf.3.14.0.nupkg.sha512"
+      "sha512": "sha512-fd07/ykL4O4FhqrZIELm5lmiyOHfdPg9+o+hWr6tcfRdS7tHXnImg/2wtogLzlW2eEmr0J7j6ZrZvaWOLiJbxQ==",
+      "path": "google.protobuf/3.19.4",
+      "hashPath": "google.protobuf.3.19.4.nupkg.sha512"
     },
     "K4os.Compression.LZ4/1.2.6": {
       "type": "package",
@@ -2495,12 +2323,12 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "MySql.Data/8.0.27": {
+    "MySql.Data/8.0.29": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ef+sH12/nGAiF9yLZFkuXh7vtVvEPiLKyZNJiDk+VBULzLcXj0lmfU7qcmWNCSVX5n6zu5jMV+JaNf1C+a+T8g==",
-      "path": "mysql.data/8.0.27",
-      "hashPath": "mysql.data.8.0.27.nupkg.sha512"
+      "sha512": "sha512-3I+QUbSDTknNVAWUEr8JEtXU5sk83kofwy79TROew9YMhVQAq39jZwpHQfFNG757JZFGWJ5oa5VA3tZBxJa1jw==",
+      "path": "mysql.data/8.0.29",
+      "hashPath": "mysql.data.8.0.29.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",
@@ -2579,12 +2407,12 @@
       "path": "system.text.encodings.web/6.0.0",
       "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
     },
-    "System.Text.Json/6.0.1": {
+    "System.Text.Json/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-X3cTdM+jna1YyfTUzToW7aVgINFv7R1W4+1+3hua/YCyLjApPoR8fd+2Cep9DbfYjbv+rBx4K6dlmAWEJr9AHg==",
-      "path": "system.text.json/6.0.1",
-      "hashPath": "system.text.json.6.0.1.nupkg.sha512"
+      "sha512": "sha512-zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
+      "path": "system.text.json/6.0.0",
+      "hashPath": "system.text.json.6.0.0.nupkg.sha512"
     },
     "System.Windows.Extensions/4.7.0": {
       "type": "package",
@@ -2598,127 +2426,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "E_Paper_2_66/1.0.0.0": {
+    "H_Pannel_lib/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "E_Paper_5_83/1.0.0.0": {
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "E_Paper_lib/1.0.0.0": {
+    "MySQL_Login/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "SQLUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MyUI/1.0.0.1": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "LadderUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "FontAwesome.Sharp/5.15.4.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MeasureSystemUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MVSDKUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SLDUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "LeadShineUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PortControlUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "LightControlUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ZealTechUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "HCGUI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TCP/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CallBackUI/1.0.0.1": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DrawingClass/1.0.0.5": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AxOvkBase/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AxAltairUDrvAsm4.5/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AxOvkBaseAsm4.5/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AxOvkMsr/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MeasureSystemFunction/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AxAltairUDrv/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MVSDK/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

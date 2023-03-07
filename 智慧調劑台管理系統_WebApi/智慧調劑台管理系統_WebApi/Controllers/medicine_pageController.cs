@@ -28,10 +28,7 @@ namespace 智慧調劑台管理系統_WebApi
         static private uint Port = (uint)ConfigurationManager.AppSettings["port"].StringToInt32();
         static private MySqlSslMode SSLMode = MySqlSslMode.None;
 
-        private SQLControl sQLControl_EPD583_serialize = new SQLControl(IP, DataBaseName, "epd583_jsonstring", UserName,Password, Port, SSLMode);
-        private SQLControl sQLControl_EPD266_serialize = new SQLControl(IP, DataBaseName, "epd266_jsonstring", UserName, Password, Port, SSLMode);
-        private SQLControl sQLControl_RowsLED_serialize = new SQLControl(IP, DataBaseName, "rowsled_jsonstring", UserName, Password, Port, SSLMode);
-        private SQLControl sQLControl_RFID_Device_serialize = new SQLControl(IP, DataBaseName, "rfid_device_jsonstring", UserName, Password, Port, SSLMode);
+      
         private SQLControl sQLControl_medicine_page = new SQLControl(IP, DataBaseName, "medicine_page", UserName,Password, Port, SSLMode);
         private SQLControl sQLControl_medicine_group = new SQLControl(IP, DataBaseName, "medicine_group", UserName, Password, Port, SSLMode);
 
@@ -582,7 +579,10 @@ namespace 智慧調劑台管理系統_WebApi
 
         #region Function
         List<Device> devices = new List<Device>();
-
+        private SQLControl sQLControl_EPD583_serialize = new SQLControl(IP, DataBaseName, "epd583_jsonstring", UserName, Password, Port, SSLMode);
+        private SQLControl sQLControl_EPD266_serialize = new SQLControl(IP, DataBaseName, "epd266_jsonstring", UserName, Password, Port, SSLMode);
+        private SQLControl sQLControl_RowsLED_serialize = new SQLControl(IP, DataBaseName, "rowsled_jsonstring", UserName, Password, Port, SSLMode);
+        private SQLControl sQLControl_RFID_Device_serialize = new SQLControl(IP, DataBaseName, "rfid_device_jsonstring", UserName, Password, Port, SSLMode);
         private void Function_讀取儲位()
         {
 

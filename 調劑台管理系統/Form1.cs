@@ -109,6 +109,7 @@ namespace 調劑台管理系統
             private bool rFID_Enable = true;
             private bool pannel35_Enable = true;
             private bool _帳密登入_Enable = true;
+            private bool _線上更新 = true;
 
             private string rFID_COMPort = "COM1";
             private string scanner01_COMPort = "COM2";
@@ -131,6 +132,7 @@ namespace 調劑台管理系統
             public bool Pannel35_Enable { get => pannel35_Enable; set => pannel35_Enable = value; }
             public bool 帳密登入_Enable { get => _帳密登入_Enable; set => _帳密登入_Enable = value; }
             public string 藥物辨識網址 { get => _藥物辨識網址; set => _藥物辨識網址 = value; }
+            public bool 線上更新 { get => _線上更新; set => _線上更新 = value; }
         }
         private void LoadMyConfig()
         {
@@ -204,18 +206,21 @@ namespace 調劑台管理系統
                 }
 
             }
-
-            this.ftp_DounloadUI.FTP_Server = ftpConfigClass.FTP_Server;
-            this.ftp_DounloadUI.Username = ftpConfigClass.FTP_username;
-            this.ftp_DounloadUI.Password = ftpConfigClass.FTP_password;
-            string updateVersion = this.ftp_DounloadUI.GetFileVersion();
-            if (this.ftp_DounloadUI.CheckUpdate(this.ProductVersion, updateVersion))
+            if(myConfigClass.線上更新)
             {
-                if (Basic.MyMessageBox.ShowDialog(string.Format("有新版本是否更新? (Ver : {0})", updateVersion), "Update", Basic.MyMessageBox.enum_BoxType.Asterisk, Basic.MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes)
+                this.ftp_DounloadUI.FTP_Server = ftpConfigClass.FTP_Server;
+                this.ftp_DounloadUI.Username = ftpConfigClass.FTP_username;
+                this.ftp_DounloadUI.Password = ftpConfigClass.FTP_password;
+                string updateVersion = this.ftp_DounloadUI.GetFileVersion();
+                if (this.ftp_DounloadUI.CheckUpdate(this.ProductVersion, updateVersion))
                 {
-                    this.Invoke(new Action(delegate { this.Update(); }));
+                    if (Basic.MyMessageBox.ShowDialog(string.Format("有新版本是否更新? (Ver : {0})", updateVersion), "Update", Basic.MyMessageBox.enum_BoxType.Asterisk, Basic.MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes)
+                    {
+                        this.Invoke(new Action(delegate { this.Update(); }));
+                    }
                 }
             }
+            
         }
         #endregion
         public Form1()

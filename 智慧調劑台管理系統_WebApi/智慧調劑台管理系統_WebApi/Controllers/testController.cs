@@ -22,10 +22,7 @@ namespace 智慧調劑台管理系統_WebApi
         [HttpGet]
         public string Get()
         {
-            string str = System.Environment.CurrentDirectory;
-            //string jsonstring = MyFileStream.LoadFileAllText(@"C:\Users\HS\Documents\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\test.txt", "utf-8");
-            string jsonstring = MyFileStream.LoadFileAllText(@$"{str}\test.txt", "utf-8");
-            return jsonstring;
+            return $"WebApi is connected! [DPS]";
         }
     }
 }

@@ -1267,6 +1267,7 @@ namespace 調劑台管理系統
             List<object[]> list_locker_table_value = this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(false);
             List<object[]> list_locker_table_value_buf = new List<object[]>();
             List<object[]> list_locker_table_value_ReplaceValue = new List<object[]>();
+            List<string> list_lock_IP = new List<string>();
             string IP = "";
             string Slave_GUID = "";
             string Master_GUID = "";
@@ -1295,31 +1296,50 @@ namespace 調劑台管理系統
 
                 if (plC_Button_同藥碼全亮.Bool)
                 {
-                    this.Function_儲位亮燈(藥品碼, color);
+                    this.Function_儲位亮燈(藥品碼, color , ref list_lock_IP);
+                    for (int k = 0; k < list_lock_IP.Count; k++)
+                    {
+                        list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, list_lock_IP[k]);
+                        if (list_locker_table_value_buf.Count > 0)
+                        {
+                            list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.Master_GUID] = Master_GUID;
+                            list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.Device_GUID] = Device_GUID;
+                            list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.Slave_GUID] = Slave_GUID;
+                            list_locker_table_value_buf[0][(int)enum_Locker_Index_Table.輸出狀態] = true.ToString();
+                            list_locker_table_value_ReplaceValue.Add(list_locker_table_value_buf[0]);
+                        }
+                    }
+                    
                 }
-
-                if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.EPD266_lock.GetEnumName())
+                if (!plC_Button_同藥碼全亮.Bool)
                 {
-                    Storage storage = List_EPD266_雲端資料.SortByIP(IP);
-                    this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, color);
-                    list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
+                    if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.EPD583_lock.GetEnumName())
+                    {
+                        Drawer drawer = List_EPD583_雲端資料.SortByIP(IP);
+                        List<Box> boxes = drawer.SortByCode(藥品碼);
+
+                        drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
+                        drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
+                        this.drawerUI_EPD_583.Set_LED_UDP(drawer);
+                        list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
+                    }
+                    if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.EPD266_lock.GetEnumName())
+                    {
+                        Storage storage = List_EPD266_雲端資料.SortByIP(IP);
+                        this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, color);
+                        list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
+                    }
                 }
+              
+               
+
                 if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.Pannel35_lock.GetEnumName())
                 {
                     Storage storage =List_Pannel35_雲端資料.SortByIP(IP);
                     this.storageUI_WT32.Set_Stroage_LED_UDP(storage, color);
                     list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
                 }
-                if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.EPD583_lock.GetEnumName())
-                {
-                    Drawer drawer = List_EPD583_雲端資料.SortByIP(IP);
-                    List<Box> boxes = List_EPD583_雲端資料.SortByCode(藥品碼);
-
-                    drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
-                    drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
-                    this.drawerUI_EPD_583.Set_LED_UDP(drawer);
-                    list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
-                }
+                
                 if (取藥堆疊資料[(int)enum_取藥堆疊子資料.TYPE].ObjectToString() == DeviceType.RFID_Device.GetEnumName())
                 {
                     RFIDClass rFIDClass = List_RFID_雲端資料.SortByIP(IP);
@@ -1594,32 +1614,27 @@ namespace 調劑台管理系統
                                         select value).ToList();
 
 
-            //if(plC_Button_同藥碼全亮.Bool)
-            //{
-            //    list_取藥子堆疊資料= (from value in list_取藥子堆疊資料
-            //                       where value[(int)enum_取藥堆疊子資料.致能].ObjectToString() == true.ToString()
-            //                       where value[(int)enum_取藥堆疊子資料.流程作業完成].ObjectToString() == false.ToString()
-            //                       select value).ToList();
-      
+            if (plC_Button_同藥碼全亮.Bool)
+            {
+                list_取藥子堆疊資料 = (from value in list_取藥子堆疊資料
+                                where value[(int)enum_取藥堆疊子資料.致能].ObjectToString() == true.ToString()
+                                where value[(int)enum_取藥堆疊子資料.配藥完成].ObjectToString() == false.ToString()
+                                select value).ToList();
 
-            //    for (int i = 0; i < list_取藥子堆疊資料.Count; i++)
-            //    {
-            //        Master_GUID = list_取藥子堆疊資料[0][(int)enum_取藥堆疊子資料.Master_GUID].ObjectToString();
-
-            //        list_取藥母堆疊資料_buf = list_取藥母堆疊資料.GetRows((int)enum_取藥堆疊母資料.GUID, Master_GUID);
-            //        藥品碼 = list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.藥品碼].ObjectToString();
-
-            //        List<Storage> storages = List_EPD266_雲端資料.SortByCode(藥品碼);
-            //        for (int k = 0; k < storages.Count; k++)
-            //        {
-            //            taskList.Add(Task.Run(() =>
-            //            {
-            //                this.storageUI_EPD_266.Set_Stroage_LED_UDP(storages[k], color);
-            //            }));
-            //        }
-              
-            //    }
-            //}
+                List<object[]> list_取藥母堆疊資料_Replace = new List<object[]>();
+                for (int i = 0; i < list_取藥子堆疊資料.Count; i++)
+                {
+                    list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.流程作業完成] = true.ToString();
+                    list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.配藥完成] = true.ToString();
+                    list_取藥母堆疊資料_Replace.Add(list_取藥子堆疊資料[i]);
+                   
+                }
+                this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(list_取藥母堆疊資料_Replace, false);
+                this.MyTimer_取藥堆疊資料_流程作業檢查.TickStop();
+                this.MyTimer_取藥堆疊資料_流程作業檢查.StartTickTime();
+                cnt++;
+                return;
+            }
             //if (plC_Button_同藥碼全亮.Bool) return;
 
 

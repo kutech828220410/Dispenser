@@ -19527,7 +19527,7 @@
             this.groupBox9.Controls.Add(this.groupBox1);
             this.groupBox9.Controls.Add(this.groupBox2);
             this.groupBox9.Controls.Add(this.plC_Button1);
-            this.groupBox9.Location = new System.Drawing.Point(812, 654);
+            this.groupBox9.Location = new System.Drawing.Point(865, 654);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(200, 202);
             this.groupBox9.TabIndex = 123;
@@ -19659,7 +19659,7 @@
             this.groupBox8.Controls.Add(this.groupBox7);
             this.groupBox8.Location = new System.Drawing.Point(119, 654);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(687, 205);
+            this.groupBox8.Size = new System.Drawing.Size(741, 205);
             this.groupBox8.TabIndex = 122;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "使用者設定";
@@ -19856,7 +19856,7 @@
             this.groupBox7.Controls.Add(this.plC_CheckBox_退藥檢查是否掃碼領藥過);
             this.groupBox7.Controls.Add(this.plC_CheckBox_已過帳取藥);
             this.groupBox7.Controls.Add(this.plC_ComboBox_醫囑檢查範圍);
-            this.groupBox7.Location = new System.Drawing.Point(317, 21);
+            this.groupBox7.Location = new System.Drawing.Point(509, 22);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(231, 164);
             this.groupBox7.TabIndex = 120;

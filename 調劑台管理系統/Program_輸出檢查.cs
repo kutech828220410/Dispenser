@@ -90,24 +90,30 @@ namespace 調劑台管理系統
                 {
                     Storage storage = value_device as Storage;
                     if(storage.DeviceType == DeviceType.EPD266 || storage.DeviceType == DeviceType.EPD266_lock)
-                    {
-                        this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black);
+                    {                      
+                        if (!plC_Button_同藥碼全亮.Bool)
+                        {
+                            this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black);
+                            this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
+                        }
                     }
                     else if (storage.DeviceType == DeviceType.Pannel35 || storage.DeviceType == DeviceType.Pannel35_lock)
                     {
                         this.storageUI_WT32.Set_Stroage_LED_UDP(storage, Color.Black);
+                        this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
                     }
                 }
                 else if (value_device is Drawer)
                 {
-                    Drawer drawer = value_device as Drawer;
-                    this.drawerUI_EPD_583.Set_LED_Clear_UDP(drawer);
+                    if (!plC_Button_同藥碼全亮.Bool)
+                    {
+                        Drawer drawer = value_device as Drawer;
+                        this.drawerUI_EPD_583.Set_LED_Clear_UDP(drawer);
+                        this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
+                    }
                 }
-                //List<object[]> list_master_value = sqL_DataGridView_取藥堆疊母資料.SQL_GetAllRows(false);
-                //list_master_value = list_master_value.GetRows((int)enum_取藥堆疊母資料.GUID, Master_GUID);
-                //if (list_master_value.Count == 0) return;
-                //調劑台名稱 = list_master_value[0][(int)enum_取藥堆疊母資料.調劑台名稱].ObjectToString();
-                this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
+
+               
             }
         }
         private void Loker_LockOpeningEvent(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID)
