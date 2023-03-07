@@ -11,8 +11,31 @@ using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using System.Configuration;
 
-namespace 智慧調劑台管理系統_WebApi.Controllers
+namespace 智慧調劑台管理系統_WebApi
 {
+    public enum enum_交易記錄查詢動作
+    {
+        掃碼領藥,
+        手輸領藥,
+        批次領藥,
+        系統領藥,
+        掃碼退藥,
+        手輸退藥,
+        重複領藥,
+        自動過帳,
+        人臉識別登入,
+        RFID登入,
+        一維碼登入,
+        密碼登入,
+        登出,
+        操作工程模式,
+        效期庫存異動,
+        入庫作業,
+        管制抽屜開啟,
+        管制抽屜關閉,
+        None,
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class tradingController : ControllerBase
@@ -79,24 +102,8 @@ namespace 智慧調劑台管理系統_WebApi.Controllers
             開方時間,
             備註,
         }
-        public int enum_action_Data_Length = Enum.GetValues(typeof(enum_action_page)).Length;
-        public enum enum_action_page
-        {
-            掃碼領藥,
-            手輸領藥,
-            批次領藥,
-            掃碼退藥,
-            手輸退藥,
-            重複領藥,
-            人臉識別登入,
-            RFID登入,
-            密碼登入,
-            登出,
-            操作工程模式,
-            效期庫存異動,
-            入庫作業,
-            None,
-        }
+    
+       
 
 
         [Route("action")]
@@ -110,7 +117,7 @@ namespace 智慧調劑台管理系統_WebApi.Controllers
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
 
-            string[] enums = enum_action_page.None.GetEnumNames();
+            string[] enums = enum_交易記錄查詢動作.None.GetEnumNames();
             List<string> list_str = new List<string>();
             for (int i = 0; i < enums.Length; i++)
             {

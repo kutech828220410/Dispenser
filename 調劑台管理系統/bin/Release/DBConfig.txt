@@ -10,7 +10,7 @@
   },
   "DB_person_page": {
     "DataBaseName": "dbvm",
-    "IP": "10.14.16.49",
+    "IP": "10.14.16.50",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -28,7 +28,7 @@
   },
   "DB_Medicine_Cloud": {
     "DataBaseName": "dbvm",
-    "IP": "10.14.16.49",
+    "IP": "10.14.16.50",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,

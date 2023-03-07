@@ -359,6 +359,7 @@ namespace 調劑台管理系統
             this.Program_取藥堆疊資料_Init();
             this.Program_輸出入檢查_Init();
             this.Program_管制抽屜_Init();
+            this.Program_設備資料_Init();
 
             this.plC_UI_Init.Add_Method(this.sub_Program_Scanner_RS232);
 

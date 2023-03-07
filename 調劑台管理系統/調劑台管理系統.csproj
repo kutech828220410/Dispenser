@@ -269,6 +269,9 @@
     <Compile Include="Program_管制抽屜.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Program_設備資料.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserControl\Pannel_Locker_Design.cs">
       <SubType>UserControl</SubType>
     </Compile>

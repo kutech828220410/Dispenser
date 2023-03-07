@@ -768,11 +768,12 @@
             this.plC_NumBox7 = new MyUI.PLC_NumBox();
             this.plC_Button1 = new MyUI.PLC_Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.plC_Button_無庫存自動補足 = new MyUI.PLC_Button();
             this.plC_Button_同藥碼全亮 = new MyUI.PLC_Button();
             this.plC_Button_多醫囑模式 = new MyUI.PLC_Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.plC_NumBox8 = new MyUI.PLC_NumBox();
+            this.plC_NumBox_完成滅燈時間 = new MyUI.PLC_NumBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.label118 = new System.Windows.Forms.Label();
             this.plC_NumBox6 = new MyUI.PLC_NumBox();
@@ -923,14 +924,17 @@
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.rfiD_FX600_UI = new RFID_FX600lib.RFID_FX600_UI();
             this.tabPage26 = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.sqL_DataGridView_管制抽屜權限資料 = new SQLUI.SQL_DataGridView();
-            this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.sqL_DataGridView_取藥堆疊子資料 = new SQLUI.SQL_DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.sqL_DataGridView_批次領藥資料 = new SQLUI.SQL_DataGridView();
-            this.groupBox44 = new System.Windows.Forms.GroupBox();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sqL_DataGridView_取藥堆疊母資料 = new SQLUI.SQL_DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.sqL_DataGridView_取藥堆疊子資料 = new SQLUI.SQL_DataGridView();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.sqL_DataGridView_批次領藥資料 = new SQLUI.SQL_DataGridView();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.sqL_DataGridView_管制抽屜權限資料 = new SQLUI.SQL_DataGridView();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.sqL_DataGridView_設備資料 = new SQLUI.SQL_DataGridView();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.rJ_GroupBox28 = new MyUI.RJ_GroupBox();
             this.sqL_DataGridView_特殊輸出表 = new SQLUI.SQL_DataGridView();
@@ -1235,10 +1239,12 @@
             this.groupBox10.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.tabPage26.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox27.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox44.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.rJ_GroupBox28.ContentsPanel.SuspendLayout();
             this.rJ_GroupBox28.SuspendLayout();
@@ -19651,6 +19657,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.plC_Button_無庫存自動補足);
             this.groupBox8.Controls.Add(this.plC_Button_同藥碼全亮);
             this.groupBox8.Controls.Add(this.plC_Button_多醫囑模式);
             this.groupBox8.Controls.Add(this.groupBox6);
@@ -19663,6 +19670,41 @@
             this.groupBox8.TabIndex = 122;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "使用者設定";
+            // 
+            // plC_Button_無庫存自動補足
+            // 
+            this.plC_Button_無庫存自動補足.Bool = false;
+            this.plC_Button_無庫存自動補足.but_press = false;
+            this.plC_Button_無庫存自動補足.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_無庫存自動補足.Location = new System.Drawing.Point(318, 22);
+            this.plC_Button_無庫存自動補足.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_無庫存自動補足.Name = "plC_Button_無庫存自動補足";
+            this.plC_Button_無庫存自動補足.OFF_文字內容 = "無庫存自動補足";
+            this.plC_Button_無庫存自動補足.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_無庫存自動補足.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_無庫存自動補足.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_無庫存自動補足.ON_文字內容 = "無庫存自動補足";
+            this.plC_Button_無庫存自動補足.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_無庫存自動補足.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_無庫存自動補足.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_無庫存自動補足.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_無庫存自動補足.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_無庫存自動補足.TabIndex = 124;
+            this.plC_Button_無庫存自動補足.事件驅動 = false;
+            this.plC_Button_無庫存自動補足.字型鎖住 = false;
+            this.plC_Button_無庫存自動補足.寫入元件位置 = "S4066";
+            this.plC_Button_無庫存自動補足.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_無庫存自動補足.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_無庫存自動補足.文字鎖住 = false;
+            this.plC_Button_無庫存自動補足.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_無庫存自動補足.狀態OFF圖片")));
+            this.plC_Button_無庫存自動補足.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_無庫存自動補足.狀態ON圖片")));
+            this.plC_Button_無庫存自動補足.讀取位元反向 = false;
+            this.plC_Button_無庫存自動補足.讀取元件位置 = "S4066";
+            this.plC_Button_無庫存自動補足.讀寫鎖住 = false;
+            this.plC_Button_無庫存自動補足.起始狀態 = false;
+            this.plC_Button_無庫存自動補足.音效 = true;
+            this.plC_Button_無庫存自動補足.顯示 = false;
+            this.plC_Button_無庫存自動補足.顯示狀態 = false;
             // 
             // plC_Button_同藥碼全亮
             // 
@@ -19737,7 +19779,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Controls.Add(this.plC_NumBox8);
+            this.groupBox6.Controls.Add(this.plC_NumBox_完成滅燈時間);
             this.groupBox6.Location = new System.Drawing.Point(11, 21);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(146, 54);
@@ -19754,25 +19796,25 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "sec";
             // 
-            // plC_NumBox8
+            // plC_NumBox_完成滅燈時間
             // 
-            this.plC_NumBox8.Location = new System.Drawing.Point(15, 21);
-            this.plC_NumBox8.mBackColor = System.Drawing.SystemColors.Window;
-            this.plC_NumBox8.mForeColor = System.Drawing.SystemColors.WindowText;
-            this.plC_NumBox8.Name = "plC_NumBox8";
-            this.plC_NumBox8.ReadOnly = false;
-            this.plC_NumBox8.Size = new System.Drawing.Size(71, 22);
-            this.plC_NumBox8.TabIndex = 2;
-            this.plC_NumBox8.Value = 0;
-            this.plC_NumBox8.字元長度 = MyUI.PLC_NumBox.WordLengthEnum.單字元;
-            this.plC_NumBox8.密碼欄位 = false;
-            this.plC_NumBox8.寫入元件位置 = "D101";
-            this.plC_NumBox8.小數點位置 = 3;
-            this.plC_NumBox8.微調數值 = 1;
-            this.plC_NumBox8.讀取元件位置 = "D101";
-            this.plC_NumBox8.音效 = true;
-            this.plC_NumBox8.顯示微調按鈕 = false;
-            this.plC_NumBox8.顯示螢幕小鍵盤 = true;
+            this.plC_NumBox_完成滅燈時間.Location = new System.Drawing.Point(15, 21);
+            this.plC_NumBox_完成滅燈時間.mBackColor = System.Drawing.SystemColors.Window;
+            this.plC_NumBox_完成滅燈時間.mForeColor = System.Drawing.SystemColors.WindowText;
+            this.plC_NumBox_完成滅燈時間.Name = "plC_NumBox_完成滅燈時間";
+            this.plC_NumBox_完成滅燈時間.ReadOnly = false;
+            this.plC_NumBox_完成滅燈時間.Size = new System.Drawing.Size(71, 22);
+            this.plC_NumBox_完成滅燈時間.TabIndex = 2;
+            this.plC_NumBox_完成滅燈時間.Value = 0;
+            this.plC_NumBox_完成滅燈時間.字元長度 = MyUI.PLC_NumBox.WordLengthEnum.單字元;
+            this.plC_NumBox_完成滅燈時間.密碼欄位 = false;
+            this.plC_NumBox_完成滅燈時間.寫入元件位置 = "D101";
+            this.plC_NumBox_完成滅燈時間.小數點位置 = 3;
+            this.plC_NumBox_完成滅燈時間.微調數值 = 1;
+            this.plC_NumBox_完成滅燈時間.讀取元件位置 = "D101";
+            this.plC_NumBox_完成滅燈時間.音效 = true;
+            this.plC_NumBox_完成滅燈時間.顯示微調按鈕 = false;
+            this.plC_NumBox_完成滅燈時間.顯示螢幕小鍵盤 = true;
             // 
             // groupBox19
             // 
@@ -22633,229 +22675,37 @@
             // tabPage26
             // 
             this.tabPage26.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPage26.Controls.Add(this.groupBox12);
-            this.tabPage26.Controls.Add(this.groupBox27);
-            this.tabPage26.Controls.Add(this.groupBox4);
-            this.tabPage26.Controls.Add(this.groupBox44);
+            this.tabPage26.Controls.Add(this.tabControl3);
             this.tabPage26.Location = new System.Drawing.Point(4, 25);
             this.tabPage26.Name = "tabPage26";
             this.tabPage26.Size = new System.Drawing.Size(1648, 926);
             this.tabPage26.TabIndex = 1;
             this.tabPage26.Text = "設定02";
             // 
-            // groupBox12
+            // tabControl3
             // 
-            this.groupBox12.Controls.Add(this.sqL_DataGridView_管制抽屜權限資料);
-            this.groupBox12.Location = new System.Drawing.Point(6, 593);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(999, 289);
-            this.groupBox12.TabIndex = 36;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "管制抽屜權限資料";
+            this.tabControl3.Controls.Add(this.tabPage2);
+            this.tabControl3.Controls.Add(this.tabPage4);
+            this.tabControl3.Controls.Add(this.tabPage10);
+            this.tabControl3.Controls.Add(this.tabPage11);
+            this.tabControl3.Controls.Add(this.tabPage12);
+            this.tabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl3.Location = new System.Drawing.Point(0, 0);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(1648, 926);
+            this.tabControl3.TabIndex = 37;
             // 
-            // sqL_DataGridView_管制抽屜權限資料
+            // tabPage2
             // 
-            this.sqL_DataGridView_管制抽屜權限資料.AutoSelectToDeep = false;
-            this.sqL_DataGridView_管制抽屜權限資料.backColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_管制抽屜權限資料.BorderColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_管制抽屜權限資料.BorderRadius = 10;
-            this.sqL_DataGridView_管制抽屜權限資料.BorderSize = 2;
-            this.sqL_DataGridView_管制抽屜權限資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_管制抽屜權限資料.cellStylBackColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_管制抽屜權限資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_管制抽屜權限資料.cellStylForeColor = System.Drawing.Color.Black;
-            this.sqL_DataGridView_管制抽屜權限資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
-            this.sqL_DataGridView_管制抽屜權限資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersHeight = 21;
-            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns"))));
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns1"))));
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns2"))));
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns3"))));
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns4"))));
-            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns5"))));
-            this.sqL_DataGridView_管制抽屜權限資料.DataBaseName = "mydatabase";
-            this.sqL_DataGridView_管制抽屜權限資料.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sqL_DataGridView_管制抽屜權限資料.Font = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_管制抽屜權限資料.ImageBox = false;
-            this.sqL_DataGridView_管制抽屜權限資料.Location = new System.Drawing.Point(3, 18);
-            this.sqL_DataGridView_管制抽屜權限資料.Name = "sqL_DataGridView_管制抽屜權限資料";
-            this.sqL_DataGridView_管制抽屜權限資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
-            this.sqL_DataGridView_管制抽屜權限資料.Password = "user82822040";
-            this.sqL_DataGridView_管制抽屜權限資料.Port = ((uint)(3306u));
-            this.sqL_DataGridView_管制抽屜權限資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
-            this.sqL_DataGridView_管制抽屜權限資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_管制抽屜權限資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sqL_DataGridView_管制抽屜權限資料.RowsHeight = 20;
-            this.sqL_DataGridView_管制抽屜權限資料.SaveFileName = "SQL_DataGridView";
-            this.sqL_DataGridView_管制抽屜權限資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(989, 268);
-            this.sqL_DataGridView_管制抽屜權限資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
-            this.sqL_DataGridView_管制抽屜權限資料.TabIndex = 119;
-            this.sqL_DataGridView_管制抽屜權限資料.TableName = "locker_data";
-            this.sqL_DataGridView_管制抽屜權限資料.UserName = "user";
-            this.sqL_DataGridView_管制抽屜權限資料.可拖曳欄位寬度 = false;
-            this.sqL_DataGridView_管制抽屜權限資料.可選擇多列 = false;
-            this.sqL_DataGridView_管制抽屜權限資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_管制抽屜權限資料.自動換行 = true;
-            this.sqL_DataGridView_管制抽屜權限資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_管制抽屜權限資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sqL_DataGridView_管制抽屜權限資料.顯示CheckBox = false;
-            this.sqL_DataGridView_管制抽屜權限資料.顯示首列 = false;
-            this.sqL_DataGridView_管制抽屜權限資料.顯示首行 = true;
-            this.sqL_DataGridView_管制抽屜權限資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_管制抽屜權限資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            // 
-            // groupBox27
-            // 
-            this.groupBox27.Controls.Add(this.sqL_DataGridView_取藥堆疊子資料);
-            this.groupBox27.Location = new System.Drawing.Point(809, 3);
-            this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(800, 289);
-            this.groupBox27.TabIndex = 35;
-            this.groupBox27.TabStop = false;
-            this.groupBox27.Text = "取藥堆疊子資料";
-            // 
-            // sqL_DataGridView_取藥堆疊子資料
-            // 
-            this.sqL_DataGridView_取藥堆疊子資料.AutoSelectToDeep = false;
-            this.sqL_DataGridView_取藥堆疊子資料.backColor = System.Drawing.SystemColors.Control;
-            this.sqL_DataGridView_取藥堆疊子資料.BorderColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_取藥堆疊子資料.BorderRadius = 10;
-            this.sqL_DataGridView_取藥堆疊子資料.BorderSize = 2;
-            this.sqL_DataGridView_取藥堆疊子資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_取藥堆疊子資料.cellStylBackColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_取藥堆疊子資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_取藥堆疊子資料.cellStylForeColor = System.Drawing.Color.Black;
-            this.sqL_DataGridView_取藥堆疊子資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
-            this.sqL_DataGridView_取藥堆疊子資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersHeight = 21;
-            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns1"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns2"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns3"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns4"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns5"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns6"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns7"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns8"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns9"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns10"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns11"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns12"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns13"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns14"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns15"))));
-            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns16"))));
-            this.sqL_DataGridView_取藥堆疊子資料.DataBaseName = "Dispensing_000";
-            this.sqL_DataGridView_取藥堆疊子資料.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sqL_DataGridView_取藥堆疊子資料.Font = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_取藥堆疊子資料.ImageBox = false;
-            this.sqL_DataGridView_取藥堆疊子資料.Location = new System.Drawing.Point(3, 18);
-            this.sqL_DataGridView_取藥堆疊子資料.Name = "sqL_DataGridView_取藥堆疊子資料";
-            this.sqL_DataGridView_取藥堆疊子資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
-            this.sqL_DataGridView_取藥堆疊子資料.Password = "user82822040";
-            this.sqL_DataGridView_取藥堆疊子資料.Port = ((uint)(3306u));
-            this.sqL_DataGridView_取藥堆疊子資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
-            this.sqL_DataGridView_取藥堆疊子資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_取藥堆疊子資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sqL_DataGridView_取藥堆疊子資料.RowsHeight = 20;
-            this.sqL_DataGridView_取藥堆疊子資料.SaveFileName = "SQL_DataGridView";
-            this.sqL_DataGridView_取藥堆疊子資料.Server = "localhost";
-            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(794, 268);
-            this.sqL_DataGridView_取藥堆疊子資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
-            this.sqL_DataGridView_取藥堆疊子資料.TabIndex = 26;
-            this.sqL_DataGridView_取藥堆疊子資料.TableName = "take_medicine_substack_new";
-            this.sqL_DataGridView_取藥堆疊子資料.UserName = "root";
-            this.sqL_DataGridView_取藥堆疊子資料.可拖曳欄位寬度 = false;
-            this.sqL_DataGridView_取藥堆疊子資料.可選擇多列 = false;
-            this.sqL_DataGridView_取藥堆疊子資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_取藥堆疊子資料.自動換行 = true;
-            this.sqL_DataGridView_取藥堆疊子資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_取藥堆疊子資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sqL_DataGridView_取藥堆疊子資料.顯示CheckBox = false;
-            this.sqL_DataGridView_取藥堆疊子資料.顯示首列 = false;
-            this.sqL_DataGridView_取藥堆疊子資料.顯示首行 = true;
-            this.sqL_DataGridView_取藥堆疊子資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_取藥堆疊子資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.sqL_DataGridView_批次領藥資料);
-            this.groupBox4.Location = new System.Drawing.Point(3, 298);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(999, 289);
-            this.groupBox4.TabIndex = 34;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "批次領藥資料";
-            // 
-            // sqL_DataGridView_批次領藥資料
-            // 
-            this.sqL_DataGridView_批次領藥資料.AutoSelectToDeep = false;
-            this.sqL_DataGridView_批次領藥資料.backColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_批次領藥資料.BorderColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_批次領藥資料.BorderRadius = 10;
-            this.sqL_DataGridView_批次領藥資料.BorderSize = 2;
-            this.sqL_DataGridView_批次領藥資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_批次領藥資料.cellStylBackColor = System.Drawing.Color.LightBlue;
-            this.sqL_DataGridView_批次領藥資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_批次領藥資料.cellStylForeColor = System.Drawing.Color.Black;
-            this.sqL_DataGridView_批次領藥資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
-            this.sqL_DataGridView_批次領藥資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.sqL_DataGridView_批次領藥資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_批次領藥資料.columnHeadersHeight = 21;
-            this.sqL_DataGridView_批次領藥資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns1"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns2"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns3"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns4"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns5"))));
-            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns6"))));
-            this.sqL_DataGridView_批次領藥資料.DataBaseName = "mydatabase";
-            this.sqL_DataGridView_批次領藥資料.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sqL_DataGridView_批次領藥資料.Font = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_批次領藥資料.ImageBox = false;
-            this.sqL_DataGridView_批次領藥資料.Location = new System.Drawing.Point(3, 18);
-            this.sqL_DataGridView_批次領藥資料.Name = "sqL_DataGridView_批次領藥資料";
-            this.sqL_DataGridView_批次領藥資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
-            this.sqL_DataGridView_批次領藥資料.Password = "user82822040";
-            this.sqL_DataGridView_批次領藥資料.Port = ((uint)(3306u));
-            this.sqL_DataGridView_批次領藥資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
-            this.sqL_DataGridView_批次領藥資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_批次領藥資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sqL_DataGridView_批次領藥資料.RowsHeight = 20;
-            this.sqL_DataGridView_批次領藥資料.SaveFileName = "SQL_DataGridView";
-            this.sqL_DataGridView_批次領藥資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(989, 268);
-            this.sqL_DataGridView_批次領藥資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
-            this.sqL_DataGridView_批次領藥資料.TabIndex = 119;
-            this.sqL_DataGridView_批次領藥資料.TableName = "UDFTPSTK4";
-            this.sqL_DataGridView_批次領藥資料.UserName = "user";
-            this.sqL_DataGridView_批次領藥資料.可拖曳欄位寬度 = false;
-            this.sqL_DataGridView_批次領藥資料.可選擇多列 = false;
-            this.sqL_DataGridView_批次領藥資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.sqL_DataGridView_批次領藥資料.自動換行 = true;
-            this.sqL_DataGridView_批次領藥資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
-            this.sqL_DataGridView_批次領藥資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.sqL_DataGridView_批次領藥資料.顯示CheckBox = false;
-            this.sqL_DataGridView_批次領藥資料.顯示首列 = false;
-            this.sqL_DataGridView_批次領藥資料.顯示首行 = true;
-            this.sqL_DataGridView_批次領藥資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.sqL_DataGridView_批次領藥資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            // 
-            // groupBox44
-            // 
-            this.groupBox44.Controls.Add(this.sqL_DataGridView_取藥堆疊母資料);
-            this.groupBox44.Location = new System.Drawing.Point(3, 3);
-            this.groupBox44.Name = "groupBox44";
-            this.groupBox44.Size = new System.Drawing.Size(800, 289);
-            this.groupBox44.TabIndex = 33;
-            this.groupBox44.TabStop = false;
-            this.groupBox44.Text = "取藥堆疊母資料";
+            this.tabPage2.Controls.Add(this.sqL_DataGridView_取藥堆疊母資料);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1640, 900);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "取藥堆疊母資料";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // sqL_DataGridView_取藥堆疊母資料
             // 
@@ -22898,7 +22748,7 @@
             this.sqL_DataGridView_取藥堆疊母資料.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sqL_DataGridView_取藥堆疊母資料.Font = new System.Drawing.Font("新細明體", 9F);
             this.sqL_DataGridView_取藥堆疊母資料.ImageBox = false;
-            this.sqL_DataGridView_取藥堆疊母資料.Location = new System.Drawing.Point(3, 18);
+            this.sqL_DataGridView_取藥堆疊母資料.Location = new System.Drawing.Point(3, 3);
             this.sqL_DataGridView_取藥堆疊母資料.Name = "sqL_DataGridView_取藥堆疊母資料";
             this.sqL_DataGridView_取藥堆疊母資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
             this.sqL_DataGridView_取藥堆疊母資料.Password = "user82822040";
@@ -22909,7 +22759,7 @@
             this.sqL_DataGridView_取藥堆疊母資料.RowsHeight = 20;
             this.sqL_DataGridView_取藥堆疊母資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_取藥堆疊母資料.Server = "localhost";
-            this.sqL_DataGridView_取藥堆疊母資料.Size = new System.Drawing.Size(794, 268);
+            this.sqL_DataGridView_取藥堆疊母資料.Size = new System.Drawing.Size(1634, 894);
             this.sqL_DataGridView_取藥堆疊母資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_取藥堆疊母資料.TabIndex = 26;
             this.sqL_DataGridView_取藥堆疊母資料.TableName = "take_medicine_stack_new";
@@ -22925,6 +22775,273 @@
             this.sqL_DataGridView_取藥堆疊母資料.顯示首行 = true;
             this.sqL_DataGridView_取藥堆疊母資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
             this.sqL_DataGridView_取藥堆疊母資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.sqL_DataGridView_取藥堆疊子資料);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(475, 355);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "取藥堆疊子資料";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // sqL_DataGridView_取藥堆疊子資料
+            // 
+            this.sqL_DataGridView_取藥堆疊子資料.AutoSelectToDeep = false;
+            this.sqL_DataGridView_取藥堆疊子資料.backColor = System.Drawing.SystemColors.Control;
+            this.sqL_DataGridView_取藥堆疊子資料.BorderColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_取藥堆疊子資料.BorderRadius = 10;
+            this.sqL_DataGridView_取藥堆疊子資料.BorderSize = 2;
+            this.sqL_DataGridView_取藥堆疊子資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_取藥堆疊子資料.cellStylBackColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_取藥堆疊子資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_取藥堆疊子資料.cellStylForeColor = System.Drawing.Color.Black;
+            this.sqL_DataGridView_取藥堆疊子資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
+            this.sqL_DataGridView_取藥堆疊子資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersHeight = 21;
+            this.sqL_DataGridView_取藥堆疊子資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns1"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns2"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns3"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns4"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns5"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns6"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns7"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns8"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns9"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns10"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns11"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns12"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns13"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns14"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns15"))));
+            this.sqL_DataGridView_取藥堆疊子資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_取藥堆疊子資料.Columns16"))));
+            this.sqL_DataGridView_取藥堆疊子資料.DataBaseName = "Dispensing_000";
+            this.sqL_DataGridView_取藥堆疊子資料.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sqL_DataGridView_取藥堆疊子資料.Font = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_取藥堆疊子資料.ImageBox = false;
+            this.sqL_DataGridView_取藥堆疊子資料.Location = new System.Drawing.Point(3, 3);
+            this.sqL_DataGridView_取藥堆疊子資料.Name = "sqL_DataGridView_取藥堆疊子資料";
+            this.sqL_DataGridView_取藥堆疊子資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
+            this.sqL_DataGridView_取藥堆疊子資料.Password = "user82822040";
+            this.sqL_DataGridView_取藥堆疊子資料.Port = ((uint)(3306u));
+            this.sqL_DataGridView_取藥堆疊子資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.sqL_DataGridView_取藥堆疊子資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_取藥堆疊子資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sqL_DataGridView_取藥堆疊子資料.RowsHeight = 20;
+            this.sqL_DataGridView_取藥堆疊子資料.SaveFileName = "SQL_DataGridView";
+            this.sqL_DataGridView_取藥堆疊子資料.Server = "localhost";
+            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(469, 349);
+            this.sqL_DataGridView_取藥堆疊子資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
+            this.sqL_DataGridView_取藥堆疊子資料.TabIndex = 26;
+            this.sqL_DataGridView_取藥堆疊子資料.TableName = "take_medicine_substack_new";
+            this.sqL_DataGridView_取藥堆疊子資料.UserName = "root";
+            this.sqL_DataGridView_取藥堆疊子資料.可拖曳欄位寬度 = false;
+            this.sqL_DataGridView_取藥堆疊子資料.可選擇多列 = false;
+            this.sqL_DataGridView_取藥堆疊子資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_取藥堆疊子資料.自動換行 = true;
+            this.sqL_DataGridView_取藥堆疊子資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_取藥堆疊子資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sqL_DataGridView_取藥堆疊子資料.顯示CheckBox = false;
+            this.sqL_DataGridView_取藥堆疊子資料.顯示首列 = false;
+            this.sqL_DataGridView_取藥堆疊子資料.顯示首行 = true;
+            this.sqL_DataGridView_取藥堆疊子資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_取藥堆疊子資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.sqL_DataGridView_批次領藥資料);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(475, 355);
+            this.tabPage10.TabIndex = 2;
+            this.tabPage10.Text = "批次領藥資料";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // sqL_DataGridView_批次領藥資料
+            // 
+            this.sqL_DataGridView_批次領藥資料.AutoSelectToDeep = false;
+            this.sqL_DataGridView_批次領藥資料.backColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_批次領藥資料.BorderColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_批次領藥資料.BorderRadius = 10;
+            this.sqL_DataGridView_批次領藥資料.BorderSize = 2;
+            this.sqL_DataGridView_批次領藥資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_批次領藥資料.cellStylBackColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_批次領藥資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_批次領藥資料.cellStylForeColor = System.Drawing.Color.Black;
+            this.sqL_DataGridView_批次領藥資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
+            this.sqL_DataGridView_批次領藥資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_批次領藥資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_批次領藥資料.columnHeadersHeight = 21;
+            this.sqL_DataGridView_批次領藥資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns1"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns2"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns3"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns4"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns5"))));
+            this.sqL_DataGridView_批次領藥資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_批次領藥資料.Columns6"))));
+            this.sqL_DataGridView_批次領藥資料.DataBaseName = "mydatabase";
+            this.sqL_DataGridView_批次領藥資料.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sqL_DataGridView_批次領藥資料.Font = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_批次領藥資料.ImageBox = false;
+            this.sqL_DataGridView_批次領藥資料.Location = new System.Drawing.Point(0, 0);
+            this.sqL_DataGridView_批次領藥資料.Name = "sqL_DataGridView_批次領藥資料";
+            this.sqL_DataGridView_批次領藥資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
+            this.sqL_DataGridView_批次領藥資料.Password = "user82822040";
+            this.sqL_DataGridView_批次領藥資料.Port = ((uint)(3306u));
+            this.sqL_DataGridView_批次領藥資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.sqL_DataGridView_批次領藥資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_批次領藥資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sqL_DataGridView_批次領藥資料.RowsHeight = 20;
+            this.sqL_DataGridView_批次領藥資料.SaveFileName = "SQL_DataGridView";
+            this.sqL_DataGridView_批次領藥資料.Server = "192.168.226.38";
+            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_批次領藥資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
+            this.sqL_DataGridView_批次領藥資料.TabIndex = 119;
+            this.sqL_DataGridView_批次領藥資料.TableName = "UDFTPSTK4";
+            this.sqL_DataGridView_批次領藥資料.UserName = "user";
+            this.sqL_DataGridView_批次領藥資料.可拖曳欄位寬度 = false;
+            this.sqL_DataGridView_批次領藥資料.可選擇多列 = false;
+            this.sqL_DataGridView_批次領藥資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_批次領藥資料.自動換行 = true;
+            this.sqL_DataGridView_批次領藥資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_批次領藥資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sqL_DataGridView_批次領藥資料.顯示CheckBox = false;
+            this.sqL_DataGridView_批次領藥資料.顯示首列 = false;
+            this.sqL_DataGridView_批次領藥資料.顯示首行 = true;
+            this.sqL_DataGridView_批次領藥資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_批次領藥資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.sqL_DataGridView_管制抽屜權限資料);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(475, 355);
+            this.tabPage11.TabIndex = 3;
+            this.tabPage11.Text = "管制抽屜權限資料";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // sqL_DataGridView_管制抽屜權限資料
+            // 
+            this.sqL_DataGridView_管制抽屜權限資料.AutoSelectToDeep = false;
+            this.sqL_DataGridView_管制抽屜權限資料.backColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_管制抽屜權限資料.BorderColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_管制抽屜權限資料.BorderRadius = 10;
+            this.sqL_DataGridView_管制抽屜權限資料.BorderSize = 2;
+            this.sqL_DataGridView_管制抽屜權限資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_管制抽屜權限資料.cellStylBackColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_管制抽屜權限資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_管制抽屜權限資料.cellStylForeColor = System.Drawing.Color.Black;
+            this.sqL_DataGridView_管制抽屜權限資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
+            this.sqL_DataGridView_管制抽屜權限資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersHeight = 21;
+            this.sqL_DataGridView_管制抽屜權限資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns"))));
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns1"))));
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns2"))));
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns3"))));
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns4"))));
+            this.sqL_DataGridView_管制抽屜權限資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_管制抽屜權限資料.Columns5"))));
+            this.sqL_DataGridView_管制抽屜權限資料.DataBaseName = "mydatabase";
+            this.sqL_DataGridView_管制抽屜權限資料.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sqL_DataGridView_管制抽屜權限資料.Font = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_管制抽屜權限資料.ImageBox = false;
+            this.sqL_DataGridView_管制抽屜權限資料.Location = new System.Drawing.Point(0, 0);
+            this.sqL_DataGridView_管制抽屜權限資料.Name = "sqL_DataGridView_管制抽屜權限資料";
+            this.sqL_DataGridView_管制抽屜權限資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
+            this.sqL_DataGridView_管制抽屜權限資料.Password = "user82822040";
+            this.sqL_DataGridView_管制抽屜權限資料.Port = ((uint)(3306u));
+            this.sqL_DataGridView_管制抽屜權限資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.sqL_DataGridView_管制抽屜權限資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_管制抽屜權限資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sqL_DataGridView_管制抽屜權限資料.RowsHeight = 20;
+            this.sqL_DataGridView_管制抽屜權限資料.SaveFileName = "SQL_DataGridView";
+            this.sqL_DataGridView_管制抽屜權限資料.Server = "192.168.226.38";
+            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_管制抽屜權限資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
+            this.sqL_DataGridView_管制抽屜權限資料.TabIndex = 119;
+            this.sqL_DataGridView_管制抽屜權限資料.TableName = "locker_data";
+            this.sqL_DataGridView_管制抽屜權限資料.UserName = "user";
+            this.sqL_DataGridView_管制抽屜權限資料.可拖曳欄位寬度 = false;
+            this.sqL_DataGridView_管制抽屜權限資料.可選擇多列 = false;
+            this.sqL_DataGridView_管制抽屜權限資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_管制抽屜權限資料.自動換行 = true;
+            this.sqL_DataGridView_管制抽屜權限資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_管制抽屜權限資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sqL_DataGridView_管制抽屜權限資料.顯示CheckBox = false;
+            this.sqL_DataGridView_管制抽屜權限資料.顯示首列 = false;
+            this.sqL_DataGridView_管制抽屜權限資料.顯示首行 = true;
+            this.sqL_DataGridView_管制抽屜權限資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_管制抽屜權限資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.sqL_DataGridView_設備資料);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Size = new System.Drawing.Size(475, 355);
+            this.tabPage12.TabIndex = 4;
+            this.tabPage12.Text = "設備資料";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // sqL_DataGridView_設備資料
+            // 
+            this.sqL_DataGridView_設備資料.AutoSelectToDeep = false;
+            this.sqL_DataGridView_設備資料.backColor = System.Drawing.SystemColors.Control;
+            this.sqL_DataGridView_設備資料.BorderColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_設備資料.BorderRadius = 10;
+            this.sqL_DataGridView_設備資料.BorderSize = 2;
+            this.sqL_DataGridView_設備資料.cellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_設備資料.cellStylBackColor = System.Drawing.Color.LightBlue;
+            this.sqL_DataGridView_設備資料.cellStyleFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_設備資料.cellStylForeColor = System.Drawing.Color.Black;
+            this.sqL_DataGridView_設備資料.columnHeaderBackColor = System.Drawing.Color.SkyBlue;
+            this.sqL_DataGridView_設備資料.columnHeaderFont = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
+            this.sqL_DataGridView_設備資料.columnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_設備資料.columnHeadersHeight = 21;
+            this.sqL_DataGridView_設備資料.columnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sqL_DataGridView_設備資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_設備資料.Columns"))));
+            this.sqL_DataGridView_設備資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_設備資料.Columns1"))));
+            this.sqL_DataGridView_設備資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_設備資料.Columns2"))));
+            this.sqL_DataGridView_設備資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_設備資料.Columns3"))));
+            this.sqL_DataGridView_設備資料.DataBaseName = "Dispensing_000";
+            this.sqL_DataGridView_設備資料.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sqL_DataGridView_設備資料.Font = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_設備資料.ImageBox = false;
+            this.sqL_DataGridView_設備資料.Location = new System.Drawing.Point(0, 0);
+            this.sqL_DataGridView_設備資料.Name = "sqL_DataGridView_設備資料";
+            this.sqL_DataGridView_設備資料.OnlineState = SQLUI.SQL_DataGridView.OnlineEnum.Online;
+            this.sqL_DataGridView_設備資料.Password = "user82822040";
+            this.sqL_DataGridView_設備資料.Port = ((uint)(3306u));
+            this.sqL_DataGridView_設備資料.rowHeaderBackColor = System.Drawing.Color.CornflowerBlue;
+            this.sqL_DataGridView_設備資料.rowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_設備資料.RowsColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sqL_DataGridView_設備資料.RowsHeight = 40;
+            this.sqL_DataGridView_設備資料.SaveFileName = "SQL_DataGridView";
+            this.sqL_DataGridView_設備資料.Server = "localhost";
+            this.sqL_DataGridView_設備資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_設備資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
+            this.sqL_DataGridView_設備資料.TabIndex = 27;
+            this.sqL_DataGridView_設備資料.TableName = "devicelist";
+            this.sqL_DataGridView_設備資料.UserName = "root";
+            this.sqL_DataGridView_設備資料.可拖曳欄位寬度 = false;
+            this.sqL_DataGridView_設備資料.可選擇多列 = false;
+            this.sqL_DataGridView_設備資料.單格樣式 = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.sqL_DataGridView_設備資料.自動換行 = true;
+            this.sqL_DataGridView_設備資料.表單字體 = new System.Drawing.Font("新細明體", 9F);
+            this.sqL_DataGridView_設備資料.邊框樣式 = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sqL_DataGridView_設備資料.顯示CheckBox = false;
+            this.sqL_DataGridView_設備資料.顯示首列 = false;
+            this.sqL_DataGridView_設備資料.顯示首行 = true;
+            this.sqL_DataGridView_設備資料.首列樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
+            this.sqL_DataGridView_設備資料.首行樣式 = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
             // 
             // tabPage8
             // 
@@ -25485,10 +25602,12 @@
             this.groupBox10.PerformLayout();
             this.groupBox18.ResumeLayout(false);
             this.tabPage26.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox27.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox44.ResumeLayout(false);
+            this.tabControl3.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.rJ_GroupBox28.ContentsPanel.ResumeLayout(false);
             this.rJ_GroupBox28.ResumeLayout(false);
@@ -25776,11 +25895,8 @@
         private MyUI.PLC_RJ_ScreenButton plC_RJ_ScreenButton1;
         private MyUI.PLC_RJ_ScreenButton plC_RJ_ScreenButton2;
         private MyUI.PLC_RJ_ScreenButton plC_RJ_ScreenButton3;
-        private System.Windows.Forms.GroupBox groupBox27;
         private SQLUI.SQL_DataGridView sqL_DataGridView_取藥堆疊子資料;
-        private System.Windows.Forms.GroupBox groupBox4;
         private SQLUI.SQL_DataGridView sqL_DataGridView_批次領藥資料;
-        private System.Windows.Forms.GroupBox groupBox44;
         private SQLUI.SQL_DataGridView sqL_DataGridView_取藥堆疊母資料;
         private System.Windows.Forms.TabPage tabPage27;
         private MyUI.PLC_RJ_ScreenButton plC_RJ_ScreenButton4;
@@ -26375,7 +26491,7 @@
         private MyUI.RJ_TextBox textBox_領藥台_02_密碼;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label2;
-        private MyUI.PLC_NumBox plC_NumBox8;
+        private MyUI.PLC_NumBox plC_NumBox_完成滅燈時間;
         private MyUI.RJ_ProgressBar rJ_ProgressBar_領藥台_02_入賬完成時間條;
         private MyUI.RJ_ProgressBar rJ_ProgressBar_領藥台_01_入賬完成時間條;
         private MyUI.PLC_RJ_Button plC_RJ_Button_領藥台_01_手動作業;
@@ -26480,7 +26596,6 @@
         private MyUI.PLC_RJ_Button plC_RJ_Button_檢查頁面不顯示;
         private System.Windows.Forms.TabPage 管制抽屜;
         private Pannel_Locker_Design pannel_Locker_Design;
-        private System.Windows.Forms.GroupBox groupBox12;
         private SQLUI.SQL_DataGridView sqL_DataGridView_管制抽屜權限資料;
         private MyUI.PLC_RJ_GroupBox plC_RJ_GroupBox24;
         private System.Windows.Forms.Panel panel_人員資料_管制抽屜開鎖權限;
@@ -26492,6 +26607,14 @@
         private MyUI.PLC_Button plC_Button_工程模式_全部開鎖;
         private MyUI.PLC_Button plC_Button_同藥碼全亮;
         private MyUI.PLC_RJ_Button plC_RJ_Button_醫囑資料_定期API測試;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.TabPage tabPage12;
+        private SQLUI.SQL_DataGridView sqL_DataGridView_設備資料;
+        private MyUI.PLC_Button plC_Button_無庫存自動補足;
     }
 }
 

@@ -23,6 +23,7 @@ namespace 調劑台管理系統
             掃碼領藥,
             手輸領藥,
             批次領藥,
+            系統領藥,
             掃碼退藥,
             手輸退藥,
             重複領藥,
@@ -182,7 +183,7 @@ namespace 調劑台管理系統
                 list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.手輸領藥.GetEnumName()));
                 list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.批次領藥.GetEnumName()));
                 list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.重複領藥.GetEnumName()));
-
+                list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.系統領藥.GetEnumName()));
             }
             if (plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_退藥.Bool)
             {

@@ -119,6 +119,8 @@ namespace 調劑台管理系統
                 sqL_DataGridView_雲端藥檔.SQL_CreateTable();
             }
 
+         
+
             this.sqL_DataGridView_Locker_Index_Table.Init();
             if (!this.sqL_DataGridView_Locker_Index_Table.SQL_IsTableCreat())
             {
