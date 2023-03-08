@@ -473,7 +473,7 @@ namespace 調劑台管理系統
             this.Update();
         }
 
-      
+
     }
 
 

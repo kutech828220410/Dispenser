@@ -61,6 +61,8 @@ namespace 智慧調劑台管理系統_WebApi
             public string 交易量 { get; set; }
             [JsonPropertyName("operator")]
             public string 操作人 { get; set; }
+            [JsonPropertyName("ID")]
+            public string ID { get; set; }
             [JsonPropertyName("patient_name")]
             public string 病人姓名 { get; set; }
             [JsonPropertyName("patient_code")]
@@ -112,6 +114,7 @@ namespace 智慧調劑台管理系統_WebApi
             class_OutTakeMed_Data.藥品碼 = "25003";
             class_OutTakeMed_Data.交易量 = "-1";
             class_OutTakeMed_Data.操作人 = "王曉明";
+            class_OutTakeMed_Data.ID = "HS001";
             class_OutTakeMed_Data.病人姓名 = "章大同";
             class_OutTakeMed_Data.病歷號 = "00000000";
             class_OutTakeMed_Data.開方時間 = DateTime.Now.ToDateTimeString();
@@ -138,6 +141,7 @@ namespace 智慧調劑台管理系統_WebApi
             class_OutTakeMed_Data.藥品碼 = "25003";
             class_OutTakeMed_Data.交易量 = "-1";
             class_OutTakeMed_Data.操作人 = "王曉明";
+            class_OutTakeMed_Data.ID = "HS001";
             class_OutTakeMed_Data.病人姓名 = "章大同";
             class_OutTakeMed_Data.病歷號 = "00000000";
             class_OutTakeMed_Data.開方時間 = DateTime.Now.ToDateTimeString();
