@@ -279,6 +279,7 @@ namespace 調劑台管理系統
         {
             if (this.plC_ScreenPage_Main.PageText == "領藥")
             {
+             
                 if (flag_Program_領藥_RFID_換頁)
                 {
                     flag_Program_領藥_RFID_換頁 = false;

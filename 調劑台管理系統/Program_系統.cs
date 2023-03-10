@@ -34,6 +34,7 @@ namespace 調劑台管理系統
         藥品條碼2,
         警訊藥品,
         管制級別,
+        類別,
     }
     public partial class Form1 : Form
     {
@@ -594,7 +595,7 @@ namespace 調劑台管理系統
             }
             if (plC_CheckBox_不顯示設定_效期管理.Checked)
             {
-                plC_RJ_ScreenButton_效期管理.SetVisible(false);
+                //plC_RJ_ScreenButton_效期管理.SetVisible(false);
             }
             if (plC_CheckBox_不顯示設定_人員資料.Checked)
             {

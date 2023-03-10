@@ -53,6 +53,7 @@ namespace 調劑台管理系統
             set
             {
                 this.rJ_TextBox_登入者姓名.Texts = value;
+                this.rJ_Lable_後台登入_歡迎登入_姓名.Text = value;
             }
         }
         private string 登入者ID
@@ -64,6 +65,7 @@ namespace 調劑台管理系統
             set
             {
                 this.rJ_TextBox_登入者ID.Texts = value;
+                this.rJ_Lable_後台登入_歡迎登入_ID.Text = value;
             }
         }
         private string 登入者顏色
@@ -376,6 +378,7 @@ namespace 調劑台管理系統
                         this.Function_登入權限資料_最高權限();
                         this.PLC_Device_已登入.Bool = true;
                         this.Text = $"{this.FormText}         [登入者名稱 : {登入者名稱}] [登入者ID : {登入者ID}]";
+                        this.rJ_Pannel_後台登入_歡迎登入.Visible = true;
                         flag = true;
                         return;
                     }
@@ -399,6 +402,7 @@ namespace 調劑台管理系統
                 {
                     if (password != list_人員資料_buf[0][(int)enum_人員資料.密碼].ObjectToString())
                     {
+                        MyMessageBox.ShowDialog("密碼錯誤!");
                         flag = false;
                         return;
                     }
@@ -411,6 +415,7 @@ namespace 調劑台管理系統
                     this.textBox_後台登入_密碼.Text = "";
                     this.PLC_Device_已登入.Bool = true;
                     this.Text = $"{this.FormText}         [登入者名稱 : {登入者名稱}] [登入者ID : {登入者ID}]";
+                    this.rJ_Pannel_後台登入_歡迎登入.Visible = true;
                     flag = true;
                     return;
                 }
@@ -433,6 +438,7 @@ namespace 調劑台管理系統
 
                 this.Text = $"{this.FormText}";
                 this.pannel_Locker_Design.ShowControlPannel = false;
+                this.rJ_Pannel_後台登入_歡迎登入.Visible = false;
             }));
             if (this.plC_ScreenPage_Main.PageText == "領藥") return;
             if (this.plC_ScreenPage_Main.PageText == "管制抽屜") return;
@@ -440,7 +446,7 @@ namespace 調劑台管理系統
             if (plC_RJ_ScreenButton_領退藥作業.Visible) this.plC_ScreenPage_Main.SelecteTabText("領藥");
             else if (plC_RJ_ScreenButton_管制抽屜.Visible) this.plC_ScreenPage_Main.SelecteTabText("管制抽屜");
             else this.plC_ScreenPage_Main.SelecteTabText("後台登入");
-
+         
             //this.PLC_Device_主頁面頁碼.Value = 0;
         }
         #endregion

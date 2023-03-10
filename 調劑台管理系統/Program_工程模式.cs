@@ -228,6 +228,12 @@ namespace 調劑台管理系統
             {
                 if (this.List_Locker[i].Visible) this.List_Locker[i].Open();
             }
+            List<object[]> list_locker_table_value = this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(false);
+            for (int i = 0; i < list_locker_table_value.Count; i++)
+            {
+                list_locker_table_value[i][(int)enum_Locker_Index_Table.輸出狀態] = true.ToString();
+            }
+            this.sqL_DataGridView_Locker_Index_Table.SQL_ReplaceExtra(list_locker_table_value, false);
         }
         #endregion
         #region StreamIO
