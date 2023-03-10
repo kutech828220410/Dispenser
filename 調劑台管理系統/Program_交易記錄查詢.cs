@@ -38,6 +38,7 @@ namespace 調劑台管理系統
             入庫作業,
             管制抽屜開啟,
             管制抽屜關閉,
+            交班對點,
             None,
         }
         private enum enum_交易記錄查詢資料
@@ -203,6 +204,7 @@ namespace 調劑台管理系統
             if (plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_後臺操作.Bool)
             {
                 list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.操作工程模式.GetEnumName()));
+                list_list_value_buf.Add(list_value.GetRows((int)enum_交易記錄查詢資料.動作, enum_交易記錄查詢動作.交班對點.GetEnumName()));
             }
             if (lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Bool)
             {

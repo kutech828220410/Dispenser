@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = 智慧調劑台管理系統_WebApi
-build_property.ProjectDir = C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\
+build_property.ProjectDir = C:\Users\hs\source\repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\
