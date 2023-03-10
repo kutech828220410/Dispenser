@@ -35,6 +35,5 @@
     "MySqlSslMode": 0,
     "TableName": ""
   },
-  "OrderApiURL": "",
-  "MedApiURL": ""
+  "OrderApiURL": ""
 }
