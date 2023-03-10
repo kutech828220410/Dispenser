@@ -922,6 +922,7 @@ namespace 調劑台管理系統
             //-----------------------------------------------------------------------------------------------------------------------------------------
             //檢查系統領藥是否資料是否到達時間
             this.list_取藥堆疊母資料 = this.Function_取藥堆疊資料_取得母資料();
+            this.list_取藥堆疊母資料 = this.list_取藥堆疊母資料.GetRows((int)enum_取藥堆疊母資料.狀態, enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName());
             List<object[]> list_取藥堆疊母資料_delete = new List<object[]>();
             int 滅燈時間 = plC_NumBox_完成滅燈時間.Value / 1000;
             for (int i = 0; i < this.list_取藥堆疊母資料.Count; i++)

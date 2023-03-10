@@ -105,10 +105,10 @@ namespace 調劑台管理系統
                 }
                 else if (value_device is Drawer)
                 {
+                    Drawer drawer = value_device as Drawer;
+                    this.drawerUI_EPD_583.Set_LED_Clear_UDP(drawer);
                     if (!plC_Button_同藥碼全亮.Bool)
-                    {
-                        Drawer drawer = value_device as Drawer;
-                        this.drawerUI_EPD_583.Set_LED_Clear_UDP(drawer);
+                    {                      
                         this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
                     }
                 }
