@@ -962,8 +962,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HS\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\HS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -974,9 +973,6 @@
       "packagesPath": "C:\\Users\\HS\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\HS\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\HS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

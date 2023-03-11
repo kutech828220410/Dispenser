@@ -1,7 +1,7 @@
 {
   "DB_Basic": {
     "DataBaseName": "DPS01",
-    "IP": "192.168.5.250",
+    "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
