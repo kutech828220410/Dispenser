@@ -792,8 +792,8 @@ namespace 調劑台管理系統
 
 
 
-            Task allTask = Task.WhenAll(taskList);
-            allTask.Wait();
+            //Task allTask = Task.WhenAll(taskList);
+            //allTask.Wait();
         }
 
         public string Function_取得藥品網址(string 藥品碼)

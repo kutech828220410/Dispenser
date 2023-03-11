@@ -1,7 +1,7 @@
 {
   "DB_Basic": {
     "DataBaseName": "DPS01",
-    "IP": "localhost",
+    "IP": "192.168.5.250",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -10,7 +10,7 @@
   },
   "DB_person_page": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "192.168.5.250",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -19,7 +19,7 @@
   },
   "DB_order_list": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "192.168.24.61",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
@@ -28,13 +28,13 @@
   },
   "DB_Medicine_Cloud": {
     "DataBaseName": "dbvm",
-    "IP": "10.18.1.146",
+    "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
     "Port": 3306,
     "MySqlSslMode": 0,
     "TableName": ""
   },
-  "OrderApiURL": "",
+  "OrderApiURL": "http://192.168.24.61/dbvm/BBAR?barcode=",
   "MedApiURL": ""
 }

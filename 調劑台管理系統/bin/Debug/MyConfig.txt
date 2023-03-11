@@ -10,8 +10,8 @@
   "EPD583_Enable": true,
   "EPD266_Enable": true,
   "RowsLED_Enable": true,
-  "RFID_Enable": false,
-  "Pannel35_Enable": false,
+  "RFID_Enable": true,
+  "Pannel35_Enable": true,
   "帳密登入_Enable": true,
   "藥物辨識網址": "",
   "線上更新": true

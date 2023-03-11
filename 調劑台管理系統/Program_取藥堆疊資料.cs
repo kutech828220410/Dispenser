@@ -211,7 +211,8 @@ namespace 調劑台管理系統
             list_value = list_value.GetRows((int)enum_取藥堆疊母資料.藥品碼, 藥品碼);
             list_value = list_value.GetRows((int)enum_取藥堆疊母資料.病歷號, 病歷號);
             list_value = list_value.GetRows((int)enum_取藥堆疊母資料.開方時間, 開方時間);
-            if(list_value.Count == 0)
+            list_value = list_value.GetRows((int)enum_取藥堆疊母資料.藥袋序號, 藥袋序號);
+            if (list_value.Count == 0)
             {
                 this.sqL_DataGridView_取藥堆疊母資料.SQL_AddRow(value, false);
             }

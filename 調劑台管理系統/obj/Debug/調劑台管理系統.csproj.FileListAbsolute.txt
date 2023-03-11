@@ -34,7 +34,6 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Text.J
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.ValueTuple.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\TCP.dll
-C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\zxing.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\Microsoft.Office.Interop.Excel.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\MeasureSystemUI.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\MVSDKUI.dll
