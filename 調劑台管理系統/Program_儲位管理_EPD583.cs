@@ -525,11 +525,14 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_儲位管理_EPD583_藥品搜尋_藥品名稱_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
-            if (rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text.StringIsEmpty()) return;
+            if (rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text.Length < 3)
+            {
+                MyMessageBox.ShowDialog("藥品名稱搜尋字元不得小於3個!");
+                return;
+            }
             List<object[]> list_value = this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            list_value = (from value in list_value
-                          where value[(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString().ToUpper().Contains(rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text.ToUpper())
-                          select value).ToList();
+            list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text);
+
             this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料.RefreshGrid(list_value);
         }
         private void PlC_RJ_Button_儲位管理_EPD583_藥品搜尋_填入資料_MouseDownEvent(MouseEventArgs mevent)
@@ -596,10 +599,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.庫存, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+                 
                     boxes[0].SetValue(Device.ValueName.庫存, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -611,10 +617,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+   
                     boxes[0].SetValue(Device.ValueName.儲位名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -626,10 +635,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.包裝單位, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+
                     boxes[0].SetValue(Device.ValueName.包裝單位, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -641,10 +653,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.BarCode, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+    
                     boxes[0].SetValue(Device.ValueName.BarCode, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -656,10 +671,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.藥品碼, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+
                     boxes[0].SetValue(Device.ValueName.藥品碼, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -671,10 +689,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+       
                     boxes[0].SetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -686,10 +707,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.藥品學名, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+   
                     boxes[0].SetValue(Device.ValueName.藥品學名, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
@@ -701,10 +725,13 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate 
             {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Font) as Font;
+
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-                    if (boxes.Count == 0) return;
+
                     boxes[0].SetValue(Device.ValueName.藥品名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);

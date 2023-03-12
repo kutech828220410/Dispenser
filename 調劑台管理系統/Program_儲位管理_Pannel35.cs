@@ -371,9 +371,13 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
-            if (this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Texts.StringIsEmpty()) return;
-            List<object[]> list_value = this.sqL_DataGridView_儲位管理_Pannel35_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品名稱, this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Texts);
+            if (rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Text.Length < 3)
+            {
+                MyMessageBox.ShowDialog("藥品名稱搜尋字元不得小於3個!");
+                return;
+            }
+            List<object[]> list_value = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
+            list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Text);
             this.sqL_DataGridView_儲位管理_Pannel35_藥品資料_藥檔資料.RefreshGrid(list_value);
         }
         private void PlC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋_MouseDownEvent(MouseEventArgs mevent)
@@ -734,7 +738,6 @@ namespace 調劑台管理系統
                 this.Function_設定雲端資料更新();
             }));
         }
-
         private void PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_修正庫存_MouseDownEvent(MouseEventArgs mevent)
         {
             this.Invoke(new Action(delegate
@@ -825,7 +828,6 @@ namespace 調劑台管理系統
                 this.Function_設定雲端資料更新();
             }));
         }
-
         private void PlC_RJ_Button_儲位管理_Pannel35_儲位內容_效期管理_新增效期_MouseDownEvent(MouseEventArgs mevent)
         {
             this.Invoke(new Action(delegate

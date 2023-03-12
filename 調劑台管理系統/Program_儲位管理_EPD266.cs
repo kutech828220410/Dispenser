@@ -75,6 +75,7 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_包裝單位字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_包裝單位字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位名稱字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_儲位名稱字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_總庫存字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_總庫存字體更動_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD266_儲位內容_效期字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_效期字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_新增效期.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_新增效期_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_修正庫存.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_修正庫存_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_修正批號.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_修正批號_MouseDownEvent;
@@ -87,11 +88,15 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD266_貼上儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_貼上儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_複製儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_複製儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位初始化_MouseDownEvent;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示_CheckStateChanged;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示_CheckStateChanged;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示_CheckStateChanged;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示_CheckStateChanged;
 
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD266);
         }
 
-
+   
 
         private void Program_儲位管理_EPD266()
         {
@@ -301,6 +306,7 @@ namespace 調劑台管理系統
             string 包裝單位 = RowValue[(int)enum_儲位管理_EPD266_儲位資料.包裝單位].ObjectToString();
             string 藥品條碼 = RowValue[(int)enum_儲位管理_EPD266_儲位資料.藥品條碼].ObjectToString();
             string 庫存 = RowValue[(int)enum_儲位管理_EPD266_儲位資料.庫存].ObjectToString();
+            string 警訊藥品 = RowValue[(int)enum_儲位管理_EPD266_儲位資料.警訊藥品].ObjectToString();
 
             this.Invoke(new Action(delegate 
             {
@@ -314,14 +320,20 @@ namespace 調劑台管理系統
                 rJ_TextBox_儲位管理_EPD266_儲位內容_總庫存.Texts = 庫存;
             }));
 
-
-
             Storage storage = this.storageUI_EPD_266.SQL_GetStorage(IP);
-            if(storage != null)
+
+            storage.IsWarning = (警訊藥品 == "True");
+            if (storage != null)
             {
                 this.epD_266_Pannel.DrawToPictureBox(storage);
             }
-
+            this.Invoke(new Action(delegate
+            {
+                this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示.Checked = (bool)storage.GetValue(Device.ValueName.藥品名稱, Device.ValueType.Visable);
+                this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示.Checked = (bool)storage.GetValue(Device.ValueName.藥品學名, Device.ValueType.Visable);
+                this.plC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示.Checked = (bool)storage.GetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Visable);
+                this.plC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示.Checked = (bool)storage.GetValue(Device.ValueName.效期, Device.ValueType.Visable);
+            }));
             sqL_DataGridView_儲位管理_EPD266_儲位內容_效期及庫存.ClearGrid();
             List<object[]> list_value = new List<object[]>();
             for (int i = 0; i < storage.List_Validity_period.Count; i++)
@@ -378,11 +390,13 @@ namespace 調劑台管理系統
 
         private void PlC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品名稱_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
-            if (rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱.Text.StringIsEmpty()) return;
+            if (rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱.Text.Length < 3)
+            {
+                MyMessageBox.ShowDialog("藥品名稱搜尋字元不得小於3個!");
+                return;
+            }
             List<object[]> list_value = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            list_value = (from value in list_value
-                          where value[(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString().ToUpper().Contains(rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱.Text.ToUpper())
-                          select value).ToList();
+            list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱.Text);
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.RefreshGrid(list_value);
         }
         private void PlC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品碼_搜尋_MouseDownEvent(MouseEventArgs mevent)
@@ -445,9 +459,12 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.庫存, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
+                   
                     storage.SetValue(Device.ValueName.庫存, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -459,9 +476,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.儲位名稱, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.儲位名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -472,9 +491,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.包裝單位, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.包裝單位, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -485,9 +506,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.藥品碼, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.藥品碼, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -498,9 +521,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.BarCode, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.BarCode, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -511,9 +536,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -524,9 +551,11 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.藥品學名, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.藥品學名, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
@@ -537,10 +566,27 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.藥品名稱, Device.ValueType.Font) as Font;
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Storage storage = this.epD_266_Pannel.CurrentStorage;
                     storage.SetValue(Device.ValueName.藥品名稱, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                    this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
+                }
+            }));
+        }
+        private void PlC_RJ_Button_儲位管理_EPD266_儲位內容_效期字體更動_MouseDownEvent(MouseEventArgs mevent)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                this.fontDialog.Font = storage.GetValue(Device.ValueName.效期, Device.ValueType.Font) as Font;
+                if (this.fontDialog.ShowDialog() == DialogResult.OK)
+                {
+                    storage.SetValue(Device.ValueName.效期, Device.ValueType.Font, fontDialog.Font);
                     this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
                 }
@@ -1148,6 +1194,51 @@ namespace 調劑台管理系統
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storages);
                     dialog_Prcessbar.Close();
                 }
+            }));
+        }
+        private void PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                storage.SetValue(Device.ValueName.藥品名稱, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示.Checked);
+                this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
+            }));
+        }
+        private void PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                storage.SetValue(Device.ValueName.藥品學名, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示.Checked);
+                this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
+            }));
+
+        }
+        private void PlC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                storage.SetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示.Checked);
+                this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
+            }));
+        }
+        private void PlC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                Storage storage = this.epD_266_Pannel.CurrentStorage;
+                if (storage == null) return;
+                storage.SetValue(Device.ValueName.效期, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示.Checked);
+                this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
             }));
         }
         #endregion
