@@ -818,7 +818,10 @@ namespace 調劑台管理系統
             string url = dBConfigClass.MedApiURL;
             if (!url.StringIsEmpty())
             {
+                MyTimer myTimer = new MyTimer();
+                myTimer.StartTickTime(50000);
                 string response = Basic.Net.WEBApiGet($"{url}?Code={藥品碼}");
+                Console.WriteLine($"HIS填入 , response:{response},耗時{myTimer.ToString()}ms");
             }
             List<object[]> list_雲端藥檔 = this.sqL_DataGridView_雲端藥檔.SQL_GetAllRows(false);
             List<object[]> list_雲端藥檔_buf = new List<object[]>();
@@ -846,6 +849,15 @@ namespace 調劑台管理系統
         }
         private void PlC_RJ_Button_藥品資料_HIS下載全部藥檔_MouseDownEvent(MouseEventArgs mevent)
         {
+            string url = dBConfigClass.MedApiURL;
+            if (!url.StringIsEmpty())
+            {
+                MyTimer myTimer = new MyTimer();
+                myTimer.StartTickTime(50000);
+                string response = Basic.Net.WEBApiGet($"{url}");
+                Console.WriteLine($"HIS下載全部藥檔 , response:{response},耗時{myTimer.ToString()}ms");
+            }
+
             List<object[]> list_雲端藥檔 = this.sqL_DataGridView_雲端藥檔.SQL_GetAllRows(false);
             List<object[]> list_雲端藥檔_buf = new List<object[]>();
             List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
