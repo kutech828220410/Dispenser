@@ -475,6 +475,7 @@
             this.rJ_Lable53 = new MyUI.RJ_Lable();
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料 = new SQLUI.SQL_DataGridView();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位 = new MyUI.PLC_CheckBox();
             this.plC_RJ_Button_儲位管理_EPD266_儲位初始化 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD266_貼上儲位 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD266_複製儲位 = new MyUI.PLC_RJ_Button();
@@ -11891,10 +11892,10 @@
             // 
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel11);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1648, 461);
+            this.panel9.Size = new System.Drawing.Size(1648, 478);
             this.panel9.TabIndex = 130;
             // 
             // panel16
@@ -11903,7 +11904,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(916, 0);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(732, 461);
+            this.panel16.Size = new System.Drawing.Size(732, 478);
             this.panel16.TabIndex = 131;
             // 
             // plC_RJ_GroupBox8
@@ -11929,7 +11930,7 @@
             this.plC_RJ_GroupBox8.ContentsPanel.Location = new System.Drawing.Point(0, 37);
             this.plC_RJ_GroupBox8.ContentsPanel.Name = "ContentsPanel";
             this.plC_RJ_GroupBox8.ContentsPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.plC_RJ_GroupBox8.ContentsPanel.Size = new System.Drawing.Size(732, 424);
+            this.plC_RJ_GroupBox8.ContentsPanel.Size = new System.Drawing.Size(732, 441);
             this.plC_RJ_GroupBox8.ContentsPanel.TabIndex = 2;
             this.plC_RJ_GroupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plC_RJ_GroupBox8.Location = new System.Drawing.Point(0, 0);
@@ -11938,7 +11939,7 @@
             this.plC_RJ_GroupBox8.PannelBorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox8.PannelBorderRadius = 5;
             this.plC_RJ_GroupBox8.PannelBorderSize = 2;
-            this.plC_RJ_GroupBox8.Size = new System.Drawing.Size(732, 461);
+            this.plC_RJ_GroupBox8.Size = new System.Drawing.Size(732, 478);
             this.plC_RJ_GroupBox8.TabIndex = 53;
             this.plC_RJ_GroupBox8.TitleBackColor = System.Drawing.Color.DeepSkyBlue;
             this.plC_RJ_GroupBox8.TitleBorderColor = System.Drawing.Color.PaleVioletRed;
@@ -12202,6 +12203,7 @@
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位);
             this.panel11.Controls.Add(this.plC_RJ_Button_儲位管理_EPD266_儲位初始化);
             this.panel11.Controls.Add(this.plC_RJ_Button_儲位管理_EPD266_貼上儲位);
             this.panel11.Controls.Add(this.plC_RJ_Button_儲位管理_EPD266_複製儲位);
@@ -12219,8 +12221,26 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(916, 461);
+            this.panel11.Size = new System.Drawing.Size(916, 478);
             this.panel11.TabIndex = 130;
+            // 
+            // plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位
+            // 
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Font = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Location = new System.Drawing.Point(232, 422);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Name = "plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Size = new System.Drawing.Size(96, 16);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.TabIndex = 142;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Text = "顯示空白儲位";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.文字內容 = "顯示空白儲位";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.文字字體 = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.音效 = true;
             // 
             // plC_RJ_Button_儲位管理_EPD266_儲位初始化
             // 
@@ -12400,7 +12420,7 @@
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.Font = new System.Drawing.Font("微軟正黑體", 10F);
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.Location = new System.Drawing.Point(260, 418);
+            this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.Location = new System.Drawing.Point(265, 442);
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.Name = "plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋";
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.OFF_文字內容 = "搜尋";
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 10F);
@@ -12475,7 +12495,7 @@
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.BorderSize = 1;
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Font = new System.Drawing.Font("新細明體", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.ForeColor = System.Drawing.Color.DimGray;
-            this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Location = new System.Drawing.Point(125, 418);
+            this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Location = new System.Drawing.Point(130, 442);
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Multiline = false;
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Name = "rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼";
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -12498,7 +12518,7 @@
             this.rJ_Lable54.BorderSize = 0;
             this.rJ_Lable54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rJ_Lable54.ForeColor = System.Drawing.Color.White;
-            this.rJ_Lable54.Location = new System.Drawing.Point(3, 418);
+            this.rJ_Lable54.Location = new System.Drawing.Point(8, 442);
             this.rJ_Lable54.Name = "rJ_Lable54";
             this.rJ_Lable54.Size = new System.Drawing.Size(116, 30);
             this.rJ_Lable54.TabIndex = 135;
@@ -12733,7 +12753,7 @@
             this.plC_RJ_GroupBox6.ContentsPanel.Location = new System.Drawing.Point(0, 37);
             this.plC_RJ_GroupBox6.ContentsPanel.Name = "ContentsPanel";
             this.plC_RJ_GroupBox6.ContentsPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.plC_RJ_GroupBox6.ContentsPanel.Size = new System.Drawing.Size(584, 424);
+            this.plC_RJ_GroupBox6.ContentsPanel.Size = new System.Drawing.Size(584, 441);
             this.plC_RJ_GroupBox6.ContentsPanel.TabIndex = 2;
             this.plC_RJ_GroupBox6.Dock = System.Windows.Forms.DockStyle.Right;
             this.plC_RJ_GroupBox6.Location = new System.Drawing.Point(332, 0);
@@ -12742,7 +12762,7 @@
             this.plC_RJ_GroupBox6.PannelBorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox6.PannelBorderRadius = 5;
             this.plC_RJ_GroupBox6.PannelBorderSize = 2;
-            this.plC_RJ_GroupBox6.Size = new System.Drawing.Size(584, 461);
+            this.plC_RJ_GroupBox6.Size = new System.Drawing.Size(584, 478);
             this.plC_RJ_GroupBox6.TabIndex = 129;
             this.plC_RJ_GroupBox6.TitleBackColor = System.Drawing.Color.DeepSkyBlue;
             this.plC_RJ_GroupBox6.TitleBorderColor = System.Drawing.Color.PaleVioletRed;
@@ -13872,9 +13892,9 @@
             // 
             this.groupBox11.Controls.Add(this.sqL_DataGridView_儲位管理_EPD266_儲位資料);
             this.groupBox11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox11.Location = new System.Drawing.Point(0, 467);
+            this.groupBox11.Location = new System.Drawing.Point(0, 478);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(1648, 459);
+            this.groupBox11.Size = new System.Drawing.Size(1648, 448);
             this.groupBox11.TabIndex = 50;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "儲位資料";
@@ -13921,7 +13941,7 @@
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.RowsHeight = 60;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.Server = "127.0.0.0";
-            this.sqL_DataGridView_儲位管理_EPD266_儲位資料.Size = new System.Drawing.Size(1642, 438);
+            this.sqL_DataGridView_儲位管理_EPD266_儲位資料.Size = new System.Drawing.Size(1642, 427);
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.TabIndex = 24;
             this.sqL_DataGridView_儲位管理_EPD266_儲位資料.UserName = "root";
@@ -26525,6 +26545,7 @@
             this.plC_RJ_GroupBox8.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.rJ_Pannel7.ResumeLayout(false);
             this.rJ_Pannel7.PerformLayout();
             this.plC_RJ_GroupBox6.ContentsPanel.ResumeLayout(false);
@@ -27739,6 +27760,7 @@
         private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示;
         private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD266_儲位內容_效期字體更動;
         private MyUI.RJ_Lable rJ_Lable58;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位;
     }
 }
 

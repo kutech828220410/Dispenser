@@ -92,11 +92,11 @@ namespace 調劑台管理系統
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_中文名稱顯示_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_效期顯示_CheckStateChanged;
-
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位_CheckStateChanged;
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD266);
         }
 
-   
+     
 
         private void Program_儲位管理_EPD266()
         {
@@ -267,23 +267,26 @@ namespace 調劑台管理系統
         {
             MyTimer_TickTime.TickStop();
             MyTimer_TickTime.StartTickTime(50000);
+            bool flag_顯示空白儲位 = plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.Checked;
             List<object[]> list_value = new List<object[]>();
             for (int i = 0; i < this.List_EPD266_本地資料.Count; i++)
             {
                 object[] value = new object[new enum_儲位管理_EPD266_儲位資料().GetLength()];
-                value[(int)enum_儲位管理_EPD266_儲位資料.IP] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.IP, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.儲位名稱] = List_EPD266_本地資料[i].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString(); ;
-                value[(int)enum_儲位管理_EPD266_儲位資料.藥品碼] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.藥品名稱] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.藥品學名] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品學名, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.藥品中文名稱] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.包裝單位] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.藥品條碼] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.BarCode, Device.ValueType.Value).ObjectToString();;
-                value[(int)enum_儲位管理_EPD266_儲位資料.庫存] = List_EPD266_本地資料[i].GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
-                if(List_EPD266_本地資料[i].BackColor == Color.Red && List_EPD266_本地資料[i].ForeColor == Color.White)
+                string 藥品碼 = List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
+                if (!flag_顯示空白儲位)
                 {
-                    value[(int)enum_儲位管理_EPD266_儲位資料.警訊藥品] = true.ToString();
+                    if (藥品碼.StringIsEmpty()) continue;
                 }
+                value[(int)enum_儲位管理_EPD266_儲位資料.IP] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.IP, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.儲位名稱] = List_EPD266_本地資料[i].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString(); 
+                value[(int)enum_儲位管理_EPD266_儲位資料.藥品碼] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.藥品名稱] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.藥品學名] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品學名, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.藥品中文名稱] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.包裝單位] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.藥品條碼] =  List_EPD266_本地資料[i].GetValue(Device.ValueName.BarCode, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.庫存] = List_EPD266_本地資料[i].GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位管理_EPD266_儲位資料.警訊藥品] = List_EPD266_本地資料[i].IsWarning.ToString();
                 value[(int)enum_儲位管理_EPD266_儲位資料.鎖控] = (List_EPD266_本地資料[i].DeviceType == DeviceType.EPD266_lock) ? true.ToString() : false.ToString();
                 list_value.Add(value);
             }
@@ -1240,6 +1243,10 @@ namespace 調劑台管理系統
                 this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
                 this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
             }));
+        }
+        private void PlC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位_CheckStateChanged(object sender, EventArgs e)
+        {
+            PLC_Device_儲位管理_EPD266_資料更新.Bool = true;
         }
         #endregion
 
