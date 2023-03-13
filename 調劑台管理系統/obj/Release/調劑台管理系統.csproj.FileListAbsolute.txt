@@ -1579,7 +1579,6 @@ C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\NP
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\NPOI.OOXML.dll
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\NPOI.OpenXml4Net.dll
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\NPOI.OpenXmlFormats.dll
-C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\Microsoft.Office.Interop.Excel.dll
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Pannel_Locker_Design.resources
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_輸入輸出設定.resources
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_新增容器設定.resources
@@ -1746,3 +1745,4 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台�
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.csproj.CopyComplete
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.exe
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.pdb
+C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\stdole.dll

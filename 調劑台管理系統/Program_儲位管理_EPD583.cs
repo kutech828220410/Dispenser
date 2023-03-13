@@ -563,6 +563,7 @@ namespace 調劑台管理系統
 
             this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+            this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
         }
         private void PlC_RJ_Button_儲位管理_EPD583_分割儲位_MouseDownEvent(MouseEventArgs mevent)
@@ -1118,6 +1119,7 @@ namespace 調劑台管理系統
                 return;
             }
             EPD583_Drawer_Copy = drawer;
+            MyMessageBox.ShowDialog("已複製到剪貼簿!");
 
         }
         private void PlC_RJ_Button_儲位管理_EPD583_貼上儲位_MouseDownEvent(MouseEventArgs mevent)
@@ -1150,9 +1152,11 @@ namespace 調劑台管理系統
             Drawer drawer = EPD583_Drawer_Copy.DeepClone();
             drawer.ReplaceIP(IP);
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
+            this.List_EPD583_本地資料.Add_NewDrawer(drawer);
             sqL_DataGridView_儲位管理_EPD583_抽屜列表.Replace(new object[] { drawer.IP, drawer.Name }, true);
             sqL_DataGridView_儲位管理_EPD583_抽屜列表.On_RowEnter();
             this.Function_設定雲端資料更新();
+            MyMessageBox.ShowDialog("貼上格式完成!");
         }
  
         #endregion

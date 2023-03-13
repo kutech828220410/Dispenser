@@ -410,12 +410,29 @@ namespace 調劑台管理系統
             if (openFileDialog_LoadExcel.ShowDialog(this) == DialogResult.OK)
             {
                 this.Cursor = Cursors.WaitCursor;
+
                 DataTable dataTable = new DataTable();
-                CSVHelper.LoadFile(this.openFileDialog_LoadExcel.FileName, 0, dataTable);
+                string Extension = System.IO.Path.GetExtension(this.openFileDialog_LoadExcel.FileName);
+
+                if (Extension == ".txt")
+                {
+                    CSVHelper.LoadFile(this.openFileDialog_LoadExcel.FileName, 0, dataTable);
+                }
+                else if (Extension == ".xls")
+                {
+                    dataTable = MyOffice.ExcelClass.NPOI_LoadFile(this.openFileDialog_LoadExcel.FileName);
+                }
+                if (dataTable == null)
+                {
+                    MyMessageBox.ShowDialog("匯入失敗,請檢查是否檔案開啟中!");
+                    this.Cursor = Cursors.Default;
+                    return;
+                }
                 DataTable datatable_buf = dataTable.ReorderTable(new enum_藥品資料_藥檔資料_匯入());
                 if (datatable_buf == null)
                 {
                     MyMessageBox.ShowDialog("匯入檔案,資料錯誤!");
+                    this.Cursor = Cursors.Default;
                     return;
                 }
                 List<object[]> list_LoadValue = datatable_buf.DataTableToRowList();
@@ -718,8 +735,9 @@ namespace 調劑台管理系統
                         string 藥品碼 = list_value[i][(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString();
                         if(Function_從SQL取得儲位到本地資料(藥品碼).Count > 0)
                         {
-                            MyMessageBox.ShowDialog("刪除藥品有建立儲位,無法刪除!");
-                            return;
+                            //MyMessageBox.ShowDialog("刪除藥品有建立儲位,無法刪除!");
+                            //return;
+                            continue;
                         }
 
                         list_delete_serchValue.Add(GUID);
@@ -727,8 +745,9 @@ namespace 調劑台管理系統
                     this.sqL_DataGridView_藥品資料_藥檔資料.SQL_DeleteExtra(enum_藥品資料_藥檔資料.GUID.GetEnumName(), list_delete_serchValue, true);
                    
                 }
+                this.Cursor = Cursors.Default;
             }));
-            this.Cursor = Cursors.Default;
+           
         }
         private void PlC_RJ_Button_藥品資料_登錄_MouseDownEvent(MouseEventArgs mevent)
         {
