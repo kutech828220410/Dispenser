@@ -116,6 +116,7 @@ namespace 智慧調劑台管理系統_WebApi
             class_OutTakeMed_data class_OutTakeMed_Data = new class_OutTakeMed_data();
             class_OutTakeMed_Data.PRI_KEY = Guid.NewGuid().ToString();
             class_OutTakeMed_Data.電腦名稱 = "PC001";
+            class_OutTakeMed_Data.成本中心 = "1";
             class_OutTakeMed_Data.藥品碼 = "25003";
             class_OutTakeMed_Data.交易量 = "-1";
             class_OutTakeMed_Data.操作人 = "王曉明";
