@@ -1699,7 +1699,6 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\System.Text
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\System.Threading.Tasks.Extensions.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\System.ValueTuple.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\TCP.dll
-C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\Microsoft.Office.Interop.Excel.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\MeasureSystemUI.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\MVSDKUI.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\SLDUI.dll
@@ -1711,7 +1710,6 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\AxOvkBaseAs
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\AxOvkMsr.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\AxAltairUDrv.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\MVSDK.dll
-C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\stdole.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\System.Buffers.xml
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Release\System.Memory.xml

@@ -221,6 +221,10 @@ namespace 智慧調劑台管理系統_WebApi
                 this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, 顏色, 總異動量);
                 return $"OK";
             }
+            else if(data[0].功能類型 == "0")
+            {
+                return $"OK";
+            }
             else
             {
                 return $"-3";
