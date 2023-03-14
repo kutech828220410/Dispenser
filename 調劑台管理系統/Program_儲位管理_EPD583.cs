@@ -22,7 +22,7 @@ namespace 調劑台管理系統
         private List<Drawer> List_EPD583_雲端資料 = new List<Drawer>();
         private List<Drawer> List_EPD583_入賬資料 = new List<Drawer>();
         private Drawer EPD583_Drawer_Copy;
-
+        private Box EPD583_Box_Copy;
         private enum enum_儲位管理_EPD583_效期及庫存
         {
             效期,
@@ -74,6 +74,7 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_包裝單位字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_包裝單位字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_儲位名稱字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_儲位名稱字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_總庫存字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_總庫存字體更動_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD583_儲位內容_效期字體更動.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期字體更動_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_新增效期.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_新增效期_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_修正庫存.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_修正庫存_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_修正批號.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_修正批號_MouseDownEvent;
@@ -83,14 +84,16 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD583_複製儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_複製儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_貼上儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_貼上儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_儲位初始化_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD583_複製格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_複製格式_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD583_貼上格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_貼上格式_MouseDownEvent;
+            this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示_CheckStateChanged;
+
 
             this.epD_583_Pannel.Init(this.drawerUI_EPD_583.List_UDP_Local);
             this.epD_583_Pannel.DrawerChangeEvent += EpD_583_Pannel_DrawerChangeEvent;
             this.epD_583_Pannel.MouseDownEvent += EpD_583_Pannel_MouseDownEvent;
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD583);
         }
-
- 
 
         private void Program_儲位管理_EPD583()
         {
@@ -337,6 +340,7 @@ namespace 調劑台管理系統
                 rJ_TextBox_儲位管理_EPD583_儲位內容_包裝單位.Text = Boxes[0].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
                 rJ_TextBox_儲位管理_EPD583_儲位內容_儲位名稱.Text = Boxes[0].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString();
                 rJ_TextBox_儲位管理_EPD583_儲位內容_總庫存.Text = Boxes[0].GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
+                this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.Checked = (bool)Boxes[0].GetValue(Device.ValueName.效期, Device.ValueType.Visable);
             }));
 
 
@@ -540,7 +544,11 @@ namespace 調劑台管理系統
             object[] value = this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料.GetRowValues();
             if(value == null) return;
             List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
-            if (boxes.Count == 0) return;
+            if (boxes.Count == 0)
+            {
+                MyMessageBox.ShowDialog("未選取儲位!");
+                return;
+            }
             boxes[0].Clear();
             boxes[0].SetValue(Device.ValueName.藥品碼, Device.ValueType.Value, value[(int)enum_藥品資料_藥檔資料.藥品碼]);
             boxes[0].SetValue(Device.ValueName.藥品名稱, Device.ValueType.Value, value[(int)enum_藥品資料_藥檔資料.藥品名稱]);
@@ -606,8 +614,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                 
                     boxes[0].SetValue(Device.ValueName.庫存, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -624,8 +632,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-   
                     boxes[0].SetValue(Device.ValueName.儲位名稱, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -642,8 +650,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-
                     boxes[0].SetValue(Device.ValueName.包裝單位, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -660,8 +668,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-    
                     boxes[0].SetValue(Device.ValueName.BarCode, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -678,8 +686,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-
                     boxes[0].SetValue(Device.ValueName.藥品碼, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -696,8 +704,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-       
                     boxes[0].SetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -714,8 +722,8 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-   
                     boxes[0].SetValue(Device.ValueName.藥品學名, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
@@ -732,13 +740,31 @@ namespace 調劑台管理系統
 
                 if (this.fontDialog.ShowDialog() == DialogResult.OK)
                 {
-
                     boxes[0].SetValue(Device.ValueName.藥品名稱, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                     this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
      
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期字體更動_MouseDownEvent(MouseEventArgs mevent)
+        {
+            this.Invoke(new Action(delegate
+            {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                this.fontDialog.Font = boxes[0].GetValue(Device.ValueName.效期, Device.ValueType.Font) as Font;
+
+                if (this.fontDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    boxes[0].SetValue(Device.ValueName.效期, Device.ValueType.Font, fontDialog.Font);
+                    this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
+                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+                }
+            }));
         }
         private void PlC_RJ_Button_儲位管理_EPD583_儲位內容_效期管理_新增效期_MouseDownEvent(MouseEventArgs mevent)
         {
@@ -1158,7 +1184,62 @@ namespace 調劑台管理系統
             this.Function_設定雲端資料更新();
             MyMessageBox.ShowDialog("貼上格式完成!");
         }
- 
+        private void PlC_RJ_Button_儲位管理_EPD583_複製格式_MouseDownEvent(MouseEventArgs mevent)
+        {
+            List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+            if (boxes.Count == 0)
+            {
+                MyMessageBox.ShowDialog("未選取儲位!");
+                return;
+            }
+            EPD583_Box_Copy = boxes[0];
+            MyMessageBox.ShowDialog("已複製到剪貼簿!");
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_貼上格式_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (EPD583_Box_Copy == null)
+            {
+                this.Invoke(new Action(delegate
+                {
+                    MyMessageBox.ShowDialog($"尚未複製儲位!");
+                }));
+                return;
+            }
+            List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+            if (boxes.Count == 0)
+            {
+                MyMessageBox.ShowDialog("未選取儲位!");
+                return;
+            }
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = MyMessageBox.ShowDialog("是否覆蓋選取儲位?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel);
+            }));
+            for (int i = 0; i < boxes.Count; i++)
+            {
+                boxes[i].PasteFormat(EPD583_Box_Copy);
+            }
+            Drawer drawer = this.List_EPD583_本地資料.SortByIP(boxes[0].IP);
+            for (int i = 0; i < boxes.Count; i++) drawer.ReplaceBox(boxes[i]);
+            this.List_EPD583_本地資料.Add_NewDrawer(drawer);
+            this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
+            this.Function_設定雲端資料更新();
+            this.epD_583_Pannel.DrawToPictureBox(drawer);
+            MyMessageBox.ShowDialog("貼上格式完成!");
+        }
+        private void PlC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                List<Box> boxes = this.epD_583_Pannel.GetSelectBoxes();
+                if (boxes.Count == 0) return;
+                boxes[0].SetValue(Device.ValueName.效期, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.Checked);
+                this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
+                this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+            }));
+        }
         #endregion
 
         private class ICP_儲位管理_EPD583_抽屜列表 : IComparer<object[]>

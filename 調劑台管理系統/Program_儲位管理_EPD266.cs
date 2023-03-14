@@ -86,7 +86,7 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_開鎖.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_開鎖_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_貼上格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_貼上格式_MouseDownEvent;
-            this.plC_RJ_Button_儲位管理_EPD266_複製儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_複製儲位_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD266_複製格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_複製格式_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_儲位初始化_MouseDownEvent;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品名稱顯示_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_藥品學名顯示_CheckStateChanged;
@@ -1018,7 +1018,7 @@ namespace 調劑台管理系統
                 this.sqL_DataGridView_交易記錄查詢.SQL_AddRow(value_trading, false);
             }
         }
-        private void PlC_RJ_Button_儲位管理_EPD266_複製儲位_MouseDownEvent(MouseEventArgs mevent)
+        private void PlC_RJ_Button_儲位管理_EPD266_複製格式_MouseDownEvent(MouseEventArgs mevent)
         {
             List<object[]> list_value = this.sqL_DataGridView_儲位管理_EPD266_儲位資料.Get_All_Select_RowsValues();
             if (list_value.Count == 0)
