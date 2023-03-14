@@ -23,7 +23,7 @@ namespace 智慧調劑台管理系統_WebApi
 
     public class login_data_pageController : ControllerBase
     {
-        static private string DataBaseName = ConfigurationManager.AppSettings["database"];
+        static private string DataBaseName = ConfigurationManager.AppSettings["person_page_database"];
         static private string UserName = ConfigurationManager.AppSettings["user"];
         static private string Password = ConfigurationManager.AppSettings["password"];
         static private string IP = ConfigurationManager.AppSettings["person_page_IP"];
@@ -92,7 +92,7 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 return "-1";
             }
-            if (data.level.StringToInt32() >= 0 && data.level.StringToInt32() <= 19)
+            if (data.level.StringToInt32() >= 0 && data.level.StringToInt32() <= 20)
             {
                 MySQL_Login.LoginDataWebAPI.Set_login_data(data, sQLControl_login_data);
                 return "200";
