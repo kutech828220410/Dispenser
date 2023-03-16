@@ -1898,9 +1898,9 @@ namespace 調劑台管理系統
                             taskList.Add(Task.Run(() =>
                             {
                                 int Dis_value = this.storageUI_EPD_266.Get_LaserDistance(storage);
-                                if (Dis_value <= this.取藥堆疊資料_流程作業檢查_感測設定值 || this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool)
+                                if (Dis_value <= this.取藥堆疊資料_流程作業檢查_感測設定值 || this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool || !storage.TOFON)
                                 {
-                                    if (!this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool) this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black);
+                                    if (!this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool || !storage.TOFON) this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black);
                                     list_需更新資料.Add(new string[] { 調劑台名稱, IP });
                                 }
                             }));

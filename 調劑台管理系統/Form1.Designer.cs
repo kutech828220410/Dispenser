@@ -1075,6 +1075,7 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測 = new MyUI.PLC_CheckBox();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -12909,6 +12910,7 @@
             this.plC_RJ_GroupBox6.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox6.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox6.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox6.ContentsPanel.Controls.Add(this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測);
             this.plC_RJ_GroupBox6.ContentsPanel.Controls.Add(this.plC_RJ_GroupBox7);
             this.plC_RJ_GroupBox6.ContentsPanel.Controls.Add(this.panel3);
             this.plC_RJ_GroupBox6.ContentsPanel.Controls.Add(this.panel20);
@@ -26601,6 +26603,24 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
+            // plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測
+            // 
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Font = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Location = new System.Drawing.Point(492, 231);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Name = "plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Size = new System.Drawing.Size(72, 16);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.TabIndex = 143;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Text = "手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字內容 = "手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字字體 = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.音效 = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -26757,6 +26777,7 @@
             this.rJ_Pannel7.ResumeLayout(false);
             this.rJ_Pannel7.PerformLayout();
             this.plC_RJ_GroupBox6.ContentsPanel.ResumeLayout(false);
+            this.plC_RJ_GroupBox6.ContentsPanel.PerformLayout();
             this.plC_RJ_GroupBox6.ResumeLayout(false);
             this.plC_RJ_GroupBox7.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox7.ResumeLayout(false);
@@ -27976,6 +27997,7 @@
         private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示;
         private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD583_貼上格式;
         private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD583_複製格式;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測;
     }
 }
 
