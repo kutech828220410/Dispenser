@@ -2167,11 +2167,11 @@ namespace 調劑台管理系統
                 value_trading[(int)enum_交易記錄查詢資料.病人姓名] = 病人姓名;
                 value_trading[(int)enum_交易記錄查詢資料.病歷號] = 病歷號;
                 value_trading[(int)enum_交易記錄查詢資料.操作時間] = 操作時間;
-                value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
                 if(開方時間.StringIsEmpty())
                 {
                     開方時間 = DateTime.Now.ToDateTimeString_6();
                 }
+                value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
                 value_trading[(int)enum_交易記錄查詢資料.備註] = 備註;
                 list_交易紀錄新增資料_AddValue.Add(value_trading);
 

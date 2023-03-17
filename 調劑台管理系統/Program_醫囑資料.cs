@@ -289,6 +289,21 @@ namespace 調劑台管理系統
         #endregion
 
         #region Function
+        private List<object[]> Function_醫囑資料_API呼叫(string barcode , int value)
+        {
+            List<OrderClass> orderClasses = this.Function_醫囑資料_API呼叫(dBConfigClass.OrderApiURL, barcode, value);
+            List<object[]> list_value = new List<object[]>();
+            MyTimer myTimer = new MyTimer();
+            myTimer.StartTickTime(50000);
+            for (int i = 0; i < orderClasses.Count; i++)
+            {
+                string pri_key = orderClasses[i].PRI_KEY;
+                List<object[]> list_value_buf = this.sqL_DataGridView_醫囑資料.SQL_GetRows((int)enum_醫囑資料.PRI_KEY, pri_key, false);
+                list_value.LockAdd(list_value_buf);
+            }
+            Console.Write($"醫囑資料搜尋共<{list_value.Count}>筆,耗時{myTimer.ToString()}ms\n");
+            return list_value;
+        }
         private List<object[]> Function_醫囑資料_API呼叫(string barcode)
         {
             List<OrderClass> orderClasses = this.Function_醫囑資料_API呼叫(dBConfigClass.OrderApiURL, barcode);
@@ -304,12 +319,47 @@ namespace 調劑台管理系統
             Console.Write($"醫囑資料搜尋共<{list_value.Count}>筆,耗時{myTimer.ToString()}ms\n");
             return list_value;
         }
+        private List<OrderClass> Function_醫囑資料_API呼叫(string url, string barcode, int num)
+        {
+            barcode = barcode.Replace("\r\n", "");
+            List<OrderClass> orderClasses = new List<OrderClass>();
+            MyTimer myTimer = new MyTimer();
+            myTimer.StartTickTime(50000);
+            string apitext = $"{url}/?Barcode={barcode}&num={num}";
+
+            Console.Write($"Call api : {apitext}\n");
+            string jsonString = Basic.Net.WEBApiGet(apitext);
+            Console.Write($"{jsonString}\n");
+            Console.Write($"耗時 {myTimer.ToString()}ms\n");
+            if (jsonString.StringIsEmpty())
+            {
+                MyMessageBox.ShowDialog($"呼叫串接資料失敗!請檢查網路連線...");
+                return orderClasses;
+            }
+
+            orderClasses = jsonString.JsonDeserializet<List<OrderClass>>();
+            if (orderClasses == null)
+            {
+                Console.WriteLine($"串接資料傳回格式錯誤!");
+                this.voice.SpeakOnTask("資料錯誤");
+                orderClasses = new List<OrderClass>();
+
+            }
+            if (orderClasses.Count == 0)
+            {
+
+            }
+
+            return orderClasses;
+        }
         private List<OrderClass> Function_醫囑資料_API呼叫(string url, string barcode)
         {
+            barcode = barcode.Replace("\r\n", "");
             List<OrderClass> orderClasses = new List<OrderClass>();
             MyTimer myTimer = new MyTimer();
             myTimer.StartTickTime(50000);
             string apitext = $"{url}{barcode}";
+         
             Console.Write($"Call api : {apitext}\n");
             string jsonString = Basic.Net.WEBApiGet(apitext);
             Console.Write($"{jsonString}\n");

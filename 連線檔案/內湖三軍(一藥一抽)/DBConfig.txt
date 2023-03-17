@@ -35,6 +35,6 @@
     "MySqlSslMode": 0,
     "TableName": ""
   },
-  "OrderApiURL": "https://192.168.32.250/dbvm/BBAR",
+  "OrderApiURL": "",
   "MedApiURL": ""
 }

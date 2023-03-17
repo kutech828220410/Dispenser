@@ -499,6 +499,7 @@
             this.plC_RJ_Button_儲位管理_EPD266_面板亮燈 = new MyUI.PLC_RJ_Button();
             this.epD_266_Pannel = new H_Pannel_lib.EPD_266_Pannel();
             this.plC_RJ_GroupBox6 = new MyUI.PLC_RJ_GroupBox();
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測 = new MyUI.PLC_CheckBox();
             this.plC_RJ_GroupBox7 = new MyUI.PLC_RJ_GroupBox();
             this.plC_RJ_Button_儲位管理_EPD266_儲位內容_效期管理_修正批號 = new MyUI.PLC_RJ_Button();
             this.sqL_DataGridView_儲位管理_EPD266_儲位內容_效期及庫存 = new SQLUI.SQL_DataGridView();
@@ -1075,7 +1076,7 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測 = new MyUI.PLC_CheckBox();
+            this.plC_Button_手輸數量 = new MyUI.PLC_Button();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -12945,6 +12946,24 @@
             this.plC_RJ_GroupBox6.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox6.TitleTexts = "儲位內容";
             // 
+            // plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測
+            // 
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Font = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Location = new System.Drawing.Point(492, 231);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Name = "plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Size = new System.Drawing.Size(72, 16);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.TabIndex = 143;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Text = "手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字內容 = "手勢感測";
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字字體 = new System.Drawing.Font("新細明體", 9F);
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.音效 = true;
+            // 
             // plC_RJ_GroupBox7
             // 
             // 
@@ -20931,6 +20950,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.plC_Button_手輸數量);
             this.groupBox8.Controls.Add(this.plC_Button_無庫存自動補足);
             this.groupBox8.Controls.Add(this.plC_Button_同藥碼全亮);
             this.groupBox8.Controls.Add(this.plC_Button_多醫囑模式);
@@ -26603,23 +26623,40 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
-            // plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測
+            // plC_Button_手輸數量
             // 
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.AutoSize = true;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Bool = false;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Font = new System.Drawing.Font("新細明體", 9F);
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.ForeColor = System.Drawing.Color.Black;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Location = new System.Drawing.Point(492, 231);
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Name = "plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測";
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Size = new System.Drawing.Size(72, 16);
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.TabIndex = 143;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Text = "手勢感測";
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.UseVisualStyleBackColor = true;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字內容 = "手勢感測";
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字字體 = new System.Drawing.Font("新細明體", 9F);
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.文字顏色 = System.Drawing.Color.Black;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.讀寫鎖住 = false;
-            this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.音效 = true;
+            this.plC_Button_手輸數量.Bool = false;
+            this.plC_Button_手輸數量.but_press = false;
+            this.plC_Button_手輸數量.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_手輸數量.Location = new System.Drawing.Point(318, 79);
+            this.plC_Button_手輸數量.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_手輸數量.Name = "plC_Button_手輸數量";
+            this.plC_Button_手輸數量.OFF_文字內容 = "手輸數量";
+            this.plC_Button_手輸數量.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_手輸數量.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_手輸數量.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_手輸數量.ON_文字內容 = "手輸數量";
+            this.plC_Button_手輸數量.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_手輸數量.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_手輸數量.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_手輸數量.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_手輸數量.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_手輸數量.TabIndex = 125;
+            this.plC_Button_手輸數量.事件驅動 = false;
+            this.plC_Button_手輸數量.字型鎖住 = false;
+            this.plC_Button_手輸數量.寫入元件位置 = "S4067";
+            this.plC_Button_手輸數量.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_手輸數量.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_手輸數量.文字鎖住 = false;
+            this.plC_Button_手輸數量.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態OFF圖片")));
+            this.plC_Button_手輸數量.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態ON圖片")));
+            this.plC_Button_手輸數量.讀取位元反向 = false;
+            this.plC_Button_手輸數量.讀取元件位置 = "S4067";
+            this.plC_Button_手輸數量.讀寫鎖住 = false;
+            this.plC_Button_手輸數量.起始狀態 = false;
+            this.plC_Button_手輸數量.音效 = true;
+            this.plC_Button_手輸數量.顯示 = false;
+            this.plC_Button_手輸數量.顯示狀態 = false;
             // 
             // Form1
             // 
@@ -27998,6 +28035,7 @@
         private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD583_貼上格式;
         private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD583_複製格式;
         private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測;
+        private MyUI.PLC_Button plC_Button_手輸數量;
     }
 }
 

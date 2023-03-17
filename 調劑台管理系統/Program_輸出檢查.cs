@@ -112,8 +112,13 @@ namespace 調劑台管理系統
                         this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
                     }
                 }
+                else if (value_device is RFIDClass)
+                {
+                    RFIDClass rFIDClass = value_device as RFIDClass;
+                    this.Function_取藥堆疊子資料_設定配藥完成ByIP("None", IP, Num);
+                }
 
-               
+
             }
         }
         private void Loker_LockOpeningEvent(object sender, PLC_Device PLC_Device_Input, PLC_Device PLC_Device_Output, string GUID)

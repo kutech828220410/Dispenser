@@ -946,7 +946,18 @@ namespace 調劑台管理系統
 
 
 
-            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+            List<object[]> list_醫囑資料 = new List<object[]>();
+            if (plC_Button_手輸數量.Bool)
+            {
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                DialogResult dialogResult = dialog_NumPannel.ShowDialog();
+                if (dialogResult != DialogResult.Yes) return;
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, dialog_NumPannel.Value * -1);
+            }
+            else
+            {
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+            }
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -1024,71 +1035,123 @@ namespace 調劑台管理系統
             string 藥品碼 = "";
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
-            list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
-            if (list_醫囑資料.Count == 0)
+            List<object[]> list_醫囑資料 = new List<object[]>();
+
+            if (plC_Button_手輸數量.Bool)
             {
-                this.voice.SpeakOnTask("此藥單碼無資料");
-                return;
-            }
-            List<object[]> list_醫囑資料_remove = new List<object[]>();
-            PLC_Device pLC_Device = new PLC_Device(plC_CheckBox_已過帳取藥.讀取元件位置);
-            if (pLC_Device.Bool == false) list_醫囑資料 = list_醫囑資料.GetRows((int)enum_醫囑資料.狀態, enum_醫囑資料_狀態.已過帳.GetEnumName());
-            if (list_醫囑資料.Count == 0)
-            {
-                this.voice.SpeakOnTask("此藥單無已過帳資料");
-                return;
-            }
-            for (int i = 0; i < list_醫囑資料.Count; i++)
-            {
-                藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
-                if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
+                int 手輸數量 = 0;
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                DialogResult dialogResult = dialog_NumPannel.ShowDialog();
+                if (dialogResult != DialogResult.Yes) return;
+                手輸數量 = dialog_NumPannel.Value * 1;
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, 手輸數量);
+                list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
+                if (list_醫囑資料.Count == 0)
                 {
-                    list_醫囑資料_remove.Add(list_醫囑資料[i]);
+                    this.voice.SpeakOnTask("此藥單碼無資料");
+                    return;
                 }
+
+                object[] value = list_醫囑資料[0];
+                List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
+                List<object[]> list_藥品資料_buf = new List<object[]>();
+                Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
+                if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_01_名稱.Text);
+                Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
+
+                string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
+                string 調劑台名稱 = this.textBox_工程模式_領藥台_01_名稱.Text;
+                enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
+                藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
+
+                list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
+                if (list_藥品資料_buf.Count == 0) return;
+                string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                string 藥袋序號 = "";
+                string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
+                string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
+                string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
+                string ID = this.領藥台_01_ID;
+                string 操作人 = this.領藥台_01_登入者姓名;
+                string 顏色 = this.領藥台_01_顏色;
+                int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
+                string 效期 = "";
+
+                this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
+                Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
+                this.voice.SpeakOnTask("掃碼成功");
             }
-            for (int i = 0; i < list_醫囑資料_remove.Count; i++)
+            else
             {
-                list_醫囑資料.RemoveByGUID(list_醫囑資料_remove[i]);
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+
+                list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單碼無資料");
+                    return;
+                }
+                List<object[]> list_醫囑資料_remove = new List<object[]>();
+                PLC_Device pLC_Device = new PLC_Device(plC_CheckBox_已過帳取藥.讀取元件位置);
+                if (pLC_Device.Bool == false) list_醫囑資料 = list_醫囑資料.GetRows((int)enum_醫囑資料.狀態, enum_醫囑資料_狀態.已過帳.GetEnumName());
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單無已過帳資料");
+                    return;
+                }
+                for (int i = 0; i < list_醫囑資料.Count; i++)
+                {
+                    藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
+                    if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
+                    {
+                        list_醫囑資料_remove.Add(list_醫囑資料[i]);
+                    }
+                }
+                for (int i = 0; i < list_醫囑資料_remove.Count; i++)
+                {
+                    list_醫囑資料.RemoveByGUID(list_醫囑資料_remove[i]);
+                }
+                Console.Write($"取得醫囑資料 , 耗時{myTimer.ToString()}\n");
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單沒有儲位");
+                    return;
+                }
+
+                Dialog_醫囑退藥 dialog_醫囑退藥 = new Dialog_醫囑退藥(list_醫囑資料);
+                if (dialog_醫囑退藥.ShowDialog() != DialogResult.Yes) return;
+                object[] value = dialog_醫囑退藥.Value;
+                List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
+                List<object[]> list_藥品資料_buf = new List<object[]>();
+                Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
+                if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_01_名稱.Text);
+                Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
+
+                string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
+                string 調劑台名稱 = this.textBox_工程模式_領藥台_01_名稱.Text;
+                enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
+                藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
+
+                list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
+                if (list_藥品資料_buf.Count == 0) return;
+                string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                string 藥袋序號 = "";
+                string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
+                string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
+                string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
+                string ID = this.領藥台_01_ID;
+                string 操作人 = this.領藥台_01_登入者姓名;
+                string 顏色 = this.領藥台_01_顏色;
+                int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
+                string 效期 = "";
+
+                this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
+                Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
+                this.voice.SpeakOnTask("掃碼成功");
             }
-            Console.Write($"取得醫囑資料 , 耗時{myTimer.ToString()}\n");
-            if (list_醫囑資料.Count == 0)
-            {
-                this.voice.SpeakOnTask("此藥單沒有儲位");
-                return;
-            }
 
-            Dialog_醫囑退藥 dialog_醫囑退藥 = new Dialog_醫囑退藥(list_醫囑資料);
-            if (dialog_醫囑退藥.ShowDialog() != DialogResult.Yes) return;
-            object[] value = dialog_醫囑退藥.Value;
-            List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            List<object[]> list_藥品資料_buf = new List<object[]>();
-            Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
-            if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_01_名稱.Text);
-            Console.Write($"刪除調劑台資料 , 耗時{myTimer.ToString()}\n");
-
-            string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
-            string 調劑台名稱 = this.textBox_工程模式_領藥台_01_名稱.Text;
-            enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
-            藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
-
-            list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
-            if (list_藥品資料_buf.Count == 0) return;
-            string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
-            string 藥袋序號 = "";
-            string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
-            string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
-            string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
-            string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
-            string ID = this.領藥台_01_ID;
-            string 操作人 = this.領藥台_01_登入者姓名;
-            string 顏色 = this.領藥台_01_顏色;
-            int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
-            string 效期 = "";
-
-            this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
-            Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
-            this.voice.SpeakOnTask("掃碼成功");
         }
 
         private void Function_領藥台_01_QRCode領藥(string[] Scanner01_讀取藥單資料_Array)
@@ -2102,7 +2165,18 @@ namespace 調劑台管理系統
 
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+            List<object[]> list_醫囑資料 = new List<object[]>();
+            if (plC_Button_手輸數量.Bool)
+            {
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                DialogResult dialogResult = dialog_NumPannel.ShowDialog();
+                if (dialogResult != DialogResult.Yes) return;
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, dialog_NumPannel.Value * -1);
+            }
+            else
+            {
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+            }
             list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
             if (list_醫囑資料.Count == 0)
             {
@@ -2179,71 +2253,123 @@ namespace 調劑台管理系統
             string 藥品碼 = "";
             DateTime dateTime_start = new DateTime(DateTime.Now.AddDays(daynum).Year, DateTime.Now.AddDays(daynum).Month, DateTime.Now.AddDays(daynum).Day, 0, 0, 0);
             DateTime dateTime_end = new DateTime(DateTime.Now.AddDays(0).Year, DateTime.Now.AddDays(0).Month, DateTime.Now.AddDays(0).Day, 23, 59, 59);
-            List<object[]> list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
-            list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
-            if (list_醫囑資料.Count == 0)
+            List<object[]> list_醫囑資料 = new List<object[]>();
+        
+            if (plC_Button_手輸數量.Bool)
             {
-                this.voice.SpeakOnTask("此藥單碼無資料");
-                return;
-            }
-            List<object[]> list_醫囑資料_remove = new List<object[]>();
-            PLC_Device pLC_Device = new PLC_Device(plC_CheckBox_已過帳取藥.讀取元件位置);
-            if (pLC_Device.Bool == false) list_醫囑資料 = list_醫囑資料.GetRows((int)enum_醫囑資料.狀態, enum_醫囑資料_狀態.已過帳.GetEnumName());
-            if (list_醫囑資料.Count == 0)
-            {
-                this.voice.SpeakOnTask("此藥單無已過帳資料");
-                return;
-            }
-            for (int i = 0; i < list_醫囑資料.Count; i++)
-            {
-                藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
-                if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
+                int 手輸數量 = 0;
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                DialogResult dialogResult = dialog_NumPannel.ShowDialog();
+                if (dialogResult != DialogResult.Yes) return;
+                手輸數量 = dialog_NumPannel.Value * 1;
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, 手輸數量);
+                list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
+                if (list_醫囑資料.Count == 0)
                 {
-                    list_醫囑資料_remove.Add(list_醫囑資料[i]);
+                    this.voice.SpeakOnTask("此藥單碼無資料");
+                    return;
                 }
+
+                object[] value = list_醫囑資料[0];
+                List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
+                List<object[]> list_藥品資料_buf = new List<object[]>();
+                Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
+                if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_02_名稱.Text);
+                Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
+
+                string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
+                string 調劑台名稱 = this.textBox_工程模式_領藥台_02_名稱.Text;
+                enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
+                藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
+
+                list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
+                if (list_藥品資料_buf.Count == 0) return;
+                string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                string 藥袋序號 = "";
+                string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
+                string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
+                string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
+                string ID = this.領藥台_02_ID;
+                string 操作人 = this.領藥台_02_登入者姓名;
+                string 顏色 = this.領藥台_02_顏色;
+                int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
+                string 效期 = "";
+
+                this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
+                Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
+                this.voice.SpeakOnTask("掃碼成功");
             }
-            for (int i = 0; i < list_醫囑資料_remove.Count; i++)
+            else
             {
-                list_醫囑資料.RemoveByGUID(list_醫囑資料_remove[i]);
+                list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode);
+
+                list_醫囑資料 = list_醫囑資料.GetRowsInDate((int)enum_醫囑資料.開方日期, dateTime_start, dateTime_end);
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單碼無資料");
+                    return;
+                }
+                List<object[]> list_醫囑資料_remove = new List<object[]>();
+                PLC_Device pLC_Device = new PLC_Device(plC_CheckBox_已過帳取藥.讀取元件位置);
+                if (pLC_Device.Bool == false) list_醫囑資料 = list_醫囑資料.GetRows((int)enum_醫囑資料.狀態, enum_醫囑資料_狀態.已過帳.GetEnumName());
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單無已過帳資料");
+                    return;
+                }
+                for (int i = 0; i < list_醫囑資料.Count; i++)
+                {
+                    藥品碼 = list_醫囑資料[i][(int)enum_醫囑資料.藥品碼].ObjectToString();
+                    if (this.Function_從本地資料取得儲位(藥品碼).Count == 0)
+                    {
+                        list_醫囑資料_remove.Add(list_醫囑資料[i]);
+                    }
+                }
+                for (int i = 0; i < list_醫囑資料_remove.Count; i++)
+                {
+                    list_醫囑資料.RemoveByGUID(list_醫囑資料_remove[i]);
+                }
+                Console.Write($"取得醫囑資料 , 耗時{myTimer.ToString()}\n");
+                if (list_醫囑資料.Count == 0)
+                {
+                    this.voice.SpeakOnTask("此藥單沒有儲位");
+                    return;
+                }
+
+                Dialog_醫囑退藥 dialog_醫囑退藥 = new Dialog_醫囑退藥(list_醫囑資料);
+                if (dialog_醫囑退藥.ShowDialog() != DialogResult.Yes) return;
+                object[] value = dialog_醫囑退藥.Value;
+                List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
+                List<object[]> list_藥品資料_buf = new List<object[]>();
+                Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
+                if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_02_名稱.Text);
+                Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
+
+                string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
+                string 調劑台名稱 = this.textBox_工程模式_領藥台_02_名稱.Text;
+                enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
+                藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
+
+                list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
+                if (list_藥品資料_buf.Count == 0) return;
+                string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                string 藥袋序號 = "";
+                string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
+                string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
+                string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
+                string ID = this.領藥台_02_ID;
+                string 操作人 = this.領藥台_02_登入者姓名;
+                string 顏色 = this.領藥台_02_顏色;
+                int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
+                string 效期 = "";
+
+                this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
+                Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
+                this.voice.SpeakOnTask("掃碼成功");
             }
-            Console.Write($"取得醫囑資料 , 耗時{myTimer.ToString()}\n");
-            if (list_醫囑資料.Count == 0)
-            {
-                this.voice.SpeakOnTask("此藥單沒有儲位");
-                return;
-            }
-
-            Dialog_醫囑退藥 dialog_醫囑退藥 = new Dialog_醫囑退藥(list_醫囑資料);
-            if (dialog_醫囑退藥.ShowDialog() != DialogResult.Yes) return;
-            object[] value = dialog_醫囑退藥.Value;
-            List<object[]> list_藥品資料 = this.sqL_DataGridView_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            List<object[]> list_藥品資料_buf = new List<object[]>();
-            Console.Write($"取得藥品資料 , 耗時{myTimer.ToString()}\n");
-            if (!plC_Button_多醫囑模式.Bool) this.Function_取藥堆疊資料_刪除指定調劑台名稱母資料(this.textBox_工程模式_領藥台_02_名稱.Text);
-            Console.Write($"刪除調劑台資料資料 , 耗時{myTimer.ToString()}\n");
-
-            string GUID = value[(int)enum_醫囑資料.GUID].ObjectToString();
-            string 調劑台名稱 = this.textBox_工程模式_領藥台_02_名稱.Text;
-            enum_交易記錄查詢動作 動作 = enum_交易記錄查詢動作.掃碼退藥;
-            藥品碼 = value[(int)enum_醫囑資料.藥品碼].ObjectToString();
-
-            list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
-            if (list_藥品資料_buf.Count == 0) return;
-            string 藥品名稱 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
-            string 藥袋序號 = "";
-            string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
-            string 病歷號 = value[(int)enum_醫囑資料.病歷號].ObjectToString();
-            string 病人姓名 = value[(int)enum_醫囑資料.病人姓名].ObjectToString();
-            string 開方時間 = value[(int)enum_醫囑資料.開方日期].ToDateTimeString_6();
-            string ID = this.領藥台_02_ID;
-            string 操作人 = this.領藥台_02_登入者姓名;
-            string 顏色 = this.領藥台_02_顏色;
-            int 總異動量 = value[(int)enum_醫囑資料.交易量].ObjectToString().StringToInt32();
-            string 效期 = "";
-
-            this.Function_取藥堆疊資料_新增母資料(GUID, 調劑台名稱, 動作, 藥品碼, 藥品名稱, 藥袋序號, 單位, 病歷號, 病人姓名, 開方時間, "", 操作人, 顏色, 總異動量, 效期);
-            Console.Write($"新增取藥資料 , 耗時{myTimer.ToString()}\n");
-            this.voice.SpeakOnTask("掃碼成功");
+          
         }
 
         private void Function_領藥台_02_QRCode領藥(string[] Scanner02_讀取藥單資料_Array)

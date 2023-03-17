@@ -58,8 +58,8 @@ namespace 調劑台管理系統
             }
             for (int i = 0; i < rFIDDevices.Count; i++)
             {
-                RFIDDevice rFIDDevice = this.rfiD_UI.SQL_GetDevice(rFIDDevices[i]);
-                this.List_RFID_入賬資料.Add_NewRFIDClass(rFIDDevice);
+                RFIDClass rFIDClass = this.rfiD_UI.SQL_GetRFIDClass(rFIDDevices[i].IP);
+                this.List_RFID_入賬資料.Add_NewRFIDClass(rFIDClass);
             }
         }
         public int Function_從入賬資料取得庫存(string 藥品碼)
