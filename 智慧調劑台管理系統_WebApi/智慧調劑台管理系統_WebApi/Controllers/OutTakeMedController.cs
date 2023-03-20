@@ -220,19 +220,25 @@ namespace 智慧調劑台管理系統_WebApi
             if (data[0].功能類型 == "1")
             {
                 string PRI_KEY = data[0].PRI_KEY;
+                string 藥品碼 = data[0].藥品碼;
+                List<object[]> list_take_medicine_stack = new List<object[]>();
                 int 總異動量 = data[0].交易量.StringToInt32();
                 if (總異動量 != 0)
                 {
-                    List<object[]> list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.GUID, data[0].PRI_KEY);
+                    list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.GUID, data[0].PRI_KEY);
                     if (list_take_medicine_stack.Count > 0) return "-4";
                 }
                 else
                 {
                     PRI_KEY = Guid.NewGuid().ToString();
                 }
+
+                list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[0].藥品碼);
+                if (list_take_medicine_stack.Count > 0) return "-5";
+               
                
                 string 設備名稱 = data[0].電腦名稱;
-                string 藥品碼 = data[0].藥品碼;
+               
                 string 藥品名稱 = list_device[0].Name;
                 string 單位 = list_device[0].Package;
                 string 病歷號 = data[0].病歷號;
