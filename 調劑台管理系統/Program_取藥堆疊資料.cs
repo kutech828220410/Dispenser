@@ -2173,6 +2173,7 @@ namespace 調劑台管理系統
                 }
                 value_trading[(int)enum_交易記錄查詢資料.開方時間] = 開方時間;
                 value_trading[(int)enum_交易記錄查詢資料.備註] = 備註;
+                if (動作 == enum_交易記錄查詢動作.系統領藥.GetEnumName() && 總異動量 == 0) continue;
                 list_交易紀錄新增資料_AddValue.Add(value_trading);
 
             }

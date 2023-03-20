@@ -835,6 +835,7 @@
             this.plC_NumBox7 = new MyUI.PLC_NumBox();
             this.plC_Button1 = new MyUI.PLC_Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.plC_Button_手輸數量 = new MyUI.PLC_Button();
             this.plC_Button_無庫存自動補足 = new MyUI.PLC_Button();
             this.plC_Button_同藥碼全亮 = new MyUI.PLC_Button();
             this.plC_Button_多醫囑模式 = new MyUI.PLC_Button();
@@ -1076,7 +1077,6 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
-            this.plC_Button_手輸數量 = new MyUI.PLC_Button();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -20965,6 +20965,41 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "使用者設定";
             // 
+            // plC_Button_手輸數量
+            // 
+            this.plC_Button_手輸數量.Bool = false;
+            this.plC_Button_手輸數量.but_press = false;
+            this.plC_Button_手輸數量.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_Button_手輸數量.Location = new System.Drawing.Point(318, 79);
+            this.plC_Button_手輸數量.Margin = new System.Windows.Forms.Padding(4);
+            this.plC_Button_手輸數量.Name = "plC_Button_手輸數量";
+            this.plC_Button_手輸數量.OFF_文字內容 = "手輸數量";
+            this.plC_Button_手輸數量.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_手輸數量.OFF_文字顏色 = System.Drawing.Color.Black;
+            this.plC_Button_手輸數量.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_手輸數量.ON_文字內容 = "手輸數量";
+            this.plC_Button_手輸數量.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_Button_手輸數量.ON_文字顏色 = System.Drawing.Color.White;
+            this.plC_Button_手輸數量.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_Button_手輸數量.Size = new System.Drawing.Size(146, 49);
+            this.plC_Button_手輸數量.Style = MyUI.PLC_Button.StyleEnum.經典;
+            this.plC_Button_手輸數量.TabIndex = 125;
+            this.plC_Button_手輸數量.事件驅動 = false;
+            this.plC_Button_手輸數量.字型鎖住 = false;
+            this.plC_Button_手輸數量.寫入元件位置 = "S4067";
+            this.plC_Button_手輸數量.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
+            this.plC_Button_手輸數量.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
+            this.plC_Button_手輸數量.文字鎖住 = false;
+            this.plC_Button_手輸數量.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態OFF圖片")));
+            this.plC_Button_手輸數量.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態ON圖片")));
+            this.plC_Button_手輸數量.讀取位元反向 = false;
+            this.plC_Button_手輸數量.讀取元件位置 = "S4067";
+            this.plC_Button_手輸數量.讀寫鎖住 = false;
+            this.plC_Button_手輸數量.起始狀態 = false;
+            this.plC_Button_手輸數量.音效 = true;
+            this.plC_Button_手輸數量.顯示 = false;
+            this.plC_Button_手輸數量.顯示狀態 = false;
+            // 
             // plC_Button_無庫存自動補足
             // 
             this.plC_Button_無庫存自動補足.Bool = false;
@@ -24076,7 +24111,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(475, 355);
+            this.tabPage4.Size = new System.Drawing.Size(1640, 900);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "取藥堆疊子資料";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -24129,7 +24164,7 @@
             this.sqL_DataGridView_取藥堆疊子資料.RowsHeight = 20;
             this.sqL_DataGridView_取藥堆疊子資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_取藥堆疊子資料.Server = "localhost";
-            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(469, 349);
+            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(1634, 894);
             this.sqL_DataGridView_取藥堆疊子資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_取藥堆疊子資料.TabIndex = 26;
             this.sqL_DataGridView_取藥堆疊子資料.TableName = "take_medicine_substack_new";
@@ -24151,7 +24186,7 @@
             this.tabPage10.Controls.Add(this.sqL_DataGridView_批次領藥資料);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(475, 355);
+            this.tabPage10.Size = new System.Drawing.Size(1640, 900);
             this.tabPage10.TabIndex = 2;
             this.tabPage10.Text = "批次領藥資料";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -24194,7 +24229,7 @@
             this.sqL_DataGridView_批次領藥資料.RowsHeight = 20;
             this.sqL_DataGridView_批次領藥資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_批次領藥資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(1640, 900);
             this.sqL_DataGridView_批次領藥資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_批次領藥資料.TabIndex = 119;
             this.sqL_DataGridView_批次領藥資料.TableName = "UDFTPSTK4";
@@ -24216,7 +24251,7 @@
             this.tabPage11.Controls.Add(this.sqL_DataGridView_管制抽屜權限資料);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(475, 355);
+            this.tabPage11.Size = new System.Drawing.Size(1640, 900);
             this.tabPage11.TabIndex = 3;
             this.tabPage11.Text = "管制抽屜權限資料";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -24258,7 +24293,7 @@
             this.sqL_DataGridView_管制抽屜權限資料.RowsHeight = 20;
             this.sqL_DataGridView_管制抽屜權限資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_管制抽屜權限資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(1640, 900);
             this.sqL_DataGridView_管制抽屜權限資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_管制抽屜權限資料.TabIndex = 119;
             this.sqL_DataGridView_管制抽屜權限資料.TableName = "locker_data";
@@ -24280,7 +24315,7 @@
             this.tabPage12.Controls.Add(this.sqL_DataGridView_設備資料);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(475, 355);
+            this.tabPage12.Size = new System.Drawing.Size(1640, 900);
             this.tabPage12.TabIndex = 4;
             this.tabPage12.Text = "設備資料";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -24320,7 +24355,7 @@
             this.sqL_DataGridView_設備資料.RowsHeight = 40;
             this.sqL_DataGridView_設備資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_設備資料.Server = "localhost";
-            this.sqL_DataGridView_設備資料.Size = new System.Drawing.Size(475, 355);
+            this.sqL_DataGridView_設備資料.Size = new System.Drawing.Size(1640, 900);
             this.sqL_DataGridView_設備資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_設備資料.TabIndex = 27;
             this.sqL_DataGridView_設備資料.TableName = "devicelist";
@@ -24670,7 +24705,7 @@
             this.tabPage30.Controls.Add(this.storageUI_EPD_266);
             this.tabPage30.Location = new System.Drawing.Point(4, 25);
             this.tabPage30.Name = "tabPage30";
-            this.tabPage30.Size = new System.Drawing.Size(475, 301);
+            this.tabPage30.Size = new System.Drawing.Size(1640, 846);
             this.tabPage30.TabIndex = 1;
             this.tabPage30.Text = "EPD266";
             // 
@@ -24683,7 +24718,7 @@
             this.storageUI_EPD_266.Name = "storageUI_EPD_266";
             this.storageUI_EPD_266.Password = "user82822040";
             this.storageUI_EPD_266.Port = ((uint)(3306u));
-            this.storageUI_EPD_266.Size = new System.Drawing.Size(475, 301);
+            this.storageUI_EPD_266.Size = new System.Drawing.Size(1640, 846);
             this.storageUI_EPD_266.TabIndex = 0;
             this.storageUI_EPD_266.TableName = "EPD266_Jsonstring";
             this.storageUI_EPD_266.UDP_LocalPorts = ((System.Collections.Generic.List<string>)(resources.GetObject("storageUI_EPD_266.UDP_LocalPorts")));
@@ -24696,7 +24731,7 @@
             this.tabPage31.Controls.Add(this.rowsLEDUI);
             this.tabPage31.Location = new System.Drawing.Point(4, 25);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Size = new System.Drawing.Size(475, 301);
+            this.tabPage31.Size = new System.Drawing.Size(1640, 846);
             this.tabPage31.TabIndex = 2;
             this.tabPage31.Text = "RowsLED";
             // 
@@ -24709,7 +24744,7 @@
             this.rowsLEDUI.Name = "rowsLEDUI";
             this.rowsLEDUI.Password = "user82822040";
             this.rowsLEDUI.Port = ((uint)(3306u));
-            this.rowsLEDUI.Size = new System.Drawing.Size(475, 301);
+            this.rowsLEDUI.Size = new System.Drawing.Size(1640, 846);
             this.rowsLEDUI.TabIndex = 0;
             this.rowsLEDUI.TableName = "RowsLED_Jsonstring";
             this.rowsLEDUI.UDP_LocalPorts = ((System.Collections.Generic.List<string>)(resources.GetObject("rowsLEDUI.UDP_LocalPorts")));
@@ -24722,7 +24757,7 @@
             this.tabPage5.Controls.Add(this.rfiD_UI);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(475, 301);
+            this.tabPage5.Size = new System.Drawing.Size(1640, 846);
             this.tabPage5.TabIndex = 3;
             this.tabPage5.Text = "RFID";
             // 
@@ -24744,7 +24779,7 @@
             this.rfiD_UI.RFID_Enable = "0";
             this.rfiD_UI.Server_IP_Adress = "0.0.0.0";
             this.rfiD_UI.Server_Port = "0";
-            this.rfiD_UI.Size = new System.Drawing.Size(475, 301);
+            this.rfiD_UI.Size = new System.Drawing.Size(1640, 846);
             this.rfiD_UI.SSID = "";
             this.rfiD_UI.Station = "0";
             this.rfiD_UI.Subnet = "0.0.0.0";
@@ -24760,7 +24795,7 @@
             this.tabPage6.Controls.Add(this.storageUI_WT32);
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(475, 301);
+            this.tabPage6.Size = new System.Drawing.Size(1640, 846);
             this.tabPage6.TabIndex = 4;
             this.tabPage6.Text = "WT32";
             // 
@@ -24773,7 +24808,7 @@
             this.storageUI_WT32.Name = "storageUI_WT32";
             this.storageUI_WT32.Password = "user82822040";
             this.storageUI_WT32.Port = ((uint)(3306u));
-            this.storageUI_WT32.Size = new System.Drawing.Size(475, 301);
+            this.storageUI_WT32.Size = new System.Drawing.Size(1640, 846);
             this.storageUI_WT32.TabIndex = 0;
             this.storageUI_WT32.TableName = "WT32_Jsonstring";
             this.storageUI_WT32.UDP_LocalPorts = ((System.Collections.Generic.List<string>)(resources.GetObject("storageUI_WT32.UDP_LocalPorts")));
@@ -26622,41 +26657,6 @@
             this.ContentsPanel.Padding = new System.Windows.Forms.Padding(5);
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
-            // 
-            // plC_Button_手輸數量
-            // 
-            this.plC_Button_手輸數量.Bool = false;
-            this.plC_Button_手輸數量.but_press = false;
-            this.plC_Button_手輸數量.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_Button_手輸數量.Location = new System.Drawing.Point(318, 79);
-            this.plC_Button_手輸數量.Margin = new System.Windows.Forms.Padding(4);
-            this.plC_Button_手輸數量.Name = "plC_Button_手輸數量";
-            this.plC_Button_手輸數量.OFF_文字內容 = "手輸數量";
-            this.plC_Button_手輸數量.OFF_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_手輸數量.OFF_文字顏色 = System.Drawing.Color.Black;
-            this.plC_Button_手輸數量.OFF_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_手輸數量.ON_文字內容 = "手輸數量";
-            this.plC_Button_手輸數量.ON_文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_Button_手輸數量.ON_文字顏色 = System.Drawing.Color.White;
-            this.plC_Button_手輸數量.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_Button_手輸數量.Size = new System.Drawing.Size(146, 49);
-            this.plC_Button_手輸數量.Style = MyUI.PLC_Button.StyleEnum.經典;
-            this.plC_Button_手輸數量.TabIndex = 125;
-            this.plC_Button_手輸數量.事件驅動 = false;
-            this.plC_Button_手輸數量.字型鎖住 = false;
-            this.plC_Button_手輸數量.寫入元件位置 = "S4067";
-            this.plC_Button_手輸數量.按鈕型態 = MyUI.PLC_Button.StatusEnum.交替型;
-            this.plC_Button_手輸數量.按鍵方式 = MyUI.PLC_Button.PressEnum.Mouse_左鍵;
-            this.plC_Button_手輸數量.文字鎖住 = false;
-            this.plC_Button_手輸數量.狀態OFF圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態OFF圖片")));
-            this.plC_Button_手輸數量.狀態ON圖片 = ((System.Drawing.Image)(resources.GetObject("plC_Button_手輸數量.狀態ON圖片")));
-            this.plC_Button_手輸數量.讀取位元反向 = false;
-            this.plC_Button_手輸數量.讀取元件位置 = "S4067";
-            this.plC_Button_手輸數量.讀寫鎖住 = false;
-            this.plC_Button_手輸數量.起始狀態 = false;
-            this.plC_Button_手輸數量.音效 = true;
-            this.plC_Button_手輸數量.顯示 = false;
-            this.plC_Button_手輸數量.顯示狀態 = false;
             // 
             // Form1
             // 

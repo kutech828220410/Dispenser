@@ -19,7 +19,23 @@ namespace 智慧調劑台管理系統_WebApi
     [ApiController]
     public class OutTakeMedController : ControllerBase
     {
-
+        private enum enum_交易記錄查詢資料
+        {
+            GUID,
+            動作,
+            藥品碼,
+            藥品名稱,
+            藥袋序號,
+            庫存量,
+            交易量,
+            結存量,
+            操作人,
+            病人姓名,
+            病歷號,
+            操作時間,
+            開方時間,
+            備註,
+        }
         public enum enum_取藥堆疊母資料
         {
             GUID,
@@ -85,6 +101,8 @@ namespace 智慧調劑台管理系統_WebApi
         static private uint Port = (uint)ConfigurationManager.AppSettings["port"].StringToInt32();
         static private MySqlSslMode SSLMode = MySqlSslMode.None;
         MyTimer myTimer = new MyTimer(50000);
+
+        private SQLControl sQLControl_trading = new SQLControl(IP, DataBaseName, "trading", UserName, Password, Port, SSLMode);
 
         private SQLControl sQLControl_take_medicine_stack = new SQLControl(IP, DataBaseName, "take_medicine_stack_new", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_devicelist = new SQLControl(ConfigurationManager.AppSettings["devicelist_IP"], ConfigurationManager.AppSettings["devicelist_database"], "devicelist", UserName, Password, Port, SSLMode);
@@ -221,19 +239,18 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 string PRI_KEY = data[0].PRI_KEY;
                 string 藥品碼 = data[0].藥品碼;
-                List<object[]> list_take_medicine_stack = new List<object[]>();
                 int 總異動量 = data[0].交易量.StringToInt32();
                 if (總異動量 != 0)
                 {
-                    list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥袋序號, data[0].PRI_KEY);
-                    if (list_take_medicine_stack.Count > 0) return "-4";
+                    List<object[]> list_trading = this.sQLControl_trading.GetRowsByDefult(null, (int)enum_交易記錄查詢資料.藥袋序號, data[0].PRI_KEY);
+                    if (list_trading.Count > 0) return "-4";
                 }
                 else
                 {
                     PRI_KEY = Guid.NewGuid().ToString();
                 }
 
-                list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[0].藥品碼);
+                List<object[]> list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[0].藥品碼);
                 if (list_take_medicine_stack.Count > 0)
                 {
                     this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
@@ -262,6 +279,10 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 string PRI_KEY = data[0].PRI_KEY;
                 string 藥品碼 = data[0].藥品碼;
+
+                List<object[]> list_trading = this.sQLControl_trading.GetRowsByDefult(null, (int)enum_交易記錄查詢資料.藥袋序號, data[0].PRI_KEY);
+                if (list_trading.Count > 0) return "-4";
+
                 List<object[]> list_take_medicine_stack = new List<object[]>();
                 list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[0].藥品碼);
                 if (list_take_medicine_stack.Count > 0)
