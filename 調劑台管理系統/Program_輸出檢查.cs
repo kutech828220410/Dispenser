@@ -379,6 +379,7 @@ namespace 調劑台管理系統
 
             if (this.flag_輸出入檢查_輸出刷新_全部輸出完成)
             {
+                list_locker_table_value_buf.Sort(new ICP_Locker_Index_Table());
                 for (int i = 0; i < list_locker_table_value_buf.Count; i++)
                 {
                     string IP = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.IP].ObjectToString();

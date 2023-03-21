@@ -752,8 +752,16 @@ namespace 調劑台管理系統
                                 Drawer drawer = List_EPD583_雲端資料.SortByIP(IP);
                                 List<Box> boxes = drawer.SortByCode(藥品碼);
 
-                                drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
-                                drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
+                                if (drawer.IsAllLight)
+                                {
+                                    drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
+                                    drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
+                                }
+                                else
+                                {
+                                    drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, color);
+                                }
+
                                 this.drawerUI_EPD_583.Set_LED_UDP(drawer);
                             }));
                             list_IP.Add(IP);

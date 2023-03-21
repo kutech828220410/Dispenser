@@ -87,13 +87,15 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD583_複製格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_複製格式_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD583_貼上格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_貼上格式_MouseDownEvent;
             this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示_CheckStateChanged;
-
+            this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_隔板亮燈_CheckStateChanged;
 
             this.epD_583_Pannel.Init(this.drawerUI_EPD_583.List_UDP_Local);
             this.epD_583_Pannel.DrawerChangeEvent += EpD_583_Pannel_DrawerChangeEvent;
             this.epD_583_Pannel.MouseDownEvent += EpD_583_Pannel_MouseDownEvent;
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD583);
         }
+
+     
 
         private void Program_儲位管理_EPD583()
         {
@@ -320,10 +322,11 @@ namespace 調劑台管理系統
 
             rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts = IP;
             rJ_TextBox_儲位管理_EPD583_抽屜列表_儲位名稱.Texts = 儲位名稱;
-
+  
             Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
             if(drawer != null)
             {
+                plC_CheckBox_儲位管理_EPD583_隔板亮燈.Checked = drawer.IsAllLight;
                 this.epD_583_Pannel.DrawToPictureBox(drawer);
             }
         }
@@ -341,6 +344,7 @@ namespace 調劑台管理系統
                 rJ_TextBox_儲位管理_EPD583_儲位內容_儲位名稱.Text = Boxes[0].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString();
                 rJ_TextBox_儲位管理_EPD583_儲位內容_總庫存.Text = Boxes[0].GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
                 this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.Checked = (bool)Boxes[0].GetValue(Device.ValueName.效期, Device.ValueType.Visable);
+
             }));
 
 
@@ -361,6 +365,21 @@ namespace 調劑台管理系統
         private void EpD_583_Pannel_DrawerChangeEvent(Drawer drawer)
         {
           
+        }
+        private void PlC_CheckBox_儲位管理_EPD583_隔板亮燈_CheckStateChanged(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(delegate
+            {
+                string IP = rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts;
+                Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
+                if (drawer != null)
+                {
+                    drawer.IsAllLight = plC_CheckBox_儲位管理_EPD583_隔板亮燈.Checked;
+                    this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
+                    this.List_EPD583_本地資料.Add_NewDrawer(drawer);
+                    this.Function_設定雲端資料更新();
+                }
+            }));
         }
         private void RJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱_KeyPress(object sender, KeyPressEventArgs e)
         {

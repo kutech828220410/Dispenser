@@ -1268,7 +1268,6 @@ namespace 調劑台管理系統
             cnt++;
 
         }
-
         void cnt_Program_取藥堆疊資料_檢查資料_刷新資料(ref int cnt)
         {
             if (this.list_取藥堆疊母資料.Count > 0)
@@ -1508,9 +1507,16 @@ namespace 調劑台管理系統
                     {
                         Drawer drawer = List_EPD583_雲端資料.SortByIP(IP);
                         List<Box> boxes = drawer.SortByCode(藥品碼);
-
-                        drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
-                        drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
+                        if(drawer.IsAllLight)
+                        {
+                            drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, boxes, color);
+                            drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
+                        }
+                        else
+                        {
+                            drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, color);
+                        }
+                     
                         this.drawerUI_EPD_583.Set_LED_UDP(drawer);
                         list_locker_table_value_buf = list_locker_table_value.GetRows((int)enum_Locker_Index_Table.IP, IP);
                     }
