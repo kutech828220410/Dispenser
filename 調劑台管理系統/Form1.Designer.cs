@@ -5928,7 +5928,7 @@
             // 
             this.rJ_Pannel5.BackColor = System.Drawing.Color.White;
             this.rJ_Pannel5.BorderColor = System.Drawing.Color.SkyBlue;
-            this.rJ_Pannel5.BorderRadius = 10;
+            this.rJ_Pannel5.BorderRadius = 5;
             this.rJ_Pannel5.BorderSize = 2;
             this.rJ_Pannel5.Controls.Add(this.textBox_藥品資料_藥檔資料_資料查詢_藥品條碼);
             this.rJ_Pannel5.Controls.Add(this.rJ_Lable20);
@@ -5984,7 +5984,7 @@
             // 
             this.rJ_Pannel4.BackColor = System.Drawing.Color.White;
             this.rJ_Pannel4.BorderColor = System.Drawing.Color.SkyBlue;
-            this.rJ_Pannel4.BorderRadius = 10;
+            this.rJ_Pannel4.BorderRadius = 5;
             this.rJ_Pannel4.BorderSize = 2;
             this.rJ_Pannel4.Controls.Add(this.plC_RJ_ChechBox_藥品資料_藥檔資料_資料查詢_藥品群組);
             this.rJ_Pannel4.Controls.Add(this.rJ_ComboBox_藥品資料_藥檔資料_資料查詢_藥品群組);
@@ -6058,7 +6058,7 @@
             // 
             this.rJ_Pannel3.BackColor = System.Drawing.Color.White;
             this.rJ_Pannel3.BorderColor = System.Drawing.Color.SkyBlue;
-            this.rJ_Pannel3.BorderRadius = 10;
+            this.rJ_Pannel3.BorderRadius = 5;
             this.rJ_Pannel3.BorderSize = 2;
             this.rJ_Pannel3.Controls.Add(this.textBox_藥品資料_藥檔資料_資料查詢_藥品名稱);
             this.rJ_Pannel3.Controls.Add(this.rJ_Lable18);
@@ -6114,7 +6114,7 @@
             // 
             this.rJ_Pannel2.BackColor = System.Drawing.Color.White;
             this.rJ_Pannel2.BorderColor = System.Drawing.Color.SkyBlue;
-            this.rJ_Pannel2.BorderRadius = 10;
+            this.rJ_Pannel2.BorderRadius = 5;
             this.rJ_Pannel2.BorderSize = 2;
             this.rJ_Pannel2.Controls.Add(this.textBox_藥品資料_藥檔資料_資料查詢_藥品碼);
             this.rJ_Pannel2.Controls.Add(this.rJ_Lable17);

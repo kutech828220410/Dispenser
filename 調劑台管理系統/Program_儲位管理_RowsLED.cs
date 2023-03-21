@@ -342,6 +342,8 @@ namespace 調劑台管理系統
                 this.rJ_TextBox_儲位管理_RowsLED_儲位內容_包裝單位.Texts = this.rowsLED_Pannel.CurrentRowsDevice.GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
                 this.rJ_TextBox_儲位管理_RowsLED_儲位內容_儲位名稱.Texts = this.rowsLED_Pannel.CurrentRowsDevice.GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString();
                 this.rJ_TextBox_儲位管理_RowsLED_儲位內容_總庫存.Texts = this.rowsLED_Pannel.CurrentRowsDevice.GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
+
+               
             }));
 
             sqL_DataGridView_儲位管理_RowsLED_儲位內容_效期及庫存.ClearGrid();
@@ -367,6 +369,7 @@ namespace 調劑台管理系統
                 this.rowsLED_Pannel.CurrentRowsLED = rowsLED;
                 this.rJ_TextBox_儲位管理_RowsLED_層架列表_IP.Texts = rowsLED.IP;
                 this.rJ_TextBox_儲位管理_RowsLED_層架列表_儲位名稱.Texts = rowsLED.Name;
+                rowsLED_Pannel.Maximum = rowsLED.Maximum;
                 List<object[]> list_value = new List<object[]>();
                 for (int i = 0; i < rowsLED.RowsDevices.Count; i++)
                 {
