@@ -1,6 +1,6 @@
 {
   "DB_Basic": {
-    "DataBaseName": "dps01",
+    "DataBaseName": "DPS01",
     "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
@@ -18,7 +18,7 @@
     "TableName": ""
   },
   "DB_order_list": {
-    "DataBaseName": "dps01",
+    "DataBaseName": "dbvm",
     "IP": "localhost",
     "UserName": "user",
     "Password": "66437068",
@@ -35,6 +35,6 @@
     "MySqlSslMode": 0,
     "TableName": ""
   },
-  "OrderApiURL": "https://192.168.32.250/dbvm/BBAR",
+  "OrderApiURL": "http://192.168.24.61/dbvm/BBAR?barcode=",
   "MedApiURL": ""
 }
