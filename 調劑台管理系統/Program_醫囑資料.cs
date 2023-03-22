@@ -581,7 +581,7 @@ namespace 調劑台管理系統
         private void PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent(MouseEventArgs mevent)
         {
             List<object[]> list_value = this.Function_醫囑資料_API呼叫(this.rJ_TextBox_醫囑資料_搜尋條件_藥袋條碼.Texts);
-
+            this.sqL_DataGridView_醫囑資料.RefreshGrid(list_value);
 
         }
         private void PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent(MouseEventArgs mevent)

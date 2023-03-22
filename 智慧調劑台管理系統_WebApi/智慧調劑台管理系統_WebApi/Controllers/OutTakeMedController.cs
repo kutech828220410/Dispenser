@@ -303,6 +303,16 @@ namespace 智慧調劑台管理系統_WebApi
                 this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, PRI_KEY, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, Color.Black.ToColorString(), 總異動量);
                 return $"OK";
             }
+            else if (data[0].功能類型 == "-2")
+            {
+                List<object[]> list_take_medicine_stack = new List<object[]>();
+                list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetAllRows(null);
+                if (list_take_medicine_stack.Count > 0)
+                {
+                    this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
+                }
+                return "OK";
+            }
             else
             {
                 return $"-3";
