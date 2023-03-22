@@ -306,7 +306,7 @@ namespace 智慧調劑台管理系統_WebApi
             else if (data[0].功能類型 == "-2")
             {
                 List<object[]> list_take_medicine_stack = new List<object[]>();
-                list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetAllRows(null);
+                list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.調劑台名稱, data[0].電腦名稱);
                 if (list_take_medicine_stack.Count > 0)
                 {
                     this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
