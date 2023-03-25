@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.34.0")]
-[assembly: AssemblyFileVersion("1.0.34.0")]
+[assembly: AssemblyVersion("1.0.35.0")]
+[assembly: AssemblyFileVersion("1.0.35.0")]
 namespace 調劑台管理系統
 {
 

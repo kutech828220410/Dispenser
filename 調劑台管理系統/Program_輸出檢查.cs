@@ -481,8 +481,8 @@ namespace 調劑台管理系統
                 if (cnt_Program_輸出入檢查_輸入刷新 == 2) cnt_Program_輸出入檢查_輸入刷新_初始化(ref cnt_Program_輸出入檢查_輸入刷新);
                 if (cnt_Program_輸出入檢查_輸入刷新 == 3) cnt_Program_輸出入檢查_輸入刷新 = 100;
 
-                if (cnt_Program_輸出入檢查_輸入刷新 == 101) cnt_Program_輸出入檢查_輸入刷新_100_檢查輸入(ref cnt_Program_輸出入檢查_輸入刷新);
-                if (cnt_Program_輸出入檢查_輸入刷新 == 102) cnt_Program_輸出入檢查_輸入刷新 = 200;
+                if (cnt_Program_輸出入檢查_輸入刷新 == 100) cnt_Program_輸出入檢查_輸入刷新_100_檢查輸入(ref cnt_Program_輸出入檢查_輸入刷新);
+                if (cnt_Program_輸出入檢查_輸入刷新 == 101) cnt_Program_輸出入檢查_輸入刷新 = 200;
 
                 if (cnt_Program_輸出入檢查_輸入刷新 == 200) cnt_Program_輸出入檢查_輸入刷新_200_等待刷新延遲(ref cnt_Program_輸出入檢查_輸入刷新);
                 if (cnt_Program_輸出入檢查_輸入刷新 == 201) cnt_Program_輸出入檢查_輸入刷新 = 65500;
