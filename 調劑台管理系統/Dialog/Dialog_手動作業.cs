@@ -109,7 +109,7 @@ namespace 調劑台管理系統
                 MyMessageBox.ShowDialog("未選取資料!");
                 return;
             }
-            Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+            Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel("請輸入數量");
             if (dialog_NumPannel.ShowDialog() != DialogResult.Yes) return;
             int 交易量 = dialog_NumPannel.Value;
             if (交易量 == 0)

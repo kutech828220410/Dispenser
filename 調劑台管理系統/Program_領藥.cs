@@ -949,7 +949,7 @@ namespace 調劑台管理系統
             List<object[]> list_醫囑資料 = new List<object[]>();
             if (plC_Button_手輸數量.Bool)
             {
-                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel("請輸入領藥數量");
                 DialogResult dialogResult = dialog_NumPannel.ShowDialog();
                 if (dialogResult != DialogResult.Yes) return;
                 list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, dialog_NumPannel.Value * -1);
@@ -1040,7 +1040,7 @@ namespace 調劑台管理系統
             if (plC_Button_手輸數量.Bool)
             {
                 int 手輸數量 = 0;
-                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel("請輸入退藥數量");
                 DialogResult dialogResult = dialog_NumPannel.ShowDialog();
                 if (dialogResult != DialogResult.Yes) return;
                 手輸數量 = dialog_NumPannel.Value * 1;
@@ -2168,7 +2168,7 @@ namespace 調劑台管理系統
             List<object[]> list_醫囑資料 = new List<object[]>();
             if (plC_Button_手輸數量.Bool)
             {
-                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel("請輸入領藥數量");
                 DialogResult dialogResult = dialog_NumPannel.ShowDialog();
                 if (dialogResult != DialogResult.Yes) return;
                 list_醫囑資料 = this.Function_醫囑資料_API呼叫(BarCode, dialog_NumPannel.Value * -1);
@@ -2258,7 +2258,7 @@ namespace 調劑台管理系統
             if (plC_Button_手輸數量.Bool)
             {
                 int 手輸數量 = 0;
-                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel();
+                Dialog_NumPannel dialog_NumPannel = new Dialog_NumPannel("請輸入退藥數量");
                 DialogResult dialogResult = dialog_NumPannel.ShowDialog();
                 if (dialogResult != DialogResult.Yes) return;
                 手輸數量 = dialog_NumPannel.Value * 1;
