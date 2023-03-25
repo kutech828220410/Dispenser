@@ -396,7 +396,13 @@
             this.rJ_Lable4 = new MyUI.RJ_Lable();
             this.sqL_DataGridView_儲位管理_EPD583_抽屜列表 = new SQLUI.SQL_DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.plC_RJ_Pannel1 = new MyUI.PLC_RJ_Pannel();
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈 = new MyUI.PLC_CheckBox();
+            this.plC_RJ_Button_儲位管理_EPD583_更新 = new MyUI.PLC_RJ_Button();
+            this.plC_CheckBox_儲位管理_EPD583_輸出 = new MyUI.PLC_CheckBox();
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向 = new MyUI.PLC_CheckBox();
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向 = new MyUI.PLC_CheckBox();
+            this.plC_CheckBox_儲位管理_EPD583_輸入 = new MyUI.PLC_CheckBox();
             this.plC_RJ_Button_儲位管理_EPD583_貼上格式 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_複製格式 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_儲位初始化 = new MyUI.PLC_RJ_Button();
@@ -1173,6 +1179,7 @@
             this.panel12.SuspendLayout();
             this.rJ_Pannel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.plC_RJ_Pannel1.SuspendLayout();
             this.rJ_Pannel6.SuspendLayout();
             this.plC_RJ_GroupBox4.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox4.SuspendLayout();
@@ -10431,7 +10438,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_隔板亮燈);
+            this.groupBox3.Controls.Add(this.plC_RJ_Pannel1);
             this.groupBox3.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_貼上格式);
             this.groupBox3.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_複製格式);
             this.groupBox3.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_儲位初始化);
@@ -10454,13 +10461,34 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "面板資訊";
             // 
+            // plC_RJ_Pannel1
+            // 
+            this.plC_RJ_Pannel1.BackColor = System.Drawing.Color.White;
+            this.plC_RJ_Pannel1.BorderColor = System.Drawing.Color.SkyBlue;
+            this.plC_RJ_Pannel1.BorderRadius = 10;
+            this.plC_RJ_Pannel1.BorderSize = 2;
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_隔板亮燈);
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_更新);
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_輸出);
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_輸入方向);
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_輸出方向);
+            this.plC_RJ_Pannel1.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_輸入);
+            this.plC_RJ_Pannel1.ForeColor = System.Drawing.Color.White;
+            this.plC_RJ_Pannel1.IsSelected = false;
+            this.plC_RJ_Pannel1.Location = new System.Drawing.Point(905, 579);
+            this.plC_RJ_Pannel1.Name = "plC_RJ_Pannel1";
+            this.plC_RJ_Pannel1.Size = new System.Drawing.Size(350, 77);
+            this.plC_RJ_Pannel1.TabIndex = 149;
+            this.plC_RJ_Pannel1.致能讀取位置 = "S4077";
+            this.plC_RJ_Pannel1.隱藏讀取位置 = "S4077";
+            // 
             // plC_CheckBox_儲位管理_EPD583_隔板亮燈
             // 
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.AutoSize = true;
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Bool = false;
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.ForeColor = System.Drawing.Color.Black;
-            this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Location = new System.Drawing.Point(1159, 606);
+            this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Location = new System.Drawing.Point(15, 16);
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Name = "plC_CheckBox_儲位管理_EPD583_隔板亮燈";
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.Size = new System.Drawing.Size(91, 20);
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.TabIndex = 143;
@@ -10472,6 +10500,125 @@
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.致能讀取位置 = "S4077";
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.讀寫鎖住 = false;
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.音效 = true;
+            // 
+            // plC_RJ_Button_儲位管理_EPD583_更新
+            // 
+            this.plC_RJ_Button_儲位管理_EPD583_更新.AutoResetState = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.BackgroundColor = System.Drawing.Color.PaleVioletRed;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Bool = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.BorderRadius = 5;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.BorderSize = 0;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.but_press = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.buttonType = MyUI.RJ_Button.ButtonType.Toggle;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.FlatAppearance.BorderSize = 0;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Location = new System.Drawing.Point(242, 16);
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Name = "plC_RJ_Button_儲位管理_EPD583_更新";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.OFF_文字內容 = "更新";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.plC_RJ_Button_儲位管理_EPD583_更新.OFF_文字顏色 = System.Drawing.Color.White;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.ON_文字內容 = "更新";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.ON_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
+            this.plC_RJ_Button_儲位管理_EPD583_更新.ON_文字顏色 = System.Drawing.Color.Black;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Size = new System.Drawing.Size(97, 46);
+            this.plC_RJ_Button_儲位管理_EPD583_更新.State = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.TabIndex = 148;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Text = "更新";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.TextColor = System.Drawing.Color.White;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.Texts = "更新";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.UseVisualStyleBackColor = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.字型鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.按鈕型態 = MyUI.PLC_RJ_Button.StatusEnum.保持型;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.按鍵方式 = MyUI.PLC_RJ_Button.PressEnum.Mouse_左鍵;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.文字鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.致能讀取位置 = "S4077";
+            this.plC_RJ_Button_儲位管理_EPD583_更新.讀取位元反向 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.讀寫鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.音效 = true;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.顯示 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.顯示狀態 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.顯示讀取位置 = "S4077";
+            // 
+            // plC_CheckBox_儲位管理_EPD583_輸出
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_輸出.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸出.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Location = new System.Drawing.Point(111, 42);
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Name = "plC_CheckBox_儲位管理_EPD583_輸出";
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Size = new System.Drawing.Size(59, 20);
+            this.plC_CheckBox_儲位管理_EPD583_輸出.TabIndex = 144;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.Text = "輸出";
+            this.plC_CheckBox_儲位管理_EPD583_輸出.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.文字內容 = "輸出";
+            this.plC_CheckBox_儲位管理_EPD583_輸出.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸出.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.致能讀取位置 = "S4077";
+            this.plC_CheckBox_儲位管理_EPD583_輸出.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.音效 = true;
+            // 
+            // plC_CheckBox_儲位管理_EPD583_輸入方向
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Location = new System.Drawing.Point(176, 16);
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Name = "plC_CheckBox_儲位管理_EPD583_輸入方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Size = new System.Drawing.Size(59, 20);
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.TabIndex = 147;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.Text = "方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.文字內容 = "方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.致能讀取位置 = "S4077";
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.音效 = true;
+            // 
+            // plC_CheckBox_儲位管理_EPD583_輸出方向
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Location = new System.Drawing.Point(176, 42);
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Name = "plC_CheckBox_儲位管理_EPD583_輸出方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Size = new System.Drawing.Size(59, 20);
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.TabIndex = 146;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.Text = "方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.文字內容 = "方向";
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.致能讀取位置 = "S4077";
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.音效 = true;
+            // 
+            // plC_CheckBox_儲位管理_EPD583_輸入
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_輸入.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸入.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Location = new System.Drawing.Point(111, 16);
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Name = "plC_CheckBox_儲位管理_EPD583_輸入";
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Size = new System.Drawing.Size(59, 20);
+            this.plC_CheckBox_儲位管理_EPD583_輸入.TabIndex = 145;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.Text = "輸入";
+            this.plC_CheckBox_儲位管理_EPD583_輸入.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.文字內容 = "輸入";
+            this.plC_CheckBox_儲位管理_EPD583_輸入.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_輸入.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.致能讀取位置 = "M8001";
+            this.plC_CheckBox_儲位管理_EPD583_輸入.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_輸入.音效 = true;
             // 
             // plC_RJ_Button_儲位管理_EPD583_貼上格式
             // 
@@ -26846,7 +26993,8 @@
             this.rJ_Pannel1.ResumeLayout(false);
             this.rJ_Pannel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.plC_RJ_Pannel1.ResumeLayout(false);
+            this.plC_RJ_Pannel1.PerformLayout();
             this.rJ_Pannel6.ResumeLayout(false);
             this.rJ_Pannel6.PerformLayout();
             this.plC_RJ_GroupBox4.ContentsPanel.ResumeLayout(false);
@@ -28101,6 +28249,12 @@
         private MyUI.PLC_RJ_Button plC_RJ_Button_藥品群組_選取資料填入至藥品資料;
         private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_隔板亮燈;
         private MyUI.PLC_RJ_Button plC_RJ_Button_醫囑資料_選取資料刪除;
+        private MyUI.PLC_RJ_Button plC_RJ_Button_儲位管理_EPD583_更新;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_輸入方向;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_輸出方向;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_輸入;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_輸出;
+        private MyUI.PLC_RJ_Pannel plC_RJ_Pannel1;
     }
 }
 

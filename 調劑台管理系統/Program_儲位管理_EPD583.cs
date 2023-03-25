@@ -88,6 +88,11 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_EPD583_貼上格式.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_貼上格式_MouseDownEvent;
             this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_隔板亮燈_CheckStateChanged;
+            this.plC_RJ_Button_儲位管理_EPD583_更新.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_更新_MouseDownEvent;
+            this.plC_CheckBox_儲位管理_EPD583_輸出.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸出_CheckStateChanged;
+            this.plC_CheckBox_儲位管理_EPD583_輸入方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸入方向_CheckStateChanged;
+            this.plC_CheckBox_儲位管理_EPD583_輸出方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸出方向_CheckStateChanged;
+
 
             this.epD_583_Pannel.Init(this.drawerUI_EPD_583.List_UDP_Local);
             this.epD_583_Pannel.DrawerChangeEvent += EpD_583_Pannel_DrawerChangeEvent;
@@ -95,7 +100,7 @@ namespace 調劑台管理系統
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD583);
         }
 
-     
+   
 
         private void Program_儲位管理_EPD583()
         {
@@ -222,21 +227,10 @@ namespace 調劑台管理系統
                         藥品碼 = boxes[k].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
                         藥品名稱 = boxes[k].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();
                         藥品學名 = boxes[k].GetValue(Device.ValueName.藥品學名, Device.ValueType.Value).ObjectToString();
-                        BarCode = boxes[k].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
+                        BarCode = boxes[k].GetValue(Device.ValueName.BarCode, Device.ValueType.Value).ObjectToString();
                         包裝單位 = boxes[k].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
-                        if (boxes[k].BackColor == Color.Red && boxes[k].ForeColor == Color.White)
-                        {
-                            警訊藥品 = true.ToString().ToUpper();
-                        }
-                        else if (boxes[k].BackColor == Color.White && boxes[k].ForeColor == Color.Black)
-                        {
-                            警訊藥品 = false.ToString().ToUpper();
-                        }
-                        else
-                        {
-                            Is_Replace = true;
-                            警訊藥品 = false.ToString().ToUpper();
-                        }
+                        警訊藥品 = boxes[k].IsWarning ? "TRUE" : "FALSE";
+                  
 
                         if (藥品碼 != 藥品碼_buf) Is_Replace = true;
                         if (藥品名稱 != 藥品名稱_buf) Is_Replace = true;
@@ -250,16 +244,7 @@ namespace 調劑台管理系統
                         boxes[k].SetValue(Device.ValueName.藥品學名, Device.ValueType.Value, 藥品學名_buf);
                         boxes[k].SetValue(Device.ValueName.BarCode, Device.ValueType.Value, BarCode_buf);
                         boxes[k].SetValue(Device.ValueName.包裝單位, Device.ValueType.Value, 包裝單位_buf);
-                        if (警訊藥品_buf == true.ToString().ToUpper())
-                        {
-                            boxes[k].BackColor = Color.Red;
-                            boxes[k].ForeColor = Color.White;
-                        }
-                        else
-                        {
-                            boxes[k].BackColor = Color.White;
-                            boxes[k].ForeColor = Color.Black;
-                        }
+                        boxes[k].IsWarning = (警訊藥品_buf == "TRUE");
 
                     }
                 }
@@ -1258,6 +1243,46 @@ namespace 調劑台管理系統
                 this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
             }));
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_更新_MouseDownEvent(MouseEventArgs mevent)
+        {
+            string IP = rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts;
+            Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
+            if (drawer == null) return;
+            bool input = this.drawerUI_EPD_583.GetInput(drawer);
+            bool output = this.drawerUI_EPD_583.GetOutput(drawer);
+            bool input_dir = this.drawerUI_EPD_583.GetInput_dir(drawer);
+            bool output_dir = this.drawerUI_EPD_583.GetOutput_dir(drawer);
+            this.Invoke(new Action(delegate 
+            {
+                plC_CheckBox_儲位管理_EPD583_輸入.Checked = input;
+                plC_CheckBox_儲位管理_EPD583_輸出.Checked = output;
+
+                plC_CheckBox_儲位管理_EPD583_輸入方向.Checked = input_dir;
+                plC_CheckBox_儲位管理_EPD583_輸出方向.Checked = output_dir;
+            }));
+
+        }
+        private void PlC_CheckBox_儲位管理_EPD583_輸出_CheckStateChanged(object sender, EventArgs e)
+        {
+            string IP = rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts;
+            Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
+            if (drawer == null) return;
+            this.drawerUI_EPD_583.SetOutput(drawer, plC_CheckBox_儲位管理_EPD583_輸出.Checked);
+        }
+        private void PlC_CheckBox_儲位管理_EPD583_輸入方向_CheckStateChanged(object sender, EventArgs e)
+        {
+            string IP = rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts;
+            Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
+            if (drawer == null) return;
+            this.drawerUI_EPD_583.SetInput_dir(drawer, plC_CheckBox_儲位管理_EPD583_輸入方向.Checked);
+        }
+        private void PlC_CheckBox_儲位管理_EPD583_輸出方向_CheckStateChanged(object sender, EventArgs e)
+        {
+            string IP = rJ_TextBox_儲位管理_EPD583_抽屜列表_IP.Texts;
+            Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
+            if (drawer == null) return;
+            this.drawerUI_EPD_583.SetOutput_dir(drawer, plC_CheckBox_儲位管理_EPD583_輸出方向.Checked);
         }
         #endregion
 

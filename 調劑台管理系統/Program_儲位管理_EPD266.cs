@@ -211,7 +211,7 @@ namespace 調劑台管理系統
                     藥品碼 = storage.GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
                     藥品名稱 = storage.GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();
                     藥品學名 = storage.GetValue(Device.ValueName.藥品學名, Device.ValueType.Value).ObjectToString();
-                    BarCode = storage.GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
+                    BarCode = storage.GetValue(Device.ValueName.BarCode, Device.ValueType.Value).ObjectToString();
                     包裝單位 = storage.GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
                     警訊藥品 = storage.IsWarning ? "TRUE" : "FALSE";
 

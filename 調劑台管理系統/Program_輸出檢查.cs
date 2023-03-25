@@ -187,6 +187,7 @@ namespace 調劑台管理系統
         private void sub_Program_輸出入檢查()
         {
             this.sub_Program_輸出入檢查_輸出刷新();
+            this.sub_Program_輸出入檢查_輸入刷新();
             if (PLC_Device_抽屜不鎖上.Bool)
             {
                 for (int i = 0; i < List_Locker.Count; i++) List_Locker[i].Unlock = true;
@@ -269,12 +270,14 @@ namespace 調劑台管理系統
         void cnt_Program_輸出入檢查_輸出刷新_100_檢查輸入(ref int cnt)
         {
             List<object[]> list_locker_table_value_buf = new List<object[]>();
+            List<object[]> list_locker_table_value_replace = new List<object[]>();
             List<Pannel_Locker> lockers_buf = new List<Pannel_Locker>();
             list_locker_table_value_buf = list_locker_table_value;
             for (int i = 0; i < list_locker_table_value_buf.Count; i++)
             {
                 string IP = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.IP].ObjectToString();
                 string Input = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入位置].ObjectToString();
+                bool Input_state = (list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態].ObjectToString().ToUpper() == "TRUE");
                 int Num = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.Num].ObjectToString().StringToInt32();
                 if (Input.StringIsEmpty()) continue;
                 Drawer drawer = this.List_EPD583_雲端資料.SortByIP(IP);
@@ -282,19 +285,33 @@ namespace 調劑台管理系統
                 {
                     bool flag = this.drawerUI_EPD_583.GetInput(drawer.IP);
                     this.PLC.properties.device_system.Set_Device(Input, flag);
+                    if(flag != Input_state)
+                    {
+                        list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態] = flag.ToString();
+                        list_locker_table_value_replace.Add(list_locker_table_value_buf[i]);
+                    }
                 }
-
                 Storage storage = this.List_EPD266_雲端資料.SortByIP(IP);
                 if (storage != null)
                 {
                     bool flag = this.storageUI_EPD_266.GetInput(storage.IP);
                     this.PLC.properties.device_system.Set_Device(Input, flag);
+                    if (flag != Input_state)
+                    {
+                        list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態] = flag.ToString();
+                        list_locker_table_value_replace.Add(list_locker_table_value_buf[i]);
+                    }
                 }
                 Storage pannel35 = this.List_Pannel35_雲端資料.SortByIP(IP);
                 if (pannel35 != null)
                 {
                     bool flag = this.storageUI_WT32.GetInput(pannel35.IP);
                     this.PLC.properties.device_system.Set_Device(Input, flag);
+                    if (flag != Input_state)
+                    {
+                        list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態] = flag.ToString();
+                        list_locker_table_value_replace.Add(list_locker_table_value_buf[i]);
+                    }
                 }
                 RFIDClass rFIDClass = this.List_RFID_雲端資料.SortByIP(IP);
                 if (rFIDClass != null)
@@ -303,6 +320,11 @@ namespace 調劑台管理系統
                     {
                         bool flag = this.rfiD_UI.GetInput(IP, Num);
                         this.PLC.properties.device_system.Set_Device(Input, flag);
+                        if (flag != Input_state)
+                        {
+                            list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態] = flag.ToString();
+                            list_locker_table_value_replace.Add(list_locker_table_value_buf[i]);
+                        }
                     }
                 }
                 if (!flag_Program_輸出入檢查_輸出刷新_Init)
@@ -316,7 +338,7 @@ namespace 調劑台管理系統
                     }
                 }                 
             }
-
+            if (list_locker_table_value_replace.Count > 0) this.sqL_DataGridView_Locker_Index_Table.SQL_ReplaceExtra(list_locker_table_value_replace, false);
             flag_Program_輸出入檢查_輸出刷新_Init = true;
             cnt++;
         }
@@ -431,6 +453,84 @@ namespace 調劑台管理系統
         void cnt_Program_輸出入檢查_輸出刷新_200_等待刷新延遲(ref int cnt)
         {
             if (this.MyTimer_輸出入檢查_輸出刷新.IsTimeOut())
+            {
+                cnt++;
+            }
+        }
+
+        #endregion
+        #region PLC_輸出入檢查_輸入刷新
+        bool flag_輸出入檢查_輸入刷新_全部輸出完成 = false;
+        PLC_Device PLC_Device_輸出入檢查_輸入刷新 = new PLC_Device("");
+        MyTimer MyTimer_輸出入檢查_輸入刷新 = new MyTimer("D4005");
+        int cnt_Program_輸出入檢查_輸入刷新 = 65534;
+        bool flag_Program_輸出入檢查_輸入刷新_Init = false;
+        void sub_Program_輸出入檢查_輸入刷新()
+        {
+            if (cnt_Program_輸出入檢查_輸入刷新 == 65534)
+            {
+                PLC_Device_輸出入檢查_輸入刷新.SetComment("PLC_輸出入檢查_輸入刷新");
+                PLC_Device_輸出入檢查_輸入刷新.Bool = false;
+                cnt_Program_輸出入檢查_輸入刷新 = 65535;
+            }
+            if (!PLC_Device_主機輸出模式.Bool)
+            {
+                PLC_Device_輸出入檢查_輸入刷新.Bool = true;
+                if (cnt_Program_輸出入檢查_輸入刷新 == 65535) cnt_Program_輸出入檢查_輸入刷新 = 1;
+                if (cnt_Program_輸出入檢查_輸入刷新 == 1) cnt_Program_輸出入檢查_輸入刷新_檢查按下(ref cnt_Program_輸出入檢查_輸入刷新);
+                if (cnt_Program_輸出入檢查_輸入刷新 == 2) cnt_Program_輸出入檢查_輸入刷新_初始化(ref cnt_Program_輸出入檢查_輸入刷新);
+                if (cnt_Program_輸出入檢查_輸入刷新 == 3) cnt_Program_輸出入檢查_輸入刷新 = 100;
+
+                if (cnt_Program_輸出入檢查_輸入刷新 == 101) cnt_Program_輸出入檢查_輸入刷新_100_檢查輸入(ref cnt_Program_輸出入檢查_輸入刷新);
+                if (cnt_Program_輸出入檢查_輸入刷新 == 102) cnt_Program_輸出入檢查_輸入刷新 = 200;
+
+                if (cnt_Program_輸出入檢查_輸入刷新 == 200) cnt_Program_輸出入檢查_輸入刷新_200_等待刷新延遲(ref cnt_Program_輸出入檢查_輸入刷新);
+                if (cnt_Program_輸出入檢查_輸入刷新 == 201) cnt_Program_輸出入檢查_輸入刷新 = 65500;
+                if (cnt_Program_輸出入檢查_輸入刷新 > 1) cnt_Program_輸出入檢查_輸入刷新_檢查放開(ref cnt_Program_輸出入檢查_輸入刷新);
+            }
+            else
+            {
+                cnt_Program_輸出入檢查_輸入刷新 = 65500;
+            }
+
+            if (cnt_Program_輸出入檢查_輸入刷新 == 65500)
+            {
+                PLC_Device_輸出入檢查_輸入刷新.Bool = false;
+                cnt_Program_輸出入檢查_輸入刷新 = 65535;
+            }
+        }
+        void cnt_Program_輸出入檢查_輸入刷新_檢查按下(ref int cnt)
+        {
+            if (PLC_Device_輸出入檢查_輸入刷新.Bool) cnt++;
+        }
+        void cnt_Program_輸出入檢查_輸入刷新_檢查放開(ref int cnt)
+        {
+            if (!PLC_Device_輸出入檢查_輸入刷新.Bool) cnt = 65500;
+        }
+        void cnt_Program_輸出入檢查_輸入刷新_初始化(ref int cnt)
+        {
+            this.flag_輸出入檢查_輸入刷新_全部輸出完成 = false;
+            cnt++;
+        }
+        void cnt_Program_輸出入檢查_輸入刷新_100_檢查輸入(ref int cnt)
+        {
+            List<object[]> list_locker_table_value = this.sqL_DataGridView_Locker_Index_Table.SQL_GetAllRows(false);
+            List<object[]> list_locker_table_value_replace = new List<object[]>();
+            List<Pannel_Locker> lockers_buf = new List<Pannel_Locker>();
+            for (int i = 0; i < list_locker_table_value.Count; i++)
+            {
+                string Input = list_locker_table_value[i][(int)enum_Locker_Index_Table.輸入位置].ObjectToString();
+                bool Input_state = (list_locker_table_value[i][(int)enum_Locker_Index_Table.輸入狀態].ObjectToString().ToUpper() == "TRUE");
+                if (Input.StringIsEmpty()) continue;
+                this.PLC.properties.device_system.Set_Device(Input, Input_state);
+             
+            }
+            cnt++;
+        }
+
+        void cnt_Program_輸出入檢查_輸入刷新_200_等待刷新延遲(ref int cnt)
+        {
+            if (this.MyTimer_輸出入檢查_輸入刷新.IsTimeOut())
             {
                 cnt++;
             }
