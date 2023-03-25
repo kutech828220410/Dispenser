@@ -92,13 +92,14 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_醫囑資料_設定產出時間.MouseDownEvent += PlC_RJ_Button_醫囑資料_設定產出時間_MouseDownEvent;
             this.plC_RJ_Button_醫囑資料_設為未過帳.MouseDownEvent += PlC_RJ_Button_醫囑資料_設為未過帳_MouseDownEvent;
             this.plC_RJ_Button_醫囑資料_定期API測試.MouseDownEvent += PlC_RJ_Button_醫囑資料_定期API測試_MouseDownEvent;
+            this.plC_RJ_Button_醫囑資料_選取資料刪除.MouseDownEvent += PlC_RJ_Button_醫囑資料_選取資料刪除_MouseDownEvent;
 
             this.plC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋.MouseDownEvent += PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent;
 
             this.plC_UI_Init.Add_Method(Program_醫囑資料);
         }
 
-
+   
 
         private void Program_醫囑資料()
         {
@@ -210,8 +211,11 @@ namespace 調劑台管理系統
                 一維碼 = text;
             }
             if (一維碼.StringIsEmpty()) return;
-            List<object[]> list_value = this.Function_醫囑資料_API呼叫(一維碼);
-            this.sqL_DataGridView_醫囑資料.RefreshGrid(list_value);
+            this.Invoke(new Action(delegate 
+            {
+                this.rJ_TextBox_醫囑資料_搜尋條件_藥袋條碼.Texts = 一維碼;
+            }));
+            this.PlC_RJ_Button_醫囑資料_搜尋條件_藥袋條碼_搜尋_MouseDownEvent(null);
             cnt++;
         }
 
@@ -589,6 +593,18 @@ namespace 調劑台管理系統
             string apitext = $"{dBConfigClass.OrderApiURL}{"test"}";
 
             string jsonString = Basic.Net.WEBApiGet(apitext);
+        }
+        private void PlC_RJ_Button_醫囑資料_選取資料刪除_MouseDownEvent(MouseEventArgs mevent)
+        {
+            List<object[]> list_value = this.sqL_DataGridView_醫囑資料.Get_All_Select_RowsValues();
+            if(list_value.Count == 0)
+            {
+                MyMessageBox.ShowDialog("未選取資料!");
+                return;
+            }
+            if (MyMessageBox.ShowDialog($"確認刪除選取{list_value.Count}筆資料?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+            this.sqL_DataGridView_醫囑資料.SQL_DeleteExtra(list_value, false);
+            this.sqL_DataGridView_醫囑資料.DeleteExtra(list_value, true);
         }
         #endregion
 

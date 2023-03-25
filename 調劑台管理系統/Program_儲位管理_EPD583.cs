@@ -489,11 +489,11 @@ namespace 調劑台管理系統
 
                     if (drawer != null)
                     {
-                        if (!this.drawerUI_EPD_583.Set_Pannel_LED_UDP(drawer, Color.Black))
+                        if (!this.drawerUI_EPD_583.Set_LED_Clear_UDP(drawer))
                         {
-                            MyMessageBox.ShowDialog($"{drawer.IP}:{drawer.Port} : EPD 抽屜面板滅燈失敗!");
+                            MyMessageBox.ShowDialog($"{drawer.IP}:{drawer.Port} : EPD 抽屜滅燈失敗!");
                         }
-                        Console.WriteLine($"{drawer.IP}:{drawer.Port} : EPD 抽屜滅燈成功!");
+                        Console.WriteLine($"{drawer.IP}:{drawer.Port} : EPD 抽屜成功!");
                     }
                 }));
             }
