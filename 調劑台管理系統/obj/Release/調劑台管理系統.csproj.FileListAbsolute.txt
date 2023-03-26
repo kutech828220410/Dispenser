@@ -1744,3 +1744,4 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台�
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.exe
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.pdb
 C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\bin\Release\stdole.dll
+C:\Users\User\Desktop\調劑台管理系統\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_選擇效期.resources

@@ -51,6 +51,7 @@ namespace 調劑台管理系統
             庫存量,
             交易量,
             結存量,
+            盤點量,
             操作人,
             病人姓名,
             病歷號,
@@ -64,6 +65,10 @@ namespace 調劑台管理系統
             if (!this.sqL_DataGridView_交易記錄查詢.SQL_IsTableCreat())
             {
                 this.sqL_DataGridView_交易記錄查詢.SQL_CreateTable();
+            }
+            else
+            {
+                this.sqL_DataGridView_交易記錄查詢.SQL_CheckAllColumnName(true);
             }
             
             this.sqL_DataGridView_交易記錄查詢.DataGridRefreshEvent += SqL_DataGridView_交易記錄查詢_DataGridRefreshEvent;

@@ -618,6 +618,7 @@ namespace 調劑台管理系統
         {
             for (int i = 0; i < 256; i++)
             {
+                if (i >= this.List_PLC_Device_權限管理.Count) break;
                 this.List_PLC_Device_權限管理[i].Bool = false;
             }
             PLC_Device_最高權限.Bool = false;

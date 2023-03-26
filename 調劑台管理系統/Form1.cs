@@ -342,6 +342,7 @@ namespace 調劑台管理系統
                 Dialog_RFID領退藥頁面.form = this.FindForm();
                 Dialog_輸入輸出設定.form = this.FindForm();
                 Dialog_新增容器設定.form = this.FindForm();
+                Dialog_選擇效期.form = this.FindForm();
 
                 LoadDBConfig();
                 LoadMyConfig();

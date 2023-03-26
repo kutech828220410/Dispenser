@@ -48,6 +48,7 @@ namespace 調劑台管理系統
             this.sqL_DataGridView_藥品資料.Set_ColumnWidth(100, enum_藥品資料_藥檔資料.庫存);
             this.sqL_DataGridView_藥品資料.Set_ColumnVisible(true, enum_藥品資料_藥檔資料.藥品碼, enum_藥品資料_藥檔資料.藥品名稱, enum_藥品資料_藥檔資料.庫存);
             this.sqL_DataGridView_藥品資料.DataGridRowsChangeRefEvent += SqL_DataGridView_藥品資料_DataGridRowsChangeRefEvent;
+            this.sqL_DataGridView_藥品資料.RowDoubleClickEvent += SqL_DataGridView_藥品資料_RowDoubleClickEvent;
 
             this.rJ_TextBox_藥品資料_藥品碼.KeyPress += RJ_TextBox_藥品資料_藥品碼_KeyPress;
             this.rJ_TextBox_藥品資料_藥品名稱.KeyPress += RJ_TextBox_藥品資料_藥品名稱_KeyPress;
@@ -75,6 +76,8 @@ namespace 調劑台管理系統
 
         }
 
+  
+
         #region Event
         private void SqL_DataGridView_藥品資料_DataGridRowsChangeRefEvent(ref List<object[]> RowsList)
         {
@@ -86,6 +89,10 @@ namespace 調劑台管理系統
                 value[(int)enum_藥品資料_藥檔資料.庫存] = 庫存;
             });
             RowsList.Sort(new ICP_藥品資料());
+        }
+        private void SqL_DataGridView_藥品資料_RowDoubleClickEvent(object[] RowValue)
+        {
+            this.RJ_Button_藥品資料_選擇藥品_MouseDownEvent(null);
         }
         private void RJ_Button_選擇藥品_刪除選取資料_MouseDownEvent(MouseEventArgs mevent)
         {
