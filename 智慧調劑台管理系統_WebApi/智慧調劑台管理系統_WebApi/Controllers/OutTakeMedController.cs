@@ -220,6 +220,20 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 data[0].開方時間 = DateTime.Now.ToDateTimeString();
             }
+            if (data[0].功能類型 == "A")
+            {
+                string ProcessName = "調劑台管理系統";
+                Process[] process = Process.GetProcesses();
+                int num = 0;
+                for (int i = 0; i < process.Length; i++)
+                {
+                    if (process[i].ProcessName == ProcessName) num++;
+                }
+                if (num >= 1) return "OK";
+                else return "NG";
+            }
+             
+
             List<object[]> list_devicelist = sQLControl_devicelist.GetAllRows(null);
             List<object[]> list_devicelist_buf = new List<object[]>();
             list_devicelist_buf = list_devicelist.GetRows((int)enum_設備資料.名稱, data[0].電腦名稱);
