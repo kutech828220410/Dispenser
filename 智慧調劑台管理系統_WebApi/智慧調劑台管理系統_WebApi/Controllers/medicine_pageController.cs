@@ -28,7 +28,7 @@ namespace 智慧調劑台管理系統_WebApi
         static private uint Port = (uint)ConfigurationManager.AppSettings["port"].StringToInt32();
         static private MySqlSslMode SSLMode = MySqlSslMode.None;
 
-      
+        MyTimer myTimer = new MyTimer(50000);
         private SQLControl sQLControl_medicine_page = new SQLControl(IP, DataBaseName, "medicine_page", UserName,Password, Port, SSLMode);
         private SQLControl sQLControl_medicine_group = new SQLControl(IP, DataBaseName, "medicine_group", UserName, Password, Port, SSLMode);
 
@@ -97,13 +97,13 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 object[] value = new object[new enum_儲位總庫存表().GetLength()];
 
-                value[(int)enum_儲位總庫存表.儲位名稱] = devices[i].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString();
-                value[(int)enum_儲位總庫存表.藥品碼] = devices[i].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
-                value[(int)enum_儲位總庫存表.藥品名稱] = devices[i].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();
-                value[(int)enum_儲位總庫存表.單位] = devices[i].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
-                value[(int)enum_儲位總庫存表.庫存] = devices[i].GetValue(Device.ValueName.庫存, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位總庫存表.儲位名稱] = devices[i].StorageName;
+                value[(int)enum_儲位總庫存表.藥品碼] = devices[i].Code;
+                value[(int)enum_儲位總庫存表.藥品名稱] = devices[i].Name;
+                value[(int)enum_儲位總庫存表.單位] = devices[i].Package;
+                value[(int)enum_儲位總庫存表.庫存] = devices[i].Inventory;
                 value[(int)enum_儲位總庫存表.儲位型式] = devices[i].DeviceType.GetEnumName();
-                value[(int)enum_儲位總庫存表.IP] = devices[i].GetValue(Device.ValueName.IP, Device.ValueType.Value).ObjectToString();
+                value[(int)enum_儲位總庫存表.IP] = devices[i].IP;
                 list_藥品資料_儲位總庫存表_value.Add(value);
             }
 
@@ -190,11 +190,11 @@ namespace 智慧調劑台管理系統_WebApi
                 {
                     object[] value = new object[new enum_儲位效期表().GetLength()];
 
-                    value[(int)enum_儲位效期表.儲位名稱] = devices[i].GetValue(Device.ValueName.儲位名稱, Device.ValueType.Value).ObjectToString();
-                    value[(int)enum_儲位效期表.藥品碼] = devices[i].GetValue(Device.ValueName.藥品碼, Device.ValueType.Value).ObjectToString();
-                    value[(int)enum_儲位效期表.藥品名稱] = devices[i].GetValue(Device.ValueName.藥品名稱, Device.ValueType.Value).ObjectToString();
-                    value[(int)enum_儲位效期表.單位] = devices[i].GetValue(Device.ValueName.包裝單位, Device.ValueType.Value).ObjectToString();
-                    value[(int)enum_儲位效期表.IP] = devices[i].GetValue(Device.ValueName.IP, Device.ValueType.Value).ObjectToString();
+                    value[(int)enum_儲位效期表.儲位名稱] = devices[i].StorageName;
+                    value[(int)enum_儲位效期表.藥品碼] = devices[i].Code;
+                    value[(int)enum_儲位效期表.藥品名稱] = devices[i].Name;
+                    value[(int)enum_儲位效期表.單位] = devices[i].Package;
+                    value[(int)enum_儲位效期表.IP] = devices[i].IP;
 
                     value[(int)enum_儲位效期表.庫存] = devices[i].List_Inventory[k].ToString();
                     value[(int)enum_儲位效期表.效期] = devices[i].List_Validity_period[k];
@@ -348,6 +348,8 @@ namespace 智慧調劑台管理系統_WebApi
             public string 安全庫存 { get; set; }
             [JsonPropertyName("isWarnning")]
             public string 警訊藥品 { get; set; }
+            [JsonPropertyName("DRUGKIND")]
+            public string 管制級別 { get; set; }
         }
         public enum enum_medicine_page
         {
@@ -364,6 +366,7 @@ namespace 智慧調劑台管理系統_WebApi
             安全庫存,
             圖片網址,
             警訊藥品,
+            管制級別,
         }
         // GET: api/<medicine_pageController>
         [HttpGet]
@@ -404,12 +407,14 @@ namespace 智慧調劑台管理系統_WebApi
                     class_Medicine_Page_Data.藥品中文名稱 = list_value[i][(int)enum_medicine_page.藥品中文名稱].ObjectToString();
                     class_Medicine_Page_Data.藥品名稱 = list_value[i][(int)enum_medicine_page.藥品名稱].ObjectToString();
                     class_Medicine_Page_Data.藥品學名 = list_value[i][(int)enum_medicine_page.藥品學名].ObjectToString();
+                    class_Medicine_Page_Data.藥品群組 = list_value[i][(int)enum_medicine_page.藥品群組].ObjectToString();
                     class_Medicine_Page_Data.健保碼 = list_value[i][(int)enum_medicine_page.健保碼].ObjectToString();
                     class_Medicine_Page_Data.藥品條碼 = list_value[i][(int)enum_medicine_page.藥品條碼].ObjectToString();
                     class_Medicine_Page_Data.包裝單位 = list_value[i][(int)enum_medicine_page.包裝單位].ObjectToString();
                     class_Medicine_Page_Data.庫存 = list_value[i][(int)enum_medicine_page.庫存].ObjectToString();
                     class_Medicine_Page_Data.安全庫存 = list_value[i][(int)enum_medicine_page.安全庫存].ObjectToString();
                     class_Medicine_Page_Data.警訊藥品 = list_value[i][(int)enum_medicine_page.警訊藥品].ObjectToString();
+                    class_Medicine_Page_Data.管制級別 = list_value[i][(int)enum_medicine_page.管制級別].ObjectToString();
 
                     string 藥品群組Index = list_value[i][(int)enum_medicine_page.藥品群組].ObjectToString();
                     list_group_buf = list_group.GetRows((int)enum_medicine_group.群組序號, 藥品群組Index);
@@ -578,66 +583,39 @@ namespace 智慧調劑台管理系統_WebApi
 
 
         #region Function
-        List<Device> devices = new List<Device>();
+        List<DeviceBasic> devices = new List<DeviceBasic>();
         private SQLControl sQLControl_EPD583_serialize = new SQLControl(IP, DataBaseName, "epd583_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_EPD266_serialize = new SQLControl(IP, DataBaseName, "epd266_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_RowsLED_serialize = new SQLControl(IP, DataBaseName, "rowsled_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_RFID_Device_serialize = new SQLControl(IP, DataBaseName, "rfid_device_jsonstring", UserName, Password, Port, SSLMode);
         private void Function_讀取儲位()
         {
-
+            myTimer.StartTickTime();
             List<object[]> list_EPD583 = sQLControl_EPD583_serialize.GetAllRows(null);
             List<object[]> list_EPD266 = sQLControl_EPD266_serialize.GetAllRows(null);
             List<object[]> list_RowsLED = sQLControl_RowsLED_serialize.GetAllRows(null);
             List<object[]> list_RFID_Device = sQLControl_RFID_Device_serialize.GetAllRows(null);
-            List<Drawer> drawers = DrawerMethod.SQL_GetAllDrawers(list_EPD583);
-            List<Storage> storages = StorageMethod.SQL_GetAllStorage(list_EPD266);
-            List<RowsLED> rowsLEDs = RowsLEDMethod.SQL_GetAllRowsLED(list_RowsLED);
-            List<RFIDClass> rFIDClasses = RFIDMethod.SQL_GetAllRFIDClass(list_RFID_Device);
-
-            List<Device> devices_EPD583 = drawers.GetAllDevice();
-            List<Device> devices_EPD266 = storages.GetAllDevice();
-            List<Device> devices_RowsLED = rowsLEDs.GetAllDevice();
-            List<Device> devices_RFID_Device = rFIDClasses.GetAllDevice();
-
-            for (int i = 0; i < devices_EPD583.Count; i++)
-            {
-                if (devices_EPD583[i].Code.StringIsEmpty() != true)
-                {
-                    this.devices.Add(devices_EPD583[i]);
-                }
-            }
-            for (int i = 0; i < devices_EPD266.Count; i++)
-            {
-                if (devices_EPD266[i].Code.StringIsEmpty() != true)
-                {
-                    this.devices.Add(devices_EPD266[i]);
-                }
-            }
-            for (int i = 0; i < devices_RowsLED.Count; i++)
-            {
-                if (devices_RowsLED[i].Code.StringIsEmpty() != true)
-                {
-                    this.devices.Add(devices_RowsLED[i]);
-                }
-            }
-            for (int i = 0; i < devices_RFID_Device.Count; i++)
-            {
-                if (devices_RFID_Device[i].Code.StringIsEmpty() != true)
-                {
-                    this.devices.Add(devices_RFID_Device[i]);
-                }
-            }
-
+            Console.WriteLine($"從SQL取得所有儲位資料,耗時{myTimer.ToString()}ms");
+            List<DeviceBasic> deviceBasics = new List<DeviceBasic>();
+            List<DeviceBasic> deviceBasics_buf = new List<DeviceBasic>();
+            deviceBasics.LockAdd(DrawerMethod.GetAllDeviceBasic(list_EPD583));
+            deviceBasics.LockAdd(StorageMethod.GetAllDeviceBasic(list_EPD266));
+            deviceBasics.LockAdd(RowsLEDMethod.GetAllDeviceBasic(list_RowsLED));
+            deviceBasics.LockAdd(RFIDMethod.GetAllDeviceBasic(list_RFID_Device));
+            Console.WriteLine($"反編譯取得所有儲位資料,耗時{myTimer.ToString()}ms");
+            deviceBasics_buf = (from value in deviceBasics
+                                where value.Code.StringIsEmpty() == false
+                                select value).ToList();
+            this.devices = deviceBasics_buf;
         }
         private int Function_取得儲位庫存(string 藥品碼)
         {
             int 庫存 = 0;
             for (int k = 0; k < devices.Count; k++)
             {
-                if (devices[k] is Device)
+                if (devices[k] is DeviceBasic)
                 {
-                    Device device = devices[k] as Device;
+                    DeviceBasic device = devices[k] as DeviceBasic;
                     庫存 += device.Inventory.StringToInt32();
                 }
             }

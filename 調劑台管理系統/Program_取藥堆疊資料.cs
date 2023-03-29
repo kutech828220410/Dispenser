@@ -1583,7 +1583,7 @@ namespace 調劑台管理系統
                         }
                         else
                         {
-                            drawer.LED_Bytes = DrawerUI_EPD_583.Set_LEDBytes(drawer, color);
+                            drawer.LED_Bytes = DrawerUI_EPD_583.Set_Pannel_LEDBytes(drawer, color);
                         }
                      
                         this.drawerUI_EPD_583.Set_LED_UDP(drawer);

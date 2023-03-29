@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 using H_Pannel_lib;
 using System.Drawing;
+using System.Diagnostics;
 namespace 智慧調劑台管理系統_WebApi
 {
     [Route("api/[controller]")]
@@ -190,7 +191,8 @@ namespace 智慧調劑台管理系統_WebApi
         {
             MyTimer myTimer0 = new MyTimer(50000);
             myTimer0.StartTickTime();
-            if(data == null)
+          
+            if (data == null)
             {
                 return "-1";
             }
@@ -232,8 +234,8 @@ namespace 智慧調劑台管理系統_WebApi
                 list_devicelist_buf.Add(value);
             }
 
-            List<Device> devices = this.Function_讀取儲位();
-            List<Device> list_device = devices.SortByCode(data[0].藥品碼);
+            List<DeviceBasic> devices = this.Function_讀取儲位();
+            List<DeviceBasic> list_device = devices.SortByCode(data[0].藥品碼);
             if(list_device.Count == 0)
             {
                 return "-2";
@@ -332,54 +334,26 @@ namespace 智慧調劑台管理系統_WebApi
         private SQLControl sQLControl_EPD266_serialize = new SQLControl(IP, DataBaseName, "epd266_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_RowsLED_serialize = new SQLControl(IP, DataBaseName, "rowsled_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_RFID_Device_serialize = new SQLControl(IP, DataBaseName, "rfid_device_jsonstring", UserName, Password, Port, SSLMode);
-        private List<Device> Function_讀取儲位()
+        private List<DeviceBasic> Function_讀取儲位()
         {
             myTimer.StartTickTime();
-            List<Device> devices = new List<Device>();
+            List<DeviceBasic> devices = new List<DeviceBasic>();
             List<object[]> list_EPD583 = sQLControl_EPD583_serialize.GetAllRows(null);
             List<object[]> list_EPD266 = sQLControl_EPD266_serialize.GetAllRows(null);
             List<object[]> list_RowsLED = sQLControl_RowsLED_serialize.GetAllRows(null);
             List<object[]> list_RFID_Device = sQLControl_RFID_Device_serialize.GetAllRows(null);
             Console.WriteLine($"從SQL取得所有儲位資料,耗時{myTimer.ToString()}ms");
-            List<Drawer> drawers = DrawerMethod.SQL_GetAllDrawers(list_EPD583);
-            List<Storage> storages = StorageMethod.SQL_GetAllStorage(list_EPD266);
-            List<RowsLED> rowsLEDs = RowsLEDMethod.SQL_GetAllRowsLED(list_RowsLED);
-            List<RFIDClass> rFIDClasses = RFIDMethod.SQL_GetAllRFIDClass(list_RFID_Device);
+            List<DeviceBasic> deviceBasics = new List<DeviceBasic>();
+            List<DeviceBasic> deviceBasics_buf = new List<DeviceBasic>();
+            deviceBasics.LockAdd(DrawerMethod.GetAllDeviceBasic(list_EPD583));
+            deviceBasics.LockAdd(StorageMethod.GetAllDeviceBasic(list_EPD266));
+            deviceBasics.LockAdd(RowsLEDMethod.GetAllDeviceBasic(list_RowsLED));
+            deviceBasics.LockAdd(RFIDMethod.GetAllDeviceBasic(list_RFID_Device));
             Console.WriteLine($"反編譯取得所有儲位資料,耗時{myTimer.ToString()}ms");
-            List<Device> devices_EPD583 = drawers.GetAllDevice();
-            List<Device> devices_EPD266 = storages.GetAllDevice();
-            List<Device> devices_RowsLED = rowsLEDs.GetAllDevice();
-            List<Device> devices_RFID_Device = rFIDClasses.GetAllDevice();
-            Console.WriteLine($"轉換儲位資料為Device,耗時{myTimer.ToString()}ms");
-            for (int i = 0; i < devices_EPD583.Count; i++)
-            {
-                if (devices_EPD583[i].Code.StringIsEmpty() != true)
-                {
-                    devices.Add(devices_EPD583[i]);
-                }
-            }
-            for (int i = 0; i < devices_EPD266.Count; i++)
-            {
-                if (devices_EPD266[i].Code.StringIsEmpty() != true)
-                {
-                    devices.Add(devices_EPD266[i]);
-                }
-            }
-            for (int i = 0; i < devices_RowsLED.Count; i++)
-            {
-                if (devices_RowsLED[i].Code.StringIsEmpty() != true)
-                {
-                    devices.Add(devices_RowsLED[i]);
-                }
-            }
-            for (int i = 0; i < devices_RFID_Device.Count; i++)
-            {
-                if (devices_RFID_Device[i].Code.StringIsEmpty() != true)
-                {
-                    devices.Add(devices_RFID_Device[i]);
-                }
-            }
-            Console.WriteLine($"檢查寫入[devices],耗時{myTimer.ToString()}ms");
+            deviceBasics_buf = (from value in deviceBasics
+                                where value.Code.StringIsEmpty() == false
+                                select value).ToList();
+            
             return devices;
         }
         private int Function_取得儲位庫存(string 藥品碼 , List<Device> devices)
