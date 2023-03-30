@@ -92,7 +92,7 @@ namespace 調劑台管理系統
             this.plC_CheckBox_儲位管理_EPD583_輸出.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸出_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD583_輸入方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸入方向_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD583_輸出方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸出方向_CheckStateChanged;
-
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_顯示為條碼_CheckStateChanged;
 
             this.epD_583_Pannel.Init(this.drawerUI_EPD_583.List_UDP_Local);
             this.epD_583_Pannel.DrawerChangeEvent += EpD_583_Pannel_DrawerChangeEvent;
@@ -100,7 +100,7 @@ namespace 調劑台管理系統
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD583);
         }
 
-   
+
 
         private void Program_儲位管理_EPD583()
         {
@@ -311,8 +311,10 @@ namespace 調劑台管理系統
             Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
             if(drawer != null)
             {
+                this.epD_583_Pannel.CurrentDrawer = drawer;
                 plC_CheckBox_儲位管理_EPD583_隔板亮燈.Checked = drawer.IsAllLight;
-                this.epD_583_Pannel.DrawToPictureBox(drawer);
+                if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
             }
         }
         private void EpD_583_Pannel_MouseDownEvent(List<Box> Boxes)
@@ -351,6 +353,12 @@ namespace 調劑台管理系統
         {
           
         }
+        private void PlC_CheckBox_儲位管理_EPD583_顯示為條碼_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (this.epD_583_Pannel.CurrentDrawer == null) return;
+            if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+            else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+        }
         private void PlC_CheckBox_儲位管理_EPD583_隔板亮燈_CheckStateChanged(object sender, EventArgs e)
         {
             this.Invoke(new Action(delegate
@@ -362,6 +370,7 @@ namespace 調劑台管理系統
                     drawer.IsAllLight = plC_CheckBox_儲位管理_EPD583_隔板亮燈.Checked;
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
                     this.List_EPD583_本地資料.Add_NewDrawer(drawer);
+                    this.epD_583_Pannel.CurrentDrawer = drawer;
                     this.Function_設定雲端資料更新();
                 }
             }));
@@ -498,9 +507,19 @@ namespace 調劑台管理系統
                 {
                     if (drawer != null)
                     {
-                        if (!this.drawerUI_EPD_583.DrawToEpd_UDP(drawer))
+                        if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked)
                         {
-                            MyMessageBox.ShowDialog($"{drawer.IP}:{drawer.Port} : EPD 抽屜上傳失敗!");
+                            if (!this.drawerUI_EPD_583.DrawToEpd_UDP(drawer))
+                            {
+                                MyMessageBox.ShowDialog($"{drawer.IP}:{drawer.Port} : EPD 抽屜上傳失敗!");
+                            }
+                        }
+                        else
+                        {
+                            if (!this.drawerUI_EPD_583.DrawToEpd_BarCode_UDP(drawer))
+                            {
+                                MyMessageBox.ShowDialog($"{drawer.IP}:{drawer.Port} : EPD 抽屜上傳失敗!");
+                            }
                         }
                         Console.WriteLine($"{drawer.IP}:{drawer.Port} : EPD 抽屜上傳成功!");
                     }
@@ -573,7 +592,8 @@ namespace 調劑台管理系統
             }
 
 
-            this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+            if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+            else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
@@ -620,7 +640,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.庫存, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -638,7 +659,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.儲位名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -656,7 +678,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.包裝單位, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -674,7 +697,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.BarCode, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -692,7 +716,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.藥品碼, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -710,7 +735,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.藥品中文名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -728,7 +754,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.藥品學名, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -746,7 +773,8 @@ namespace 調劑台管理系統
                 {
                     boxes[0].SetValue(Device.ValueName.藥品名稱, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -765,7 +793,8 @@ namespace 調劑台管理系統
 
                     boxes[0].SetValue(Device.ValueName.效期, Device.ValueType.Font, fontDialog.Font);
                     this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                    this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                    else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                     this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
                 }
             }));
@@ -1229,7 +1258,8 @@ namespace 調劑台管理系統
             this.List_EPD583_本地資料.Add_NewDrawer(drawer);
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
             this.Function_設定雲端資料更新();
-            this.epD_583_Pannel.DrawToPictureBox(drawer);
+            if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+            else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
             MyMessageBox.ShowDialog("貼上格式完成!");
         }
         private void PlC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示_CheckStateChanged(object sender, EventArgs e)
@@ -1240,7 +1270,8 @@ namespace 調劑台管理系統
                 if (boxes.Count == 0) return;
                 boxes[0].SetValue(Device.ValueName.效期, Device.ValueType.Visable, this.plC_CheckBox_儲位管理_EPD583_儲位內容_效期顯示.Checked);
                 this.epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
-                this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                if (!plC_CheckBox_儲位管理_EPD583_顯示為條碼.Checked) this.epD_583_Pannel.DrawToPictureBox(this.epD_583_Pannel.CurrentDrawer);
+                else this.epD_583_Pannel.DrawBarCodeToPictureBox(this.epD_583_Pannel.CurrentDrawer);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
             }));
         }

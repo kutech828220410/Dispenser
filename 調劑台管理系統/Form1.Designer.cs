@@ -1079,6 +1079,7 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼 = new MyUI.PLC_CheckBox();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -10572,6 +10573,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.plC_CheckBox_儲位管理_EPD583_顯示為條碼);
             this.groupBox3.Controls.Add(this.plC_RJ_Pannel1);
             this.groupBox3.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_貼上格式);
             this.groupBox3.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_複製格式);
@@ -27104,6 +27106,24 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
+            // plC_CheckBox_儲位管理_EPD583_顯示為條碼
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Location = new System.Drawing.Point(854, 509);
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Name = "plC_CheckBox_儲位管理_EPD583_顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Size = new System.Drawing.Size(107, 20);
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.TabIndex = 150;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Text = "顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字內容 = "顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.音效 = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -27233,6 +27253,7 @@
             this.rJ_Pannel1.ResumeLayout(false);
             this.rJ_Pannel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.plC_RJ_Pannel1.ResumeLayout(false);
             this.plC_RJ_Pannel1.PerformLayout();
             this.rJ_Pannel6.ResumeLayout(false);
@@ -28499,6 +28520,7 @@
         private MyUI.RJ_ComboBox comboBox_藥品資料_藥檔資料_管制級別;
         private System.Windows.Forms.Panel panel76;
         private System.Windows.Forms.Label label1;
+        private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_顯示為條碼;
     }
 }
 
