@@ -14,5 +14,6 @@
   "Pannel35_Enable": false,
   "帳密登入_Enable": true,
   "藥物辨識網址": "",
-  "線上更新": true
+  "線上更新": true,
+  "外部輸出": false
 }

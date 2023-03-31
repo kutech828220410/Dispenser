@@ -41,6 +41,7 @@ namespace 調劑台管理系統
             {
                 loker.Init();
                 loker.ShowAdress = false;
+                loker.OuputReverse = myConfigClass.外部輸出;
                 this.MyThread_輸出入檢查.Add_Method(loker.sub_Program);
                 loker.LockClosingEvent += Loker_LockClosingEvent;
                 loker.MouseDownEvent += Loker_MouseDownEvent;
@@ -277,6 +278,7 @@ namespace 調劑台管理系統
             {
                 string IP = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.IP].ObjectToString();
                 string Input = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入位置].ObjectToString();
+                string OutPut = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸出位置].ObjectToString();
                 bool Input_state = (list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態].ObjectToString().ToUpper() == "TRUE");
                 int Num = list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.Num].ObjectToString().StringToInt32();
                 if (Input.StringIsEmpty()) continue;
@@ -285,7 +287,7 @@ namespace 調劑台管理系統
                 {
                     bool flag = this.drawerUI_EPD_583.GetInput(drawer.IP);
                     this.PLC.properties.device_system.Set_Device(Input, flag);
-                    if(flag != Input_state)
+                    if (flag != Input_state)
                     {
                         list_locker_table_value_buf[i][(int)enum_Locker_Index_Table.輸入狀態] = flag.ToString();
                         list_locker_table_value_replace.Add(list_locker_table_value_buf[i]);

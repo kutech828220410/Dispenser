@@ -1376,20 +1376,21 @@ namespace 調劑台管理系統
                         flag_取藥堆疊母資料_Update = true;
                     }
 
+                   
+                    //找無儲位
+                    if (庫存量 == -999)
+                    {
+                        this.list_取藥堆疊母資料[i][(int)enum_取藥堆疊母資料.狀態] = enum_取藥堆疊母資料_狀態.無儲位.GetEnumName();
+                        flag_取藥堆疊母資料_Update = true;
+                        //list_取藥堆疊母資料_DeleteValue.Add(this.list_取藥堆疊母資料[i]);
+                    }
                     //無庫存
-                    if (結存量 < 0)
+                    else if (結存量 < 0 )
                     {
                         this.list_取藥堆疊母資料[i][(int)enum_取藥堆疊母資料.狀態] = enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName();
                         this.Function_取藥堆疊資料_設定作業模式(this.list_取藥堆疊母資料[i], enum_取藥堆疊母資料_作業模式.庫存不足語音提示);
                         flag_取藥堆疊母資料_Update = true;
                     }
-                    //找無儲位
-                    else if (庫存量 == -999)
-                    {
-                        this.list_取藥堆疊母資料[i][(int)enum_取藥堆疊母資料.狀態] = enum_取藥堆疊母資料_狀態.無儲位.GetEnumName();
-                        flag_取藥堆疊母資料_Update = true;
-                        //list_取藥堆疊母資料_DeleteValue.Add(this.list_取藥堆疊母資料[i]);
-                    }                
                     //更新取藥子堆疊資料
                     else if (總異動量 == 0 || 庫存量 >= 0)
                     {

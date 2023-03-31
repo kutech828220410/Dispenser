@@ -18,10 +18,10 @@
     <ROW Property="AiSkipExitDlg" Value="1"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="力翔精密機械有限公司"/>
-    <ROW Property="ProductCode" Value="1028:{9492292F-C40B-4865-BC44-A6FB8FCFD967} " Type="16"/>
+    <ROW Property="ProductCode" Value="1028:{AA1F9ACD-71B1-4096-85E0-67A930C05870} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1028"/>
     <ROW Property="ProductName" Value="智慧調劑台管理系統"/>
-    <ROW Property="ProductVersion" Value="1.0.36.0" Type="32" TargetFile="_.exe"/>
+    <ROW Property="ProductVersion" Value="1.0.37.0" Type="32" TargetFile="_.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{9E8E570F-0E09-4BCD-A3D4-0EE2FFDFC180}"/>
@@ -117,8 +117,7 @@
     <ROW File="AxOvkMsr.dll" Component_="AxOvkMsr.dll" FileName="AxOvkMsr.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\AxOvkMsr.dll" SelfReg="false" NextFile="AxOvkMsrAsm4.5.dll"/>
     <ROW File="AxOvkMsrAsm4.5.dll" Component_="AxOvkMsrAsm4.5.dll" FileName="AXOVKM~1.DLL|AxOvkMsrAsm4.5.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\AxOvkMsrAsm4.5.dll" SelfReg="false" NextFile="Basic.dll"/>
     <ROW File="Basic.dll" Component_="Basic.dll" FileName="Basic.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Basic.dll" SelfReg="false" NextFile="Basic.xml"/>
-    <ROW File="Basic.xml" Component_="alarm.mp3" FileName="Basic.xml" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Basic.xml" SelfReg="false" NextFile="C1230001.pro"/>
-    <ROW File="C1230001.pro" Component_="alarm.mp3" FileName="C1230-~1.PRO|C1230-001.pro" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\C1230-001.pro" SelfReg="false" NextFile="CallBackUI.dll"/>
+    <ROW File="Basic.xml" Component_="alarm.mp3" FileName="Basic.xml" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Basic.xml" SelfReg="false" NextFile="CallBackUI.dll"/>
     <ROW File="CallBackUI.dll" Component_="CallBackUI.dll" FileName="CALLBA~1.DLL|CallBackUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\CallBackUI.dll" SelfReg="false" NextFile="DrawingClass.dll"/>
     <ROW File="DrawingClass.dll" Component_="DrawingClass.dll" FileName="DRAWIN~1.DLL|DrawingClass.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\DrawingClass.dll" SelfReg="false" NextFile="FontAwesome.Sharp.dll"/>
     <ROW File="FontAwesome.Sharp.dll" Component_="FontAwesome.Sharp.dll" FileName="FONTAW~1.DLL|FontAwesome.Sharp.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\FontAwesome.Sharp.dll" SelfReg="false" NextFile="H_Pannel_lib.dll"/>

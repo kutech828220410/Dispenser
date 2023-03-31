@@ -826,19 +826,36 @@ namespace 調劑台管理系統
                     value_領藥內容[(int)enum_領藥內容.單位] = list_value_buf[0][(int)enum_領藥內容.單位];
                     int 異動量_temp = 0;
                     bool flag_入賬完成 = true;
+                    bool flag_無儲位 = false;
+                    bool flag_庫存不足 = false;
                     for (int k = 0; k < list_value_buf.Count; k++)
                     {
                         if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName())
                         {
                             flag_入賬完成 = false;
                         }
-
+                        if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() == enum_取藥堆疊母資料_狀態.無儲位.GetEnumName())
+                        {
+                            flag_無儲位 = true;
+                        }
+                        if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() == enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName())
+                        {
+                            flag_庫存不足 = true;
+                        }
                         異動量_temp += list_value_buf[k][(int)enum_領藥內容.異動量].ObjectToString().StringToInt32();
                     }
                     value_領藥內容[(int)enum_領藥內容.異動量] = 異動量_temp;
                     if (flag_入賬完成)
                     {
                         value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName();
+                    }
+                    else if(flag_無儲位)
+                    {
+                        value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.無儲位.GetEnumName();
+                    }
+                    else if (flag_庫存不足)
+                    {
+                        value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName();
                     }
                     else
                     {
@@ -2158,19 +2175,36 @@ namespace 調劑台管理系統
                     value_領藥內容[(int)enum_領藥內容.單位] = list_value_buf[0][(int)enum_領藥內容.單位];
                     int 異動量_temp = 0;
                     bool flag_入賬完成 = true;
+                    bool flag_無儲位 = false;
+                    bool flag_庫存不足 = false;
                     for (int k = 0; k < list_value_buf.Count; k++)
                     {
                         if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() != enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName())
                         {
                             flag_入賬完成 = false;
                         }
-
+                        if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() == enum_取藥堆疊母資料_狀態.無儲位.GetEnumName())
+                        {
+                            flag_無儲位 = true;
+                        }
+                        if (list_value_buf[k][(int)enum_領藥內容.狀態].ObjectToString() == enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName())
+                        {
+                            flag_庫存不足 = true;
+                        }
                         異動量_temp += list_value_buf[k][(int)enum_領藥內容.異動量].ObjectToString().StringToInt32();
                     }
                     value_領藥內容[(int)enum_領藥內容.異動量] = 異動量_temp;
                     if (flag_入賬完成)
                     {
                         value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.入賬完成.GetEnumName();
+                    }
+                    else if (flag_無儲位)
+                    {
+                        value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.無儲位.GetEnumName();
+                    }
+                    else if (flag_庫存不足)
+                    {
+                        value_領藥內容[(int)enum_領藥內容.狀態] = enum_取藥堆疊母資料_狀態.庫存不足.GetEnumName();
                     }
                     else
                     {

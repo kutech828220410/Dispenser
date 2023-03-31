@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.36.0")]
-[assembly: AssemblyFileVersion("1.0.36.0")]
+[assembly: AssemblyVersion("1.0.37.0")]
+[assembly: AssemblyFileVersion("1.0.37.0")]
 namespace 調劑台管理系統
 {
 
@@ -110,6 +110,7 @@ namespace 調劑台管理系統
             private bool pannel35_Enable = true;
             private bool _帳密登入_Enable = true;
             private bool _線上更新 = true;
+            private bool _外部輸出 = false;
 
             private string rFID_COMPort = "COM1";
             private string scanner01_COMPort = "COM2";
@@ -133,6 +134,7 @@ namespace 調劑台管理系統
             public bool 帳密登入_Enable { get => _帳密登入_Enable; set => _帳密登入_Enable = value; }
             public string 藥物辨識網址 { get => _藥物辨識網址; set => _藥物辨識網址 = value; }
             public bool 線上更新 { get => _線上更新; set => _線上更新 = value; }
+            public bool 外部輸出 { get => _外部輸出; set => _外部輸出 = value; }
         }
         private void LoadMyConfig()
         {
