@@ -764,10 +764,17 @@ namespace 調劑台管理系統
                     MyMessageBox.ShowDialog("藥品名稱搜尋字元不得小於3個!");
                     return;
                 }
-                list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱,textBox_藥品資料_藥檔資料_資料查詢_藥品名稱.Text);
+                if(rJ_RatioButton_藥品資料_藥檔資料_前綴.Checked)
+                {
+                    list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, textBox_藥品資料_藥檔資料_資料查詢_藥品名稱.Text);
+                }
+                else if(rJ_RatioButton_藥品資料_藥檔資料_模糊.Checked)
+                {
+                    list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品名稱, textBox_藥品資料_藥檔資料_資料查詢_藥品名稱.Text);
+                }
          
             }
-            if (!textBox_藥品資料_藥檔資料_資料查詢_藥品條碼.Text.StringIsEmpty()) list_value = list_value.GetRows((int)enum_藥品資料_藥檔資料.藥品條碼, textBox_藥品資料_藥檔資料_資料查詢_藥品條碼.Text);
+            if (!textBox_藥品資料_藥檔資料_資料查詢_藥品條碼.Text.StringIsEmpty()) list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品條碼, textBox_藥品資料_藥檔資料_資料查詢_藥品條碼.Text);
             if (plC_RJ_ChechBox_藥品資料_藥檔資料_資料查詢_藥品群組.Checked)
             {
                 int index = rJ_ComboBox_藥品資料_藥檔資料_資料查詢_藥品群組.SelectedIndex;

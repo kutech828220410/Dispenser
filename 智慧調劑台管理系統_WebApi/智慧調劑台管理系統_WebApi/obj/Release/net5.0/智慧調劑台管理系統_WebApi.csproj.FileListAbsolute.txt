@@ -216,6 +216,7 @@ C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調�
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\MySQL_Login.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\SQLUI.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.csproj.AssemblyReference.cache
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.Properties.Resources.resources
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.csproj.GenerateResource.cache
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.GeneratedMSBuildEditorConfig.editorconfig
@@ -232,4 +233,8 @@ C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調�
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\ref\智慧調劑台管理系統_WebApi.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.pdb
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.genruntimeconfig.cache
-C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\智慧調劑台管理系統_WebApi.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\MyOffice.dll
+C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.dll
+C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OOXML.dll
+C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXml4Net.dll
+C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXmlFormats.dll

@@ -558,7 +558,15 @@ namespace 調劑台管理系統
                 return;
             }
             List<object[]> list_value = this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料.SQL_GetAllRows(false);
-            list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text);
+            if(rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Checked)
+            {
+                list_value = list_value.GetRowsStartWithByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text);
+            }
+            else if (rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.Checked)
+            {
+                list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品名稱, rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱.Text);
+            }
+
 
             this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料.RefreshGrid(list_value);
         }

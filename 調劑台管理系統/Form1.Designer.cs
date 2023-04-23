@@ -199,6 +199,9 @@
             this.rJ_TextBox_藥品群組_群組名稱 = new MyUI.RJ_TextBox();
             this.sqL_DataGridView_藥品群組 = new SQLUI.SQL_DataGridView();
             this.rJ_GroupBox13 = new MyUI.RJ_GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_藥品資料_顯示有儲位藥品 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_藥品資料_藥檔資料_資料查詢 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_藥品資料_匯出 = new MyUI.PLC_RJ_Button();
@@ -373,6 +376,9 @@
             this.plC_ScreenPage_儲位管理 = new MyUI.PLC_ScreenPage();
             this.EPD583 = new System.Windows.Forms.TabPage();
             this.plC_RJ_GroupBox3 = new MyUI.PLC_RJ_GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_儲位管理_EPD583_藥品搜尋_填入資料 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_藥品搜尋_藥品名稱_搜尋 = new MyUI.PLC_RJ_Button();
             this.rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱 = new MyUI.RJ_TextBox();
@@ -400,6 +406,7 @@
             this.rJ_Lable4 = new MyUI.RJ_Lable();
             this.sqL_DataGridView_儲位管理_EPD583_抽屜列表 = new SQLUI.SQL_DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼 = new MyUI.PLC_CheckBox();
             this.plC_RJ_Pannel1 = new MyUI.PLC_RJ_Pannel();
             this.plC_CheckBox_儲位管理_EPD583_隔板亮燈 = new MyUI.PLC_CheckBox();
             this.plC_RJ_Button_儲位管理_EPD583_更新 = new MyUI.PLC_RJ_Button();
@@ -473,6 +480,9 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
             this.plC_RJ_GroupBox8 = new MyUI.PLC_RJ_GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_填入資料 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品名稱_搜尋 = new MyUI.PLC_RJ_Button();
             this.rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱 = new MyUI.RJ_TextBox();
@@ -599,6 +609,9 @@
             this.rJ_Pannel15 = new MyUI.RJ_Pannel();
             this.rowsLED_Pannel = new H_Pannel_lib.RowsLED_Pannel();
             this.plC_RJ_GroupBox11 = new MyUI.PLC_RJ_GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_儲位管理_RowsLED_藥品搜尋_填入資料 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_RowsLED_藥品搜尋_藥品名稱_搜尋 = new MyUI.PLC_RJ_Button();
             this.rJ_TextBox_儲位管理_RowsLED_藥品搜尋_藥品名稱 = new MyUI.RJ_TextBox();
@@ -661,6 +674,9 @@
             this.rJ_Lable91 = new MyUI.RJ_Lable();
             this.rJ_TextBox_儲位管理_RFID_儲位內容_藥品名稱 = new MyUI.RJ_TextBox();
             this.plC_RJ_GroupBox16 = new MyUI.PLC_RJ_GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_儲位管理_RFID_藥品搜尋_填入資料 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_RFID_藥品搜尋_藥品名稱_搜尋 = new MyUI.PLC_RJ_Button();
             this.rJ_TextBox_儲位管理_RFID_藥品搜尋_藥品名稱 = new MyUI.RJ_TextBox();
@@ -694,6 +710,9 @@
             this.panel34 = new System.Windows.Forms.Panel();
             this.panel47 = new System.Windows.Forms.Panel();
             this.plC_RJ_GroupBox22 = new MyUI.PLC_RJ_GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊 = new MyUI.RJ_RatioButton();
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴 = new MyUI.RJ_RatioButton();
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋 = new MyUI.PLC_RJ_Button();
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱 = new MyUI.RJ_TextBox();
@@ -1079,7 +1098,6 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼 = new MyUI.PLC_CheckBox();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -1131,6 +1149,7 @@
             this.panel144.SuspendLayout();
             this.rJ_GroupBox13.ContentsPanel.SuspendLayout();
             this.rJ_GroupBox13.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.rJ_Pannel5.SuspendLayout();
             this.rJ_Pannel4.SuspendLayout();
             this.rJ_Pannel3.SuspendLayout();
@@ -1180,6 +1199,7 @@
             this.EPD583.SuspendLayout();
             this.plC_RJ_GroupBox3.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.plC_RJ_GroupBox1.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -1207,6 +1227,7 @@
             this.panel16.SuspendLayout();
             this.plC_RJ_GroupBox8.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox8.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.rJ_Pannel7.SuspendLayout();
             this.plC_RJ_GroupBox6.ContentsPanel.SuspendLayout();
@@ -1247,6 +1268,7 @@
             this.rJ_Pannel15.SuspendLayout();
             this.plC_RJ_GroupBox11.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox11.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.plC_RJ_GroupBox10.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox10.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1270,6 +1292,7 @@
             this.panel33.SuspendLayout();
             this.plC_RJ_GroupBox16.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox16.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.plC_RJ_GroupBox15.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox15.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -1278,6 +1301,7 @@
             this.panel47.SuspendLayout();
             this.plC_RJ_GroupBox22.ContentsPanel.SuspendLayout();
             this.plC_RJ_GroupBox22.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.panel35.SuspendLayout();
             this.rJ_Pannel17.SuspendLayout();
             this.plC_RJ_GroupBox20.ContentsPanel.SuspendLayout();
@@ -5722,6 +5746,7 @@
             this.rJ_GroupBox13.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.rJ_GroupBox13.ContentsPanel.BorderRadius = 2;
             this.rJ_GroupBox13.ContentsPanel.BorderSize = 2;
+            this.rJ_GroupBox13.ContentsPanel.Controls.Add(this.groupBox16);
             this.rJ_GroupBox13.ContentsPanel.Controls.Add(this.plC_RJ_Button_藥品資料_顯示有儲位藥品);
             this.rJ_GroupBox13.ContentsPanel.Controls.Add(this.plC_RJ_Button_藥品資料_藥檔資料_資料查詢);
             this.rJ_GroupBox13.ContentsPanel.Controls.Add(this.plC_RJ_Button_藥品資料_匯出);
@@ -5755,6 +5780,50 @@
             this.rJ_GroupBox13.TitleHeight = 37;
             this.rJ_GroupBox13.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rJ_GroupBox13.TitleTexts = "藥櫃資料查詢";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.rJ_RatioButton_藥品資料_藥檔資料_模糊);
+            this.groupBox16.Controls.Add(this.rJ_RatioButton_藥品資料_藥檔資料_前綴);
+            this.groupBox16.ForeColor = System.Drawing.Color.Black;
+            this.groupBox16.Location = new System.Drawing.Point(217, 263);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(173, 46);
+            this.groupBox16.TabIndex = 140;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_藥品資料_藥檔資料_模糊
+            // 
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.AutoSize = true;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.Name = "rJ_RatioButton_藥品資料_藥檔資料_模糊";
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.TabIndex = 1;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.Text = "模糊";
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_藥品資料_藥檔資料_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_藥品資料_藥檔資料_前綴
+            // 
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.AutoSize = true;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.Checked = true;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.Name = "rJ_RatioButton_藥品資料_藥檔資料_前綴";
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.TabIndex = 0;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.TabStop = true;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.Text = "前綴";
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_藥品資料_藥檔資料_前綴.UseVisualStyleBackColor = false;
             // 
             // plC_RJ_Button_藥品資料_顯示有儲位藥品
             // 
@@ -9773,6 +9842,7 @@
             this.plC_RJ_GroupBox3.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox3.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox3.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox3.ContentsPanel.Controls.Add(this.groupBox4);
             this.plC_RJ_GroupBox3.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_藥品搜尋_填入資料);
             this.plC_RJ_GroupBox3.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_EPD583_藥品搜尋_藥品名稱_搜尋);
             this.plC_RJ_GroupBox3.ContentsPanel.Controls.Add(this.rJ_TextBox_儲位管理_EPD583_藥品搜尋_藥品名稱);
@@ -9807,6 +9877,50 @@
             this.plC_RJ_GroupBox3.TitleHeight = 37;
             this.plC_RJ_GroupBox3.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox3.TitleTexts = "藥品搜尋";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊);
+            this.groupBox4.Controls.Add(this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴);
+            this.groupBox4.ForeColor = System.Drawing.Color.Black;
+            this.groupBox4.Location = new System.Drawing.Point(684, 165);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(173, 46);
+            this.groupBox4.TabIndex = 130;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊
+            // 
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.Name = "rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊";
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.TabIndex = 1;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.Text = "模糊";
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴
+            // 
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Checked = true;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Name = "rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴";
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.TabIndex = 0;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.TabStop = true;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.Text = "前綴";
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴.UseVisualStyleBackColor = false;
             // 
             // plC_RJ_Button_儲位管理_EPD583_藥品搜尋_填入資料
             // 
@@ -10596,6 +10710,24 @@
             this.groupBox3.TabIndex = 32;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "面板資訊";
+            // 
+            // plC_CheckBox_儲位管理_EPD583_顯示為條碼
+            // 
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.AutoSize = true;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Bool = false;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.ForeColor = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Location = new System.Drawing.Point(854, 509);
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Name = "plC_CheckBox_儲位管理_EPD583_顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Size = new System.Drawing.Size(107, 20);
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.TabIndex = 150;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Text = "顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.UseVisualStyleBackColor = true;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字內容 = "顯示為條碼";
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字顏色 = System.Drawing.Color.Black;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.讀寫鎖住 = false;
+            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.音效 = true;
             // 
             // plC_RJ_Pannel1
             // 
@@ -12453,6 +12585,7 @@
             this.plC_RJ_GroupBox8.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox8.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox8.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox8.ContentsPanel.Controls.Add(this.groupBox12);
             this.plC_RJ_GroupBox8.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_填入資料);
             this.plC_RJ_GroupBox8.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品名稱_搜尋);
             this.plC_RJ_GroupBox8.ContentsPanel.Controls.Add(this.rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱);
@@ -12487,6 +12620,50 @@
             this.plC_RJ_GroupBox8.TitleHeight = 37;
             this.plC_RJ_GroupBox8.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox8.TitleTexts = "藥品資料";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊);
+            this.groupBox12.Controls.Add(this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴);
+            this.groupBox12.ForeColor = System.Drawing.Color.Black;
+            this.groupBox12.Location = new System.Drawing.Point(25, 341);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(173, 46);
+            this.groupBox12.TabIndex = 136;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊
+            // 
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.Name = "rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊";
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.TabIndex = 1;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.Text = "模糊";
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴
+            // 
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.Checked = true;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.Name = "rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴";
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.TabIndex = 0;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.TabStop = true;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.Text = "前綴";
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴.UseVisualStyleBackColor = false;
             // 
             // plC_RJ_Button_儲位管理_EPD266_藥品搜尋_填入資料
             // 
@@ -12724,7 +12901,7 @@
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.RowsHeight = 40;
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.Server = "localhost";
-            this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.Size = new System.Drawing.Size(722, 373);
+            this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.Size = new System.Drawing.Size(722, 329);
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.TabIndex = 115;
             this.sqL_DataGridView_儲位管理_EPD266_藥品資料_藥檔資料.TableName = "medicine_page";
@@ -15628,6 +15805,7 @@
             this.plC_RJ_GroupBox11.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox11.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox11.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox11.ContentsPanel.Controls.Add(this.groupBox13);
             this.plC_RJ_GroupBox11.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_RowsLED_藥品搜尋_填入資料);
             this.plC_RJ_GroupBox11.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_RowsLED_藥品搜尋_藥品名稱_搜尋);
             this.plC_RJ_GroupBox11.ContentsPanel.Controls.Add(this.rJ_TextBox_儲位管理_RowsLED_藥品搜尋_藥品名稱);
@@ -15662,6 +15840,50 @@
             this.plC_RJ_GroupBox11.TitleHeight = 37;
             this.plC_RJ_GroupBox11.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox11.TitleTexts = "藥品搜尋";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊);
+            this.groupBox13.Controls.Add(this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴);
+            this.groupBox13.ForeColor = System.Drawing.Color.Black;
+            this.groupBox13.Location = new System.Drawing.Point(684, 165);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(173, 46);
+            this.groupBox13.TabIndex = 137;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊
+            // 
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.Name = "rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊";
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.TabIndex = 1;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.Text = "模糊";
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴
+            // 
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.Checked = true;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.Name = "rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴";
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.TabIndex = 0;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.TabStop = true;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.Text = "前綴";
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴.UseVisualStyleBackColor = false;
             // 
             // plC_RJ_Button_儲位管理_RowsLED_藥品搜尋_填入資料
             // 
@@ -17285,6 +17507,7 @@
             this.plC_RJ_GroupBox16.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox16.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox16.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox16.ContentsPanel.Controls.Add(this.groupBox14);
             this.plC_RJ_GroupBox16.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_RFID_藥品搜尋_填入資料);
             this.plC_RJ_GroupBox16.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_RFID_藥品搜尋_藥品名稱_搜尋);
             this.plC_RJ_GroupBox16.ContentsPanel.Controls.Add(this.rJ_TextBox_儲位管理_RFID_藥品搜尋_藥品名稱);
@@ -17319,6 +17542,50 @@
             this.plC_RJ_GroupBox16.TitleHeight = 37;
             this.plC_RJ_GroupBox16.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox16.TitleTexts = "藥品搜尋";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊);
+            this.groupBox14.Controls.Add(this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴);
+            this.groupBox14.ForeColor = System.Drawing.Color.Black;
+            this.groupBox14.Location = new System.Drawing.Point(684, 165);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(173, 46);
+            this.groupBox14.TabIndex = 138;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊
+            // 
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.Name = "rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊";
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.TabIndex = 1;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.Text = "模糊";
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴
+            // 
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.Checked = true;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.Name = "rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴";
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.TabIndex = 0;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.TabStop = true;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.Text = "前綴";
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴.UseVisualStyleBackColor = false;
             // 
             // plC_RJ_Button_儲位管理_RFID_藥品搜尋_填入資料
             // 
@@ -18088,6 +18355,7 @@
             this.plC_RJ_GroupBox22.ContentsPanel.BorderColor = System.Drawing.Color.SkyBlue;
             this.plC_RJ_GroupBox22.ContentsPanel.BorderRadius = 5;
             this.plC_RJ_GroupBox22.ContentsPanel.BorderSize = 2;
+            this.plC_RJ_GroupBox22.ContentsPanel.Controls.Add(this.groupBox15);
             this.plC_RJ_GroupBox22.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料);
             this.plC_RJ_GroupBox22.ContentsPanel.Controls.Add(this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋);
             this.plC_RJ_GroupBox22.ContentsPanel.Controls.Add(this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱);
@@ -18123,6 +18391,50 @@
             this.plC_RJ_GroupBox22.TitleTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.plC_RJ_GroupBox22.TitleTexts = "藥品資料";
             // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊);
+            this.groupBox15.Controls.Add(this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴);
+            this.groupBox15.ForeColor = System.Drawing.Color.Black;
+            this.groupBox15.Location = new System.Drawing.Point(331, 382);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(173, 46);
+            this.groupBox15.TabIndex = 139;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "搜尋方式";
+            // 
+            // rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊
+            // 
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.Location = new System.Drawing.Point(89, 17);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.Name = "rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊";
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.TabIndex = 1;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.Text = "模糊";
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊.UseVisualStyleBackColor = false;
+            // 
+            // rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴
+            // 
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.AutoSize = true;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.BackColor = System.Drawing.Color.White;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.CheckColor = System.Drawing.Color.MediumSlateBlue;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.Checked = true;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.ForeColor = System.Drawing.Color.Black;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.Location = new System.Drawing.Point(24, 17);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.MinimumSize = new System.Drawing.Size(0, 21);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.Name = "rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴";
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.Size = new System.Drawing.Size(59, 21);
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.TabIndex = 0;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.TabStop = true;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.Text = "前綴";
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.UncheckColor = System.Drawing.Color.Gray;
+            this.rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴.UseVisualStyleBackColor = false;
+            // 
             // plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料
             // 
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.AutoResetState = false;
@@ -18137,7 +18449,7 @@
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Location = new System.Drawing.Point(545, 365);
+            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Location = new System.Drawing.Point(569, 365);
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Name = "plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.OFF_文字內容 = "填入資料";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -18148,7 +18460,7 @@
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.ON_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.ON_文字顏色 = System.Drawing.Color.Black;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Size = new System.Drawing.Size(119, 46);
+            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Size = new System.Drawing.Size(119, 64);
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.State = false;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.TabIndex = 135;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_填入資料.Text = "填入資料";
@@ -18179,7 +18491,7 @@
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.Location = new System.Drawing.Point(452, 392);
+            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.Location = new System.Drawing.Point(233, 392);
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.Name = "plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.OFF_文字內容 = "搜尋";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品名稱_搜尋.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -18215,7 +18527,7 @@
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.BorderSize = 1;
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Font = new System.Drawing.Font("新細明體", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.ForeColor = System.Drawing.Color.DimGray;
-            this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Location = new System.Drawing.Point(337, 395);
+            this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Location = new System.Drawing.Point(118, 395);
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Multiline = false;
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Name = "rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱";
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品名稱.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -18238,7 +18550,7 @@
             this.rJ_Lable109.BorderSize = 0;
             this.rJ_Lable109.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rJ_Lable109.ForeColor = System.Drawing.Color.White;
-            this.rJ_Lable109.Location = new System.Drawing.Point(241, 395);
+            this.rJ_Lable109.Location = new System.Drawing.Point(22, 395);
             this.rJ_Lable109.Name = "rJ_Lable109";
             this.rJ_Lable109.Size = new System.Drawing.Size(90, 30);
             this.rJ_Lable109.TabIndex = 132;
@@ -18260,7 +18572,7 @@
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.Location = new System.Drawing.Point(452, 349);
+            this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.Location = new System.Drawing.Point(233, 349);
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.Name = "plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.OFF_文字內容 = "搜尋";
             this.plC_RJ_Button_儲位管理_Pannel35_藥品搜尋_藥品碼_搜尋.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -18296,7 +18608,7 @@
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.BorderSize = 1;
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Font = new System.Drawing.Font("新細明體", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.ForeColor = System.Drawing.Color.DimGray;
-            this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Location = new System.Drawing.Point(337, 352);
+            this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Location = new System.Drawing.Point(118, 352);
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Multiline = false;
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Name = "rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼";
             this.rJ_TextBox_儲位管理_Pannel35_藥品搜尋_藥品碼.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -18319,7 +18631,7 @@
             this.rJ_Lable110.BorderSize = 0;
             this.rJ_Lable110.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rJ_Lable110.ForeColor = System.Drawing.Color.White;
-            this.rJ_Lable110.Location = new System.Drawing.Point(241, 352);
+            this.rJ_Lable110.Location = new System.Drawing.Point(22, 352);
             this.rJ_Lable110.Name = "rJ_Lable110";
             this.rJ_Lable110.Size = new System.Drawing.Size(90, 30);
             this.rJ_Lable110.TabIndex = 129;
@@ -27106,24 +27418,6 @@
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
             // 
-            // plC_CheckBox_儲位管理_EPD583_顯示為條碼
-            // 
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.AutoSize = true;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Bool = false;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.ForeColor = System.Drawing.Color.Black;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Location = new System.Drawing.Point(854, 509);
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Name = "plC_CheckBox_儲位管理_EPD583_顯示為條碼";
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Size = new System.Drawing.Size(107, 20);
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.TabIndex = 150;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.Text = "顯示為條碼";
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.UseVisualStyleBackColor = true;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字內容 = "顯示為條碼";
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.文字顏色 = System.Drawing.Color.Black;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.讀寫鎖住 = false;
-            this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.音效 = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -27195,6 +27489,8 @@
             this.panel144.ResumeLayout(false);
             this.rJ_GroupBox13.ContentsPanel.ResumeLayout(false);
             this.rJ_GroupBox13.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.rJ_Pannel5.ResumeLayout(false);
             this.rJ_Pannel4.ResumeLayout(false);
             this.rJ_Pannel3.ResumeLayout(false);
@@ -27247,6 +27543,8 @@
             this.EPD583.ResumeLayout(false);
             this.plC_RJ_GroupBox3.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.plC_RJ_GroupBox1.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox1.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
@@ -27279,6 +27577,8 @@
             this.panel16.ResumeLayout(false);
             this.plC_RJ_GroupBox8.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox8.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.rJ_Pannel7.ResumeLayout(false);
@@ -27327,6 +27627,8 @@
             this.rJ_Pannel15.ResumeLayout(false);
             this.plC_RJ_GroupBox11.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox11.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.plC_RJ_GroupBox10.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -27350,6 +27652,8 @@
             this.panel33.ResumeLayout(false);
             this.plC_RJ_GroupBox16.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox16.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.plC_RJ_GroupBox15.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox15.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
@@ -27359,6 +27663,8 @@
             this.panel47.ResumeLayout(false);
             this.plC_RJ_GroupBox22.ContentsPanel.ResumeLayout(false);
             this.plC_RJ_GroupBox22.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.panel35.ResumeLayout(false);
             this.rJ_Pannel17.ResumeLayout(false);
             this.rJ_Pannel17.PerformLayout();
@@ -28521,6 +28827,24 @@
         private System.Windows.Forms.Panel panel76;
         private System.Windows.Forms.Label label1;
         private MyUI.PLC_CheckBox plC_CheckBox_儲位管理_EPD583_顯示為條碼;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_EPD583_藥品搜尋_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_EPD583_藥品搜尋_前綴;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_EPD266_藥品搜尋_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_EPD266_藥品搜尋_前綴;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_RowsLED_藥品搜尋_前綴;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_RFID_藥品搜尋_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_RFID_藥品搜尋_前綴;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_儲位管理_Pannel35_藥品搜尋_前綴;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private MyUI.RJ_RatioButton rJ_RatioButton_藥品資料_藥檔資料_模糊;
+        private MyUI.RJ_RatioButton rJ_RatioButton_藥品資料_藥檔資料_前綴;
     }
 }
 
