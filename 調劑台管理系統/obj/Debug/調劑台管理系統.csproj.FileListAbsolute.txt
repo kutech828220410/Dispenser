@@ -34,7 +34,6 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Text.J
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.ValueTuple.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\TCP.dll
-C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\Microsoft.Office.Interop.Excel.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\MeasureSystemUI.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\MVSDKUI.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\SLDUI.dll
@@ -46,7 +45,6 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\AxOvkBaseAsm4
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\AxOvkMsr.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\AxAltairUDrv.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\MVSDK.dll
-C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\stdole.dll
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Buffers.xml
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\bin\Debug\System.Memory.xml
@@ -80,3 +78,4 @@ C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Debug\調劑台管�
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Debug\調劑台管理系統.csproj.CopyComplete
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Debug\調劑台管理系統.exe
 C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Debug\調劑台管理系統.pdb
+C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Debug\調劑台管理系統.Dialog_選擇效期.resources

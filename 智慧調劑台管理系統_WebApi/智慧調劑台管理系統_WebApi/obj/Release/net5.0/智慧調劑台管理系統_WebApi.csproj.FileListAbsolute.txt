@@ -238,3 +238,8 @@ C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\�
 C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OOXML.dll
 C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXml4Net.dll
 C:\Users\User\Desktop\調劑台管理系統\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXmlFormats.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\MyOffice.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OOXML.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXml4Net.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\bin\Release\net5.0\NPOI.OpenXmlFormats.dll

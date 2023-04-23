@@ -153,44 +153,30 @@ namespace 智慧調劑台管理系統_WebApi
             class_OutTakeMed_Data.功能類型 = "1";
             list_class_OutTakeMed_data.Add(class_OutTakeMed_Data);
 
-            jsonString = list_class_OutTakeMed_data.JsonSerializationt(true);
-
-            return jsonString;
-        }
-        [Route("chkMed")]
-        [HttpGet()]
-        public string Get_chkMed(string Code)
-        {
-            string jsonString = "";
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            };
-            List<class_OutTakeMed_data> list_class_OutTakeMed_data = new List<class_OutTakeMed_data>();
-            class_OutTakeMed_data class_OutTakeMed_Data = new class_OutTakeMed_data();
-            class_OutTakeMed_Data.電腦名稱 = "PC001";
-            class_OutTakeMed_Data.成本中心 = "1";
-            class_OutTakeMed_Data.來源庫別 = "UD1F";
-            class_OutTakeMed_Data.藥品碼 = "25003";
-            class_OutTakeMed_Data.交易量 = "-1";
-            class_OutTakeMed_Data.操作人 = "王曉明";
-            class_OutTakeMed_Data.ID = "HS001";
-            class_OutTakeMed_Data.病人姓名 = "章大同";
-            class_OutTakeMed_Data.病歷號 = "00000000";
-            class_OutTakeMed_Data.開方時間 = DateTime.Now.ToDateTimeString();
-            class_OutTakeMed_Data.功能類型 = "1";
-            list_class_OutTakeMed_data.Add(class_OutTakeMed_Data);
+            class_OutTakeMed_data class_OutTakeMed_Data02 = new class_OutTakeMed_data();
+            class_OutTakeMed_Data02.PRI_KEY = Guid.NewGuid().ToString();
+            class_OutTakeMed_Data02.電腦名稱 = "PC001";
+            class_OutTakeMed_Data02.成本中心 = "1";
+            class_OutTakeMed_Data02.來源庫別 = "UD1F";
+            class_OutTakeMed_Data02.藥品碼 = "25004";
+            class_OutTakeMed_Data02.交易量 = "-1";
+            class_OutTakeMed_Data02.操作人 = "王曉明";
+            class_OutTakeMed_Data02.ID = "HS001";
+            class_OutTakeMed_Data02.病人姓名 = "章大同";
+            class_OutTakeMed_Data02.病歷號 = "00000000";
+            class_OutTakeMed_Data02.開方時間 = DateTime.Now.ToDateTimeString();
+            class_OutTakeMed_Data02.功能類型 = "1";
+            list_class_OutTakeMed_data.Add(class_OutTakeMed_Data02);
 
             jsonString = list_class_OutTakeMed_data.JsonSerializationt(true);
 
             return jsonString;
         }
+     
         [HttpPost]
         public string Post([FromBody] List<class_OutTakeMed_data> data)
         {
-            MyTimer myTimer0 = new MyTimer(50000);
-            myTimer0.StartTickTime();
+
           
             if (data == null)
             {
@@ -200,6 +186,25 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 return "-1";
             }
+            if (data.Count == 1)
+            {
+                return single_med_take(data);
+            }
+            else
+            {
+                return mul_med_take(data);
+            }
+        
+        }
+
+
+        #region Function
+        private string single_med_take(List<class_OutTakeMed_data> data)
+        {
+            MyTimer myTimer0 = new MyTimer(50000);
+            myTimer0.StartTickTime();
+
+            
             if (!data[0].交易量.StringIsInt32())
             {
                 return "-1";
@@ -232,12 +237,12 @@ namespace 智慧調劑台管理系統_WebApi
                 if (num >= 1) return "OK";
                 else return "NG";
             }
-             
+
 
             List<object[]> list_devicelist = sQLControl_devicelist.GetAllRows(null);
             List<object[]> list_devicelist_buf = new List<object[]>();
             list_devicelist_buf = list_devicelist.GetRows((int)enum_設備資料.名稱, data[0].電腦名稱);
-            if(list_devicelist_buf.Count == 0)
+            if (list_devicelist_buf.Count == 0)
             {
                 object[] value = new object[new enum_設備資料().GetLength()];
                 value[(int)enum_設備資料.GUID] = Guid.NewGuid().ToString();
@@ -250,11 +255,11 @@ namespace 智慧調劑台管理系統_WebApi
 
             List<DeviceBasic> devices = this.Function_讀取儲位();
             List<DeviceBasic> list_device = devices.SortByCode(data[0].藥品碼);
-            if(list_device.Count == 0)
+            if (list_device.Count == 0)
             {
                 return "-2";
             }
-          
+
             if (data[0].功能類型 == "1")
             {
                 string PRI_KEY = data[0].PRI_KEY;
@@ -275,10 +280,10 @@ namespace 智慧調劑台管理系統_WebApi
                 {
                     this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
                 }
-               
-               
+
+
                 string 設備名稱 = data[0].電腦名稱;
-               
+
                 string 藥品名稱 = list_device[0].Name;
                 string 單位 = list_device[0].Package;
                 string 病歷號 = data[0].病歷號;
@@ -287,11 +292,11 @@ namespace 智慧調劑台管理系統_WebApi
                 string 操作時間 = DateTime.Now.ToDateTimeString_6();
                 string 操作人 = data[0].操作人;
                 string 顏色 = list_devicelist_buf[0][(int)enum_設備資料.顏色].ObjectToString();
-              
+
                 this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, PRI_KEY, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, 顏色, 總異動量);
                 return $"OK";
             }
-            else if(data[0].功能類型 == "0")
+            else if (data[0].功能類型 == "0")
             {
                 return $"OK";
             }
@@ -310,7 +315,7 @@ namespace 智慧調劑台管理系統_WebApi
                     this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
                 }
                 string 設備名稱 = data[0].電腦名稱;
-               
+
                 string 藥品名稱 = list_device[0].Name;
                 string 單位 = list_device[0].Package;
                 string 病歷號 = data[0].病歷號;
@@ -337,13 +342,129 @@ namespace 智慧調劑台管理系統_WebApi
             {
                 return $"-3";
             }
-
-        
         }
+        private string mul_med_take(List<class_OutTakeMed_data> data)
+        {
+            for (int i = 0; i < data.Count; i++)
+            {
 
+                if (!data[i].交易量.StringIsInt32())
+                {
+                    return "-1";
+                }
+                if (data[i].藥品碼.StringIsEmpty())
+                {
+                    return "-1";
+                }
+                if (data[i].操作人.StringIsEmpty())
+                {
+                    return "-1";
+                }
+                if (data[i].電腦名稱.StringIsEmpty())
+                {
+                    return "-1";
+                }
+                if (!data[i].開方時間.Check_Date_String())
+                {
+                    data[i].開方時間 = DateTime.Now.ToDateTimeString();
+                }
+            }
+            List<object[]> list_devicelist = sQLControl_devicelist.GetAllRows(null);
+            List<object[]> list_devicelist_buf = new List<object[]>();
+            list_devicelist_buf = list_devicelist.GetRows((int)enum_設備資料.名稱, data[0].電腦名稱);
+            if (list_devicelist_buf.Count == 0)
+            {
+                object[] value = new object[new enum_設備資料().GetLength()];
+                value[(int)enum_設備資料.GUID] = Guid.NewGuid().ToString();
+                value[(int)enum_設備資料.名稱] = data[0].電腦名稱;
+                Color color = this.Function_取得顏色(list_devicelist.Count);
+                value[(int)enum_設備資料.顏色] = color.ToColorString();
+                sQLControl_devicelist.AddRow(null, value);
+                list_devicelist_buf.Add(value);
+            }
+            List<DeviceBasic> devices = this.Function_讀取儲位();
+         
+            if (data[0].功能類型 == "1")
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    string PRI_KEY = data[i].PRI_KEY;
+                    string 藥品碼 = data[i].藥品碼;
+                    List<DeviceBasic> list_device = devices.SortByCode(data[i].藥品碼);
+                    if (list_device.Count == 0) continue;
+                    int 總異動量 = data[i].交易量.StringToInt32();
+                    if (總異動量 != 0)
+                    {
+                        List<object[]> list_trading = this.sQLControl_trading.GetRowsByDefult(null, (int)enum_交易記錄查詢資料.藥袋序號, data[i].PRI_KEY);
+                        if (list_trading.Count > 0) return "-4";
+                    }
+                    else
+                    {
+                        PRI_KEY = Guid.NewGuid().ToString();
+                    }
 
-        #region Function
-        
+                    List<object[]> list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[i].藥品碼);
+                    if (list_take_medicine_stack.Count > 0)
+                    {
+                        this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
+                    }
+
+             
+                    string 設備名稱 = data[0].電腦名稱;
+
+                    string 藥品名稱 = list_device[0].Name;
+                    string 單位 = list_device[0].Package;
+                    string 病歷號 = data[i].病歷號;
+                    string 病人姓名 = data[i].病人姓名;
+                    string 開方時間 = data[i].開方時間;
+                    string 操作時間 = DateTime.Now.ToDateTimeString_6();
+                    string 操作人 = data[i].操作人;
+                    string 顏色 = list_devicelist_buf[0][(int)enum_設備資料.顏色].ObjectToString();
+
+                    this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, PRI_KEY, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, 顏色, 總異動量);
+                   
+                }
+                return $"OK";
+            }
+            else if (data[0].功能類型 == "-1")
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    string PRI_KEY = data[i].PRI_KEY;
+                    string 藥品碼 = data[i].藥品碼;
+                    List<DeviceBasic> list_device = devices.SortByCode(data[i].藥品碼);
+                    if (list_device.Count == 0) continue;
+
+                    List<object[]> list_trading = this.sQLControl_trading.GetRowsByDefult(null, (int)enum_交易記錄查詢資料.藥袋序號, data[i].PRI_KEY);
+                    if (list_trading.Count > 0) return "-4";
+
+                    List<object[]> list_take_medicine_stack = new List<object[]>();
+                    list_take_medicine_stack = this.sQLControl_take_medicine_stack.GetRowsByDefult(null, (int)enum_取藥堆疊母資料.藥品碼, data[i].藥品碼);
+                    if (list_take_medicine_stack.Count > 0)
+                    {
+                        this.sQLControl_take_medicine_stack.DeleteExtra(null, list_take_medicine_stack);
+                    }
+                    string 設備名稱 = data[i].電腦名稱;
+
+                    string 藥品名稱 = list_device[0].Name;
+                    string 單位 = list_device[0].Package;
+                    string 病歷號 = data[i].病歷號;
+                    string 病人姓名 = data[i].病人姓名;
+                    string 開方時間 = data[i].開方時間;
+                    string 操作時間 = DateTime.Now.ToDateTimeString_6();
+                    string 操作人 = data[i].操作人;
+                    string 顏色 = list_devicelist_buf[0][(int)enum_設備資料.顏色].ObjectToString();
+                    int 總異動量 = data[i].交易量.StringToInt32();
+                    this.Function_取藥堆疊資料_取藥新增(設備名稱, 藥品碼, 藥品名稱, PRI_KEY, 單位, 病歷號, 病人姓名, 開方時間, 操作人, 操作時間, Color.Black.ToColorString(), 總異動量);
+                }
+               
+                return $"OK";
+            }
+            else
+            {
+                return $"-3";
+            }
+        }
         private SQLControl sQLControl_EPD583_serialize = new SQLControl(IP, DataBaseName, "epd583_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_EPD266_serialize = new SQLControl(IP, DataBaseName, "epd266_jsonstring", UserName, Password, Port, SSLMode);
         private SQLControl sQLControl_RowsLED_serialize = new SQLControl(IP, DataBaseName, "rowsled_jsonstring", UserName, Password, Port, SSLMode);

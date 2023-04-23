@@ -24,5 +24,10 @@ C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調�
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\Basic.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\H_Pannel_lib.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\MyOffice.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\MySQL_Login.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\NPOI.dll
 C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\SQLUI.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\NPOI.OOXML.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\NPOI.OpenXml4Net.dll
+C:\Users\HS\Source\Repos\Dispenser\智慧調劑台管理系統_WebApi\智慧調劑台管理系統_WebApi\obj\Release\net5.0\PubTmp\Out\NPOI.OpenXmlFormats.dll
