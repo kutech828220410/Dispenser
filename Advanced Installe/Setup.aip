@@ -18,10 +18,10 @@
     <ROW Property="AiSkipExitDlg" Value="1"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="力翔精密機械有限公司"/>
-    <ROW Property="ProductCode" Value="1028:{D50A48AF-95F8-49C9-AFE3-CB3CA53018B0} " Type="16"/>
+    <ROW Property="ProductCode" Value="1028:{2390C87C-5009-4392-BE8A-12C461D36062} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1028"/>
     <ROW Property="ProductName" Value="智慧調劑台管理系統"/>
-    <ROW Property="ProductVersion" Value="1.0.38.0" Type="32" TargetFile="_.exe"/>
+    <ROW Property="ProductVersion" Value="1.0.42.0" Type="32" TargetFile="_.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{9E8E570F-0E09-4BCD-A3D4-0EE2FFDFC180}"/>
@@ -78,6 +78,10 @@
     <ROW Component="MySql.Data.dll" ComponentId="{9278B092-2386-4E71-8F8E-3B07F51B46D7}" Directory_="APPDIR" Attributes="0" KeyPath="MySql.Data.dll"/>
     <ROW Component="MySqlBackup.dll" ComponentId="{F6611D3B-C47E-493B-8ABC-4B225CA5A527}" Directory_="APPDIR" Attributes="0" KeyPath="MySqlBackup.dll"/>
     <ROW Component="MyUI.dll" ComponentId="{62DF6C59-03AA-49B8-B827-284BC7F5B9A8}" Directory_="APPDIR" Attributes="0" KeyPath="MyUI.dll"/>
+    <ROW Component="NPOI.OOXML.dll" ComponentId="{983C28FC-C877-4E18-9A6D-46DE74E5C606}" Directory_="APPDIR" Attributes="0" KeyPath="NPOI.OOXML.dll"/>
+    <ROW Component="NPOI.OpenXml4Net.dll" ComponentId="{26B9BE66-1C37-47CE-B4FE-377DFDD56FBA}" Directory_="APPDIR" Attributes="0" KeyPath="NPOI.OpenXml4Net.dll"/>
+    <ROW Component="NPOI.OpenXmlFormats.dll" ComponentId="{EBCD4823-FB98-42F0-8816-8DD8538EE316}" Directory_="APPDIR" Attributes="0" KeyPath="NPOI.OpenXmlFormats.dll"/>
+    <ROW Component="NPOI.dll" ComponentId="{08313BAE-6D2D-4ED7-967F-2200750E12E7}" Directory_="APPDIR" Attributes="0" KeyPath="NPOI.dll"/>
     <ROW Component="Newtonsoft.Json.dll" ComponentId="{EF11A84A-8A6E-4D9F-9EE8-5DA07BE09DB1}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="PortControlUI.dll" ComponentId="{C02C3410-95A8-420B-AC84-B1E116D75EF3}" Directory_="APPDIR" Attributes="0" KeyPath="PortControlUI.dll"/>
     <ROW Component="ProductInformation" ComponentId="{C29F1C15-9AFB-4D93-A898-3D4278B4C954}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
@@ -102,7 +106,7 @@
     <ROW Component="zxing.dll" ComponentId="{8A6F4759-198D-408C-A43E-8185CE47BE10}" Directory_="APPDIR" Attributes="0" KeyPath="zxing.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AxAltairUDrv.dll AxAltairUDrvAsm4.5.dll AxOvkBase.dll AxOvkBaseAsm4.5.dll AxOvkBlob.dll AxOvkBlobAsm4.5.dll AxOvkImage.dll AxOvkImageAsm4.5.dll AxOvkMsr.dll AxOvkMsrAsm4.5.dll Basic.dll CallBackUI.dll DrawingClass.dll FontAwesome.Sharp.dll HCGUI.dll H_Pannel_lib.dll IOC0640.dll IOC0640.dll_1 IOC1280001.pro Interop.SpeechLib.dll LadderUI.dll LeadShineUI.dll LicenseLib.dll LightControlUI.dll MVSDK.dll MVSDKUI.dll MeasureSystemUI.dll Microsoft.Bcl.AsyncInterfaces.dll MyFtpUI.dll MyOffice.dll MySQL_Login.dll MySql.Data.dll MySqlBackup.dll MyUI.dll Newtonsoft.Json.dll PortControlUI.dll ProductInformation RFID_FX600lib.dll SHORTCUTDIR SLDUI.dll SQLUI.dll System.Buffers.dll System.Memory.dll System.Numerics.Vectors.dll System.Runtime.CompilerServices.Unsafe.dll System.Text.Encodings.Web.dll System.Text.Json.dll System.Threading.Tasks.Extensions.dll System.ValueTuple.dll System.dll TCP.dll ZealTechUI.dll _.exe alarm.mp3 stdole.dll zxing.dll"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AxAltairUDrv.dll AxAltairUDrvAsm4.5.dll AxOvkBase.dll AxOvkBaseAsm4.5.dll AxOvkBlob.dll AxOvkBlobAsm4.5.dll AxOvkImage.dll AxOvkImageAsm4.5.dll AxOvkMsr.dll AxOvkMsrAsm4.5.dll Basic.dll CallBackUI.dll DrawingClass.dll FontAwesome.Sharp.dll HCGUI.dll H_Pannel_lib.dll IOC0640.dll IOC0640.dll_1 IOC1280001.pro Interop.SpeechLib.dll LadderUI.dll LeadShineUI.dll LicenseLib.dll LightControlUI.dll MVSDK.dll MVSDKUI.dll MeasureSystemUI.dll Microsoft.Bcl.AsyncInterfaces.dll MyFtpUI.dll MyOffice.dll MySQL_Login.dll MySql.Data.dll MySqlBackup.dll MyUI.dll NPOI.OOXML.dll NPOI.OpenXml4Net.dll NPOI.OpenXmlFormats.dll NPOI.dll Newtonsoft.Json.dll PortControlUI.dll ProductInformation RFID_FX600lib.dll SHORTCUTDIR SLDUI.dll SQLUI.dll System.Buffers.dll System.Memory.dll System.Numerics.Vectors.dll System.Runtime.CompilerServices.Unsafe.dll System.Text.Encodings.Web.dll System.Text.Json.dll System.Threading.Tasks.Extensions.dll System.ValueTuple.dll System.dll TCP.dll ZealTechUI.dll _.exe alarm.mp3 stdole.dll zxing.dll"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
@@ -121,7 +125,7 @@
     <ROW File="CallBackUI.dll" Component_="CallBackUI.dll" FileName="CALLBA~1.DLL|CallBackUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\CallBackUI.dll" SelfReg="false" NextFile="DrawingClass.dll"/>
     <ROW File="DrawingClass.dll" Component_="DrawingClass.dll" FileName="DRAWIN~1.DLL|DrawingClass.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\DrawingClass.dll" SelfReg="false" NextFile="FontAwesome.Sharp.dll"/>
     <ROW File="FontAwesome.Sharp.dll" Component_="FontAwesome.Sharp.dll" FileName="FONTAW~1.DLL|FontAwesome.Sharp.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\FontAwesome.Sharp.dll" SelfReg="false" NextFile="H_Pannel_lib.dll"/>
-    <ROW File="FtpConfig.txt" Component_="alarm.mp3" FileName="FTPCON~1.TXT|FtpConfig.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\FtpConfig.txt" SelfReg="false"/>
+    <ROW File="FtpConfig.txt" Component_="alarm.mp3" FileName="FTPCON~1.TXT|FtpConfig.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\FtpConfig.txt" SelfReg="false" NextFile="NPOI.dll"/>
     <ROW File="HCGUI.dll" Component_="HCGUI.dll" FileName="HCGUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\HCGUI.dll" SelfReg="false" NextFile="Interop.SpeechLib.dll"/>
     <ROW File="H_Pannel_lib.dll" Component_="H_Pannel_lib.dll" FileName="H_PANN~1.DLL|H_Pannel_lib.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\H_Pannel_lib.dll" SelfReg="false" NextFile="HCGUI.dll"/>
     <ROW File="IOC0640.dll" Component_="IOC0640.dll" FileName="IOC0640.dll" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\IOC1280\x64\IOC0640.dll" SelfReg="false" NextFile="IOC0640.dll_1"/>
@@ -138,11 +142,15 @@
     <ROW File="Microsoft.Bcl.AsyncInterfaces.dll" Component_="Microsoft.Bcl.AsyncInterfaces.dll" FileName="MICROS~1.DLL|Microsoft.Bcl.AsyncInterfaces.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll" SelfReg="false" NextFile="Microsoft.Bcl.AsyncInterfaces.xml"/>
     <ROW File="Microsoft.Bcl.AsyncInterfaces.xml" Component_="alarm.mp3" FileName="MICROS~1.XML|Microsoft.Bcl.AsyncInterfaces.xml" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml" SelfReg="false" NextFile="MVSDK.dll"/>
     <ROW File="MyFtpUI.dll" Component_="MyFtpUI.dll" FileName="MyFtpUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MyFtpUI.dll" SelfReg="false" NextFile="MyOffice.dll"/>
-    <ROW File="MyOffice.dll" Component_="MyOffice.dll" FileName="MyOffice.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MyOffice.dll" SelfReg="false" NextFile="MySql.Data.dll"/>
+    <ROW File="MyOffice.dll" Component_="MyOffice.dll" FileName="MyOffice.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\0.DLL\MyOffice.dll" SelfReg="false" NextFile="MySql.Data.dll"/>
     <ROW File="MySQL_Login.dll" Component_="MySQL_Login.dll" FileName="MYSQL_~1.DLL|MySQL_Login.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MySQL_Login.dll" SelfReg="false" NextFile="MySqlBackup.dll"/>
     <ROW File="MySql.Data.dll" Component_="MySql.Data.dll" FileName="MYSQLD~1.DLL|MySql.Data.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MySql.Data.dll" SelfReg="false" NextFile="MySQL_Login.dll"/>
     <ROW File="MySqlBackup.dll" Component_="MySqlBackup.dll" FileName="MYSQLB~1.DLL|MySqlBackup.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MySqlBackup.dll" SelfReg="false" NextFile="MyUI.dll"/>
     <ROW File="MyUI.dll" Component_="MyUI.dll" FileName="MyUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\MyUI.dll" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
+    <ROW File="NPOI.OOXML.dll" Component_="NPOI.OOXML.dll" FileName="NPOIOO~1.DLL|NPOI.OOXML.dll" Attributes="0" SourcePath="..\0.DLL\NPOI.OOXML.dll" SelfReg="false" NextFile="NPOI.OpenXml4Net.dll"/>
+    <ROW File="NPOI.OpenXml4Net.dll" Component_="NPOI.OpenXml4Net.dll" FileName="NPOIOP~1.DLL|NPOI.OpenXml4Net.dll" Attributes="0" SourcePath="..\0.DLL\NPOI.OpenXml4Net.dll" SelfReg="false" NextFile="NPOI.OpenXmlFormats.dll"/>
+    <ROW File="NPOI.OpenXmlFormats.dll" Component_="NPOI.OpenXmlFormats.dll" FileName="NPOIOP~2.DLL|NPOI.OpenXmlFormats.dll" Attributes="0" SourcePath="..\0.DLL\NPOI.OpenXmlFormats.dll" SelfReg="false"/>
+    <ROW File="NPOI.dll" Component_="NPOI.dll" FileName="NPOI.dll" Attributes="0" SourcePath="..\0.DLL\NPOI.dll" SelfReg="false" NextFile="NPOI.OOXML.dll"/>
     <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\Newtonsoft.Json.dll" SelfReg="false" NextFile="PortControlUI.dll"/>
     <ROW File="PortControlUI.dll" Component_="PortControlUI.dll" FileName="PORTCO~1.DLL|PortControlUI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\PortControlUI.dll" SelfReg="false" NextFile="program.bak.stp"/>
     <ROW File="RFID_FX600lib.dll" Component_="RFID_FX600lib.dll" FileName="RFID_F~1.DLL|RFID_FX600lib.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\調劑台管理系統\bin\Release\RFID_FX600lib.dll" SelfReg="false" NextFile="SLDUI.dll"/>

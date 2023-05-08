@@ -472,7 +472,6 @@ namespace 智慧調劑台管理系統_WebApi
         private List<DeviceBasic> Function_讀取儲位()
         {
             myTimer.StartTickTime();
-            List<DeviceBasic> devices = new List<DeviceBasic>();
             List<object[]> list_EPD583 = sQLControl_EPD583_serialize.GetAllRows(null);
             List<object[]> list_EPD266 = sQLControl_EPD266_serialize.GetAllRows(null);
             List<object[]> list_RowsLED = sQLControl_RowsLED_serialize.GetAllRows(null);
@@ -489,7 +488,7 @@ namespace 智慧調劑台管理系統_WebApi
                                 where value.Code.StringIsEmpty() == false
                                 select value).ToList();
             
-            return devices;
+            return deviceBasics_buf;
         }
         private int Function_取得儲位庫存(string 藥品碼 , List<Device> devices)
         {

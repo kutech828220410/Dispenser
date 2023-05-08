@@ -13,7 +13,7 @@ using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using H_Pannel_lib;
-
+using MyOffice;
 namespace 調劑台管理系統
 {
     public partial class Form1 : Form
@@ -93,6 +93,10 @@ namespace 調劑台管理系統
             this.plC_CheckBox_儲位管理_EPD583_輸入方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸入方向_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD583_輸出方向.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_輸出方向_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD583_顯示為條碼.CheckStateChanged += PlC_CheckBox_儲位管理_EPD583_顯示為條碼_CheckStateChanged;
+            this.plC_RJ_Button_儲位管理_EPD583_匯出.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_匯出_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD583_匯入.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_匯入_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱_MouseDownEvent;
+
 
             this.epD_583_Pannel.Init(this.drawerUI_EPD_583.List_UDP_Local);
             this.epD_583_Pannel.DrawerChangeEvent += EpD_583_Pannel_DrawerChangeEvent;
@@ -100,7 +104,7 @@ namespace 調劑台管理系統
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD583);
         }
 
-
+  
 
         private void Program_儲位管理_EPD583()
         {
@@ -610,20 +614,24 @@ namespace 調劑台管理系統
         {
             this.epD_583_Pannel.SeparateBoxes();
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+            this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
         }
         private void PlC_RJ_Button_儲位管理_EPD583_合併儲位_MouseDownEvent(MouseEventArgs mevent)
         {
             this.epD_583_Pannel.CombineBoxes();
             this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+            this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
             this.Function_設定雲端資料更新();
         }
         private void PlC_RJ_Button_儲位管理_EPD583_初始化儲位_MouseDownEvent(MouseEventArgs mevent)
         {
-            if (MyMessageBox.ShowDialog("確認初始化所有儲位?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes)
+       
+            if (MyMessageBox.ShowDialog("確認初始化儲位?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes)
             {
                 this.epD_583_Pannel.InitBoxes();
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+                this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
                 this.Function_設定雲端資料更新();
             }
         }
@@ -633,6 +641,7 @@ namespace 調劑台管理系統
             {
                 this.epD_583_Pannel.ClearBoxes();
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.epD_583_Pannel.CurrentDrawer);
+                this.List_EPD583_本地資料.Add_NewDrawer(this.epD_583_Pannel.CurrentDrawer);
                 this.Function_設定雲端資料更新();
             }
         }
@@ -1322,6 +1331,152 @@ namespace 調劑台管理系統
             Drawer drawer = this.drawerUI_EPD_583.SQL_GetDrawer(IP);
             if (drawer == null) return;
             this.drawerUI_EPD_583.SetOutput_dir(drawer, plC_CheckBox_儲位管理_EPD583_輸出方向.Checked);
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_匯出_MouseDownEvent(MouseEventArgs mevent)
+        {
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate 
+            {
+                dialogResult = this.saveFileDialog_SaveExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            List<SheetClass> sheetClasses = new List<SheetClass>();
+            List<object[]> list_抽屜列表 = this.sqL_DataGridView_儲位管理_EPD583_抽屜列表.GetAllRows();
+            for (int d = 0; d < list_抽屜列表.Count; d++)
+            {
+                string IP = list_抽屜列表[d][(int)enum_儲位管理_EPD583_抽屜列表.IP].ObjectToString();
+                Drawer drawer = List_EPD583_本地資料.SortByIP(IP);
+                if (drawer == null) continue;
+                List<Box[]> Boxes = drawer.Boxes;
+                SheetClass sheetClass = new SheetClass(drawer.Name);
+                sheetClass.ColumnsWidth.Add(10000);
+                sheetClass.ColumnsWidth.Add(10000);
+                sheetClass.ColumnsWidth.Add(10000);
+                sheetClass.ColumnsWidth.Add(10000);
+
+
+                for (int i = 0; i < Boxes.Count; i++)
+                {
+                    for (int k = 0; k < Boxes[i].Length; k++)
+                    {
+                        Rectangle rect = DrawerUI_EPD_583.Get_Box_Combine(drawer, Boxes[i][k]);
+                        Box _box = Boxes[i][k];
+                        int width = _box.Width;
+                        int height = _box.Height;
+                        rect.X /= width;
+                        rect.Y /= height;
+                        rect.Width /= width;
+                        rect.Height /= height;
+                        if (Boxes[i][k].Slave == false)
+                        {
+                            int colStart = rect.X;
+                            int colEnd = rect.X + rect.Width - 1;
+                            int rowStart = rect.Y;
+                            int rowEnd = rect.Y + rect.Height - 1;
+                            sheetClass.AddNewCell(rowStart, rowEnd, colStart, colEnd, $"{_box.Code}", new Font("微軟正黑體", 14), 1000);
+                            //sheetClass.SetSlave(k, i, false);
+                        }
+                        else
+                        {
+                            sheetClass.AddNewCell(k, i, $"", new Font("微軟正黑體", 14), 1000);
+                            sheetClass.SetSlave(k, i, true);
+                        }
+                    }
+                }
+                sheetClasses.Add(sheetClass);         
+            }
+            sheetClasses.NPOI_SaveFile(this.saveFileDialog_SaveExcel.FileName);
+            MyMessageBox.ShowDialog("匯出完成!");
+
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_匯入_MouseDownEvent(MouseEventArgs mevent)
+        {
+            //bool flag_replaceByName = false;
+            if (MyMessageBox.ShowDialog("確認匯入所有儲位?將會全部覆蓋!", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+            //if (MyMessageBox.ShowDialog("是否依照儲位名稱覆蓋?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) == DialogResult.Yes) flag_replaceByName = true;
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = this.openFileDialog_LoadExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            List<SheetClass> sheetClasses = MyOffice.ExcelClass.NPOI_LoadToSheetClasses(this.openFileDialog_LoadExcel.FileName);
+            for (int i = 0; i < sheetClasses.Count; i++)
+            {
+                string 儲位名稱 = sheetClasses[i].Name;
+                Drawer drawer = this.List_EPD583_本地資料.SortByName(儲位名稱);
+                if (drawer == null) continue;
+                drawer = this.epD_583_Pannel.SeparateBoxesAll(drawer);
+                for (int k = 0; k < sheetClasses[i].CellValues.Count; k++)
+                {
+                    if (sheetClasses[i].CellValues[k].Slave == false)
+                    {
+                        string 藥品碼 = sheetClasses[i].CellValues[k].Text;
+                     
+                        int colStart = sheetClasses[i].CellValues[k].ColStart;
+                        int colEnd = sheetClasses[i].CellValues[k].ColEnd;
+                        int rowStart = sheetClasses[i].CellValues[k].RowStart;
+                        int rowEnd = sheetClasses[i].CellValues[k].RowEnd;
+                        List<int> list_cols = new List<int>();
+                        List<int> list_rows = new List<int>();
+                        for (int col = colStart; col <= colEnd; col++)
+                        {
+                            for (int row = rowStart; row <= rowEnd; row++)
+                            {
+                                list_cols.Add(col);
+                                list_rows.Add(row);                           
+                            }
+                        }
+                        drawer = this.epD_583_Pannel.CombineBoxes(list_cols, list_rows, drawer);
+                        drawer.Boxes[list_cols[0]][list_rows[0]].Code = 藥品碼;
+                    }
+                   
+                }
+                this.drawerUI_EPD_583.SQL_ReplaceDrawer(drawer);
+                this.List_EPD583_本地資料.Add_NewDrawer(drawer);
+                this.epD_583_Pannel.DrawToPictureBox(drawer);
+            }
+            List<object[]> list_抽屜列表 = this.sqL_DataGridView_儲位管理_EPD583_抽屜列表.Get_All_Select_RowsValues();
+            PLC_Device_儲位管理_EPD583_資料更新.Bool = true;
+            while(true)
+            {
+                if (!PLC_Device_儲位管理_EPD583_資料更新.Bool) break;
+                System.Threading.Thread.Sleep(10);
+            }
+            if (list_抽屜列表.Count > 0)
+            {
+                string IP = list_抽屜列表[0][(int)enum_儲位管理_EPD583_抽屜列表.IP].ObjectToString();
+                Drawer drawer = this.List_EPD583_本地資料.SortByIP(IP);
+                if (drawer != null) this.epD_583_Pannel.DrawToPictureBox(drawer);
+            }
+            this.Function_設定雲端資料更新();
+            MyMessageBox.ShowDialog("匯入完成!");
+        }
+        private void PlC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (MyMessageBox.ShowDialog("確認自動填入儲位名稱?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+
+            List<object[]> list_儲位列表 = this.sqL_DataGridView_儲位管理_EPD583_抽屜列表.GetAllRows();
+            int index = 1;
+            for (int i = 0; i < list_儲位列表.Count; i++)
+            {
+                string IP = list_儲位列表[i][(int)enum_儲位管理_EPD583_抽屜列表.IP].ObjectToString();
+                Drawer drawer = this.List_EPD583_本地資料.SortByIP(IP);
+                if (drawer == null) continue;
+                drawer.Name = $"{i / 4 + 1}-{index}";
+                index++;
+                this.List_EPD583_本地資料.Add_NewDrawer(drawer);
+                if (index == 5) index = 1;
+            }
+            this.drawerUI_EPD_583.SQL_ReplaceDrawer(this.List_EPD583_本地資料);
+            this.Function_設定雲端資料更新();
+            PLC_Device_儲位管理_EPD583_資料更新.Bool = true;
+            while (true)
+            {
+                if (PLC_Device_儲位管理_EPD583_資料更新.Bool == false) break;
+                System.Threading.Thread.Sleep(10);
+            }
+
         }
         #endregion
 

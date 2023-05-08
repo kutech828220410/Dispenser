@@ -669,7 +669,7 @@ namespace 調劑台管理系統
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
                     Task.Run(() =>
                     {
-                        this.storageUI_EPD_266.DrawToEpd_UDP(storage);
+                        if(異動量 == 0) this.storageUI_EPD_266.DrawToEpd_UDP(storage);
                     });
                 }
             }

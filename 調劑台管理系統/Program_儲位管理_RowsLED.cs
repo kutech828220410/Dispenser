@@ -13,6 +13,7 @@ using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using H_Pannel_lib;
+using MyOffice;
 
 namespace 調劑台管理系統
 {
@@ -86,11 +87,14 @@ namespace 調劑台管理系統
             this.plC_RJ_Button_儲位管理_RowsLED_複製儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_複製儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_RowsLED_貼上儲位.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_貼上儲位_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_RowsLED_儲位初始化.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_儲位初始化_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_RowsLED_自動填入儲位名稱.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_自動填入儲位名稱_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_RowsLED_匯出.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_匯出_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_RowsLED_匯入.MouseDownEvent += PlC_RJ_Button_儲位管理_RowsLED_匯入_MouseDownEvent;
 
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_RowsLED);
         }
 
-   
+    
 
         private bool flag_Program_儲位管理_RowsLED_ON = false;
         private bool flag_Program_儲位管理_RowsLED_OFF = false;
@@ -999,6 +1003,98 @@ namespace 調劑台管理系統
                     dialog_Prcessbar.Close();
                 }
             }));
+        }
+        private void PlC_RJ_Button_儲位管理_RowsLED_自動填入儲位名稱_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (MyMessageBox.ShowDialog("確認自動填入儲位名稱?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+            List<object[]> list_儲位列表 = this.sqL_DataGridView_儲位管理_RowsLED_層架列表.GetAllRows();
+            for (int i = 0; i < list_儲位列表.Count; i++)
+            {
+                string IP = list_儲位列表[i][(int)enum_儲位管理_RowsLED_層架列表.IP].ObjectToString();
+                RowsLED rowsLED = this.List_RowsLED_本地資料.SortByIP(IP);
+                if (rowsLED == null) continue;
+                rowsLED.Name = $"{i + 1}";
+                this.List_RowsLED_本地資料.Add_NewRowsLED(rowsLED);
+            }
+            this.rowsLEDUI.SQL_ReplaceRowsLED(this.List_RowsLED_本地資料);
+            this.Function_設定雲端資料更新();
+            PLC_Device_儲位管理_RowsLED_資料更新.Bool = true;
+            while (true)
+            {
+                if (PLC_Device_儲位管理_RowsLED_資料更新.Bool == false) break;
+            }
+        }
+        private void PlC_RJ_Button_儲位管理_RowsLED_匯出_MouseDownEvent(MouseEventArgs mevent)
+        {
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = this.saveFileDialog_SaveExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            List<SheetClass> sheetClasses = new List<SheetClass>();
+            List<object[]> list_儲位列表 = this.sqL_DataGridView_儲位管理_RowsLED_層架列表.GetAllRows();
+            for (int i = 0; i < list_儲位列表.Count; i++)
+            {      
+                string IP = list_儲位列表[i][(int)enum_儲位管理_RowsLED_層架列表.IP].ObjectToString();
+                RowsLED rowsLED = this.List_RowsLED_本地資料.SortByIP(IP);
+                if (rowsLED == null) continue;
+                SheetClass sheetClass = new SheetClass(rowsLED.Name);
+                sheetClass.ColumnsWidth.Add(5000);
+                sheetClass.ColumnsWidth.Add(5000);
+                sheetClass.ColumnsWidth.Add(5000);
+                sheetClass.ColumnsWidth.Add(5000);
+                for (int k = 0; k < rowsLED.RowsDevices.Count; k++)
+                {
+                    int Num = k;
+                    string Code = rowsLED.RowsDevices[k].Code;
+                    int StartNum = rowsLED.RowsDevices[k].StartLED;
+                    int EndNum = rowsLED.RowsDevices[k].EndLED;
+                    sheetClass.AddNewCell(k, 0, $"{Num}", new Font("微軟正黑體", 14), 500);
+                    sheetClass.AddNewCell(k, 1, $"{Code}", new Font("微軟正黑體", 14), 500);
+                    sheetClass.AddNewCell(k, 2, $"{StartNum}", new Font("微軟正黑體", 14), 500);
+                    sheetClass.AddNewCell(k, 3, $"{EndNum}", new Font("微軟正黑體", 14), 500);
+                }
+                sheetClasses.Add(sheetClass);
+            }
+            sheetClasses.NPOI_SaveFile(this.saveFileDialog_SaveExcel.FileName);
+            MyMessageBox.ShowDialog("匯出完成!");
+        }
+        private void PlC_RJ_Button_儲位管理_RowsLED_匯入_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (MyMessageBox.ShowDialog("確認匯入所有儲位?將會全部覆蓋!", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = this.openFileDialog_LoadExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            List<SheetClass> sheetClasses = MyOffice.ExcelClass.NPOI_LoadToSheetClasses(this.openFileDialog_LoadExcel.FileName);
+            for (int i = 0; i < sheetClasses.Count; i++)
+            {
+                string 儲位名稱 = sheetClasses[i].Name;
+                RowsLED rowsLED = this.List_RowsLED_本地資料.SortByName(儲位名稱);
+                rowsLED.RowsDevices.Clear();
+                for (int k = 0; k < sheetClasses[i].Rows.Count; k++ )
+                {
+                    string Name = sheetClasses[i].Rows[k].Cell[0].Text;
+                    string Code = sheetClasses[i].Rows[k].Cell[1].Text;
+                    int RowsLEDStart = sheetClasses[i].Rows[k].Cell[2].Text.StringToInt32();
+                    int RowsLEDEnd = sheetClasses[i].Rows[k].Cell[3].Text.StringToInt32();
+                    RowsDevice rowsDevice = new RowsDevice(rowsLED.IP, rowsLED.Port, RowsLEDStart, RowsLEDEnd);
+                    rowsDevice.Code = Code;
+                    rowsDevice.Index = k;
+                    rowsLED.RowsDevices.Add(rowsDevice);
+                }
+                this.List_RowsLED_本地資料.Add_NewRowsLED(rowsLED);
+            }
+            this.rowsLEDUI.SQL_ReplaceRowsLED(this.List_RowsLED_本地資料);
+            this.Function_設定雲端資料更新();
+            PLC_Device_儲位管理_RowsLED_資料更新.Bool = true;
+            while (true)
+            {
+                if (PLC_Device_儲位管理_RowsLED_資料更新.Bool == false) break;
+            }
         }
         #endregion
 

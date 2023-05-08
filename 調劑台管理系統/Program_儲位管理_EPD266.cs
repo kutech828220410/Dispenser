@@ -13,7 +13,7 @@ using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json.Serialization;
 using H_Pannel_lib;
-
+using MyOffice;
 namespace 調劑台管理系統
 {
     public partial class Form1 : Form
@@ -62,7 +62,6 @@ namespace 調劑台管理系統
             this.rJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱.KeyPress += RJ_TextBox_儲位管理_EPD266_藥品搜尋_藥品名稱_KeyPress;
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱.KeyPress += RJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱_KeyPress;
             this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼.KeyPress += RJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼_KeyPress;
-            this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱.KeyPress += RJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱_KeyPress1;
 
             this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品碼_搜尋.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品碼_搜尋_MouseDownEvent;
             this.plC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品名稱_搜尋.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品名稱_搜尋_MouseDownEvent;
@@ -95,8 +94,14 @@ namespace 調劑台管理系統
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_Barcode顯示.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_Barcode顯示_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_顯示空白儲位_CheckStateChanged;
             this.plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.CheckStateChanged += PlC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測_CheckStateChanged;
+            this.plC_RJ_Button_儲位管理_EPD266_匯出.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_匯出_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD266_匯入.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_匯入_MouseDownEvent;
+            this.plC_RJ_Button_儲位管理_EPD266_自動填入儲位名稱.MouseDownEvent += PlC_RJ_Button_儲位管理_EPD266_自動填入儲位名稱_MouseDownEvent;
+
             this.plC_UI_Init.Add_Method(this.Program_儲位管理_EPD266);
         }
+
+  
 
         private void Program_儲位管理_EPD266()
         {
@@ -345,14 +350,6 @@ namespace 調劑台管理系統
                 PlC_RJ_Button_儲位管理_EPD266_藥品搜尋_藥品碼_搜尋_MouseDownEvent(null);
             }
         }
-        private void RJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (this.epD_266_Pannel.CurrentStorage == null) return;
-            if (e.KeyChar == (char)Keys.Enter)
-            {             
-                this.epD_266_Pannel.CurrentStorage.SetValue(Device.ValueName.儲位名稱, Device.ValueType.Value, this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱.Text);
-            }
-        }
         private void RJ_TextBox_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (this.epD_266_Pannel.CurrentStorage == null) return;
@@ -361,7 +358,7 @@ namespace 調劑台管理系統
                 PlC_RJ_Button_儲位管理_EPD266_儲位內容_儲位搜尋_藥品碼搜尋_MouseDownEvent(null);
             }
         }
-        private void RJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱_KeyPress1(object sender, KeyPressEventArgs e)
+        private void RJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (this.epD_266_Pannel.CurrentStorage == null) return;
             if (e.KeyChar == (char)Keys.Enter)
@@ -369,6 +366,7 @@ namespace 調劑台管理系統
                 Storage storage = this.epD_266_Pannel.CurrentStorage;
                 storage.SetValue(Device.ValueName.儲位名稱, Device.ValueType.Value, this.rJ_TextBox_儲位管理_EPD266_儲位內容_儲位名稱.Text);
                 this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
+                this.List_EPD266_本地資料.Add_NewStorage(storage);
             }
         }
 
@@ -964,6 +962,7 @@ namespace 調劑台管理系統
                     string IP = list_value[i][(int)enum_儲位管理_EPD266_儲位資料.IP].ObjectToString();
                     Storage storage = this.storageUI_EPD_266.SQL_GetStorage(IP);
                     storage.Clear();
+                    this.List_EPD266_本地資料.Add_NewStorage(storage);
                     this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
 
                     list_value_buf = this.sqL_DataGridView_儲位管理_EPD266_儲位資料.GetRows((int)enum_儲位管理_EPD266_儲位資料.IP, storage.IP, false);
@@ -974,6 +973,7 @@ namespace 調劑台管理系統
                     list_value_buf[0][(int)enum_儲位管理_EPD266_儲位資料.鎖控] = (storage.DeviceType == DeviceType.EPD266_lock) ? true.ToString() : false.ToString();
 
                     this.sqL_DataGridView_儲位管理_EPD266_儲位資料.Replace((int)enum_儲位管理_EPD266_儲位資料.IP, storage.IP, list_value_buf[0], true);
+           
                 }
                 this.Function_設定雲端資料更新();
             }      
@@ -1245,6 +1245,85 @@ namespace 調劑台管理系統
                 this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
                 this.Function_設定雲端資料更新();
             }));
+        }
+        private void PlC_RJ_Button_儲位管理_EPD266_自動填入儲位名稱_MouseDownEvent(MouseEventArgs mevent)
+        {
+            if (MyMessageBox.ShowDialog("確認自動填入儲位名稱?", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+            List<object[]> list_儲位列表 = this.sqL_DataGridView_儲位管理_EPD266_儲位資料.GetAllRows();
+            for (int i = 0; i < list_儲位列表.Count; i++)
+            {            
+                string IP = list_儲位列表[i][(int)enum_儲位管理_EPD266_儲位資料.IP].ObjectToString();
+                Storage storage = this.List_EPD266_本地資料.SortByIP(IP);
+                if (storage == null) continue;
+                storage.StorageName = $"{i + 1}";
+                this.List_EPD266_本地資料.Add_NewStorage(storage);
+            }
+            this.storageUI_EPD_266.SQL_ReplaceStorage(this.List_EPD266_本地資料);
+            this.Function_設定雲端資料更新();
+            PLC_Device_儲位管理_EPD266_資料更新.Bool = true;
+            while(true)
+            {
+                if (PLC_Device_儲位管理_EPD266_資料更新.Bool == false) break;
+                System.Threading.Thread.Sleep(10);
+            }
+          
+        }
+        private void PlC_RJ_Button_儲位管理_EPD266_匯入_MouseDownEvent(MouseEventArgs mevent)
+        {
+            DialogResult dialogResult = DialogResult.None;
+            if (MyMessageBox.ShowDialog("確認匯入所有儲位?將會全部覆蓋!", MyMessageBox.enum_BoxType.Warning, MyMessageBox.enum_Button.Confirm_Cancel) != DialogResult.Yes) return;
+
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = this.openFileDialog_LoadExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            SheetClass sheetClass = MyOffice.ExcelClass.NPOI_LoadToSheetClass(this.openFileDialog_LoadExcel.FileName);
+            for (int k = 0; k < sheetClass.Rows.Count; k++)
+            {
+                string SotrageName = sheetClass.Rows[k].Cell[0].Text;
+                string Code = sheetClass.Rows[k].Cell[1].Text;
+
+                Storage storage = this.List_EPD266_本地資料.SortByName(SotrageName);
+                if (storage == null) continue;
+                storage.Code = Code;
+                this.List_EPD266_本地資料.Add_NewStorage(storage);
+            }
+            this.storageUI_EPD_266.SQL_ReplaceStorage(this.List_EPD266_本地資料);
+            this.Function_設定雲端資料更新();
+            PLC_Device_儲位管理_EPD266_資料更新.Bool = true;
+            while (true)
+            {
+                if (PLC_Device_儲位管理_EPD266_資料更新.Bool == false) break;
+                System.Threading.Thread.Sleep(10);
+            }
+        }
+        private void PlC_RJ_Button_儲位管理_EPD266_匯出_MouseDownEvent(MouseEventArgs mevent)
+        {
+            DialogResult dialogResult = DialogResult.None;
+            this.Invoke(new Action(delegate
+            {
+                dialogResult = this.saveFileDialog_SaveExcel.ShowDialog();
+            }));
+            if (dialogResult != DialogResult.OK) return;
+            List<SheetClass> sheetClasses = new List<SheetClass>();
+            SheetClass sheetClass = new SheetClass("EPD266");
+            List<object[]> list_儲位列表 = this.sqL_DataGridView_儲位管理_EPD266_儲位資料.GetAllRows();
+            for (int d = 0; d < list_儲位列表.Count; d++)
+            {
+                string IP = list_儲位列表[d][(int)enum_儲位管理_EPD266_儲位資料.IP].ObjectToString();
+                Storage storage = List_EPD266_本地資料.SortByIP(IP);
+                if (storage == null) continue;
+ 
+                sheetClass.ColumnsWidth.Add(5000);
+                sheetClass.ColumnsWidth.Add(5000);
+                sheetClass.AddNewCell(d, 0, $"{storage.StorageName}", new Font("微軟正黑體", 14), 500);
+                sheetClass.AddNewCell(d, 1, $"{storage.Code}", new Font("微軟正黑體", 14), 500);
+            }
+            sheetClasses.Add(sheetClass);
+            sheetClasses.NPOI_SaveFile(this.saveFileDialog_SaveExcel.FileName);
+            MyMessageBox.ShowDialog("匯出完成!");
+
         }
         #endregion
 
