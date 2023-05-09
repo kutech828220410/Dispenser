@@ -389,6 +389,7 @@
             this.sqL_DataGridView_儲位管理_EPD583_藥品資料_藥檔資料 = new SQLUI.SQL_DataGridView();
             this.plC_RJ_GroupBox1 = new MyUI.PLC_RJ_GroupBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_匯入 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_匯出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_Button_儲位管理_EPD583_貼上儲位 = new MyUI.PLC_RJ_Button();
@@ -1106,7 +1107,6 @@
             this.plC_RJ_Button_後台登入_登出 = new MyUI.PLC_RJ_Button();
             this.plC_RJ_ScreenButton143 = new MyUI.PLC_RJ_ScreenButton();
             this.ContentsPanel = new MyUI.RJ_Pannel();
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱 = new MyUI.PLC_RJ_Button();
             this.plC_ScreenPage_Main.SuspendLayout();
             this.領藥.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -10243,6 +10243,50 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(339, 280);
             this.panel12.TabIndex = 44;
+            // 
+            // plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱
+            // 
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.AutoResetState = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Bool = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderRadius = 5;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderSize = 0;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.but_press = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.buttonType = MyUI.RJ_Button.ButtonType.Toggle;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.FlatAppearance.BorderSize = 0;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Location = new System.Drawing.Point(212, 225);
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Name = "plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字內容 = "自動填入\n儲位名稱";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字顏色 = System.Drawing.Color.White;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_BorderSize = 5;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字內容 = "自動填入\n儲位名稱";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字顏色 = System.Drawing.Color.Black;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_背景顏色 = System.Drawing.SystemColors.Control;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Size = new System.Drawing.Size(97, 66);
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.State = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.TabIndex = 146;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Text = "自動填入\n儲位名稱";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.TextColor = System.Drawing.Color.White;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Texts = "自動填入\n儲位名稱";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.UseVisualStyleBackColor = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.字型鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.按鈕型態 = MyUI.PLC_RJ_Button.StatusEnum.保持型;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.按鍵方式 = MyUI.PLC_RJ_Button.PressEnum.Mouse_左鍵;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.文字鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.致能讀取位置 = "S39011";
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.讀取位元反向 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.讀寫鎖住 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.音效 = true;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示狀態 = false;
+            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示讀取位置 = "S39011";
             // 
             // plC_RJ_Button_儲位管理_EPD583_匯入
             // 
@@ -26272,6 +26316,7 @@
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns12"))));
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns13"))));
             this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns14"))));
+            this.sqL_DataGridView_雲端藥檔.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_雲端藥檔.Columns15"))));
             this.sqL_DataGridView_雲端藥檔.DataBaseName = "storehouse_0";
             this.sqL_DataGridView_雲端藥檔.Dock = System.Windows.Forms.DockStyle.Top;
             this.sqL_DataGridView_雲端藥檔.Font = new System.Drawing.Font("新細明體", 12F);
@@ -27831,50 +27876,6 @@
             this.ContentsPanel.Padding = new System.Windows.Forms.Padding(5);
             this.ContentsPanel.Size = new System.Drawing.Size(1109, 453);
             this.ContentsPanel.TabIndex = 2;
-            // 
-            // plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱
-            // 
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.AutoResetState = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Bool = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderRadius = 5;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.BorderSize = 0;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.but_press = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.buttonType = MyUI.RJ_Button.ButtonType.Toggle;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.FlatAppearance.BorderSize = 0;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Icon = System.Windows.Forms.MessageBoxIcon.Warning;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Location = new System.Drawing.Point(212, 225);
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Name = "plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字內容 = "自動填入\n儲位名稱";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_文字顏色 = System.Drawing.Color.White;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.OFF_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_BorderSize = 5;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字內容 = "自動填入\n儲位名稱";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字字體 = new System.Drawing.Font("微軟正黑體", 12F);
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_文字顏色 = System.Drawing.Color.Black;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.ON_背景顏色 = System.Drawing.SystemColors.Control;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Size = new System.Drawing.Size(97, 66);
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.State = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.TabIndex = 146;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Text = "自動填入\n儲位名稱";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.TextColor = System.Drawing.Color.White;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.Texts = "自動填入\n儲位名稱";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.UseVisualStyleBackColor = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.字型鎖住 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.按鈕型態 = MyUI.PLC_RJ_Button.StatusEnum.保持型;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.按鍵方式 = MyUI.PLC_RJ_Button.PressEnum.Mouse_左鍵;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.文字鎖住 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.致能讀取位置 = "S39011";
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.讀取位元反向 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.讀寫鎖住 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.音效 = true;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示狀態 = false;
-            this.plC_RJ_Button_儲位管理_EPD583_自動填入儲位名稱.顯示讀取位置 = "S39011";
             // 
             // Form1
             // 
