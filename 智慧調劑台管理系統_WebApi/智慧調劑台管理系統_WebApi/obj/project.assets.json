@@ -962,19 +962,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\BR001-002D\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\調劑台管理系統\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\BR001-002D\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
       "projectName": "智慧調劑台管理系統_WebApi",
-      "projectPath": "C:\\Users\\User\\Desktop\\調劑台管理系統\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\調劑台管理系統\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\obj\\",
+      "projectPath": "C:\\Users\\BR001-002D\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi.csproj",
+      "packagesPath": "C:\\Users\\BR001-002D\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\BR001-002D\\Source\\Repos\\Dispenser\\智慧調劑台管理系統_WebApi\\智慧調劑台管理系統_WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\BR001-002D\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

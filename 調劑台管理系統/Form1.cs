@@ -18,8 +18,8 @@ using System.Text.Json.Serialization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("1.0.44.0")]
-[assembly: AssemblyFileVersion("1.0.44.0")]
+[assembly: AssemblyVersion("1.0.46.0")]
+[assembly: AssemblyFileVersion("1.0.46.0")]
 namespace 調劑台管理系統
 {
 
@@ -379,10 +379,7 @@ namespace 調劑台管理系統
                     MyProcess[i].Kill();
                 }
 
-                if (myConfigClass.RFID使用)
-                {
-                    this.rfiD_FX600_UI.Init(myConfigClass.RFID_COMPort);
-                }
+              
                 this.plC_UI_Init.UI_Finished_Event += PlC_UI_Init_UI_Finished_Event;
           
             }
@@ -463,7 +460,7 @@ namespace 調劑台管理系統
             this.Program_設備資料_Init();
             this.Program_交班對點_Init();
 
-
+            
             this.plC_UI_Init.Add_Method(this.sub_Program_Scanner_RS232);
 
             this.LoadConfig工程模式();
