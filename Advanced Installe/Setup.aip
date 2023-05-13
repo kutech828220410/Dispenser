@@ -18,10 +18,10 @@
     <ROW Property="AiSkipExitDlg" Value="1"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="力翔精密機械有限公司"/>
-    <ROW Property="ProductCode" Value="1028:{A355C8A3-A702-404A-B39D-BE791A7C790E} " Type="16"/>
+    <ROW Property="ProductCode" Value="1028:{21F82A48-1C98-46D6-A58E-E2F79EED4A0C} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1028"/>
     <ROW Property="ProductName" Value="智慧調劑台管理系統"/>
-    <ROW Property="ProductVersion" Value="1.0.45.0" Type="32" TargetFile="_.exe"/>
+    <ROW Property="ProductVersion" Value="1.0.46.0" Type="32" TargetFile="_.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{9E8E570F-0E09-4BCD-A3D4-0EE2FFDFC180}"/>

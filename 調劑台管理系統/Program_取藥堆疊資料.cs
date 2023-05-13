@@ -58,11 +58,13 @@ namespace 調劑台管理系統
             動作,
             作業模式,
             藥袋序號,
+            類別,
             藥品碼,
             藥品名稱,
-            單位,
+            單位,     
             病歷號,
             病人姓名,
+            床號,
             開方時間,
             操作時間,
             顏色,
@@ -1048,6 +1050,11 @@ namespace 調劑台管理系統
             }
             if (PLC_Device_取藥堆疊資料_檢查資料_更新儲位資料.Bool)
             {
+                if(dBConfigClass.Med_Update_ApiURL.StringIsEmpty() == false)
+                {
+                    string Jsonstring = Basic.Net.WEBApiGet(dBConfigClass.Med_Update_ApiURL);
+                    Console.WriteLine(Jsonstring);
+                }              
                 this.Function_從SQL取得儲位到雲端資料();
                 PLC_Device_取藥堆疊資料_檢查資料_更新儲位資料.Bool = false;
             }
@@ -2174,9 +2181,11 @@ namespace 調劑台管理系統
             string 藥品碼 = "";
             string 藥品名稱 = "";
             string 藥袋序號 = "";
+            string 類別 = "";
             string 交易量 = "";
             string 操作人 = "";
             string 病人姓名 = "";
+            string 床號 = "";
             string 病歷號 = "";
             string 操作時間 = "";
             string 開方時間 = "";
@@ -2193,11 +2202,13 @@ namespace 調劑台管理系統
                 this.Function_從SQL取得儲位到入賬資料(藥品碼);
                 藥品名稱 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥品名稱].ObjectToString();
                 藥袋序號 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.藥袋序號].ObjectToString();
+                類別 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.類別].ObjectToString();
                 操作人 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.操作人].ObjectToString();
                 總異動量 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.總異動量].ObjectToString().StringToInt32();
                 交易量 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.總異動量].ObjectToString();
                 盤點量 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.盤點量].ObjectToString();
                 病人姓名 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.病人姓名].ObjectToString();
+                床號 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.床號].ObjectToString();
                 病歷號 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.病歷號].ObjectToString();
                 操作時間 = DateTime.Now.ToDateTimeString_6();
                 開方時間 = list_可入賬母資料[i][(int)enum_取藥堆疊母資料.開方時間].ObjectToString();
@@ -2240,6 +2251,7 @@ namespace 調劑台管理系統
                 value_trading[(int)enum_交易記錄查詢資料.藥品碼] = 藥品碼;
                 value_trading[(int)enum_交易記錄查詢資料.藥品名稱] = 藥品名稱;
                 value_trading[(int)enum_交易記錄查詢資料.藥袋序號] = 藥袋序號;
+                value_trading[(int)enum_交易記錄查詢資料.類別] = 類別;
                 value_trading[(int)enum_交易記錄查詢資料.庫存量] = 庫存量;
                 value_trading[(int)enum_交易記錄查詢資料.交易量] = 交易量;
                 value_trading[(int)enum_交易記錄查詢資料.結存量] = 結存量;
@@ -2247,6 +2259,7 @@ namespace 調劑台管理系統
                 value_trading[(int)enum_交易記錄查詢資料.盤點量] = 盤點量;
                 value_trading[(int)enum_交易記錄查詢資料.操作人] = 操作人;
                 value_trading[(int)enum_交易記錄查詢資料.病人姓名] = 病人姓名;
+                value_trading[(int)enum_交易記錄查詢資料.床號] = 床號;
                 value_trading[(int)enum_交易記錄查詢資料.病歷號] = 病歷號;
                 value_trading[(int)enum_交易記錄查詢資料.操作時間] = 操作時間;
                 if(開方時間.StringIsEmpty())
