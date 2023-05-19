@@ -6665,6 +6665,7 @@
             this.textBox_藥品資料_藥檔資料_庫存.BorderRadius = 2;
             this.textBox_藥品資料_藥檔資料_庫存.BorderSize = 1;
             this.textBox_藥品資料_藥檔資料_庫存.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_藥品資料_藥檔資料_庫存.Enabled = false;
             this.textBox_藥品資料_藥檔資料_庫存.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.textBox_藥品資料_藥檔資料_庫存.ForeColor = System.Drawing.Color.Black;
             this.textBox_藥品資料_藥檔資料_庫存.Location = new System.Drawing.Point(122, 0);
@@ -7211,6 +7212,9 @@
             this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns11"))));
             this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns12"))));
             this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns13"))));
+            this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns14"))));
+            this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns15"))));
+            this.sqL_DataGridView_藥品資料_藥檔資料.Columns.Add(((SQLUI.SQL_DataGridView.ColumnElement)(resources.GetObject("sqL_DataGridView_藥品資料_藥檔資料.Columns16"))));
             this.sqL_DataGridView_藥品資料_藥檔資料.DataBaseName = "Dispensing_000";
             this.sqL_DataGridView_藥品資料_藥檔資料.Dock = System.Windows.Forms.DockStyle.Top;
             this.sqL_DataGridView_藥品資料_藥檔資料.Font = new System.Drawing.Font("新細明體", 12F);
@@ -25322,7 +25326,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1640, 900);
+            this.tabPage4.Size = new System.Drawing.Size(475, 355);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "取藥堆疊子資料";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -25375,7 +25379,7 @@
             this.sqL_DataGridView_取藥堆疊子資料.RowsHeight = 20;
             this.sqL_DataGridView_取藥堆疊子資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_取藥堆疊子資料.Server = "localhost";
-            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(1634, 894);
+            this.sqL_DataGridView_取藥堆疊子資料.Size = new System.Drawing.Size(469, 349);
             this.sqL_DataGridView_取藥堆疊子資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_取藥堆疊子資料.TabIndex = 26;
             this.sqL_DataGridView_取藥堆疊子資料.TableName = "take_medicine_substack_new";
@@ -25397,7 +25401,7 @@
             this.tabPage10.Controls.Add(this.sqL_DataGridView_批次領藥資料);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1640, 900);
+            this.tabPage10.Size = new System.Drawing.Size(475, 355);
             this.tabPage10.TabIndex = 2;
             this.tabPage10.Text = "批次領藥資料";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -25440,7 +25444,7 @@
             this.sqL_DataGridView_批次領藥資料.RowsHeight = 20;
             this.sqL_DataGridView_批次領藥資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_批次領藥資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(1640, 900);
+            this.sqL_DataGridView_批次領藥資料.Size = new System.Drawing.Size(475, 355);
             this.sqL_DataGridView_批次領藥資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_批次領藥資料.TabIndex = 119;
             this.sqL_DataGridView_批次領藥資料.TableName = "UDFTPSTK4";
@@ -25462,7 +25466,7 @@
             this.tabPage11.Controls.Add(this.sqL_DataGridView_管制抽屜權限資料);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1640, 900);
+            this.tabPage11.Size = new System.Drawing.Size(475, 355);
             this.tabPage11.TabIndex = 3;
             this.tabPage11.Text = "管制抽屜權限資料";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -25504,7 +25508,7 @@
             this.sqL_DataGridView_管制抽屜權限資料.RowsHeight = 20;
             this.sqL_DataGridView_管制抽屜權限資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_管制抽屜權限資料.Server = "192.168.226.38";
-            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(1640, 900);
+            this.sqL_DataGridView_管制抽屜權限資料.Size = new System.Drawing.Size(475, 355);
             this.sqL_DataGridView_管制抽屜權限資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_管制抽屜權限資料.TabIndex = 119;
             this.sqL_DataGridView_管制抽屜權限資料.TableName = "locker_data";
@@ -25526,7 +25530,7 @@
             this.tabPage12.Controls.Add(this.sqL_DataGridView_設備資料);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(1640, 900);
+            this.tabPage12.Size = new System.Drawing.Size(475, 355);
             this.tabPage12.TabIndex = 4;
             this.tabPage12.Text = "設備資料";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -25566,7 +25570,7 @@
             this.sqL_DataGridView_設備資料.RowsHeight = 40;
             this.sqL_DataGridView_設備資料.SaveFileName = "SQL_DataGridView";
             this.sqL_DataGridView_設備資料.Server = "localhost";
-            this.sqL_DataGridView_設備資料.Size = new System.Drawing.Size(1640, 900);
+            this.sqL_DataGridView_設備資料.Size = new System.Drawing.Size(475, 355);
             this.sqL_DataGridView_設備資料.SSLMode = MySql.Data.MySqlClient.MySqlSslMode.None;
             this.sqL_DataGridView_設備資料.TabIndex = 27;
             this.sqL_DataGridView_設備資料.TableName = "devicelist";
