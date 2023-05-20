@@ -152,7 +152,7 @@
             this.label123 = new System.Windows.Forms.Label();
             this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_退藥 = new MyUI.PLC_RJ_ChechBox();
             this.label119 = new System.Windows.Forms.Label();
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出 = new MyUI.PLC_RJ_ChechBox();
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出 = new MyUI.PLC_RJ_ChechBox();
             this.label115 = new System.Windows.Forms.Label();
             this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_後臺操作 = new MyUI.PLC_RJ_ChechBox();
             this.label114 = new System.Windows.Forms.Label();
@@ -4388,7 +4388,7 @@
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.label123);
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_退藥);
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.label119);
-            this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出);
+            this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出);
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.label115);
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_後臺操作);
             this.rJ_GroupBox6.ContentsPanel.Controls.Add(this.label114);
@@ -4535,28 +4535,28 @@
             this.label119.TabIndex = 11;
             this.label119.Text = "登入/登出";
             // 
-            // lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出
+            // plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出
             // 
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Bool = false;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.ForeColor = System.Drawing.Color.Black;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Location = new System.Drawing.Point(19, 178);
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.MinimumSize = new System.Drawing.Size(45, 22);
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Name = "lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出";
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OffBackColor = System.Drawing.Color.Gray;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Size = new System.Drawing.Size(62, 29);
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.SolidStyle = true;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.TabIndex = 10;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.UseVisualStyleBackColor = true;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.寫入元件位置 = "S4120";
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.文字顏色 = System.Drawing.Color.Black;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.讀取元件位置 = "S4120";
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.讀寫鎖住 = false;
-            this.lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.音效 = true;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Bool = false;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.ForeColor = System.Drawing.Color.Black;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Location = new System.Drawing.Point(19, 178);
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.MinimumSize = new System.Drawing.Size(45, 22);
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Name = "plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出";
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OffBackColor = System.Drawing.Color.Gray;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.Size = new System.Drawing.Size(62, 29);
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.SolidStyle = true;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.TabIndex = 10;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.UseVisualStyleBackColor = true;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.寫入元件位置 = "S4120";
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.文字字體 = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.文字顏色 = System.Drawing.Color.Black;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.讀取元件位置 = "S4120";
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.讀寫鎖住 = false;
+            this.plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出.音效 = true;
             // 
             // label115
             // 
@@ -28392,7 +28392,7 @@
         private MyUI.RJ_Lable rJ_Lable46;
         private MyUI.RJ_Lable rJ_Lable45;
         private System.Windows.Forms.Label label119;
-        private MyUI.PLC_RJ_ChechBox lC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出;
+        private MyUI.PLC_RJ_ChechBox plC_RJ_ChechBox_交易紀錄查詢_搜尋條件_登入及登出;
         private MyUI.PLC_Button plC_Button_領藥台_01_退;
         private MyUI.PLC_Button plC_Button_領藥台_01_領;
         private System.Windows.Forms.Label label123;
