@@ -1903,9 +1903,15 @@ namespace 調劑台管理系統
                 List<object[]> list_取藥母堆疊資料_Replace = new List<object[]>();
                 for (int i = 0; i < list_取藥子堆疊資料.Count; i++)
                 {
-                    list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.流程作業完成] = true.ToString();
-                    list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.配藥完成] = true.ToString();
-                    list_取藥母堆疊資料_Replace.Add(list_取藥子堆疊資料[i]);
+                    Storage storage = List_EPD266_雲端資料.SortByIP(IP);
+                    if(!storage.TOFON)
+                    {
+                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.流程作業完成] = true.ToString();
+                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.配藥完成] = true.ToString();
+                        list_取藥母堆疊資料_Replace.Add(list_取藥子堆疊資料[i]);
+
+                    }
+          
                    
                 }
                 this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(list_取藥母堆疊資料_Replace, false);
