@@ -1242,6 +1242,7 @@ namespace 調劑台管理系統
                 if (storage == null) return;
                 storage.TOFON = plC_CheckBox_儲位管理_EPD266_儲位內容_手勢感測.Checked;
                 this.epD_266_Pannel.DrawToPictureBox(this.epD_266_Pannel.CurrentStorage);
+                //this.storageUI_EPD_266.Set_TOF(storage.IP, storage.Port, storage.TOFON);
                 this.storageUI_EPD_266.SQL_ReplaceStorage(storage);
                 this.Function_設定雲端資料更新();
             }));

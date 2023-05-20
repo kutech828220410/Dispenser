@@ -1862,6 +1862,44 @@ namespace 調劑台管理系統
 
             List<object[]> list_取藥母堆疊資料_buf = new List<object[]>();
             List<object[]> list_取藥子堆疊資料 = this.sqL_DataGridView_取藥堆疊子資料.SQL_GetAllRows(false);
+
+            bool flag_TOFON = false;
+
+            if (plC_Button_同藥碼全亮.Bool)
+            {
+                list_取藥子堆疊資料 = (from value in list_取藥子堆疊資料
+                                where value[(int)enum_取藥堆疊子資料.致能].ObjectToString() == true.ToString()
+                                where value[(int)enum_取藥堆疊子資料.配藥完成].ObjectToString() == false.ToString()
+                                select value).ToList();
+
+                List<object[]> list_取藥母堆疊資料_Replace = new List<object[]>();
+                for (int i = 0; i < list_取藥子堆疊資料.Count; i++)
+                {
+                    IP = list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.IP].ObjectToString();
+                    Storage storage = List_EPD266_雲端資料.SortByIP(IP);
+                    if (storage == null) continue;
+                    if (!storage.TOFON)
+                    {
+                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.流程作業完成] = true.ToString();
+                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.配藥完成] = true.ToString();
+                        list_取藥母堆疊資料_Replace.Add(list_取藥子堆疊資料[i]);
+                    }
+                    else
+                    {
+                        flag_TOFON = true;
+                    }
+
+                }
+                this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(list_取藥母堆疊資料_Replace, false);
+                this.MyTimer_取藥堆疊資料_流程作業檢查.TickStop();
+                this.MyTimer_取藥堆疊資料_流程作業檢查.StartTickTime();
+                cnt++;
+                if (!flag_TOFON) return;
+            }
+
+            List<string[]> list_需更新資料;
+            list_取藥母堆疊資料 = this.sqL_DataGridView_取藥堆疊母資料.SQL_GetAllRows(false);
+            list_取藥子堆疊資料 = this.sqL_DataGridView_取藥堆疊子資料.SQL_GetAllRows(false);
             List<object[]> list_取藥子堆疊資料_2_66層架_作業未完成 = new List<object[]>();
             List<object[]> list_取藥子堆疊資料_2_66層架_作業已完成 = new List<object[]>();
             List<object[]> list_取藥子堆疊資料_LED層架_作業未完成 = new List<object[]>();
@@ -1893,35 +1931,6 @@ namespace 調劑台管理系統
                                         select value).ToList();
 
 
-            if (plC_Button_同藥碼全亮.Bool)
-            {
-                list_取藥子堆疊資料 = (from value in list_取藥子堆疊資料
-                                where value[(int)enum_取藥堆疊子資料.致能].ObjectToString() == true.ToString()
-                                where value[(int)enum_取藥堆疊子資料.配藥完成].ObjectToString() == false.ToString()
-                                select value).ToList();
-
-                List<object[]> list_取藥母堆疊資料_Replace = new List<object[]>();
-                for (int i = 0; i < list_取藥子堆疊資料.Count; i++)
-                {
-                    Storage storage = List_EPD266_雲端資料.SortByIP(IP);
-                    if(!storage.TOFON)
-                    {
-                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.流程作業完成] = true.ToString();
-                        list_取藥子堆疊資料[i][(int)enum_取藥堆疊子資料.配藥完成] = true.ToString();
-                        list_取藥母堆疊資料_Replace.Add(list_取藥子堆疊資料[i]);
-
-                    }
-          
-                   
-                }
-                this.sqL_DataGridView_取藥堆疊子資料.SQL_ReplaceExtra(list_取藥母堆疊資料_Replace, false);
-                this.MyTimer_取藥堆疊資料_流程作業檢查.TickStop();
-                this.MyTimer_取藥堆疊資料_流程作業檢查.StartTickTime();
-                cnt++;
-                return;
-            }
-
-            List<string[]> list_需更新資料;
             #region 2_66層架_作業未完成
             taskList = new List<Task>();
             list_需更新資料 = new List<string[]>();
@@ -1989,6 +1998,7 @@ namespace 調劑台管理系統
                             taskList.Add(Task.Run(() =>
                             {
                                 int Dis_value = this.storageUI_EPD_266.Get_LaserDistance(storage);
+                                Console.WriteLine($"IP: {storage.IP} ,雷射數值 :{Dis_value}");
                                 if (Dis_value <= this.取藥堆疊資料_流程作業檢查_感測設定值 || this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool || !storage.TOFON)
                                 {
                                     if (!this.PLC_Device_取藥堆疊資料_流程作業檢查_不檢測.Bool || !storage.TOFON) this.storageUI_EPD_266.Set_Stroage_LED_UDP(storage, Color.Black);

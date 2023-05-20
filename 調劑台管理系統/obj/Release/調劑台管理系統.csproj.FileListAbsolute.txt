@@ -1825,3 +1825,4 @@ C:\Users\BR001-002D\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調
 C:\Users\BR001-002D\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.csproj.CopyComplete
 C:\Users\BR001-002D\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.exe
 C:\Users\BR001-002D\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.pdb
+C:\Users\HS\Source\Repos\Dispenser\調劑台管理系統\obj\Release\調劑台管理系統.Dialog_選擇效期.resources
